@@ -25,7 +25,8 @@
 
         self.background = [[[CCSprite alloc] initWithFile:@"menu.png"] autorelease];
         
-        CCMenuItemImage *logo = [CCMenuItemImage itemFromNormalImage:@"logo-menu.png" selectedImage:@"logo-menu.png"];
+        CCMenuItemImage *logo = [CCMenuItemImage itemFromNormalImage:@"logo-menu.png" 
+                                                       selectedImage:@"logo-menu.png"];
         
         
         CCMenuItemImage *play = [CCMenuItemImage itemFromNormalImage:@"button-play.png" 

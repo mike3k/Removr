@@ -69,7 +69,7 @@ static UInt32 levels[4][16] = {
 
 @synthesize map = _map, background = _background;
 
-- (id)initWithBackground: (NSString*)bg data: (void*)bytes length: (int)length
+- (id)initWithBackground: (NSString*)bg bytes: (void*)bytes length: (int)length
 {
     if ((self = [super init])) {
         self.background = bg;
@@ -85,9 +85,9 @@ static UInt32 levels[4][16] = {
     [super dealloc];
 }
 
-+ (Level*)LevelWithBackground: (NSString*)bg data: (void*)bytes length: (int)length
++ (Level*)LevelWithBackground: (NSString*)bg bytes: (void*)bytes length: (int)length
 {
-    return [[[Level alloc] initWithBackground:bg data:bytes length:length] autorelease];
+    return [[[Level alloc] initWithBackground:bg bytes:bytes length:length] autorelease];
 }
 
 @end
@@ -97,7 +97,7 @@ static GameManager *_sharedGameManager = nil;
 
 @implementation GameManager
 
-@synthesize curLevel = _curLevel, levels = _levels, gs = _gs, ms = _ms;
+@synthesize curLevel = _curLevel, levels = _levels, gs = _gs, ms = _ms, paused = _paused;
 
 + (GameManager*)shared
 {
@@ -130,7 +130,7 @@ static GameManager *_sharedGameManager = nil;
 {
     for (int i=0; i<NUM_LEVELS;++i) {
         int len = sizeof(levels[i]);
-        [_levels addObject: [Level LevelWithBackground:@"background.png" data:&levels[i][0] length:len]];
+        [_levels addObject: [Level LevelWithBackground:@"background.png" bytes:&levels[i][0] length:len]];
     }
     return YES;
 }
@@ -160,7 +160,8 @@ static GameManager *_sharedGameManager = nil;
         self.gs = [GameScene node];
     }
     [[CCDirector sharedDirector] replaceScene: _gs];
-    [_gs playLevel: [GameManager shared].curLevel];
+    //[_gs playLevel: [GameManager shared].curLevel];
+    [_gs play:self];
 
 }
 

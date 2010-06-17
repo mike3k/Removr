@@ -12,6 +12,9 @@
 
 enum {
 	kTagAtlasSpriteSheet = 1,
+    kTagPauseButton = 2,
+    kTagPauseBackground = 3,
+    kTagPauseMenu = 4
 };
 
 #define kBorderCollision  888
@@ -110,7 +113,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         [menu alignItemsVertically];
         menu.anchorPoint = ccp(1,1);
         menu.position = ccp(wins.width - 42, wins.height - 16);
-        [self addChild:menu];
+        [self addChild:menu  z:0 tag:kTagPauseButton];
         //[self runWithMap: lvl1 size:(sizeof(lvl1) / sizeof(UInt32))];
         //[self gotoLevel: [_delegate curLevel]];
     }
@@ -138,14 +141,15 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     win = NO;
     lose = NO;
 
+    [self clearBoard];
     for (int i=0; map[i]; ++i) {
         [self addSprite: map[i]];
     }
-    [self reset];
+    [self resetScore];
     [self start];
 }
 
-- (void) reset
+- (void) resetScore
 {
     moves = 0;
     time = 0;
@@ -156,41 +160,94 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     [self schedule: @selector(step:)];
 }
 
+- (void)stop
+{
+    [self unschedule: @selector(step:)];
+}
+
+- (void)play
+{
+    if (_delegate.paused) {
+        [self resume];
+    }
+    else {
+        [self gotoLevel:-1];
+    }
+}
+
+- (void)restart
+{
+    _delegate.paused = NO;
+    [self hidePauseMenu];
+    [self gotoLevel:-1];
+}
+
+- (void) showPauseMenu
+{
+    if (nil == pauseMenu) {
+        
+        
+        // dim the background
+        CCSprite *dim = [[[CCSprite alloc] initWithFile:@"blackbg.png"] autorelease];
+        CGSize wins = [[CCDirector sharedDirector] winSize];    
+        dim.scaleX = wins.width;
+        dim.scaleY = wins.height;
+        dim.anchorPoint = ccp(0,0);
+        dim.position = ccp(0,0);
+        dim.opacity = 180;
+        [self addChild:dim z:0 tag:kTagPauseBackground];
+    
+        pauseMenu = [CCMenu menuWithItems:      
+                     
+                     [CCMenuItemImage itemFromNormalImage:@"pause-restart.png" 
+                                            selectedImage:@"pause-restart-sel.png" 
+                                                   target:self 
+                                                 selector:@selector(restart)],
+                     
+                     [CCMenuItemImage itemFromNormalImage:@"pause-resume.png"
+                                            selectedImage:@"pause-resume-sel.png"
+                                                   target:self 
+                                                 selector:@selector(resume)],
+                     
+                     [CCMenuItemImage itemFromNormalImage:@"pause-quit.png"
+                                            selectedImage:@"pause-quit-sel.png"
+                                                   target:self 
+                                                 selector:@selector(quit)],
+                     
+                     nil];
+        [pauseMenu alignItemsVertically];
+        [self addChild:pauseMenu z:0 tag:kTagPauseMenu];
+        _delegate.paused = YES;
+    }
+}
+
+- (void) hidePauseMenu
+{
+    if (nil != pauseMenu) {
+        pauseMenu.visible = NO;
+        [self removeChildByTag:kTagPauseBackground cleanup:NO];
+        [self removeChild:pauseMenu cleanup:NO];
+        pauseMenu = nil;
+    }
+}
+
+- (void)quit
+{
+    [self hidePauseMenu];
+    [_delegate menu:self];
+}
+
 - (void)pause
 {
     [self stop];
-    if (nil == pauseMenu) {
-        
-        pauseMenu = [CCMenu menuWithItems:      [CCMenuItemImage itemFromNormalImage:@"pause-restart.png" 
-                                                                       selectedImage:@"pause-restart-sel.png" 
-                                                                              target:self 
-                                                                            selector:@selector(start)],
-                                                [CCMenuItemImage itemFromNormalImage:@"pause-resume.png"
-                                                                       selectedImage:@"pause-resume-sel.png"
-                                                                              target:self 
-                                                                            selector:@selector(resume)],
-                                                [CCMenuItemImage itemFromNormalImage:@"pause-quit.png"
-                                                                        selectedImage:@"pause-quit-sel.png"
-                                                                               target:_delegate 
-                                                                            selector:@selector(menu:)],
-                                                nil];
-        [pauseMenu alignItemsVertically];
-        [self addChild:pauseMenu];
-    }
+    [self showPauseMenu];
 }
 
 - (void)resume
 {
-    if (nil != pauseMenu) {
-        [self removeChild:pauseMenu cleanup:NO];
-        pauseMenu = nil;
-    }
+    _delegate.paused = NO;
+    [self hidePauseMenu];
     [self start];
-}
-
-- (void)stop
-{
-    [self unschedule: @selector(step:)];
 }
 
 - (void)removeShape: (cpShape*)shape force: (BOOL)force
@@ -255,7 +312,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    [self clearBoard];
+    //[self clearBoard];
     if (lose) {
         //[self runWithMap: lvl1 size:(sizeof(lvl1) / sizeof(UInt32))];
         [self gotoLevel:self.level];
@@ -294,6 +351,10 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (BOOL)gotoLevel: (int)level
 {
+    if (level < 0) {
+        level = _delegate.curLevel;
+    }
+    
     self.level = level;
     
     NSData *map = [[GameManager shared] GetLevel: level].map;

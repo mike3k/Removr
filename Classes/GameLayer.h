@@ -44,17 +44,21 @@
 
 -(void) clearBoard;
 
+- (void) showPauseMenu;
+- (void) hidePauseMenu;
 
 - (int)testWinOrLose;
 - (BOOL)gotoLevel: (int)level;
 
-- (void) reset;
+- (void) resetScore;
 
 - (void)start;
 - (void)stop;
 
+- (void)play;
 - (void)pause;
 - (void)resume;
+- (void)quit;
 
 - (void)showWinScreen;
 - (void)showLoseScreen;

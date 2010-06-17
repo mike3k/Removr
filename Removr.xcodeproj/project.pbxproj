@@ -91,6 +91,7 @@
 		27AE870A11AD9F0E002DACA5 /* logo-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AE870911AD9F0D002DACA5 /* logo-menu.png */; };
 		27AE870B11AD9F0E002DACA5 /* logo-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AE870911AD9F0D002DACA5 /* logo-menu.png */; };
 		27AEE2F111C87F42008F9E86 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEE2F011C87F42008F9E86 /* pause.png */; };
+		27C0188811CABB2C00526633 /* blackbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C0188711CABB2C00526633 /* blackbg.png */; };
 		502BC300112082F900A0B92A /* CDAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 502BC2F8112082F900A0B92A /* CDAudioManager.h */; };
 		502BC301112082F900A0B92A /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 502BC2F9112082F900A0B92A /* CDAudioManager.m */; };
 		502BC302112082F900A0B92A /* CDConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 502BC2FA112082F900A0B92A /* CDConfig.h */; };
@@ -419,6 +420,7 @@
 		27AE86F511AD6C3A002DACA5 /* InfoLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoLayer.m; sourceTree = "<group>"; };
 		27AE870911AD9F0D002DACA5 /* logo-menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-menu.png"; sourceTree = "<group>"; };
 		27AEE2F011C87F42008F9E86 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		27C0188711CABB2C00526633 /* blackbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackbg.png; sourceTree = "<group>"; };
 		27F3DDCA11B86BE0002C51E4 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		502BC2F8112082F900A0B92A /* CDAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAudioManager.h; sourceTree = "<group>"; };
@@ -1151,6 +1153,7 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27C0188711CABB2C00526633 /* blackbg.png */,
 				272BC25E11C9DBC700F9C1C8 /* pause-icon.png */,
 				272BC25F11C9DBC700F9C1C8 /* pause-quit-sel.png */,
 				272BC26011C9DBC700F9C1C8 /* pause-quit.png */,
@@ -1451,6 +1454,7 @@
 				272BC26911C9DBC700F9C1C8 /* pause-restart.png in Resources */,
 				272BC26A11C9DBC700F9C1C8 /* pause-resume-sel.png in Resources */,
 				272BC26B11C9DBC700F9C1C8 /* pause-resume.png in Resources */,
+				27C0188811CABB2C00526633 /* blackbg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

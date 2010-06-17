@@ -20,6 +20,9 @@
 - (void)pause: (id)sender;
 - (void)resume: (id)sender;
 
+@property (assign,nonatomic) BOOL paused;
+@property (assign,nonatomic) NSInteger curLevel;
+
 @end
 
 

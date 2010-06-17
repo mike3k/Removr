@@ -22,8 +22,8 @@
 @property (retain,nonatomic) NSString *background;
 @property (retain,nonatomic) NSData *map;
 
-- (id)initWithBackground: (NSString*)bg data: (void*)bytes length: (int)length;
-+ (Level*)LevelWithBackground: (NSString*)bg data: (void*)bytes length: (int)length;
+- (id)initWithBackground: (NSString*)bg bytes: (void*)bytes length: (int)length;
++ (Level*)LevelWithBackground: (NSString*)bg bytes: (void*)bytes length: (int)length;
 
 @end
 
@@ -34,12 +34,13 @@
     
     GameScene *_gs;
     MenuScene *_ms;
+    
+    BOOL _paused;
 }
 
 @property (retain,nonatomic) NSMutableArray *levels;
 @property (retain,nonatomic) GameScene *gs;
 @property (retain,nonatomic) MenuScene *ms;
-@property (assign,nonatomic) NSInteger curLevel;
 
 + (GameManager*)shared;
 

@@ -21,10 +21,10 @@
     int _curLevel;
 }
 
-- (void) playLevel: (int)level;
+//- (void) playLevel: (int)level;
 //- (void) gotoMenu;
-- (void) restartGame;
-- (void) nextLevel;
+//- (void) restartGame;
+//- (void) nextLevel;
 
 - (void)play:(id)sender;
 
@@ -35,6 +35,6 @@
 
 
 @property (retain,nonatomic) GameLayer *game;
-@property (assign,nonatomic) int curLevel;
+//@property (assign,nonatomic) int curLevel;
 
 @end

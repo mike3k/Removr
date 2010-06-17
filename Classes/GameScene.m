@@ -13,14 +13,13 @@
 
 @implementation GameScene
 
-@synthesize game = _game, curLevel = _curLevel;
+@synthesize game = _game;   //, curLevel = _curLevel;
 
 - (id) init
 {
     if ((self = [super init])) {
 		self.game = [GameLayer node];
         [self addChild:_game];
-//      [self playLevel: [GameManager shared].curLevel];
     }
     return self;
 }
@@ -31,24 +30,24 @@
     [super dealloc];
 }
 
-- (void) playLevel: (int)level
-{
-    [_game gotoLevel:level];
-}
+//- (void) playLevel: (int)level
+//{
+//    [_game gotoLevel:level];
+//}
+//
+//
+//- (void) restartGame
+//{
+//    [self playLevel: _curLevel];
+//}
 
-
-- (void) restartGame
-{
-    [self playLevel: _curLevel];
-}
-
-- (void) nextLevel
-{
-}
+//- (void) nextLevel
+//{
+//}
 
 - (void)play:(id)sender
 {
-    [self restartGame];
+    [_game play];
 }
 
 
