@@ -44,7 +44,7 @@
 
 -(void) clearBoard;
 
-- (void) showPauseMenu;
+- (void) showPauseMenu: (BOOL)canResume;
 - (void) hidePauseMenu;
 
 - (int)testWinOrLose;

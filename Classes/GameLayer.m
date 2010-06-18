@@ -182,7 +182,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     [self gotoLevel:-1];
 }
 
-- (void) showPauseMenu
+- (void) showPauseMenu: (BOOL)canResume
 {
     if (nil == pauseMenu) {
         
@@ -196,28 +196,32 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         dim.position = ccp(0,0);
         dim.opacity = 180;
         [self addChild:dim z:0 tag:kTagPauseBackground];
-    
-        pauseMenu = [CCMenu menuWithItems:      
-                     
-                     [CCMenuItemImage itemFromNormalImage:@"pause-restart.png" 
-                                            selectedImage:@"pause-restart-sel.png" 
-                                                   target:self 
-                                                 selector:@selector(restart)],
-                     
-                     [CCMenuItemImage itemFromNormalImage:@"pause-resume.png"
-                                            selectedImage:@"pause-resume-sel.png"
-                                                   target:self 
-                                                 selector:@selector(resume)],
-                     
-                     [CCMenuItemImage itemFromNormalImage:@"pause-quit.png"
-                                            selectedImage:@"pause-quit-sel.png"
-                                                   target:self 
-                                                 selector:@selector(quit)],
-                     
-                     nil];
+ 
+        CCMenuItemImage *item1;
+        CCMenuItemImage *item2 = [CCMenuItemImage itemFromNormalImage:@"pause-restart.png" 
+                                                        selectedImage:@"pause-restart-sel.png" 
+                                                               target:self 
+                                                             selector:@selector(restart)];
+        
+        CCMenuItemImage *item3 = [CCMenuItemImage itemFromNormalImage:@"pause-quit.png"
+                                                        selectedImage:@"pause-quit-sel.png"
+                                                               target:self 
+                                                             selector:@selector(quit)];
+        
+        if (canResume) {
+            item1 = [CCMenuItemImage itemFromNormalImage:@"pause-resume.png"
+                                           selectedImage:@"pause-resume-sel.png"
+                                                  target:self 
+                                                selector:@selector(resume)];
+        }
+        else {
+            item1 = [CCMenuItemImage itemFromNormalImage:@"uhoh.png" selectedImage:@"uhoh.png"];
+        }
+        
+        pauseMenu = [CCMenu menuWithItems: item1, item2, item3, nil];
         [pauseMenu alignItemsVertically];
         [self addChild:pauseMenu z:0 tag:kTagPauseMenu];
-        _delegate.paused = YES;
+        _delegate.paused = canResume;
     }
 }
 
@@ -240,7 +244,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 - (void)pause
 {
     [self stop];
-    [self showPauseMenu];
+    [self showPauseMenu:YES];
 }
 
 - (void)resume
@@ -312,40 +316,29 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    //[self clearBoard];
-    if (lose) {
-        //[self runWithMap: lvl1 size:(sizeof(lvl1) / sizeof(UInt32))];
-        [self gotoLevel:self.level];
-    }
-    else if (win) {
-        [self gotoLevel: self.level + 1];
-    }
 }
 
 - (void)showWinScreen
 {
     [self stop];
     
-    UIAlertView *msg = [[UIAlertView alloc] initWithTitle: @"WIN" 
-                                                  message:@"You won" 
-                                                 delegate:self
-                                        cancelButtonTitle:@"OK" 
-                                        otherButtonTitles:nil];
-    [msg show];
-    [msg release];
+    // should really do an action and go to next level when action completes
+    [self gotoLevel: self.level + 1];
 }
 
 - (void)showLoseScreen
 {
+    //    [self stop];
+    //
+    //UIAlertView *msg = [[UIAlertView alloc] initWithTitle: @"Uh Oh!" 
+    //                                                  message:@"You lost" 
+    //                                               delegate:self
+    //                                    cancelButtonTitle:@"OK" 
+    //                                    otherButtonTitles:nil];
+    //[msg show];
+    //[msg release];
     [self stop];
-
-    UIAlertView *msg = [[UIAlertView alloc] initWithTitle: @"Uh Oh!" 
-                                                  message:@"You lost" 
-                                                 delegate:self
-                                        cancelButtonTitle:@"OK" 
-                                        otherButtonTitles:nil];
-    [msg show];
-    [msg release];
+    [self showPauseMenu:NO];
     
 }
 
