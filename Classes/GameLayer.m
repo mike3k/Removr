@@ -194,7 +194,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         dim.scaleY = wins.height;
         dim.anchorPoint = ccp(0,0);
         dim.position = ccp(0,0);
-        dim.opacity = 180;
+        dim.opacity = floor(256 * .70);
         [self addChild:dim z:0 tag:kTagPauseBackground];
  
         CCMenuItemImage *item1;

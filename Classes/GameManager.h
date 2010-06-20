@@ -9,38 +9,39 @@
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
 #import "MCLayer.h"
+#import "Level.h"
 
+#import <sqlite3.h>
 
 @class GameScene;
 @class MenuScene;
 
-@interface Level : NSObject {
-    NSString *_background;
-    NSData *map;
-}
-
-@property (retain,nonatomic) NSString *background;
-@property (retain,nonatomic) NSData *map;
-
-- (id)initWithBackground: (NSString*)bg bytes: (void*)bytes length: (int)length;
-+ (Level*)LevelWithBackground: (NSString*)bg bytes: (void*)bytes length: (int)length;
-
-@end
 
 
 @interface GameManager : NSObject <MCLayerDelegate> {
     NSInteger _curLevel;
-    NSMutableArray *_levels;
-    
+    Level *_theLevel;
+
+
+    NSString *_dbpath;
+
+    sqlite3 * db;
+    sqlite3_stmt * query;
+
+
     GameScene *_gs;
     MenuScene *_ms;
     
     BOOL _paused;
 }
 
-@property (retain,nonatomic) NSMutableArray *levels;
+
 @property (retain,nonatomic) GameScene *gs;
 @property (retain,nonatomic) MenuScene *ms;
+@property (retain,nonatomic) Level *theLevel;
+@property (assign,nonatomic) NSInteger curLevel;
+@property (retain,nonatomic) NSString *dbpath;
+
 
 + (GameManager*)shared;
 
