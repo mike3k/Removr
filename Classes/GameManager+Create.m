@@ -15,52 +15,70 @@
 
 @end
 
-#define NUM_LEVELS 4
+#define NUM_LEVELS 5
 
-static UInt32 levels[4][16] = {
+static UInt32 levels[NUM_LEVELS][16] = {
     {
-        StuffPiece(1,5,BlueHBarx4),
-        StuffPiece(5,5,BlueHBarx1),
-        StuffPiece(7,7,OpenRedSquare),
-        StuffPiece(8,7,OpenRedSquare),
-        StuffPiece(7,8,OpenGreenSquare),
-        StuffPiece(8,8,OpenGreenSquare),
-        StuffPiece(3,6,SolidRedCircle),
-        StuffPiece(5,6,SolidGreenSquare),
+        StuffPiece(1,1,RedSquare),
+        StuffPiece(2,1,GreenSquare),
+        StuffPiece(3,1,BlueSquare),
+        StuffPiece(1,2,RedCircle),
+        StuffPiece(2,2,GreenCircle),
+        StuffPiece(3,2,BlueCircle),
+        
+        StuffPiece(4,4,RedHorizBar),
+        StuffPiece(4,5,GreenHorizBar),
+        StuffPiece(4,6,BlueHorizBar),
+        
+        StuffPiece(8,6,RedVertBar),
+        StuffPiece(7,6,GreenVertBar),
+        StuffPiece(5,6,BlueVertBar),
+        
+        0L
+    },
+    {
+        StuffPiece(1,5,BlueHorizBar),
+        StuffPiece(5,5,BlueHorizBar),
+        StuffPiece(7,7,RedSquare),
+        StuffPiece(8,7,RedSquare),
+        StuffPiece(7,8,GreenSquare),
+        StuffPiece(8,8,GreenSquare),
+        StuffPiece(3,6,RedCircle),
+        StuffPiece(5,6,GreenCircle),
         0L
     },
 
     {
-        StuffPiece(2,4,BlueVBarx4),
-        StuffPiece(3,4,OpenRedSquare),
-        StuffPiece(3,5,OpenRedSquare),
-        StuffPiece(3,6,OpenRedSquare),
-        StuffPiece(3,7,OpenRedSquare),
-        StuffPiece(3,8,SolidGreenCircle),
-        StuffPiece(3,3,OpenBlueSquare),
+        StuffPiece(2,4,BlueVertBar),
+        StuffPiece(3,4,RedSquare),
+        StuffPiece(3,5,RedSquare),
+        StuffPiece(3,6,RedSquare),
+        StuffPiece(3,7,RedSquare),
+        StuffPiece(3,8,GreenCircle),
+        StuffPiece(3,3,BlueSquare),
         0L
     },
 
     {
-        StuffPiece(5,3,BlueVBarx4),
-        StuffPiece(7,7,OpenRedSquare),
-        StuffPiece(8,7,OpenRedSquare),
-        StuffPiece(7,8,OpenGreenSquare),
-        StuffPiece(8,8,OpenGreenSquare),
-        StuffPiece(3,8,SolidRedCircle),
-        StuffPiece(5,8,SolidGreenSquare),
+        StuffPiece(5,3,BlueVertBar),
+        StuffPiece(7,7,RedSquare),
+        StuffPiece(8,7,RedSquare),
+        StuffPiece(7,8,GreenSquare),
+        StuffPiece(8,8,GreenSquare),
+        StuffPiece(3,8,RedCircle),
+        StuffPiece(5,8,GreenSquare),
         0L
    },
 
     {
         //StuffPiece(5,2,OpenBlueSquare),
-        StuffPiece(5,3,BlueVBarx4),
+        StuffPiece(5,3,BlueVertBar),
         //StuffPiece(5,4,OpenBlueSquare),
         //StuffPiece(5,5,OpenBlueSquare),
         //StuffPiece(5,6,OpenBlueSquare),
-        StuffPiece(5,7,SolidRedSquare),
-        StuffPiece(6,3,SolidGreenSquare),
-        StuffPiece(6,2,OpenBlueSquare),
+        StuffPiece(5,7,RedCircle),
+        StuffPiece(6,3,GreenCircle),
+        StuffPiece(6,2,BlueSquare),
         0L
     }
 };
@@ -71,7 +89,7 @@ static UInt32 levels[4][16] = {
 - (BOOL) createDatabase
 {
     sqlite3_stmt *stmt;
-    sqlite3_open([_dbpath UTF8String] , &db);
+    sqlite3_open("/tmp/levels.sqlite3" , &db);
     sqlite3_prepare(db, "CREATE TABLE levels (ix integer NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,background text,map blob NOT NULL)", -1, &stmt, NULL);
     sqlite3_step(stmt);
     sqlite3_finalize(stmt);
@@ -85,6 +103,7 @@ static UInt32 levels[4][16] = {
         sqlite3_reset(stmt);
     }
     sqlite3_finalize(stmt);
+    sqlite3_close(db);
     return YES;
 }
 

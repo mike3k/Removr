@@ -45,11 +45,12 @@
 
 + (GameManager*)shared;
 
-- (BOOL)LoadLevels;
+//- (BOOL)LoadLevels;
+
 - (Level*)GetLevel: (int)number;
 - (int)levelCount;
 
-- (void) GotoLevel: (Level*)level;
+//- (void) GotoLevel: (Level*)level;
 
 - (void)play:(id)sender;
 - (void)highscores:(id)sender;

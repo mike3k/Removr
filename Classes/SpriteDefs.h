@@ -10,16 +10,12 @@
 #define kSquareSprite   0x00000001
 #define kCircleSprite   0x00000002
 #define kPolySprite     0x00000003
-#define kPlankSprite    0x00000004
-#define kPlank2Sprite   0x00000005
-#define kPlank3Sprite   0x00000006
+#define kHorizBarSprite 0x00000004
+#define kVertBarSprite  0x00000005
 
 #define kRedPiece       0x00000010
 #define kGreenPiece     0x00000020
 #define kBluePiece      0x00000030
-
-#define kSolidPiece     0x00000100
-#define kOpenPiece      0x00000200
 
 #define kCanRemove      0x00001000
 #define kIsStatic       0x00002000
@@ -61,49 +57,34 @@ typedef struct {
 #define FACET   64
 #else
 #define FACET   32
+#define BAR_H   16
+#define BAR_W   256
 #endif
 
 enum    {
-    OpenGreenSquare    = 0,
-    SolidGreenSquare,
-    OpenGreenCircle,
-    SolidGreenCircle,
+    RedCircle    = 0,
+    GreenCircle,
+    BlueCircle,
 
-    OpenRedSquare,
-    SolidRedSquare,
-    OpenRedCircle,
-    SolidRedCircle,
+    RedSquare,
+    GreenSquare,
+    BlueSquare,
 
-    OpenBlueSquare,
-    SolidBlueSquare,
-    OpenBlueCircle,
-    SolidBlueCircle,
+    RedCircleCB,
+    GreenCircleCB,
+    BlueCircleCB,
 
-    BlueHBarx4,
-    BlueHBarx3,
-    BlueHBarx1,
+    RedSquareCB,
+    GreenSquareCB,
+    BlueSquareCB,
 
-    BlueVBarx4,
-    BlueVBarx3,
-    BlueVBarx1,
-    
-    RedHBarx4,
-    RedHBarx3,
-    RedHBarx1,
+    RedHorizBar,
+    GreenHorizBar,
+    BlueHorizBar,
 
-    RedVBarx4,
-    RedVBarx3,
-    RedVBarx1,
-
-    GreenHBarx4,
-    GreenHBarx3,
-    GreenHBarx1,
-
-    
-    GreenVBarx4,
-    GreenVBarx3,
-    GreenVBarx1,
-    
+    RedVertBar,
+    GreenVertBar,
+    BlueVertBar,
     
 };
 

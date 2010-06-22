@@ -103,7 +103,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
         cpSpaceAddCollisionHandler(space, kBorderCollision, 0, collisionBegin, nil, nil, nil, self);
 
-        self.sheet = [CCSpriteSheet spriteSheetWithFile:@"pieces.png" capacity:100];
+        self.sheet = [CCSpriteSheet spriteSheetWithFile:@"Shape-Atlas.png" capacity:100];
         [self addChild:_sheet z:0 tag:kTagAtlasSpriteSheet];
 
         CCMenu *menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:@"pause-icon.png" 

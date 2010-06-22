@@ -38,6 +38,8 @@ static GameManager *_sharedGameManager = nil;
 {
     if ((self = [super init])) {
         self.curLevel = 0;
+        
+        //[self createDatabase];
 
         self.dbpath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"sqlite3"];
         sqlite3_open([self.dbpath UTF8String] , &db);
