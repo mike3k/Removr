@@ -19,66 +19,58 @@
 
 static UInt32 levels[NUM_LEVELS][16] = {
     {
-        StuffPiece(1,1,RedSquare),
-        StuffPiece(2,1,GreenSquare),
-        StuffPiece(3,1,BlueSquare),
-        StuffPiece(1,2,RedCircle),
-        StuffPiece(2,2,GreenCircle),
-        StuffPiece(3,2,BlueCircle),
-        
-        StuffPiece(4,4,RedHorizBar),
-        StuffPiece(4,5,GreenHorizBar),
-        StuffPiece(4,6,BlueHorizBar),
-        
-        StuffPiece(8,6,RedVertBar),
-        StuffPiece(7,6,GreenVertBar),
-        StuffPiece(5,6,BlueVertBar),
+       StuffPiece(13,10,RedSquare),             //Red @ 13,10
+       StuffPiece(15,10,RedSquare),             //Red @ 15,10
+       StuffPiece(17,10,RedSquare),             //Red @ 17,10
+       StuffPiece(15,12,GreenSquare),           //Green @ 15,12
+       StuffPiece(15,14,GreenSquare),           //Green @ 15,12
+
+       StuffPiece(3,18,BlueHorizBar256),        //BHBar256 @ 3,18
+       StuffPiece(3,16,BlueHorizBar128),        //BHBar128 @ 3,16
+       StuffPiece(29,3,BlueVertBar256),         //BVBar256 @ 29,18
+       StuffPiece(27,11,BlueVertBar128),        //BVBar128 @ 27,18
         
         0L
     },
     {
-        StuffPiece(1,5,BlueHorizBar),
-        StuffPiece(5,5,BlueHorizBar),
-        StuffPiece(7,7,RedSquare),
-        StuffPiece(8,7,RedSquare),
-        StuffPiece(7,8,GreenSquare),
-        StuffPiece(8,8,GreenSquare),
-        StuffPiece(3,6,RedCircle),
-        StuffPiece(5,6,GreenCircle),
+        StuffPiece(2,10,BlueHorizBar64),
+        StuffPiece(12,10,BlueHorizBar256),
+        StuffPiece(14,14,RedSquare),
+        StuffPiece(16,14,RedSquare),
+        StuffPiece(14,16,GreenSquare),
+        StuffPiece(16,16,GreenSquare),
+        StuffPiece(6,12,RedCircle),
+        StuffPiece(10,12,GreenCircle),
         0L
     },
 
     {
-        StuffPiece(2,4,BlueVertBar),
+        StuffPiece(2,4,BlueVertBar64),
         StuffPiece(3,4,RedSquare),
-        StuffPiece(3,5,RedSquare),
         StuffPiece(3,6,RedSquare),
-        StuffPiece(3,7,RedSquare),
-        StuffPiece(3,8,GreenCircle),
-        StuffPiece(3,3,BlueSquare),
+        StuffPiece(3,8,RedSquare),
+        StuffPiece(3,10,RedSquare),
+        StuffPiece(3,12,GreenCircle),
+        StuffPiece(3,2,BlueSquare),
         0L
     },
 
     {
-        StuffPiece(5,3,BlueVertBar),
+        StuffPiece(5,3,BlueVertBar64),
         StuffPiece(7,7,RedSquare),
-        StuffPiece(8,7,RedSquare),
-        StuffPiece(7,8,GreenSquare),
-        StuffPiece(8,8,GreenSquare),
+        StuffPiece(9,7,RedSquare),
+        StuffPiece(7,9,GreenSquare),
+        StuffPiece(9,9,GreenSquare),
         StuffPiece(3,8,RedCircle),
         StuffPiece(5,8,GreenSquare),
         0L
    },
 
     {
-        //StuffPiece(5,2,OpenBlueSquare),
-        StuffPiece(5,3,BlueVertBar),
-        //StuffPiece(5,4,OpenBlueSquare),
-        //StuffPiece(5,5,OpenBlueSquare),
-        //StuffPiece(5,6,OpenBlueSquare),
+        StuffPiece(5,3,BlueVertBar64),
         StuffPiece(5,7,RedCircle),
-        StuffPiece(6,3,GreenCircle),
-        StuffPiece(6,2,BlueSquare),
+        StuffPiece(7,3,GreenCircle),
+        StuffPiece(7,1,BlueSquare),
         0L
     }
 };

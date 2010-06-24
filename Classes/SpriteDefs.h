@@ -42,12 +42,14 @@ typedef struct {
 #define MustRemove(B)   ((B & kMustRemove) != 0)
 #define MustKeep(B)     ((B & kMustKeep) != 0)
 #define IsCircle(B)     ((B & kSpriteKindMask) == kCircleSprite)
+#define IsVBar(B)       ((B & kSpriteKindMask) == kVertBarSprite)
+#define IsHBar(B)       ((B & kSpriteKindMask) == kHorizBarSprite)
 
 #define kMapPieceMask       0x000000ff
 #define kMapYMask           0x0000ff00
 #define kMapXMask           0x00ff0000
 
-#define StuffPiece(X,Y,P)   ( (X << 16) | (Y << 8) | P )
+#define StuffPiece(X,Y,P)   ( ((X&0xff) << 16) | ((Y&0xff) << 8) | P )
 
 #define MapXValue(B)        ( (B&kMapXMask) >> 16 )
 #define MapYValue(B)        ( (B&kMapYMask) >> 8 )
@@ -59,10 +61,12 @@ typedef struct {
 #define FACET   32
 #define BAR_H   16
 #define BAR_W   256
+#define BAR_W2  128
+#define BAR_W3  64
 #endif
 
 enum    {
-    RedCircle    = 0,
+    RedCircle    = 1,
     GreenCircle,
     BlueCircle,
 
@@ -78,13 +82,29 @@ enum    {
     GreenSquareCB,
     BlueSquareCB,
 
-    RedHorizBar,
-    GreenHorizBar,
-    BlueHorizBar,
+    RedHorizBar256,
+    GreenHorizBar256,
+    BlueHorizBar256,
 
-    RedVertBar,
-    GreenVertBar,
-    BlueVertBar,
+    RedVertBar256,
+    GreenVertBar256,
+    BlueVertBar256,
+
+    RedHorizBar128,
+    GreenHorizBar128,
+    BlueHorizBar128,
+
+    RedHorizBar64,
+    GreenHorizBar64,
+    BlueHorizBar64,
     
+    RedVertBar128,
+    GreenVertBar128,
+    BlueVertBar128,
+    
+    RedVertBar64,
+    GreenVertBar64,
+    BlueVertBar64,
+
 };
 

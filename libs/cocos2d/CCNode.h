@@ -30,7 +30,8 @@
 #import "ccTypes.h"
 #import "CCTexture2D.h"
 #import "CCProtocols.h"
-
+#import "ccConfig.h"
+#import "Support/CCArray.h"
 
 enum {
 	kCCNodeTagInvalid = -1,
@@ -121,6 +122,9 @@ enum {
 	
 	// transform
 	CGAffineTransform transform_, inverse_;
+#if	CC_NODE_TRANSFORM_USING_AFFINE_MATRIX
+	GLfloat	transformGL_[16];
+#endif
 
 	// openGL real Z vertex
 	float vertexZ_;
@@ -135,7 +139,7 @@ enum {
 	int zOrder_;
 	
 	// array of children
-	NSMutableArray *children_;
+	CCArray *children_;
 	
 	// weakref to parent
 	CCNode *parent_;
@@ -152,6 +156,9 @@ enum {
 	// To reduce memory, place BOOLs that are not properties here:
 	BOOL isTransformDirty_:1;
 	BOOL isInverseDirty_:1;
+#if	CC_NODE_TRANSFORM_USING_AFFINE_MATRIX
+	BOOL isTransformGLDirty_:1;
+#endif
 }
 
 /** The z order of the node relative to it's "brothers": children of the same parent */
@@ -177,6 +184,9 @@ enum {
 @property(nonatomic,readwrite,assign) CGPoint position;
 /** A CCCamera object that lets you move the node using a gluLookAt
 */
+
+@property(nonatomic,readonly) CCArray *children;
+
  @property(nonatomic,readonly) CCCamera* camera;
 /** A CCGrid object that is used when applying effects */
 @property(nonatomic,readwrite,retain) CCGridBase* grid;
@@ -292,9 +302,6 @@ enum {
  @since v0.7.1
  */
 -(CCNode*) getChildByTag:(int) tag;
-
-/** Returns the array that contains all the children */
-- (NSArray *)children;
 
 /** Reorders a child according to a new z value.
  * The child MUST be already added.

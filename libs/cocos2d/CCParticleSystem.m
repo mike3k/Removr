@@ -33,7 +33,7 @@
 //		http://love2d.org/
 //
 //
-// Mode "B" support, from 71 squared
+// Radius mode support, from 71 squared
 //		http://particledesigner.71squared.com/
 //
 // IMPORTANT: Particle Designer is supported by cocos2d, but
@@ -95,6 +95,8 @@
 {
 	NSString *path = [CCFileUtils fullPathFromRelativePath:plistFile];
 	NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+	
+	NSAssert( dict != nil, @"Particles: file not found");
 	return [self initWithDictionary:dict];
 }
 
@@ -158,9 +160,9 @@
 				
 		
 		emitterMode_ = [[dictionary valueForKey:@"emitterType"] intValue];
-		
+
+		// Mode A: Gravity + tangential accel + radial accel
 		if( emitterMode_ == kCCParticleModeGravity ) {
-			// Mode A: Gravity + tangential accel + radial accel
 			// gravity
 			mode.A.gravity.x = [[dictionary valueForKey:@"gravityx"] floatValue];
 			mode.A.gravity.y = [[dictionary valueForKey:@"gravityy"] floatValue];
@@ -170,7 +172,13 @@
 			mode.A.speed = [[dictionary valueForKey:@"speed"] floatValue];
 			mode.A.speedVar = [[dictionary valueForKey:@"speedVariance"] floatValue];
 			
-			// radial & tangential accel should be supported as well by Particle Designer
+			// radial acceleration
+			mode.A.radialAccel = [[dictionary valueForKey:@"radialAcceleration"] floatValue];
+			mode.A.radialAccelVar = [[dictionary valueForKey:@"radialAccelVariance"] floatValue];
+			
+			// tangential acceleration
+			mode.A.tangentialAccel = [[dictionary valueForKey:@"tangentialAcceleration"] floatValue];
+			mode.A.tangentialAccelVar = [[dictionary valueForKey:@"tangentialAccelVariance"] floatValue];
 		}
 		
 		
@@ -205,7 +213,7 @@
 
 		self.texture = [[CCTextureCache sharedTextureCache] addImage:textureName];
 
-		if ( ! self.texture && textureData) {
+		if ( ! texture_ && textureData) {
 			
 			// if it fails, try to get it from the base64-gzipped data			
 			unsigned char *buffer = NULL;
@@ -268,7 +276,13 @@
 #if CC_ENABLE_PROFILERS
 		_profilingTimer = [[CCProfiler timerWithName:@"particle system" andInstance:self] retain];
 #endif
-		[self scheduleUpdate];
+		
+		// Optimization: compile udpateParticle method
+		updateParticleSel = @selector(updateQuadWithParticle:newPosition:);
+		updateParticleImp = (CC_UPDATE_PARTICLE_IMP) [self methodForSelector:updateParticleSel];
+
+		// udpate after action in run!
+		[self scheduleUpdateWithPriority:1];
 		
 	}
 
@@ -305,24 +319,25 @@
 {
 
 	// timeToLive
-	particle->timeToLive = MAX(0, life + lifeVar * CCRANDOM_MINUS1_1() ); // no negative life
+	// no negative life. prevent division by 0
+	particle->timeToLive = MAX(0, life + lifeVar * CCRANDOM_MINUS1_1() );
 
 	// position
-	particle->pos.x = (int) (centerOfGravity.x + posVar.x * CCRANDOM_MINUS1_1());
-	particle->pos.y = (int) (centerOfGravity.y + posVar.y * CCRANDOM_MINUS1_1());
+	particle->pos.x = centerOfGravity.x + posVar.x * CCRANDOM_MINUS1_1();
+	particle->pos.y = centerOfGravity.y + posVar.y * CCRANDOM_MINUS1_1();
 	
 	// Color
 	ccColor4F start;
-	start.r = startColor.r + startColorVar.r * CCRANDOM_MINUS1_1();
-	start.g = startColor.g + startColorVar.g * CCRANDOM_MINUS1_1();
-	start.b = startColor.b + startColorVar.b * CCRANDOM_MINUS1_1();
-	start.a = startColor.a + startColorVar.a * CCRANDOM_MINUS1_1();
+	start.r = MIN(1, MAX(0, startColor.r + startColorVar.r * CCRANDOM_MINUS1_1() ) );
+	start.g = MIN(1, MAX(0, startColor.g + startColorVar.g * CCRANDOM_MINUS1_1() ) );
+	start.b = MIN(1, MAX(0, startColor.b + startColorVar.b * CCRANDOM_MINUS1_1() ) );
+	start.a = MIN(1, MAX(0, startColor.a + startColorVar.a * CCRANDOM_MINUS1_1() ) );
 	
 	ccColor4F end;
-	end.r = endColor.r + endColorVar.r * CCRANDOM_MINUS1_1();
-	end.g = endColor.g + endColorVar.g * CCRANDOM_MINUS1_1();
-	end.b = endColor.b + endColorVar.b * CCRANDOM_MINUS1_1();
-	end.a = endColor.a + endColorVar.a * CCRANDOM_MINUS1_1();
+	end.r = MIN(1, MAX(0, endColor.r + endColorVar.r * CCRANDOM_MINUS1_1() ) );
+	end.g = MIN(1, MAX(0, endColor.g + endColorVar.g * CCRANDOM_MINUS1_1() ) );
+	end.b = MIN(1, MAX(0, endColor.b + endColorVar.b * CCRANDOM_MINUS1_1() ) );
+	end.a = MIN(1, MAX(0, endColor.a + endColorVar.a * CCRANDOM_MINUS1_1() ) );
 	
 	particle->color = start;
 	particle->deltaColor.r = (end.r - start.r) / particle->timeToLive;
@@ -338,6 +353,7 @@
 		particle->deltaSize = 0;
 	else {
 		float endS = endSize + endSizeVar * CCRANDOM_MINUS1_1();
+		endS = MAX(0, endS);
 		particle->deltaSize = (endS - startS) / particle->timeToLive;
 	}
 	
@@ -350,8 +366,6 @@
 	// position
 	if( positionType_ == kCCPositionTypeFree )
 		particle->startPos = [self convertToWorldSpace:CGPointZero];
-	else
-		particle->startPos = position_;
 	
 	// direction
 	float a = CC_DEGREES_TO_RADIANS( angle + angleVar * CCRANDOM_MINUS1_1() );	
@@ -434,18 +448,23 @@
 	
 	particleIdx = 0;
 	
-	CGPoint	absolutePosition;
-	if( positionType_ == kCCPositionTypeFree )
-		absolutePosition = [self convertToWorldSpace:CGPointZero];
 	
 #if CC_ENABLE_PROFILERS
 	CCProfilingBeginTimingBlock(_profilingTimer);
 #endif
 	
+	
+	CGPoint currentPosition = CGPointZero;
+	if( positionType_ == kCCPositionTypeFree )
+		currentPosition = [self convertToWorldSpace:CGPointZero];
+	
 	while( particleIdx < particleCount )
 	{
 		tCCParticle *p = &particles[particleIdx];
 		
+		// life
+		p->timeToLive -= dt;
+
 		if( p->timeToLive > 0 ) {
 			
 			// Mode A: gravity, direction, tangential accel & radial accel
@@ -474,14 +493,13 @@
 			}
 			
 			// Mode B: radius movement
-			else {
-				p->pos.x = - cosf(p->mode.B.angle) * p->mode.B.radius;
-				p->pos.y = - sinf(p->mode.B.angle) * p->mode.B.radius;
-				
-				// Update the angle of the particle from the sourcePosition and the radius.  This is only
-				// done of the particles are rotating
+			else {				
+				// Update the angle and radius of the particle.
 				p->mode.B.angle += p->mode.B.degreesPerSecond * dt;
 				p->mode.B.radius += p->mode.B.deltaRadius * dt;
+				
+				p->pos.x = - cosf(p->mode.B.angle) * p->mode.B.radius;
+				p->pos.y = - sinf(p->mode.B.angle) * p->mode.B.radius;
 			}
 			
 			// color
@@ -496,21 +514,22 @@
 			
 			// angle
 			p->rotation += (p->deltaRotation * dt);
-			
-			// life
-			p->timeToLive -= dt;
-			
+						
 			//
 			// update values in quad
 			//
 			
-			CGPoint	newPos = p->pos;
-			if( positionType_ == kCCPositionTypeFree ) {
-				newPos = ccpSub(absolutePosition, p->startPos);
-				newPos = ccpSub( p->pos, newPos);
-			}
+			CGPoint	newPos;
 			
-			[self updateQuadWithParticle:p position:newPos];
+			if( positionType_ == kCCPositionTypeFree ) {
+				CGPoint diff = ccpSub( currentPosition, p->startPos );
+				newPos = ccpSub(p->pos, diff);
+				
+			} else
+				newPos = p->pos;
+
+			
+			updateParticleImp(self, updateParticleSel, p, newPos);
 			
 			// update particle counter
 			particleIdx++;
@@ -523,7 +542,7 @@
 			
 			if( particleCount == 0 && autoRemoveOnFinish_ ) {
 				[self unscheduleUpdate];
-				[[self parent] removeChild:self cleanup:YES];
+				[parent_ removeChild:self cleanup:YES];
 				return;
 			}
 		}
@@ -536,7 +555,7 @@
 	[self postStep];
 }
 
--(void) updateQuadWithParticle:(tCCParticle*)particle position:(CGPoint)position
+-(void) updateQuadWithParticle:(tCCParticle*)particle newPosition:(CGPoint)pos;
 {
 	// should be overriden
 }
@@ -554,7 +573,7 @@
 	texture_ = [texture retain];
 
 	// If the new texture has No premultiplied alpha, AND the blendFunc hasn't been changed, then update it
-	if( ! [texture hasPremultipliedAlpha] &&		
+	if( texture_ && ! [texture hasPremultipliedAlpha] &&		
 	   ( blendFunc_.src == CC_BLEND_SRC && blendFunc_.dst == CC_BLEND_DST ) ) {
 	
 		blendFunc_.src = GL_SRC_ALPHA;

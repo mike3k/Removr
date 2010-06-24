@@ -38,12 +38,9 @@ static GameManager *_sharedGameManager = nil;
 {
     if ((self = [super init])) {
         self.curLevel = 0;
-        
-        //[self createDatabase];
+        db = nil;
 
         self.dbpath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"sqlite3"];
-        sqlite3_open([self.dbpath UTF8String] , &db);
-        sqlite3_prepare_v2(db, "SELECT * FROM levels WHERE ix=?", -1, &query, NULL);
 
     }
     return self;
@@ -51,9 +48,12 @@ static GameManager *_sharedGameManager = nil;
 
 - (void)dealloc
 {
-
-    sqlite3_finalize(query);
-    sqlite3_close(db);
+    if (nil != query) {
+        sqlite3_finalize(query);
+    }
+    if (nil != db) {
+        sqlite3_close(db);
+    }
 
     self.theLevel = nil;
     self.gs = nil;
@@ -69,6 +69,11 @@ static GameManager *_sharedGameManager = nil;
     // if we're restarting the current level, use the saved copy
     if ((number == _curLevel) && (_theLevel != nil)) {
         return _theLevel;
+    }
+    // open the database & prepare the query here the first time we use it instead of init
+    if (nil == db) {
+        sqlite3_open([self.dbpath UTF8String] , &db);
+        sqlite3_prepare_v2(db, "SELECT * FROM levels WHERE ix=?", -1, &query, NULL);
     }
     Level *lvl = nil;
     self.curLevel = number;

@@ -43,6 +43,7 @@
 #import "CCTouchDispatcher.h"
 #import "CCSpriteFrameCache.h"
 #import "CCTexture2D.h"
+#import "CCBitmapFontAtlas.h"
 
 // support imports
 #import "Support/glu.h"
@@ -64,8 +65,6 @@ extern NSString * cocos2dVersion(void);
 -(BOOL)isOpenGLAttached;
 -(BOOL)initOpenGLViewWithView:(UIView *)view withFrame:(CGRect)rect;
 
--(void) initGLDefaultValues;
-
 -(void) preMainLoop;
 -(void) mainLoop;
 -(void) setNextScene;
@@ -85,7 +84,6 @@ extern NSString * cocos2dVersion(void);
 @synthesize animationInterval;
 @synthesize runningScene = runningScene_;
 @synthesize displayFPS;
-@synthesize openGLView=openGLView_;
 @synthesize pixelFormat=pixelFormat_;
 @synthesize nextDeltaTimeZero=nextDeltaTimeZero_;
 @synthesize deviceOrientation=deviceOrientation_;
@@ -177,6 +175,9 @@ static CCDirector *_sharedDirector = nil;
 		
 		// paused ?
 		isPaused_ = NO;
+		
+		contentScaleFactor_ = 1;
+		screenSize_ = surfaceSize_ = CGSizeZero;
 	}
 
 	return self;
@@ -197,7 +198,7 @@ static CCDirector *_sharedDirector = nil;
 	[super dealloc];
 }
 
--(void) initGLDefaultValues
+-(void) setGLDefaultValues
 {
 	// This method SHOULD be called only after openGLView_ was initialized
 	NSAssert( openGLView_, @"openGLView_ must be initialized");
@@ -299,7 +300,16 @@ static CCDirector *_sharedDirector = nil;
    depthBufferFormat_ = format;
 }
 
-#pragma mark Director Scene OpenGL Helper
+#pragma mark Director - Memory Helper
+
+-(void) purgeCachedData
+{
+	[CCBitmapFontAtlas purgeCachedData];	
+	[CCSpriteFrameCache purgeSharedSpriteFrameCache];
+	[CCTextureCache purgeSharedTextureCache];	
+}
+
+#pragma mark Director - Scene OpenGL Helper
 
 -(ccDirectorProjection) projection
 {
@@ -308,12 +318,12 @@ static CCDirector *_sharedDirector = nil;
 
 -(float) getZEye
 {
-	return ( openGLView_.frame.size.height / 1.1566f );
+	return ( surfaceSize_.height / 1.1566f );
 }
 
 -(void) setProjection:(ccDirectorProjection)projection
 {
-	CGSize size = openGLView_.frame.size;
+	CGSize size = surfaceSize_;
 	switch (projection) {
 		case kCCDirectorProjection2D:
 			glMatrixMode(GL_PROJECTION);
@@ -432,9 +442,9 @@ static CCDirector *_sharedDirector = nil;
 		NSString	*pFormat = nil;
 	    GLuint		depthFormat = 0;
 		
-		if(pixelFormat_==kPixelFormatRGBA8888)
+		if(pixelFormat_==kCCPixelFormatRGBA8888)
 			pFormat = kEAGLColorFormatRGBA8;
-		else if(pixelFormat_== kPixelFormatRGB565)
+		else if(pixelFormat_== kCCPixelFormatRGB565)
 			pFormat = kEAGLColorFormatRGB565;
 		else {
 			CCLOG(@"cocos2d: Director: Unknown pixel format.");
@@ -458,15 +468,16 @@ static CCDirector *_sharedDirector = nil;
 
 		// opaque by default (faster)
 		openGLView_.opaque = YES;		
-		
-		// set autoresizing enabled when attaching the glview to another view
-		[openGLView_ setAutoresizesEAGLSurface:YES];		
 	}
 	else
 	{
 		// set the (new) frame of the glview
 		[openGLView_ setFrame:rect];
 	}
+	
+	screenSize_ = rect.size;
+	surfaceSize_ = CGSizeMake(screenSize_.width * contentScaleFactor_, screenSize_.height * contentScaleFactor_);
+
 	
 	// set the touch delegate of the glview to self
 	[openGLView_ setTouchDelegate: [CCTouchDispatcher sharedDispatcher]];
@@ -500,16 +511,42 @@ static CCDirector *_sharedDirector = nil;
 		
 	NSAssert( [self isOpenGLAttached], @"FATAL: Director: Could not attach OpenGL view");
 
-	[self initGLDefaultValues];
+	[self setGLDefaultValues];
 	return YES;
 }
 
+-(EAGLView*) openGLView
+{
+	return openGLView_;
+}
+
+-(void) setOpenGLView:(EAGLView *)view
+{
+	NSAssert( view, @"EAGView must be non-nil");
+
+	if( view != openGLView_ ) {
+		[openGLView_ release];
+		openGLView_ = [view retain];
+		
+		// set size
+		screenSize_ = [view bounds].size;
+		surfaceSize_ = CGSizeMake(screenSize_.width * contentScaleFactor_, screenSize_.height *contentScaleFactor_);
+		
+		
+		CCTouchDispatcher *touchDispatcher = [CCTouchDispatcher sharedDispatcher];
+		[openGLView_ setTouchDelegate: touchDispatcher];
+		[touchDispatcher setDispatchEvents: YES];
+
+		[self setGLDefaultValues];
+	}
+}
 #pragma mark Director Scene Landscape
 
 -(CGPoint)convertToGL:(CGPoint)uiPoint
 {
-	float newY = openGLView_.frame.size.height - uiPoint.y;
-	float newX = openGLView_.frame.size.width -uiPoint.x;
+	CGSize s = screenSize_;
+	float newY = s.height - uiPoint.y;
+	float newX = s.width - uiPoint.x;
 	
 	CGPoint ret;
 	switch ( deviceOrientation_) {
@@ -528,12 +565,14 @@ static CCDirector *_sharedDirector = nil;
 			ret.y = newX;
 			break;
 		}
+	
+	ret = ccpMult(ret, contentScaleFactor_);
 	return ret;
 }
 
 -(CGPoint)convertToUI:(CGPoint)glPoint
 {
-	CGSize winSize = [self winSize];
+	CGSize winSize = surfaceSize_;
 	int oppositeX = winSize.width - glPoint.x;
 	int oppositeY = winSize.height - glPoint.y;
 	CGPoint uiPoint;
@@ -551,7 +590,8 @@ static CCDirector *_sharedDirector = nil;
 			uiPoint = ccp(oppositeY, glPoint.x);
 			break;
 	}
-	 	
+	
+	uiPoint = ccpMult(uiPoint, 1/contentScaleFactor_);
 	return uiPoint;
 }
 
@@ -559,11 +599,13 @@ static CCDirector *_sharedDirector = nil;
 // get the current size of the glview
 -(CGSize)winSize
 {
-	CGSize s = openGLView_.frame.size;
+	CGSize s = surfaceSize_;
+	
 	if( deviceOrientation_ == CCDeviceOrientationLandscapeLeft || deviceOrientation_ == CCDeviceOrientationLandscapeRight ) {
 		// swap x,y in landscape mode
-		s.width = openGLView_.frame.size.height;
-		s.height = openGLView_.frame.size.width;
+		CGSize tmp = s;
+		s.width = tmp.height;
+		s.height = tmp.width;
 	}
 	return s;
 }
@@ -571,7 +613,7 @@ static CCDirector *_sharedDirector = nil;
 // return  the current frame size
 -(CGSize)displaySize
 {
-	return openGLView_.frame.size;
+	return surfaceSize_;
 }
 
 - (void) setDeviceOrientation:(ccDeviceOrientation) orientation
@@ -600,7 +642,7 @@ static CCDirector *_sharedDirector = nil;
 
 -(void) applyLandscape
 {	
-	CGSize s = [openGLView_ frame].size;
+	CGSize s = surfaceSize_;
 	float w = s.width / 2;
 	float h = s.height / 2;
 
@@ -696,12 +738,14 @@ static CCDirector *_sharedDirector = nil;
 	[[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
 	
 	[self stopAnimation];
-	[self detach];
 	
 #if CC_DIRECTOR_FAST_FPS
 	[FPSLabel release];
 	FPSLabel = nil;
 #endif	
+
+	// Purge bitmap cache
+	[CCBitmapFontAtlas purgeCachedData];
 
 	// Purge all managers
 	[CCSpriteFrameCache purgeSharedSpriteFrameCache];
@@ -711,6 +755,11 @@ static CCDirector *_sharedDirector = nil;
 	
 	
 	// OpenGL view
+	
+	// Since the director doesn't attach the openglview to the window
+	// it shouldn't remove it from the window too.
+//	[openGLView_ removeFromSuperview];
+
 	[openGLView_ release];
 	openGLView_ = nil;
 }
@@ -853,6 +902,25 @@ static CCDirector *_sharedDirector = nil;
 }
 #endif
 
+-(CGFloat) contentScaleFactor
+{
+	return contentScaleFactor_;
+}
+
+-(void) setContentScaleFactor:(CGFloat)s
+{
+#ifdef __IPHONE_4_0
+	if( s != contentScaleFactor_ ) {
+		contentScaleFactor_ = s;
+		surfaceSize_ = CGSizeMake( screenSize_.width * s, screenSize_.height * s );
+	
+		// update projection
+		[self setProjection:projection_];
+	}
+#else
+	NSAssert(NO, @"setContentScaleFactor is available in SDK >= 4.0");
+#endif // __IPHONE_4_0
+}
 
 @end
 

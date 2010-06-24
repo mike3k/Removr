@@ -1,25 +1,27 @@
-/* CocosDenshion Audio Manager
- *
- * Copyright (C) 2009 Steve Oldmeadow
- *
- * For independent entities this program is free software; you can redistribute
- * it and/or modify it under the terms of the 'cocos2d for iPhone' license with
- * the additional proviso that 'cocos2D for iPhone' must be credited in a manner
- * that can be be observed by end users, for example, in the credits or during
- * start up. Failure to include such notice is deemed to be acceptance of a 
- * non independent license (see below).
- *
- * For the purpose of this software non independent entities are defined as 
- * those where the annual revenue of the entity employing, partnering, or 
- * affiliated in any way with the Licensee is greater than $250,000 USD annually.
- *
- * Non independent entities may license this software or a derivation of it
- * by a donation of $500 USD per application to the cocos2d for iPhone project. 
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+/*
+ Copyright (c) 2010 Steve Oldmeadow
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ 
+ $Id$
  */
+
 
 #import "CDAudioManager.h"
 
@@ -53,11 +55,13 @@ extern void managerInterruptionCallback (void *inUserData, UInt32 interruptionSt
 		state = kLAS_Init;
 		volume = 1.0f;
 		mute = NO;
+		enabled_ = YES;
 	}
 	return self;
 }
 
 -(void) dealloc {
+	CDLOG(@"Denshion::CDLongAudioSource - deallocating %@", self);
 	[audioSourcePlayer release];
 	[audioSourceFilePath release];
 	[super dealloc];
@@ -88,7 +92,7 @@ extern void managerInterruptionCallback (void *inUserData, UInt32 interruptionSt
 		}	
 	} else {
 		//Same file - just return it to a consistent state
-		[self stop];
+		[self pause];
 		[self rewind];
 	}
 	audioSourcePlayer.volume = volume;
@@ -97,8 +101,12 @@ extern void managerInterruptionCallback (void *inUserData, UInt32 interruptionSt
 }	
 
 -(void) play {
-	self->systemPaused = NO;
-	[audioSourcePlayer play];
+	if (enabled_) {
+		self->systemPaused = NO;
+		[audioSourcePlayer play];
+	} else {
+		CDLOG(@"Denshion::CDLongAudioSource long audio source didn't play because it is disabled");
+	}	
 }	
 
 -(void) stop {
@@ -128,7 +136,7 @@ extern void managerInterruptionCallback (void *inUserData, UInt32 interruptionSt
 -(void) setVolume:(float) newVolume
 {
 	volume = newVolume;
-	if (state != kLAS_Init) {
+	if (state != kLAS_Init && !mute) {
 		audioSourcePlayer.volume = newVolume;
 	}	
 }
@@ -138,6 +146,7 @@ extern void managerInterruptionCallback (void *inUserData, UInt32 interruptionSt
 	return volume;
 }
 
+#pragma mark Audio Interrupt Protocol
 -(BOOL) mute
 {
 	return mute;
@@ -153,6 +162,23 @@ extern void managerInterruptionCallback (void *inUserData, UInt32 interruptionSt
 			audioSourcePlayer.volume = 0.0f;
 		}
 		mute = muteValue;
+	}	
+}	
+
+-(BOOL) enabled 
+{
+	return enabled_;
+}	
+
+-(void) setEnabled:(BOOL)enabledValue 
+{
+	if (enabledValue != enabled_) {
+		enabled_ = enabledValue;
+		if (!enabled_) {
+			//"Stop" the sounds
+			[self pause];
+			[self rewind];
+		}	
 	}	
 }	
 
@@ -208,8 +234,6 @@ extern void managerInterruptionCallback (void *inUserData, UInt32 interruptionSt
 static CDAudioManager *sharedManager;
 static tAudioManagerState _sharedManagerState = kAMStateUninitialised;
 static tAudioManagerMode configuredMode;
-static int *configuredChannelGroupDefinitions;
-static int configuredChannelGroupTotal;
 static BOOL configured = FALSE;
 
 // Init
@@ -220,13 +244,8 @@ static BOOL configured = FALSE;
 			if (!configured) {
 				//Set defaults here
 				configuredMode = kAMM_FxPlusMusicIfNoOtherAudio;
-				//Just create one channel group with all the sources
-				//configuredChannelGroupDefinitions = new int[1];
-				configuredChannelGroupDefinitions = (int *)malloc( sizeof(configuredChannelGroupDefinitions[0]) * 1);
-				configuredChannelGroupDefinitions[0] = CD_MAX_SOURCES;
-				configuredChannelGroupTotal = 1;
 			}
-			sharedManager = [[CDAudioManager alloc] init:configuredMode channelGroupDefinitions:configuredChannelGroupDefinitions channelGroupTotal:configuredChannelGroupTotal];
+			sharedManager = [[CDAudioManager alloc] init:configuredMode];
 			_sharedManagerState = kAMStateInitialised;//This is only really relevant when using asynchronous initialisation
 		}	
 	}
@@ -240,11 +259,11 @@ static BOOL configured = FALSE;
 /**
  * Call this to set up audio manager asynchronously.  Initialisation is finished when sharedManagerState == kAMStateInitialised
  */
-+ (void) initAsynchronously: (tAudioManagerMode) mode channelGroupDefinitions:(int[]) channelGroupDefinitions channelGroupTotal:(int) channelGroupTotal {
++ (void) initAsynchronously: (tAudioManagerMode) mode {
 	@synchronized(self) {
 		if (_sharedManagerState == kAMStateUninitialised) {
 			_sharedManagerState = kAMStateInitialising;
-			[CDAudioManager configure:mode channelGroupDefinitions:channelGroupDefinitions channelGroupTotal:channelGroupTotal];
+			[CDAudioManager configure:mode];
 			CDAsynchInitialiser *initOp = [[[CDAsynchInitialiser alloc] init] autorelease];
 			NSOperationQueue *opQ = [[[NSOperationQueue alloc] init] autorelease];
 			[opQ addOperation:initOp];
@@ -264,23 +283,8 @@ static BOOL configured = FALSE;
 /*
  * Call this method before accessing the shared manager in order to configure the shared audio manager
  */
-+ (void) configure: (tAudioManagerMode) mode channelGroupDefinitions:(int[]) channelGroupDefinitions channelGroupTotal:(int) channelGroupTotal {
++ (void) configure: (tAudioManagerMode) mode {
 	configuredMode = mode;
-	//configuredChannelGroupDefinitions = new int[channelGroupTotal];
-	//NB: memory leak here if configure is called more than once, it is not intended to be used that way though (SO).
-	configuredChannelGroupDefinitions = (int *)malloc( sizeof(configuredChannelGroupDefinitions[0]) * channelGroupTotal);
-	if(!configuredChannelGroupDefinitions) {
-		CDLOG(@"Denshion::CDAudioManager - configuredChannelGroupDefinitions memory allocation failed");
-		//If this happens we are toast, basically run out of memory but we'll return to avoid a null
-		//pointer reference below and keep clang happy.
-		configured = FALSE;
-		return;
-	}
-	
-	for (int i=0; i < channelGroupTotal; i++) {
-		configuredChannelGroupDefinitions[i] = channelGroupDefinitions[i];
-	}	
-	configuredChannelGroupTotal = channelGroupTotal;
 	configured = TRUE;
 }	
 
@@ -364,7 +368,7 @@ static BOOL configured = FALSE;
 	
 }	
 
-- (id) init: (tAudioManagerMode) mode channelGroupDefinitions:(int[]) channelGroupDefinitions channelGroupTotal:(int) channelGroupTotal {
+- (id) init: (tAudioManagerMode) mode {
 	if ((self = [super init])) {
 		
 		//Initialise the audio session 
@@ -373,9 +377,10 @@ static BOOL configured = FALSE;
 		_mode = mode;
 		backgroundMusicCompletionSelector = nil;
 		_isObservingAppEvents = FALSE;
-		_muteStoppedMusic = FALSE;
+		_mute = NO;
+		enabled_ = YES;
 		[self setMode:mode];
-		soundEngine = [[CDSoundEngine alloc] init:channelGroupDefinitions channelGroupTotal:channelGroupTotal];
+		soundEngine = [[CDSoundEngine alloc] init];
 		
 		//Set up audioSource channels
 		audioSourceChannels = [[NSMutableArray alloc] init];
@@ -393,15 +398,13 @@ static BOOL configured = FALSE;
 }	
 
 -(void) dealloc {
+	CDLOG(@"Denshion::CDAudioManager - deallocating");
 	[self stopBackgroundMusic];
 	[soundEngine release];
 	if (_isObservingAppEvents) {
 		[[NSNotificationCenter defaultCenter] removeObserver:self];
 	}
 	AudioSessionSetActive(FALSE);
-	if (configuredChannelGroupDefinitions) {
-		free(configuredChannelGroupDefinitions);
-	}
 	[audioSourceChannels release];
 	[super dealloc];
 }	
@@ -460,15 +463,33 @@ static BOOL configured = FALSE;
 #endif
 }	
 
+#pragma mark Audio Interrupt Protocol
+
 -(BOOL) mute {
 	return _mute;
 }	
 
 -(void) setMute:(BOOL) muteValue {
-	[soundEngine setMute:muteValue];
-	_mute = muteValue;
-	for( CDLongAudioSource *audioSource in audioSourceChannels) {
-		audioSource.mute = muteValue;
+	if (muteValue != _mute) {
+		_mute = muteValue;
+		[soundEngine setMute:muteValue];
+		for( CDLongAudioSource *audioSource in audioSourceChannels) {
+			audioSource.mute = muteValue;
+		}	
+	}	
+}
+
+-(BOOL) enabled {
+	return enabled_;
+}	
+
+-(void) setEnabled:(BOOL) enabledValue {
+	if (enabledValue != enabled_) {
+		enabled_ = enabledValue;
+		[soundEngine setEnabled:enabled_];
+		for( CDLongAudioSource *audioSource in audioSourceChannels) {
+			audioSource.enabled = enabled_;
+		}	
 	}	
 }
 
@@ -674,6 +695,100 @@ static BOOL configured = FALSE;
 
 +(void) end {
 	[sharedManager release];
+	sharedManager = nil;
 }	
 
 @end
+
+///////////////////////////////////////////////////////////////////////////////////////
+@implementation CDLongAudioSourceFader
+
+-(void) _setTargetProperty:(float) newVal {
+	((CDLongAudioSource*)target).volume = newVal;
+}	
+
+-(float) _getTargetProperty {
+	return ((CDLongAudioSource*)target).volume;
+}
+
+-(void) _stopTarget {
+	//Pause instead of stop as stop releases resources and causes problems in the simulator
+	((CDLongAudioSource*)target).pause;
+}
+
+-(Class) _allowableType {
+	return [CDLongAudioSource class];
+}	
+
+@end
+///////////////////////////////////////////////////////////////////////////////////////
+@implementation CDBufferManager
+
+-(id) initWithEngine:(CDSoundEngine *) theSoundEngine {
+	if ((self = [super init])) {
+		soundEngine = theSoundEngine;
+		loadedBuffers = [[NSMutableDictionary alloc] initWithCapacity:CD_BUFFERS_START];
+		freedBuffers = [[NSMutableArray alloc] init];
+		nextBufferId = 0;
+	}	
+	return self;
+}	
+
+-(void) dealloc {
+	[loadedBuffers release];
+	[freedBuffers release];
+	[super dealloc];
+}	
+
+-(int) bufferForFile:(NSString*) filePath create:(BOOL) create {
+	
+	NSNumber* soundId = (NSNumber*)[loadedBuffers objectForKey:filePath];
+	if(soundId == nil)
+	{
+		if (create) {
+			NSNumber* bufferId = nil;
+			//First try to get a buffer from the free buffers
+			if ([freedBuffers count] > 0) {
+				CDLOG(@"Denshion::CDBufferManager reusing buffer id %i",[bufferId intValue]);
+				bufferId = [freedBuffers lastObject];
+				[freedBuffers removeLastObject]; 
+			} else {
+				bufferId = [[NSNumber alloc] initWithInt:nextBufferId];
+				[bufferId autorelease];
+				CDLOG(@"Denshion::CDBufferManager generating new buffer id %i",[bufferId intValue]);
+				nextBufferId++;
+			}
+			
+			if ([soundEngine loadBuffer:[bufferId intValue] filePath:filePath]) {
+				//File successfully loaded
+				CDLOG(@"Denshion::CDBufferManager buffer loaded %@ %@",bufferId,filePath);
+				[loadedBuffers setObject:bufferId forKey:filePath];
+				return [bufferId intValue];
+			} else {
+				//File didn't load, put buffer id on free list
+				[freedBuffers addObject:bufferId];
+				return kCDNoBuffer;
+			}	
+		} else {
+			//No matching buffer was found
+			return kCDNoBuffer;
+		}	
+	} else {
+		return [soundId intValue];
+	}	
+}	
+
+-(void) releaseBufferForFile:(NSString *) filePath {
+	int bufferId = [self bufferForFile:filePath create:NO];
+	if (bufferId != kCDNoBuffer) {
+		[soundEngine unloadBuffer:bufferId];
+		[loadedBuffers removeObjectForKey:filePath];
+		NSNumber *freedBufferId = [[NSNumber alloc] initWithInt:bufferId];
+		[freedBufferId autorelease];
+		[freedBuffers addObject:freedBufferId];
+	}	
+}	
+@end
+
+
+

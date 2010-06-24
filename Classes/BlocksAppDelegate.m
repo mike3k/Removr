@@ -62,11 +62,12 @@
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-	[[CCDirector sharedDirector] pause];
+    NSLog(@"will resign active");
+	[[CCDirector sharedDirector] stopAnimation];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-	[[CCDirector sharedDirector] resume];
+	[[CCDirector sharedDirector] startAnimation];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
@@ -74,12 +75,26 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    NSLog(@"app will terminate");
 	[[CCDirector sharedDirector] end];
 }
 
 - (void)applicationSignificantTimeChange:(UIApplication *)application {
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
+
+// for iOS 4
+//- (void)applicationDidEnterBackground:(UIApplication *)application
+//{
+//    NSLog(@"did enter background");
+//	[[CCDirector sharedDirector] stopAnimation];
+//}
+//
+//- (void)applicationWillEnterForeground:(UIApplication *)application
+//{
+//    NSLog(@"will enter foreground");
+//	[[CCDirector sharedDirector] startAnimation];
+//}
 
 - (void)dealloc {
 	[[CCDirector sharedDirector] release];

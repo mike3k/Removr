@@ -1,24 +1,25 @@
-/* CocosDenshion Audio Manager
- *
- * Copyright (C) 2009 Steve Oldmeadow
- *
- * For independent entities this program is free software; you can redistribute
- * it and/or modify it under the terms of the 'cocos2d for iPhone' license with
- * the additional proviso that 'cocos2D for iPhone' must be credited in a manner
- * that can be be observed by end users, for example, in the credits or during
- * start up. Failure to include such notice is deemed to be acceptance of a 
- * non independent license (see below).
- *
- * For the purpose of this software non independent entities are defined as 
- * those where the annual revenue of the entity employing, partnering, or 
- * affiliated in any way with the Licensee is greater than $250,000 USD annually.
- *
- * Non independent entities may license this software or a derivation of it
- * by a donation of $500 USD per application to the cocos2d for iPhone project. 
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+/*
+ Copyright (c) 2010 Steve Oldmeadow
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ 
+ $Id$
  */
 
 #import "CocosDenshion.h"
@@ -82,13 +83,14 @@ typedef enum {
  as software decompression will take place.
  @since v0.99
  */
-@interface CDLongAudioSource : NSObject <AVAudioPlayerDelegate>{
+@interface CDLongAudioSource : NSObject <AVAudioPlayerDelegate, CDAudioInterruptProtocol>{
 	AVAudioPlayer	*audioSourcePlayer;
 	NSString		*audioSourceFilePath;
 	NSInteger		numberOfLoops;
 	float			volume;
 	id<CDLongAudioSourceDelegate> delegate; 
 	BOOL			mute;
+	BOOL			enabled_;
 @public	
 	BOOL			systemPaused;//Used for auto resign handling
 	NSTimeInterval	systemPauseLocation;//Used for auto resign handling
@@ -99,10 +101,6 @@ typedef enum {
 @property (readonly) NSString *audioSourceFilePath;
 @property (readwrite, nonatomic) NSInteger numberOfLoops;
 @property (readwrite, nonatomic) float volume;
-/** If mute is NO then no audio is output, however, audio will continue to advance.
- If you do not want that to happen then pause or stop the audio.
- */
-@property (readwrite, nonatomic) BOOL mute;
 @property(assign) id<CDLongAudioSourceDelegate> delegate; 
 
 /** Loads the file into the audio source */
@@ -135,7 +133,7 @@ typedef enum {
  - Frameworks: OpenAL, AudioToolbox, AVFoundation
  @since v0.8
  */
-@interface CDAudioManager : NSObject <CDLongAudioSourceDelegate> {
+@interface CDAudioManager : NSObject <CDLongAudioSourceDelegate, CDAudioInterruptProtocol> {
 	CDSoundEngine		*soundEngine;
 	CDLongAudioSource	*backgroundMusic;
 	NSMutableArray		*audioSourceChannels;
@@ -146,7 +144,8 @@ typedef enum {
 	id backgroundMusicCompletionListener;
 	BOOL willPlayBackgroundMusic;
 	BOOL _mute;
-	BOOL _muteStoppedMusic;
+	//BOOL _muteStoppedMusic;
+	BOOL enabled_;
 	
 	//For handling resign/become active
 	BOOL _isObservingAppEvents;
@@ -156,17 +155,16 @@ typedef enum {
 @property (readonly) CDSoundEngine *soundEngine;
 @property (readonly) CDLongAudioSource *backgroundMusic;
 @property (readonly) BOOL willPlayBackgroundMusic;
-@property (readwrite) BOOL mute; 
 
 /** Returns the shared singleton */
 + (CDAudioManager *) sharedManager;
 + (tAudioManagerState) sharedManagerState;
-/** Configures the shared singleton with a mode, a channel definition and a total number of channels */
-+ (void) configure: (tAudioManagerMode) mode channelGroupDefinitions:(int[]) channelGroupDefinitions channelGroupTotal:(int) channelGroupTotal;
-/** Initializes the engine asynchronously with a mode, channel definition and a total number of channels */
-+ (void) initAsynchronously: (tAudioManagerMode) mode channelGroupDefinitions:(int[]) channelGroupDefinitions channelGroupTotal:(int) channelGroupTotal;
+/** Configures the shared singleton with a mode*/
++ (void) configure: (tAudioManagerMode) mode;
+/** Initializes the engine asynchronously with a mode */
++ (void) initAsynchronously: (tAudioManagerMode) mode;
 /** Initializes the engine synchronously with a mode, channel definition and a total number of channels */
-- (id) init: (tAudioManagerMode) mode channelGroupDefinitions:(int[]) channelGroupDefinitions channelGroupTotal:(int) channelGroupTotal;
+- (id) init: (tAudioManagerMode) mode;
 -(void) audioSessionInterrupted;
 -(void) audioSessionResumed;
 -(void) setResignBehavior:(tAudioManagerResignBehavior) resignBehavior autoHandle:(BOOL) autoHandle;
@@ -206,3 +204,24 @@ typedef enum {
 -(void) setBackgroundMusicCompletionListener:(id) listener selector:(SEL) selector;
 
 @end
+
+/** Fader for long audio source objects */
+@interface CDLongAudioSourceFader : CDPropertyModifier{}
+@end
+
+static const int kCDNoBuffer = -1;
+
+/** Allows buffers to be associated with file names */
+@interface CDBufferManager:NSObject{
+	NSMutableDictionary* loadedBuffers;
+	NSMutableArray	*freedBuffers;
+	CDSoundEngine *soundEngine;
+	int nextBufferId;
+}
+
+-(id) initWithEngine:(CDSoundEngine *) theSoundEngine;
+-(int) bufferForFile:(NSString*) filePath create:(BOOL) create;
+-(void) releaseBufferForFile:(NSString *) filePath;
+
+@end
+

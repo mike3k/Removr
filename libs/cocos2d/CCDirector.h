@@ -31,7 +31,9 @@
 // OpenGL related
 #import "Support/EAGLView.h"
 
-/** @typedef tPixelFormat Possible Pixel Formats for the EAGLView */
+/** @typedef tPixelFormat
+ Possible Pixel Formats for the EAGLView
+ */
 typedef enum {
 	/** RGB565 pixel format. No alpha. 16-bit. (Default) */
 	kCCPixelFormatRGB565,
@@ -47,7 +49,8 @@ typedef enum {
 	kRGBA8 = kCCPixelFormatRGBA8888,
 } tPixelFormat;
 
-/** @typedef tDepthBufferFormat Possible DepthBuffer Formats for the EAGLView.
+/** @typedef tDepthBufferFormat
+ Possible DepthBuffer Formats for the EAGLView.
  Use 16 or 24 bit depth buffers if you are going to use real 3D objects.
  */
 typedef enum {
@@ -63,7 +66,9 @@ typedef enum {
 	kDepthBuffer24 = kCCDepthBuffer24,
 } tDepthBufferFormat;
 
-/** @typedef ccDirectorProjection Possible OpenGL projections used by director */
+/** @typedef ccDirectorProjection
+ Possible OpenGL projections used by director
+ */
 typedef enum {
 	/// sets a 2D projection (orthogonal projection)
 	kCCDirectorProjection2D,
@@ -84,7 +89,8 @@ typedef enum {
 
 } ccDirectorProjection;
 
-/** @typedef ccDirectorType Possible Director Types.
+/** @typedef ccDirectorType
+ Possible Director Types.
  @since v0.8.2
  */
 typedef enum {
@@ -139,7 +145,9 @@ typedef enum {
 
 } ccDirectorType;
 
-/** @typedef ccDeviceOrientation Possible device orientations */
+/** @typedef ccDeviceOrientation
+ Possible device orientations
+ */
 typedef enum {
 	/// Device oriented vertically, home button on the bottom
 	kCCDeviceOrientationPortrait = UIDeviceOrientationPortrait,	
@@ -183,7 +191,8 @@ and when to execute the Scenes.
 {
 	EAGLView	*openGLView_;
 
-  NSBundle* loadingBundle;
+	NSBundle* loadingBundle;
+
 	// internal timer
 	NSTimeInterval animationInterval;
 	NSTimeInterval oldAnimationInterval;
@@ -232,6 +241,15 @@ and when to execute the Scenes.
 	/* projection used */
 	ccDirectorProjection projection_;
 	
+	/* screen, different than surface size */
+	CGSize	screenSize_;
+
+	/* screen, different than surface size */
+	CGSize	surfaceSize_;
+	
+	/* content scale factor */
+	CGFloat	contentScaleFactor_;
+	
 #if CC_ENABLE_PROFILERS
 	ccTime accumDtForProfiler;
 #endif
@@ -243,8 +261,8 @@ and when to execute the Scenes.
 @property (nonatomic,readwrite, assign) NSTimeInterval animationInterval;
 /** Whether or not to display the FPS on the bottom-left corner */
 @property (nonatomic,readwrite, assign) BOOL displayFPS;
-/** The OpenGL view */
-@property (nonatomic,readonly) EAGLView *openGLView;
+/** The EAGLView, where everything is rendered */
+@property (nonatomic,readwrite,retain) EAGLView *openGLView;
 /** Pixel format used to create the context */
 @property (nonatomic,readonly) tPixelFormat pixelFormat;
 /** whether or not the next delta time will be zero */
@@ -263,7 +281,14 @@ and when to execute the Scenes.
  If the new scene replaces the old one, the it will receive the "cleanup" message.
  @since v0.99.0
  */
-@property (nonatomic, readonly) BOOL	sendCleanupToScene;
+@property (nonatomic, readonly) BOOL sendCleanupToScene;
+
+/** The size in pixels of the surface. It could be different than the screen size.
+ High-res devices might have a higher surface size than the screen size.
+ Only available when compiled using SDK >= 4.0.
+ @since v0.99.4
+ */
+@property (nonatomic, readwrite) CGFloat contentScaleFactor;
 
 /** returns a shared instance of the director */
 +(CCDirector *)sharedDirector;
@@ -288,36 +313,52 @@ and when to execute the Scenes.
 
 // iPhone Specific
 
-/** change default pixel format.
- Call this class method before attaching it to a UIWindow/UIView
+/** Uses a new pixel format for the EAGLView.
+ Call this class method before attaching it to a UIView
  Default pixel format: kRGB565. Supported pixel formats: kRGBA8 and kRGB565
+ 
+ @deprecated Set the pixel format when creating the EAGLView. This method will be removed in v1.0
  */
--(void) setPixelFormat: (tPixelFormat) p;
+-(void) setPixelFormat: (tPixelFormat)p DEPRECATED_ATTRIBUTE;
 
-/** change depth buffer format.
+/** Change depth buffer format of the render buffer.
  Call this class method before attaching it to a UIWindow/UIView
- Default depth buffer: 0 (none).  Supported: kDepthBufferNone, kDepthBuffer16, and kDepthBuffer24
+ Default depth buffer: 0 (none).  Supported: kCCDepthBufferNone, kCCDepthBuffer16, and kCCDepthBuffer24
+ 
+ @deprecated Set the depth buffer format when creating the EAGLView. This method will be removed in v1.0
  */
--(void) setDepthBufferFormat: (tDepthBufferFormat) db;
+-(void) setDepthBufferFormat: (tDepthBufferFormat)db DEPRECATED_ATTRIBUTE;
 
 // Integration with UIKit
 /** detach the cocos2d view from the view/window */
--(BOOL)detach;
+-(BOOL)detach DEPRECATED_ATTRIBUTE;
 
-/** attach in UIWindow using the full frame */
--(BOOL)attachInWindow:(UIWindow *)window;
+/** attach in UIWindow using the full frame.
+ It will create a EAGLView.
+ 
+ @deprecated set setOpenGLView instead. Will be removed in v1.0
+ */
+-(BOOL)attachInWindow:(UIWindow *)window DEPRECATED_ATTRIBUTE;
 
-/** attach in UIView using the full frame */
--(BOOL)attachInView:(UIView *)view;
+/** attach in UIView using the full frame.
+ It will create a EAGLView.
+ 
+ @deprecated set setOpenGLView instead. Will be removed in v1.0
+ */
+-(BOOL)attachInView:(UIView *)view DEPRECATED_ATTRIBUTE;
 
-/** attach in UIView using the given frame */
--(BOOL)attachInView:(UIView *)view withFrame:(CGRect)frame;
+/** attach in UIView using the given frame.
+ It will create a EAGLView and use it.
+ 
+ @deprecated set setOpenGLView instead. Will be removed in v1.0
+ */
+-(BOOL)attachInView:(UIView *)view withFrame:(CGRect)frame DEPRECATED_ATTRIBUTE;
 
 // Landscape
 
-/** returns the size of the OpenGL view according to the landspace */
+/** returns the size of the OpenGL view in pixels, according to the landspace */
 - (CGSize) winSize;
-/** returns the display size of the OpenGL view */
+/** returns the display size of the OpenGL view in pixels */
 -(CGSize) displaySize;
 
 /** converts a UIKit coordinate to an OpenGL coordinate
@@ -362,7 +403,9 @@ and when to execute the Scenes.
  */
 -(void) replaceScene: (CCScene*) scene;
 
-/** Ends the execution, releases the running scene */
+/** Ends the execution, releases the running scene.
+ It doesn't remove the OpenGL view from its parent. You have to do it manually.
+ */
 -(void) end;
 
 /** Pauses the running scene.
@@ -388,8 +431,19 @@ and when to execute the Scenes.
  */
 -(void) startAnimation;
 
+// Memory Helper
+
+/** Removes cached all cocos2d cached data.
+ It will purge the CCTextureCache, CCSpriteFrameCache, CCBitmapFont cache
+ @since v0.99.3
+ */
+-(void) purgeCachedData;
+ 
 
 // OpenGL Helper
+
+/** sets the OpenGL default values */
+-(void) setGLDefaultValues;
 
 /** enables/disables OpenGL alpha blending */
 - (void) setAlphaBlending: (BOOL) on;

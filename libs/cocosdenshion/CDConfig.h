@@ -1,36 +1,42 @@
-/* CocosDenshion Configuration
- *
- * Copyright (C) 2010 Steve Oldmeadow
- *
- * For independent entities this program is free software; you can redistribute
- * it and/or modify it under the terms of the 'cocos2d for iPhone' license with
- * the additional proviso that 'cocos2D for iPhone' must be credited in a manner
- * that can be be observed by end users, for example, in the credits or during
- * start up. Failure to include such notice is deemed to be acceptance of a 
- * non independent license (see below).
- *
- * For the purpose of this software non independent entities are defined as 
- * those where the annual revenue of the entity employing, partnering, or 
- * affiliated in any way with the Licensee is greater than $250,000 USD annually.
- *
- * Non independent entities may license this software or a derivation of it
- * by a donation of $500 USD per application to the cocos2d for iPhone project. 
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+/*
+ Copyright (c) 2010 Steve Oldmeadow
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ 
+ $Id$
  */
+#define COCOSDENSHION_VERSION "Aphex.1"
+
 
 /**
  If enabled code useful for debugging such as parameter check assertions will be performed.
  If you experience any problems you should enable this and test your code with a debug build.
  */
-//#define CD_DEBUG 1
+#define CD_DEBUG 1
 
 /**
  The total number of sounds/buffers that can be loaded assuming memory is sufficient
  */
-#define CD_MAX_BUFFERS 64 
+//Number of buffers slots that will be initially created
+#define CD_BUFFERS_START 64
+//Number of buffers that will be added 
+#define CD_BUFFERS_INCREMENT 16
 
 /**
  If enabled, OpenAL code will use static buffers. When static buffers are used the audio
@@ -50,12 +56,5 @@
 
  */
 //#define CD_USE_STATIC_BUFFERS 1
-
-/**
- If enabled, it indicates your application is not intended to run on a pre 3.0 OS version
- */
-//#define CD_OS_3_PLUS 1
-
-
 
 

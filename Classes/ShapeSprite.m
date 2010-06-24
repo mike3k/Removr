@@ -8,50 +8,67 @@
 
 #import "ShapeSprite.h"
 
+#define FACETX2 (FACET*2)
+#define FACETX3 (FACET*3)
+#define FACETX4 (FACET*4)
+#define FACETX5 (FACET*5)
+
+#define HBAR3   (BAR_H*3)
+#define VBARS   ((FACET*2)+(BAR_H*3))
+#define VBARS2  ((FACET*2)+(BAR_H*6))
 
 static SpriteInfo sprites[] = {
 
-    // red circle
-    { 0,            0,          FACET, FACET,   kCircleSprite | kMustRemove },
-    // green circle
-    { FACET,        0,          FACET, FACET,   kCircleSprite | kMustKeep },
-    // blue circle
-    { FACET * 2,    0,          FACET, FACET,   kCircleSprite },
+    // circle
+    { 0,            0,          FACET, FACET,   kCircleSprite | kMustRemove },      // RED
+    { FACET,        0,          FACET, FACET,   kCircleSprite | kMustKeep },        // GREEN
+    { FACETX2,      0,          FACET, FACET,   kCircleSprite },                    // BLUE
     
-    // red square
-    { 0,            FACET,      FACET, FACET,   kSquareSprite | kMustRemove | kCanRemove | kIsStatic },
-    // green square
-    { FACET,        FACET,      FACET, FACET,   kSquareSprite | kMustKeep | kCanRemove | kIsStatic },
-    // blue square
-    { FACET * 2,    FACET,      FACET, FACET,   kSquareSprite | kCanRemove | kIsStatic },
+    // square
+    { 0,            FACET,      FACET, FACET,   kSquareSprite | kMustRemove | kCanRemove | kIsStatic },     // RED
+    { FACET,        FACET,      FACET, FACET,   kSquareSprite | kMustKeep | kCanRemove | kIsStatic },       // GREEN
+    { FACETX2,      FACET,      FACET, FACET,   kSquareSprite | kCanRemove | kIsStatic },                   // BLUE
 
-    // red colorblind circle
-    { FACET * 3,    0,          FACET, FACET,   kCircleSprite | kMustRemove },
-    // green colorblind circle
-    { FACET * 4,    0,          FACET, FACET,   kCircleSprite | kMustKeep },
-    // blue colorblind circle
-    { FACET * 5,    0,          FACET, FACET,   kCircleSprite },
+    // colorblind circle
+    { FACETX3,    0,          FACET, FACET,   kCircleSprite | kMustRemove },        // RED
+    { FACETX4,    0,          FACET, FACET,   kCircleSprite | kMustKeep },          // GREEN
+    { FACETX5,    0,          FACET, FACET,   kCircleSprite },                      // BLUE
 
-    // red colorblind square
-    { FACET * 3,    FACET,      FACET, FACET,   kSquareSprite | kMustRemove | kCanRemove | kIsStatic },
-    // green colorblind square
-    { FACET * 4,    FACET,      FACET, FACET,   kSquareSprite | kMustKeep | kCanRemove | kIsStatic },
-    // blue colorblind square
-    { FACET * 5,    FACET,      FACET, FACET,   kSquareSprite | kCanRemove | kIsStatic },
+    // colorblind square
+    { FACETX3,    FACET,      FACET, FACET,   kSquareSprite | kMustRemove | kCanRemove | kIsStatic },       // RED
+    { FACETX4,    FACET,      FACET, FACET,   kSquareSprite | kMustKeep | kCanRemove | kIsStatic },         // GREEN
+    { FACETX5,    FACET,      FACET, FACET,   kSquareSprite | kCanRemove | kIsStatic },                     // BLUE
 
-    // red horizontal
-    { 0,    FACET * 2,              BAR_W, BAR_H,   kHorizBarSprite | kMustRemove | kCanRemove | kIsStatic },
-    // green horizontal
-    { 0,    (FACET*2) + BAR_H,      BAR_W, BAR_H,   kHorizBarSprite | kMustKeep | kCanRemove | kIsStatic },
-    // blue horizontal
-    { 0,    (FACET*2) + (BAR_H*2),  BAR_W, BAR_H,   kHorizBarSprite | kCanRemove | kIsStatic },
+    // horizontal 16*256
+    { 0,    FACETX2,              BAR_W, BAR_H,   kHorizBarSprite | kMustRemove | kCanRemove | kIsStatic },     // RED
+    { 0,    FACETX2 + BAR_H,      BAR_W, BAR_H,   kHorizBarSprite | kMustKeep | kCanRemove | kIsStatic },       // GREEN
+    { 0,    FACETX2 + (BAR_H*2),  BAR_W, BAR_H,   kHorizBarSprite | kCanRemove | kIsStatic },                   // BLUE
 
-    // red vertical
-    { 0,        (FACET*2) + (BAR_H*3),  BAR_H, BAR_W,   kVertBarSprite | kMustRemove | kCanRemove | kIsStatic },
-    // green vertical
-    { BAR_H,    (FACET*2) + (BAR_H*3),  BAR_H, BAR_W,   kVertBarSprite | kMustKeep | kCanRemove | kIsStatic },
-    // blue vertical
-    { BAR_H*2,  (FACET*2) + (BAR_H*3),  BAR_H, BAR_W,   kVertBarSprite | kCanRemove | kIsStatic },
+    // vertical 16*256
+    { 0,        VBARS,  BAR_H, BAR_W,   kVertBarSprite | kMustRemove | kCanRemove | kIsStatic },                // RED
+    { BAR_H,    VBARS,  BAR_H, BAR_W,   kVertBarSprite | kMustKeep | kCanRemove | kIsStatic },                  // GREEN
+    { BAR_H*2,  VBARS,  BAR_H, BAR_W,   kVertBarSprite | kCanRemove | kIsStatic },                              // BLUE
+    
+    // horizontal 16x128
+    { HBAR3,    VBARS,              BAR_W2, BAR_H, kHorizBarSprite | kMustRemove | kCanRemove | kIsStatic },    // RED
+    { HBAR3,    VBARS+BAR_H,        BAR_W2, BAR_H, kHorizBarSprite | kMustKeep | kCanRemove | kIsStatic },      // GREEN
+    { HBAR3,    VBARS+(BAR_H*2),    BAR_W2, BAR_H, kVertBarSprite | kCanRemove | kIsStatic },                   // BLUE
+
+    // horizontal 16x64
+    { HBAR3+BAR_W2,    VBARS,               BAR_W3, BAR_H, kHorizBarSprite | kMustRemove | kCanRemove | kIsStatic },    // RED
+    { HBAR3+BAR_W2,    VBARS+BAR_H,         BAR_W3, BAR_H, kHorizBarSprite | kMustKeep | kCanRemove | kIsStatic },      // GREEN
+    { HBAR3+BAR_W2,    VBARS+(BAR_H*2),     BAR_W3, BAR_H, kVertBarSprite | kCanRemove | kIsStatic },                   // BLUE
+   
+    // vertical 16*128
+    { HBAR3,            VBARS2, BAR_H, BAR_W2,  kVertBarSprite | kMustRemove | kCanRemove | kIsStatic },        // RED
+    { HBAR3+BAR_H,      VBARS2, BAR_H, BAR_W2,  kVertBarSprite | kMustKeep | kCanRemove | kIsStatic },          // GREEN
+    { HBAR3+(BAR_H*2),  VBARS2, BAR_H, BAR_W2,  kVertBarSprite | kCanRemove | kIsStatic },                      // BLUE
+    
+    // vertical 16*64
+    { HBAR3,            VBARS2+BAR_W2, BAR_H, BAR_W3,  kVertBarSprite | kMustRemove | kCanRemove | kIsStatic },     // RED
+    { HBAR3+BAR_H,      VBARS2+BAR_W2, BAR_H, BAR_W3,  kVertBarSprite | kMustKeep | kCanRemove | kIsStatic },       // GREEN
+    { HBAR3+(BAR_H*2),  VBARS2+BAR_W2, BAR_H, BAR_W3,  kVertBarSprite | kCanRemove | kIsStatic },                   // BLUE
+
 };
 
 #define kUniqueSprites  (sizeof(sprites) / sizeof(SpriteInfo))
@@ -145,14 +162,25 @@ static SpriteInfo sprites[] = {
 
 + (ShapeSprite*)NewSprite: (int)kind x:(float)x y:(float)y withSheet: (CCSpriteSheet*)sheet
 {
+    CGPoint ap;
     int posx, posy;
+    int stype;
 
-    SpriteInfo *sp = &sprites[kind];
+    SpriteInfo *sp = &sprites[kind-1];
     posx = sp->posx;
     posy = sp->posy;
 
+    stype = (sp->attrib & kSpriteKindMask);
+
     ShapeSprite *sprite = [ShapeSprite spriteWithSpriteSheet:sheet rect:CGRectMake(posx, posy, sp->width, sp->height)];
-    CGPoint ap = sprite.anchorPointInPixels;
+//    if (stype == kVertBarSprite) {
+//        x -= BAR_H / 2;
+//        y -= BAR_W / 2;
+//    }
+//    else if (stype == kHorizBarSprite) {
+//        y -= BAR_H / 2;
+//    }
+    ap = sprite.anchorPointInPixels;
     [sheet addChild: sprite];
     
     sprite.info = *sp;

@@ -60,7 +60,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     if( (self=[super init])) {
 		
         self.isTouchEnabled = YES;
-        self.isAccelerometerEnabled = YES;
+        self.isAccelerometerEnabled = NO;
         
         CGSize wins = [[CCDirector sharedDirector] winSize];
     
@@ -123,7 +123,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 -(void) addSprite: (UInt32)b
 {
-    int x = (MapXValue(b) * FACET), y = (MapYValue(b) * FACET), kind = MapPieceValue(b);
+    int x = (MapXValue(b) * (FACET/2)), y = (MapYValue(b) * (FACET/2)), kind = MapPieceValue(b);
     [self addNewSprite: kind x:x y:y];
 }
 
@@ -381,7 +381,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 {	
 	static float prevX=0, prevY=0;
 	
-#define kFilterFactor 0.05f
+#define kFilterFactor 0.25f
 	
 	float accelX = (float) acceleration.x * kFilterFactor + (1- kFilterFactor)*prevX;
 	float accelY = (float) acceleration.y * kFilterFactor + (1- kFilterFactor)*prevY;
