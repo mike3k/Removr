@@ -13,7 +13,8 @@
 #import "OptionScene.h"
 #import "InfoScene.h"
 #import "HighscoreScene.h"
-
+#import "SimpleAudioEngine.h"
+#import "AppSettings.h"
 
 
 static GameManager *_sharedGameManager = nil;
@@ -45,6 +46,7 @@ static GameManager *_sharedGameManager = nil;
     }
     return self;
 }
+
 
 - (void)dealloc
 {

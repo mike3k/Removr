@@ -10,7 +10,6 @@
 #import "GameLayer.h"
 #import "MenuLayer.h"
 #import "GameManager.h"
-#import "SimpleAudioEngine.h"
 
 @implementation GameScene
 
@@ -48,7 +47,6 @@
 
 - (void)play:(id)sender
 {
-    [[SimpleAudioEngine sharedEngine] playEffect:@"intro.wav"];
     [_game play];
 }
 

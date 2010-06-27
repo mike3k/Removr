@@ -61,13 +61,24 @@
 }
 
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    NSLog(@"will resign active");
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
 	[[CCDirector sharedDirector] stopAnimation];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
 	[[CCDirector sharedDirector] startAnimation];
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+	[[CCDirector sharedDirector] pause];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+	[[CCDirector sharedDirector] resume];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {

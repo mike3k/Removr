@@ -79,6 +79,17 @@
 		27BDBDBE11D138B000D31B40 /* CCTextureNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BDBDB211D138B000D31B40 /* CCTextureNode.m */; };
 		27C0188811CABB2C00526633 /* blackbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C0188711CABB2C00526633 /* blackbg.png */; };
 		27C018CC11CC0C9000526633 /* uhoh.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C018CA11CC0C9000526633 /* uhoh.png */; };
+		27C24C0B11D559D0006F5A47 /* off-sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24C0611D559D0006F5A47 /* off-sel.png */; };
+		27C24C0C11D559D0006F5A47 /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24C0711D559D0006F5A47 /* off.png */; };
+		27C24C0D11D559D0006F5A47 /* on-sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24C0811D559D0006F5A47 /* on-sel.png */; };
+		27C24C0E11D559D0006F5A47 /* on.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24C0911D559D0006F5A47 /* on.png */; };
+		27C24C0F11D559D0006F5A47 /* title-options.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24C0A11D559D0006F5A47 /* title-options.png */; };
+		27C24C3211D55EA1006F5A47 /* OnOffButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C24C3111D55EA1006F5A47 /* OnOffButton.m */; };
+		27C24C6111D585AD006F5A47 /* label-colorblind.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24C5E11D585AC006F5A47 /* label-colorblind.png */; };
+		27C24C6211D585AD006F5A47 /* label-reset.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24C5F11D585AC006F5A47 /* label-reset.png */; };
+		27C24C6311D585AD006F5A47 /* label-sound.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24C6011D585AC006F5A47 /* label-sound.png */; };
+		27C24C7211D58D4C006F5A47 /* label-accellerometer.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24C7111D58D4C006F5A47 /* label-accellerometer.png */; };
+		27C24C8011D63FDC006F5A47 /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */; };
 		502BC300112082F900A0B92A /* CDAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 502BC2F8112082F900A0B92A /* CDAudioManager.h */; };
 		502BC301112082F900A0B92A /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 502BC2F9112082F900A0B92A /* CDAudioManager.m */; };
 		502BC302112082F900A0B92A /* CDConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 502BC2FA112082F900A0B92A /* CDConfig.h */; };
@@ -404,6 +415,19 @@
 		27BDBDB211D138B000D31B40 /* CCTextureNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTextureNode.m; sourceTree = "<group>"; };
 		27C0188711CABB2C00526633 /* blackbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackbg.png; sourceTree = "<group>"; };
 		27C018CA11CC0C9000526633 /* uhoh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uhoh.png; sourceTree = "<group>"; };
+		27C24C0611D559D0006F5A47 /* off-sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "off-sel.png"; sourceTree = "<group>"; };
+		27C24C0711D559D0006F5A47 /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
+		27C24C0811D559D0006F5A47 /* on-sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "on-sel.png"; sourceTree = "<group>"; };
+		27C24C0911D559D0006F5A47 /* on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = on.png; sourceTree = "<group>"; };
+		27C24C0A11D559D0006F5A47 /* title-options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-options.png"; sourceTree = "<group>"; };
+		27C24C3011D55EA1006F5A47 /* OnOffButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnOffButton.h; sourceTree = "<group>"; };
+		27C24C3111D55EA1006F5A47 /* OnOffButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnOffButton.m; sourceTree = "<group>"; };
+		27C24C5E11D585AC006F5A47 /* label-colorblind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "label-colorblind.png"; sourceTree = "<group>"; };
+		27C24C5F11D585AC006F5A47 /* label-reset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "label-reset.png"; sourceTree = "<group>"; };
+		27C24C6011D585AC006F5A47 /* label-sound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "label-sound.png"; sourceTree = "<group>"; };
+		27C24C7111D58D4C006F5A47 /* label-accellerometer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "label-accellerometer.png"; sourceTree = "<group>"; };
+		27C24C7E11D63FDC006F5A47 /* AppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSettings.h; sourceTree = "<group>"; };
+		27C24C7F11D63FDC006F5A47 /* AppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettings.m; sourceTree = "<group>"; };
 		27F3DDCA11B86BE0002C51E4 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		502BC2F8112082F900A0B92A /* CDAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAudioManager.h; sourceTree = "<group>"; };
@@ -740,6 +764,8 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				27C24C3011D55EA1006F5A47 /* OnOffButton.h */,
+				27C24C3111D55EA1006F5A47 /* OnOffButton.m */,
 				2740F86F11CC7C9E004FC184 /* Level.h */,
 				2740F87011CC7C9E004FC184 /* Level.m */,
 				2740F7EB11CC6495004FC184 /* Level.xcdatamodel */,
@@ -773,6 +799,8 @@
 				279B6C1811B0941600243BF7 /* HighScoreLayer.m */,
 				279B6CD611B19E3200243BF7 /* MCLayer.h */,
 				279B6CD711B19E3200243BF7 /* MCLayer.m */,
+				27C24C7E11D63FDC006F5A47 /* AppSettings.h */,
+				27C24C7F11D63FDC006F5A47 /* AppSettings.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1140,6 +1168,15 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27C24C7111D58D4C006F5A47 /* label-accellerometer.png */,
+				27C24C5E11D585AC006F5A47 /* label-colorblind.png */,
+				27C24C5F11D585AC006F5A47 /* label-reset.png */,
+				27C24C6011D585AC006F5A47 /* label-sound.png */,
+				27C24C0611D559D0006F5A47 /* off-sel.png */,
+				27C24C0711D559D0006F5A47 /* off.png */,
+				27C24C0811D559D0006F5A47 /* on-sel.png */,
+				27C24C0911D559D0006F5A47 /* on.png */,
+				27C24C0A11D559D0006F5A47 /* title-options.png */,
 				27BDBD9711D12FD600D31B40 /* intro.wav */,
 				2740F9AF11CEEB37004FC184 /* Shape-Atlas.png */,
 				2740F8C811CC8D49004FC184 /* levels.sqlite3 */,
@@ -1408,6 +1445,15 @@
 				2740F8CA11CC8D49004FC184 /* levels.sqlite3 in Resources */,
 				2740F9B011CEEB37004FC184 /* Shape-Atlas.png in Resources */,
 				27BDBD9811D12FD700D31B40 /* intro.wav in Resources */,
+				27C24C0B11D559D0006F5A47 /* off-sel.png in Resources */,
+				27C24C0C11D559D0006F5A47 /* off.png in Resources */,
+				27C24C0D11D559D0006F5A47 /* on-sel.png in Resources */,
+				27C24C0E11D559D0006F5A47 /* on.png in Resources */,
+				27C24C0F11D559D0006F5A47 /* title-options.png in Resources */,
+				27C24C6111D585AD006F5A47 /* label-colorblind.png in Resources */,
+				27C24C6211D585AD006F5A47 /* label-reset.png in Resources */,
+				27C24C6311D585AD006F5A47 /* label-sound.png in Resources */,
+				27C24C7211D58D4C006F5A47 /* label-accellerometer.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1435,6 +1481,8 @@
 				279B6CD911B19E3200243BF7 /* MCLayer.m in Sources */,
 				2740F7ED11CC6495004FC184 /* Level.xcdatamodel in Sources */,
 				2740F87211CC7C9E004FC184 /* Level.m in Sources */,
+				27C24C3211D55EA1006F5A47 /* OnOffButton.m in Sources */,
+				27C24C8011D63FDC006F5A47 /* AppSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

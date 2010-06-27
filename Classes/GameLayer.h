@@ -13,6 +13,7 @@
 #import "MCLayer.h"
 
 #import "SpriteDefs.h"
+#import "AppSettings.h"
 
 @class GameManager;
 
@@ -28,10 +29,14 @@
     NSTimeInterval  time;
     
     CCMenu      *pauseMenu;
+    
+    AppSettings *aps;
 }
 
 @property (assign,nonatomic) int level;
 @property (retain,nonatomic) CCSpriteSheet *sheet;
+
+- (void)playIntroMusic;
 
 //+ (id) scene;
 - (void) step: (ccTime) dt;

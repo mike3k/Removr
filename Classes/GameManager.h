@@ -47,6 +47,7 @@
 
 //- (BOOL)LoadLevels;
 
+
 - (Level*)GetLevel: (int)number;
 - (int)levelCount;
 

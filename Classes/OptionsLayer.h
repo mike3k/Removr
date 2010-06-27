@@ -8,10 +8,17 @@
 
 #import "MCLayer.h"
 #import "SpriteDefs.h"
-
+#import "OnOffButton.h"
+#import "AppSettings.h"
 
 @interface OptionsLayer : MCLayer {
-
+    OnOffButton *bSound;
+    OnOffButton *bAccel;
+    
+    AppSettings *aps;
 }
+
+- (void)toggleSound:(id)sender;
+- (void)toggleAccel:(id)sender;
 
 @end

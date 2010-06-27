@@ -9,6 +9,7 @@
 #import "GameLayer.h"
 #import "ShapeSprite.h"
 #import "GameManager.h"
+#import "SimpleAudioEngine.h"
 
 enum {
 	kTagAtlasSpriteSheet = 1,
@@ -58,9 +59,9 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 -(id) init
 {
     if( (self=[super init])) {
-		
+		aps = [AppSettings shared];
         self.isTouchEnabled = YES;
-        self.isAccelerometerEnabled = NO;
+        self.isAccelerometerEnabled = aps.accelerometer;
         
         CGSize wins = [[CCDirector sharedDirector] winSize];
     
@@ -116,9 +117,20 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         [self addChild:menu  z:0 tag:kTagPauseButton];
         //[self runWithMap: lvl1 size:(sizeof(lvl1) / sizeof(UInt32))];
         //[self gotoLevel: [_delegate curLevel]];
+        if (aps.sound) {
+            [self playIntroMusic];
+        }
     }
 	
 	return self;
+}
+
+- (void)playIntroMusic
+{
+    AppSettings *aps = [AppSettings shared];
+    if (aps.sound) {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"intro.wav"];
+    }
 }
 
 -(void) addSprite: (UInt32)b
@@ -265,7 +277,9 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         }
         sprite.visible = NO;
         [_sheet removeChild:sprite cleanup:NO];
-        moves += 1;
+        if (!force) {
+            moves += 1;
+        }
         [self testWinOrLose];
     }
 }
