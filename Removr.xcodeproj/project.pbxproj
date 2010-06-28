@@ -90,6 +90,9 @@
 		27C24C6311D585AD006F5A47 /* label-sound.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24C6011D585AC006F5A47 /* label-sound.png */; };
 		27C24C7211D58D4C006F5A47 /* label-accellerometer.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24C7111D58D4C006F5A47 /* label-accellerometer.png */; };
 		27C24C8011D63FDC006F5A47 /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */; };
+		27C24CB611D7B9E2006F5A47 /* LevelCompleteMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C24CB511D7B9E2006F5A47 /* LevelCompleteMsg.m */; };
+		27C24CB811D7BC73006F5A47 /* Level-Complete.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24CB711D7BC73006F5A47 /* Level-Complete.png */; };
+		27C24CF311D80BA6006F5A47 /* Score-Images.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24CF211D80BA6006F5A47 /* Score-Images.png */; };
 		502BC300112082F900A0B92A /* CDAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 502BC2F8112082F900A0B92A /* CDAudioManager.h */; };
 		502BC301112082F900A0B92A /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 502BC2F9112082F900A0B92A /* CDAudioManager.m */; };
 		502BC302112082F900A0B92A /* CDConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 502BC2FA112082F900A0B92A /* CDConfig.h */; };
@@ -428,6 +431,10 @@
 		27C24C7111D58D4C006F5A47 /* label-accellerometer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "label-accellerometer.png"; sourceTree = "<group>"; };
 		27C24C7E11D63FDC006F5A47 /* AppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSettings.h; sourceTree = "<group>"; };
 		27C24C7F11D63FDC006F5A47 /* AppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettings.m; sourceTree = "<group>"; };
+		27C24CB411D7B9E2006F5A47 /* LevelCompleteMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelCompleteMsg.h; sourceTree = "<group>"; };
+		27C24CB511D7B9E2006F5A47 /* LevelCompleteMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelCompleteMsg.m; sourceTree = "<group>"; };
+		27C24CB711D7BC73006F5A47 /* Level-Complete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level-Complete.png"; sourceTree = "<group>"; };
+		27C24CF211D80BA6006F5A47 /* Score-Images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Score-Images.png"; sourceTree = "<group>"; };
 		27F3DDCA11B86BE0002C51E4 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		502BC2F8112082F900A0B92A /* CDAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAudioManager.h; sourceTree = "<group>"; };
@@ -801,6 +808,8 @@
 				279B6CD711B19E3200243BF7 /* MCLayer.m */,
 				27C24C7E11D63FDC006F5A47 /* AppSettings.h */,
 				27C24C7F11D63FDC006F5A47 /* AppSettings.m */,
+				27C24CB411D7B9E2006F5A47 /* LevelCompleteMsg.h */,
+				27C24CB511D7B9E2006F5A47 /* LevelCompleteMsg.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1168,6 +1177,8 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27C24CF211D80BA6006F5A47 /* Score-Images.png */,
+				27C24CB711D7BC73006F5A47 /* Level-Complete.png */,
 				27C24C7111D58D4C006F5A47 /* label-accellerometer.png */,
 				27C24C5E11D585AC006F5A47 /* label-colorblind.png */,
 				27C24C5F11D585AC006F5A47 /* label-reset.png */,
@@ -1454,6 +1465,8 @@
 				27C24C6211D585AD006F5A47 /* label-reset.png in Resources */,
 				27C24C6311D585AD006F5A47 /* label-sound.png in Resources */,
 				27C24C7211D58D4C006F5A47 /* label-accellerometer.png in Resources */,
+				27C24CB811D7BC73006F5A47 /* Level-Complete.png in Resources */,
+				27C24CF311D80BA6006F5A47 /* Score-Images.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,6 +1496,7 @@
 				2740F87211CC7C9E004FC184 /* Level.m in Sources */,
 				27C24C3211D55EA1006F5A47 /* OnOffButton.m in Sources */,
 				27C24C8011D63FDC006F5A47 /* AppSettings.m in Sources */,
+				27C24CB611D7B9E2006F5A47 /* LevelCompleteMsg.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,6 +52,9 @@
 - (void) showPauseMenu: (BOOL)canResume;
 - (void) hidePauseMenu;
 
+- (void)dimScreen;
+- (void)undimScreen;
+
 - (int)testWinOrLose;
 - (BOOL)gotoLevel: (int)level;
 

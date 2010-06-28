@@ -43,6 +43,7 @@ static AppSettings *theSettings = nil;
     [def setBool: self.sound forKey: @"sound"];
     [def setBool: self.accelerometer forKey: @"accel"];
     [def synchronize];
+    return YES;
 }
 
 @end

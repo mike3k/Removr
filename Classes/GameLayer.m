@@ -10,12 +10,14 @@
 #import "ShapeSprite.h"
 #import "GameManager.h"
 #import "SimpleAudioEngine.h"
+#import "LevelCompleteMsg.h"
 
 enum {
 	kTagAtlasSpriteSheet = 1,
     kTagPauseButton = 2,
     kTagPauseBackground = 3,
-    kTagPauseMenu = 4
+    kTagPauseMenu = 4,
+    kTagWinScreen = 5,
 };
 
 #define kBorderCollision  888
@@ -199,16 +201,17 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     if (nil == pauseMenu) {
         
         
-        // dim the background
-        CCSprite *dim = [[[CCSprite alloc] initWithFile:@"blackbg.png"] autorelease];
-        CGSize wins = [[CCDirector sharedDirector] winSize];    
-        dim.scaleX = wins.width;
-        dim.scaleY = wins.height;
-        dim.anchorPoint = ccp(0,0);
-        dim.position = ccp(0,0);
-        dim.opacity = floor(256 * .70);
-        [self addChild:dim z:0 tag:kTagPauseBackground];
- 
+//        // dim the background
+//        CCSprite *dim = [[[CCSprite alloc] initWithFile:@"blackbg.png"] autorelease];
+//        CGSize wins = [[CCDirector sharedDirector] winSize];    
+//        dim.scaleX = wins.width;
+//        dim.scaleY = wins.height;
+//        dim.anchorPoint = ccp(0,0);
+//        dim.position = ccp(0,0);
+//        dim.opacity = floor(256 * .70);
+//        [self addChild:dim z:0 tag:kTagPauseBackground];
+
+        [self dimScreen];
         CCMenuItemImage *item1;
         CCMenuItemImage *item2 = [CCMenuItemImage itemFromNormalImage:@"pause-restart.png" 
                                                         selectedImage:@"pause-restart-sel.png" 
@@ -241,7 +244,8 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 {
     if (nil != pauseMenu) {
         pauseMenu.visible = NO;
-        [self removeChildByTag:kTagPauseBackground cleanup:NO];
+        //[self removeChildByTag:kTagPauseBackground cleanup:NO];
+        [self undimScreen];
         [self removeChild:pauseMenu cleanup:NO];
         pauseMenu = nil;
     }
@@ -334,23 +338,47 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)showWinScreen
 {
+    CGSize wins = [[CCDirector sharedDirector] winSize];    
     [self stop];
-    
-    // should really do an action and go to next level when action completes
+
+    [self dimScreen];
+
+    LevelCompleteMsg *msg = [[LevelCompleteMsg alloc] initWithMoves:moves];
+    msg.position = ccp(wins.width / 2, wins.height / 2);
+    [self addChild:msg z:0 tag:kTagWinScreen];
+    [msg release];
+    [self runAction: [CCSequence actions:[CCDelayTime actionWithDuration:3], [CCCallFunc actionWithTarget:self selector:@selector(gotoNextLevel)],nil]];
+
+}
+
+- (void)dimScreen
+{
+    CGSize wins = [[CCDirector sharedDirector] winSize];    
+    CCSprite *dim = [[[CCSprite alloc] initWithFile:@"blackbg.png"] autorelease];
+    dim.scaleX = wins.width;
+    dim.scaleY = wins.height;
+    dim.anchorPoint = ccp(0,0);
+    dim.position = ccp(0,0);
+    dim.opacity = floor(256 * .70);
+    [self addChild:dim z:0 tag:kTagPauseBackground];
+}
+
+- (void)undimScreen
+{
+    [self removeChildByTag:kTagPauseBackground cleanup:NO];
+}
+
+
+- (void)gotoNextLevel
+{
+    [self undimScreen];
+    [self removeChildByTag:kTagWinScreen cleanup:NO];
+
     [self gotoLevel: self.level + 1];
 }
 
 - (void)showLoseScreen
 {
-    //    [self stop];
-    //
-    //UIAlertView *msg = [[UIAlertView alloc] initWithTitle: @"Uh Oh!" 
-    //                                                  message:@"You lost" 
-    //                                               delegate:self
-    //                                    cancelButtonTitle:@"OK" 
-    //                                    otherButtonTitles:nil];
-    //[msg show];
-    //[msg release];
     [self stop];
     [self showPauseMenu:NO];
     
