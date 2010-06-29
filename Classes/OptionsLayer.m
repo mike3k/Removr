@@ -28,19 +28,32 @@
                         bSound,
                         [CCMenuItemImage itemFromNormalImage:@"label-accellerometer.png" selectedImage:@"label-accellerometer.png"],
                         bAccel,
-                        [CCMenuItemImage itemFromNormalImage:@"back.png" 
-                                               selectedImage:@"back-sel.png" 
-                                                      target:self 
-                                                    selector:@selector(done)],
+                        [CCMenuItemImage itemFromNormalImage:@"spacer.png" selectedImage:@"spacer.png"],
+//                        [CCMenuItemImage itemFromNormalImage:@"spacer.png" selectedImage:@"spacer.png"],
+//                        [CCMenuItemImage itemFromNormalImage:@"back.png" 
+//                                               selectedImage:@"back-sel.png" 
+//                                                      target:self 
+//                                                    selector:@selector(done)],
                         nil];
 
         [menu alignItemsInColumns:  [NSNumber numberWithInt:1],
                                     [NSNumber numberWithInt:2],
                                     [NSNumber numberWithInt:2],
                                     [NSNumber numberWithInt:1],
+//                                    [NSNumber numberWithInt:1],
          nil];
 
         [self addChild:menu];
+
+        CGSize wins = [[CCDirector sharedDirector] winSize];
+        CCMenu *menu2 = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:@"back.png" 
+                                                                     selectedImage:@"back-sel.png" 
+                                                                            target:self 
+                                                                          selector:@selector(done)], nil];
+        [menu2 alignItemsVertically];
+        menu2.position = ccp(wins.width-60, 30);
+        [self addChild:menu2];
+
     }
     return self;
 }
