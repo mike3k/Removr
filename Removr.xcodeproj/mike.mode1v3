@@ -296,13 +296,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>47</integer>
+									<integer>59</integer>
 									<integer>22</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 293}, {299, 846}}</string>
+							<string>{{0, 479}, {299, 846}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -323,7 +323,7 @@
 							<real>277</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>67 94 1292 905 0 0 1680 1028 </string>
+						<string>68 94 1292 905 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -341,7 +341,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>OptionsLayer.m</string>
+								<string>AppSettings.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -349,11 +349,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>OptionsLayer.m</string>
+										<string>AppSettings.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>27C24E0B11D9927D006F5A47</string>
+										<string>27C24E1C11DA3F98006F5A47</string>
 										<key>history</key>
 										<array>
 											<string>2735E5201183491B00E8247E</string>
@@ -426,7 +426,6 @@
 											<string>27C24C8E11D6E1EE006F5A47</string>
 											<string>27C24C9111D6E1EE006F5A47</string>
 											<string>27C24C9A11D6E320006F5A47</string>
-											<string>27C24C9C11D6E320006F5A47</string>
 											<string>27C24C9D11D6E320006F5A47</string>
 											<string>27C24CBF11D7FFB1006F5A47</string>
 											<string>27C24CC011D7FFB1006F5A47</string>
@@ -443,7 +442,6 @@
 											<string>27C24D7411D93836006F5A47</string>
 											<string>27C24D8411D93940006F5A47</string>
 											<string>27C24DC411D986D5006F5A47</string>
-											<string>27C24DC511D986D5006F5A47</string>
 											<string>27C24DC611D986D5006F5A47</string>
 											<string>27C24DC711D986D5006F5A47</string>
 											<string>27C24DC811D986D5006F5A47</string>
@@ -459,7 +457,10 @@
 											<string>27C24E0411D99254006F5A47</string>
 											<string>27C24E0511D99254006F5A47</string>
 											<string>27C24E0611D99254006F5A47</string>
-											<string>27C24E0711D99254006F5A47</string>
+											<string>27C24E1711DA3F98006F5A47</string>
+											<string>27C24E1811DA3F98006F5A47</string>
+											<string>27C24E1A11DA3F98006F5A47</string>
+											<string>27C24E1B11DA3F98006F5A47</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -473,7 +474,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {971, 713}}</string>
 								<key>RubberWindowFrame</key>
-								<string>67 94 1292 905 0 0 1680 1028 </string>
+								<string>68 94 1292 905 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -493,7 +494,7 @@
 								<key>Frame</key>
 								<string>{{0, 718}, {971, 146}}</string>
 								<key>RubberWindowFrame</key>
-								<string>67 94 1292 905 0 0 1680 1028 </string>
+								<string>68 94 1292 905 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -638,7 +639,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>299471485.74651802</real>
+	<real>299515800.21454102</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -656,13 +657,13 @@
 		<string>27C24C2211D55B36006F5A47</string>
 		<string>27C24C2311D55B36006F5A47</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>/Users/mike/Sources/mystuff/Removr/Removr.xcodeproj</string>
 		<string>27ED5F5A0E52884C00CCF2AE</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>/Users/mike/Sources/mystuff/Removr/Removr.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>67 94 1292 905 0 0 1680 1028 </string>
+	<string>68 94 1292 905 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

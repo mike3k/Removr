@@ -12,10 +12,14 @@
 @interface AppSettings : NSObject {
     BOOL _accelerometer;
     BOOL _sound;
+
+    NSInteger _lastLevel;
 }
 
 @property (assign,nonatomic) BOOL accelerometer;
 @property (assign,nonatomic) BOOL sound;
+
+@property (assign,nonatomic) NSInteger lastLevel;
 
 + (AppSettings*)shared;
 

@@ -14,6 +14,7 @@ static AppSettings *theSettings = nil;
 
 @synthesize sound = _sound;
 @synthesize accelerometer = _accelerometer;
+@synthesize lastLevel = _lastLevel;
 
 + (AppSettings*)shared {
     if (nil == theSettings) {
@@ -27,6 +28,7 @@ static AppSettings *theSettings = nil;
         NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
         self.sound = [def boolForKey: @"sound"];
         self.accelerometer = [def boolForKey: @"accel"];
+        self.lastLevel = [def integerForKey:@"lastLevel"];
     }
     return self;
 }
@@ -42,6 +44,7 @@ static AppSettings *theSettings = nil;
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def setBool: self.sound forKey: @"sound"];
     [def setBool: self.accelerometer forKey: @"accel"];
+    [def setInteger:self.lastLevel forKey:@"lastLevel"];
     [def synchronize];
     return YES;
 }
