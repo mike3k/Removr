@@ -19,6 +19,7 @@
 - (void)menu: (id)sender;
 - (void)pause: (id)sender;
 - (void)resume: (id)sender;
+- (void)visitweb: (id)sender;
 
 @property (assign,nonatomic) BOOL paused;
 @property (assign,nonatomic) NSInteger curLevel;

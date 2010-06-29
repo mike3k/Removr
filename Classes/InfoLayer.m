@@ -15,13 +15,24 @@
 {
     
     if ((self = [super init])) {
-        self.background = [[[CCSprite alloc] initWithFile:@"background.png"] autorelease];
+        CGSize wins = [[CCDirector sharedDirector] winSize];
+        self.background = [[[CCSprite alloc] initWithFile:@"info-background.png"] autorelease];
         CCMenu *menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:@"back.png" 
                                                                      selectedImage:@"back-sel.png" 
                                                                             target:_delegate 
                                                                           selector:@selector(menu:)], nil];
         [menu alignItemsVertically];
+        menu.position = ccp(wins.width-60, 30);
         [self addChild:menu];
+        
+        CCMenu *menu2 = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:@"visit.png" 
+                                                                      selectedImage:@"visit-sel.png"
+                                                                             target:_delegate
+                                                                           selector:@selector(visitweb:)],nil];
+        [menu2 alignItemsVertically];
+        menu2.position = ccp(wins.width/2,80);
+        [self addChild:menu2];
+        
     }
     return self;
 }

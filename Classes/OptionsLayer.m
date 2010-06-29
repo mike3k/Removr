@@ -30,8 +30,8 @@
                         bAccel,
                         [CCMenuItemImage itemFromNormalImage:@"back.png" 
                                                selectedImage:@"back-sel.png" 
-                                                      target:_delegate 
-                                                    selector:@selector(menu:)],
+                                                      target:self 
+                                                    selector:@selector(done)],
                         nil];
 
         [menu alignItemsInColumns:  [NSNumber numberWithInt:1],
@@ -57,9 +57,15 @@
     aps.accelerometer = bAccel.on;
 }
 
-- (void)dealloc
+- (void)done
 {
     [aps save];
+    [_delegate menu:self];
+}
+
+- (void)dealloc
+{
+//    [aps save];
     [super dealloc];
 }
 

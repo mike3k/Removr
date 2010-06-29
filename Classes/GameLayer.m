@@ -14,11 +14,14 @@
 
 enum {
 	kTagAtlasSpriteSheet = 1,
-    kTagPauseButton = 2,
-    kTagPauseBackground = 3,
-    kTagPauseMenu = 4,
-    kTagWinScreen = 5,
+    kTagPauseButton,
+    kTagPauseBackground,
+    kTagPauseMenu,
+    kTagWinScreen,
 };
+
+#define zSpritesLevel       1
+#define zOverlayLevel       2
 
 #define kBorderCollision  888
 
@@ -107,7 +110,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         cpSpaceAddCollisionHandler(space, kBorderCollision, 0, collisionBegin, nil, nil, nil, self);
 
         self.sheet = [CCSpriteSheet spriteSheetWithFile:@"Shape-Atlas.png" capacity:100];
-        [self addChild:_sheet z:0 tag:kTagAtlasSpriteSheet];
+        [self addChild:_sheet z:zSpritesLevel tag:kTagAtlasSpriteSheet];
 
         CCMenu *menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:@"pause-icon.png" 
                                                                      selectedImage:@"pause-icon.png" 
@@ -116,7 +119,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         [menu alignItemsVertically];
         menu.anchorPoint = ccp(1,1);
         menu.position = ccp(wins.width - 42, wins.height - 16);
-        [self addChild:menu  z:0 tag:kTagPauseButton];
+        [self addChild:menu  z:zOverlayLevel tag:kTagPauseButton];
         //[self runWithMap: lvl1 size:(sizeof(lvl1) / sizeof(UInt32))];
         //[self gotoLevel: [_delegate curLevel]];
         if (aps.sound) {
@@ -181,6 +184,9 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)play
 {
+    aps = [AppSettings shared];
+    self.isAccelerometerEnabled = aps.accelerometer;
+
     if (_delegate.paused) {
         [self resume];
     }
@@ -201,15 +207,6 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     if (nil == pauseMenu) {
         
         
-//        // dim the background
-//        CCSprite *dim = [[[CCSprite alloc] initWithFile:@"blackbg.png"] autorelease];
-//        CGSize wins = [[CCDirector sharedDirector] winSize];    
-//        dim.scaleX = wins.width;
-//        dim.scaleY = wins.height;
-//        dim.anchorPoint = ccp(0,0);
-//        dim.position = ccp(0,0);
-//        dim.opacity = floor(256 * .70);
-//        [self addChild:dim z:0 tag:kTagPauseBackground];
 
         [self dimScreen];
         CCMenuItemImage *item1;
@@ -235,7 +232,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         
         pauseMenu = [CCMenu menuWithItems: item1, item2, item3, nil];
         [pauseMenu alignItemsVertically];
-        [self addChild:pauseMenu z:0 tag:kTagPauseMenu];
+        [self addChild:pauseMenu z:zOverlayLevel tag:kTagPauseMenu];
         _delegate.paused = canResume;
     }
 }
@@ -345,7 +342,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
     LevelCompleteMsg *msg = [[LevelCompleteMsg alloc] initWithMoves:moves];
     msg.position = ccp(wins.width / 2, wins.height / 2);
-    [self addChild:msg z:0 tag:kTagWinScreen];
+    [self addChild:msg z:zOverlayLevel tag:kTagWinScreen];
     [msg release];
     [self runAction: [CCSequence actions:[CCDelayTime actionWithDuration:3], [CCCallFunc actionWithTarget:self selector:@selector(gotoNextLevel)],nil]];
 
@@ -360,7 +357,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     dim.anchorPoint = ccp(0,0);
     dim.position = ccp(0,0);
     dim.opacity = floor(256 * .70);
-    [self addChild:dim z:0 tag:kTagPauseBackground];
+    [self addChild:dim z:zOverlayLevel tag:kTagPauseBackground];
 }
 
 - (void)undimScreen
@@ -392,8 +389,12 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     
     self.level = level;
     
-    NSData *map = [[GameManager shared] GetLevel: level].map;
+    Level *theLevel = [[GameManager shared] GetLevel: level];
+    
+    NSData *map = theLevel.map;
     if (nil != map) {
+        self.background = [[[CCSprite alloc] initWithFile:theLevel.background] autorelease];
+
         [self runWithMap: (UInt32*)[map bytes]];
         return YES;
     }

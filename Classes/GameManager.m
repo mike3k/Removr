@@ -106,7 +106,10 @@ static GameManager *_sharedGameManager = nil;
     return 100;
 }
 
-
+- (void)visitweb:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.mcdevzone.com/software"]];
+}
 
 - (void)play:(id)sender
 {
