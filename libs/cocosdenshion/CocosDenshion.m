@@ -74,6 +74,9 @@ extern void interruptionListenerCallback (void *inUserData, UInt32 interruptionS
 -(BOOL) _setUpSourceGroups:(int[]) definitions total:(int) total; 
 @end
 
+#pragma mark -
+#pragma mark CDUtilities
+
 @implementation CDUtilities
 
 +(NSString*) fullPathFromRelativePath:(NSString*) relPath
@@ -99,6 +102,8 @@ extern void interruptionListenerCallback (void *inUserData, UInt32 interruptionS
 
 @end
 
+#pragma mark -
+#pragma mark CDSoundEngine
 
 @implementation CDSoundEngine
 
@@ -1133,7 +1138,8 @@ static BOOL _mixerRateSet = NO;
 @synthesize lastError;
 
 //Macro for handling the al error code
-#define CDSOUNDSOURCE_ERROR_HANDLER ((lastError = alGetError()) == AL_NO_ERROR)
+#define CDSOUNDSOURCE_UPDATE_LAST_ERROR (lastError = alGetError())
+#define CDSOUNDSOURCE_ERROR_HANDLER ( CDSOUNDSOURCE_UPDATE_LAST_ERROR == AL_NO_ERROR)
 
 -(id)init:(ALuint) theSourceId sourceIndex:(int) index soundEngine:(CDSoundEngine*) engine {
 	if ((self = [super init])) {
@@ -1158,7 +1164,7 @@ static BOOL _mixerRateSet = NO;
 
 - (void) setPitch:(float) newPitchValue {
 	alSourcef(_sourceId, AL_PITCH, newPitchValue);
-	CDSOUNDSOURCE_ERROR_HANDLER;
+	CDSOUNDSOURCE_UPDATE_LAST_ERROR;
 }	
 
 - (void) setGain:(float) newGainValue {
@@ -1167,40 +1173,40 @@ static BOOL _mixerRateSet = NO;
 	} else {
 		_preMuteGain = newGainValue;
 	}	
-	CDSOUNDSOURCE_ERROR_HANDLER;
+	CDSOUNDSOURCE_UPDATE_LAST_ERROR;
 }
 
 - (void) setPan:(float) newPanValue {
 	float sourcePosAL[] = {newPanValue, 0.0f, 0.0f};//Set position - just using left and right panning
 	alSourcefv(_sourceId, AL_POSITION, sourcePosAL);
-	CDSOUNDSOURCE_ERROR_HANDLER;
+	CDSOUNDSOURCE_UPDATE_LAST_ERROR;
 
 }
 
 - (void) setLooping:(BOOL) newLoopingValue {
 	alSourcei(_sourceId, AL_LOOPING, newLoopingValue);
-	CDSOUNDSOURCE_ERROR_HANDLER;
+	CDSOUNDSOURCE_UPDATE_LAST_ERROR;
 
 }
 
 - (BOOL) isPlaying {
 	ALint state;
 	alGetSourcei(_sourceId, AL_SOURCE_STATE, &state);
-	CDSOUNDSOURCE_ERROR_HANDLER;
+	CDSOUNDSOURCE_UPDATE_LAST_ERROR;
 	return (state == AL_PLAYING);
 }	
 
 - (float) pitch {
 	ALfloat pitchVal;
 	alGetSourcef(_sourceId, AL_PITCH, &pitchVal);
-	CDSOUNDSOURCE_ERROR_HANDLER;
+	CDSOUNDSOURCE_UPDATE_LAST_ERROR;
 	return pitchVal;
 }
 
 - (float) pan {
 	ALfloat sourcePosAL[] = {0.0f,0.0f,0.0f};
 	alGetSourcefv(_sourceId, AL_POSITION, sourcePosAL);
-	CDSOUNDSOURCE_ERROR_HANDLER;
+	CDSOUNDSOURCE_UPDATE_LAST_ERROR;
 	return sourcePosAL[0];
 }
 
@@ -1208,7 +1214,7 @@ static BOOL _mixerRateSet = NO;
 	if (!mute_) {
 		ALfloat val;
 		alGetSourcef(_sourceId, AL_GAIN, &val);
-		CDSOUNDSOURCE_ERROR_HANDLER;
+		CDSOUNDSOURCE_UPDATE_LAST_ERROR;
 		return val;
 	} else {
 		return _preMuteGain;
@@ -1218,7 +1224,7 @@ static BOOL _mixerRateSet = NO;
 - (BOOL) looping {
 	ALfloat val;
 	alGetSourcef(_sourceId, AL_LOOPING, &val);
-	CDSOUNDSOURCE_ERROR_HANDLER;
+	CDSOUNDSOURCE_UPDATE_LAST_ERROR;
 	return val;
 }
 
@@ -1296,7 +1302,11 @@ static BOOL _mixerRateSet = NO;
 }	
 
 @end
+
 ////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark CDAudioInterruptTargetGroup
+
 @implementation CDAudioInterruptTargetGroup
 
 -(id) init {
@@ -1358,6 +1368,9 @@ static BOOL _mixerRateSet = NO;
 
 ////////////////////////////////////////////////////////////////////////////
 
+#pragma mark -
+#pragma mark CDAsynchBufferLoader
+
 @implementation CDAsynchBufferLoader
 
 -(id) init:(NSArray *)loadRequests soundEngine:(CDSoundEngine *) theSoundEngine {
@@ -1399,6 +1412,9 @@ static BOOL _mixerRateSet = NO;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark CDBufferLoadRequest
+
 @implementation CDBufferLoadRequest
 
 @synthesize filePath, soundId;
@@ -1420,6 +1436,9 @@ static BOOL _mixerRateSet = NO;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark CDFloatInterpolator
+
 @implementation CDFloatInterpolator
 @synthesize start,end,interpolationType;
 
@@ -1466,6 +1485,9 @@ static BOOL _mixerRateSet = NO;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark CDPropertyModifier
+
 @implementation CDPropertyModifier
 
 @synthesize stopTargetWhenComplete;
@@ -1562,6 +1584,9 @@ static BOOL _mixerRateSet = NO;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark CDSoundSourceFader
+
 @implementation CDSoundSourceFader
 
 -(void) _setTargetProperty:(float) newVal {
@@ -1573,7 +1598,7 @@ static BOOL _mixerRateSet = NO;
 }
 
 -(void) _stopTarget {
-	((CDSoundSource*)target).stop;
+	[((CDSoundSource*)target) stop];
 }
 
 -(Class) _allowableType {
@@ -1583,6 +1608,9 @@ static BOOL _mixerRateSet = NO;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark CDSoundSourcePanner
+
 @implementation CDSoundSourcePanner
 
 -(void) _setTargetProperty:(float) newVal {
@@ -1594,7 +1622,7 @@ static BOOL _mixerRateSet = NO;
 }
 
 -(void) _stopTarget {
-	((CDSoundSource*)target).stop;
+	[((CDSoundSource*)target) stop];
 }
 
 -(Class) _allowableType {
@@ -1604,6 +1632,9 @@ static BOOL _mixerRateSet = NO;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark CDSoundSourcePitchBender
+
 @implementation CDSoundSourcePitchBender
 
 -(void) _setTargetProperty:(float) newVal {
@@ -1615,7 +1646,7 @@ static BOOL _mixerRateSet = NO;
 }
 
 -(void) _stopTarget {
-	((CDSoundSource*)target).stop;
+	[((CDSoundSource*)target) stop];
 }
 
 -(Class) _allowableType {
@@ -1625,6 +1656,9 @@ static BOOL _mixerRateSet = NO;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark CDSoundEngineFader
+
 @implementation CDSoundEngineFader
 
 -(void) _setTargetProperty:(float) newVal {
@@ -1636,7 +1670,7 @@ static BOOL _mixerRateSet = NO;
 }
 
 -(void) _stopTarget {
-	((CDSoundEngine*)target).stopAllSounds;
+	[((CDSoundEngine*)target) stopAllSounds];
 }
 
 -(Class) _allowableType {

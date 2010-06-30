@@ -132,7 +132,6 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)playIntroMusic
 {
-    AppSettings *aps = [AppSettings shared];
     if (aps.sound) {
         [[SimpleAudioEngine sharedEngine] playEffect:@"intro.wav"];
     }

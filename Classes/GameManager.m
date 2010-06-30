@@ -38,7 +38,7 @@ static GameManager *_sharedGameManager = nil;
 - (id) init
 {
     if ((self = [super init])) {
-        self.curLevel = 0;
+        self.curLevel = [AppSettings shared].lastLevel;
         db = nil;
 
         self.dbpath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"sqlite3"];
@@ -56,6 +56,10 @@ static GameManager *_sharedGameManager = nil;
     if (nil != db) {
         sqlite3_close(db);
     }
+
+    AppSettings *aps = [AppSettings shared];
+    aps.lastLevel = self.curLevel;
+    [aps save];
 
     self.theLevel = nil;
     self.gs = nil;
