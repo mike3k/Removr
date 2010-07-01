@@ -15,6 +15,7 @@ static AppSettings *theSettings = nil;
 @synthesize sound = _sound;
 @synthesize accelerometer = _accelerometer;
 @synthesize lastLevel = _lastLevel;
+@synthesize levelStatus = _levelStatus;
 
 + (AppSettings*)shared {
     if (nil == theSettings) {
@@ -29,6 +30,10 @@ static AppSettings *theSettings = nil;
         self.sound = [def boolForKey: @"sound"];
         self.accelerometer = [def boolForKey: @"accel"];
         self.lastLevel = [def integerForKey:@"lastLevel"];
+        self.levelStatus = [[[def dataForKey:@"levelStatus"] mutableCopy] autorelease];
+        if (nil == _levelStatus) {
+            self.levelStatus = [NSMutableData dataWithLength:(100*sizeof(NSInteger*))];
+        }
     }
     return self;
 }
@@ -45,6 +50,8 @@ static AppSettings *theSettings = nil;
     [def setBool: self.sound forKey: @"sound"];
     [def setBool: self.accelerometer forKey: @"accel"];
     [def setInteger:self.lastLevel forKey:@"lastLevel"];
+    [def setObject:self.levelStatus forKey:@"levelStatus"];
+    
     [def synchronize];
     return YES;
 }

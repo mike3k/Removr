@@ -63,6 +63,9 @@
 - (void)start;
 - (void)stop;
 
+- (void)playLevel: (NSNumber*)num;
+
+
 - (void)play;
 - (void)pause;
 - (void)resume;

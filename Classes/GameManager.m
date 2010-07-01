@@ -14,7 +14,6 @@
 #import "InfoScene.h"
 #import "HighscoreScene.h"
 #import "SimpleAudioEngine.h"
-#import "AppSettings.h"
 
 
 static GameManager *_sharedGameManager = nil;
@@ -22,6 +21,7 @@ static GameManager *_sharedGameManager = nil;
 @implementation GameManager
 
 @synthesize curLevel = _curLevel, theLevel = _theLevel, gs = _gs, ms = _ms, paused = _paused, dbpath = _dbpath;
+@synthesize levelStatus = _levelStatus;
 
 #ifdef USE_CORE_DATA
 @synthesize managedObjectContext = _managedObjectContext;
@@ -38,7 +38,8 @@ static GameManager *_sharedGameManager = nil;
 - (id) init
 {
     if ((self = [super init])) {
-        self.curLevel = [AppSettings shared].lastLevel;
+        aps = [AppSettings shared];
+        self.curLevel = aps.lastLevel;
         db = nil;
 
         self.dbpath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"sqlite3"];
@@ -57,7 +58,6 @@ static GameManager *_sharedGameManager = nil;
         sqlite3_close(db);
     }
 
-    AppSettings *aps = [AppSettings shared];
     aps.lastLevel = self.curLevel;
     [aps save];
 
@@ -67,8 +67,26 @@ static GameManager *_sharedGameManager = nil;
     [super dealloc];
 }
 
+- (NSMutableData*)levelStatus
+{
+    return aps.levelStatus;
+}
 
+- (void) setScore: (NSInteger)score forLevel: (NSInteger)level
+{
+    NSMutableData *levelstat = aps.levelStatus;
+    if (level > ([levelstat length]/sizeof(NSInteger))) {
+        [levelstat setLength:level*sizeof(NSInteger)];
+    }
+    NSInteger *scores = (NSInteger*)[levelstat bytes];
+    scores[level] = (score ? score : -1);
+}
 
+- (NSInteger) scoreForLevel: (NSInteger)level
+{
+    NSInteger *scores = (NSInteger*)[aps.levelStatus bytes];
+    return scores[level];
+}
 
 - (Level*)GetLevel: (int)number
 {
@@ -113,6 +131,16 @@ static GameManager *_sharedGameManager = nil;
 - (void)visitweb:(id)sender
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.mcdevzone.com/software"]];
+}
+
+- (void)playLevel: (NSNumber*)level
+{
+    if (nil == _gs) {
+        self.gs = [GameScene node];
+    }
+    [[CCDirector sharedDirector] replaceScene: _gs];
+
+    [_gs playLevel:level];
 }
 
 - (void)play:(id)sender

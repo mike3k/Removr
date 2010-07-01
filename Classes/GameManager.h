@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "MCLayer.h"
 #import "Level.h"
+#import "AppSettings.h"
 
 #import <sqlite3.h>
 
@@ -19,6 +20,8 @@
 
 
 @interface GameManager : NSObject <MCLayerDelegate> {
+    AppSettings *aps;
+    
     NSInteger _curLevel;
     Level *_theLevel;
 
@@ -33,6 +36,7 @@
     MenuScene *_ms;
     
     BOOL _paused;
+    
 }
 
 
@@ -41,7 +45,7 @@
 @property (retain,nonatomic) Level *theLevel;
 @property (assign,nonatomic) NSInteger curLevel;
 @property (retain,nonatomic) NSString *dbpath;
-
+@property (readonly) NSMutableData *levelStatus;
 
 + (GameManager*)shared;
 
@@ -51,7 +55,10 @@
 - (Level*)GetLevel: (int)number;
 - (int)levelCount;
 
-//- (void) GotoLevel: (Level*)level;
+- (void) setScore: (NSInteger)score forLevel: (NSInteger)level;
+- (NSInteger) scoreForLevel: (NSInteger)level;
+
+- (void)playLevel: (NSNumber*)level;
 
 - (void)play:(id)sender;
 - (void)highscores:(id)sender;

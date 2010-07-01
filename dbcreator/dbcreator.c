@@ -22,7 +22,6 @@ static UInt32 levels[NUM_LEVELS][16] = {
         StuffPiece(13,12,GreenSquare),           //Green @ 13,12
         StuffPiece(15,12,GreenSquare),           //Green @ 15,12
         StuffPiece(17,12,GreenSquare),
-
         
         0L
     },

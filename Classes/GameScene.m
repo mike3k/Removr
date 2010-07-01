@@ -50,6 +50,9 @@
     [_game play];
 }
 
-
+- (void)playLevel:(NSNumber*)level
+{
+    [_game playLevel:level];
+}
 
 @end

@@ -27,6 +27,7 @@
 //- (void) nextLevel;
 
 - (void)play:(id)sender;
+- (void)playLevel:(NSNumber*)level;
 
 //- (void)highscores:(id)sender;
 //- (void)options:(id)sender;

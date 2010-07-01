@@ -14,12 +14,15 @@
     BOOL _sound;
 
     NSInteger _lastLevel;
+    
+    NSMutableData *_levelStatus;
 }
 
 @property (assign,nonatomic) BOOL accelerometer;
 @property (assign,nonatomic) BOOL sound;
 
 @property (assign,nonatomic) NSInteger lastLevel;
+@property (retain,nonatomic) NSMutableData* levelStatus;
 
 + (AppSettings*)shared;
 

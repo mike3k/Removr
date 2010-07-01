@@ -194,6 +194,13 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     }
 }
 
+- (void)playLevel: (NSNumber*)num
+{
+    aps = [AppSettings shared];
+    self.isAccelerometerEnabled = aps.accelerometer;
+    [self gotoLevel:[num intValue]];
+}
+
 - (void)restart
 {
     _delegate.paused = NO;
@@ -338,6 +345,8 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     [self stop];
 
     [self dimScreen];
+
+    [[GameManager shared] setScore:moves forLevel:self.level];
 
     LevelCompleteMsg *msg = [[LevelCompleteMsg alloc] initWithMoves:moves];
     msg.position = ccp(wins.width / 2, wins.height / 2);
