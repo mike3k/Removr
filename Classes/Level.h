@@ -19,14 +19,18 @@
 @interface Level : NSObject {
     NSData * _map;
     NSString * _background;
-    NSNumber * _index;
+    NSInteger _index;
+    NSInteger _par;
+    NSString * _title;
 }
 
 #endif
 
 @property (nonatomic, retain) NSData * map;
 @property (nonatomic, retain) NSString * background;
-@property (nonatomic, retain) NSNumber * index;
+@property (nonatomic, retain) NSString * title;
+@property (assign) NSInteger index;
+@property (assign) NSInteger par;
 
 @end
 

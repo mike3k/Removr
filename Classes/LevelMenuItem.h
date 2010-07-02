@@ -7,9 +7,9 @@
 //
 
 #import "cocos2d.h"
+#import "MCMenuItem.h"
 
-
-@interface LevelMenuItem : CCMenuItemImage {
+@interface LevelMenuItem : MCMenuItem {
     NSInteger _level;
     NSInteger _moves;
     

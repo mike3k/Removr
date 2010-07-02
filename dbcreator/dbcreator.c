@@ -73,10 +73,10 @@ int main (int argc, const char * argv[]) {
     sqlite3_stmt *stmt;
     printf("Creating database...\n");
     sqlite3_open("/tmp/levels.sqlite3" , &db);
-    sqlite3_prepare(db, "CREATE TABLE levels (ix integer NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,background text,map blob NOT NULL)", -1, &stmt, NULL);
+    sqlite3_prepare(db, "CREATE TABLE levels (ix integer NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,background text,map blob NOT NULL,name text,par integer)", -1, &stmt, NULL);
     sqlite3_step(stmt);
     sqlite3_finalize(stmt);
-    sqlite3_prepare(db, "INSERT INTO levels (ix,background,map) VALUES (?,?,?)", -1, &stmt, NULL);
+    sqlite3_prepare(db, "INSERT INTO levels (ix,background,map,par) VALUES (?,?,?,0)", -1, &stmt, NULL);
     for (int i=0;i<NUM_LEVELS;++i) {
         int len = sizeof(levels[i]);
         char *bg = backgrounds[i];

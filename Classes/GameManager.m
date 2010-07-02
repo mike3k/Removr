@@ -105,16 +105,31 @@ static GameManager *_sharedGameManager = nil;
     // request a record for the level
     sqlite3_bind_int(query, 1, number);
     if (sqlite3_step(query) == SQLITE_ROW) {
+        char *str;
         void *blob;
         int nbytes;
+
         lvl = [[Level alloc] init];
-        lvl.index = [NSNumber numberWithInt: sqlite3_column_int(query, 0)];
-        lvl.background = [NSString stringWithCString:(char*)sqlite3_column_text(query, 1) encoding:NSUTF8StringEncoding];
+        lvl.index = sqlite3_column_int(query, 0);
+        
+        str = (char*)sqlite3_column_text(query, 1);
+        if (nil != str) {
+            lvl.background = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
+        }
+        
         blob = (void*)sqlite3_column_blob(query,2);
         nbytes = sqlite3_column_bytes(query,2);
         if (blob && (nbytes > 0)) {
             lvl.map = [NSData dataWithBytes:blob length:nbytes];
         }
+        
+        str = (char*)sqlite3_column_text(query, 3);
+        if (nil != str) {
+            lvl.title = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
+        }
+        
+        lvl.par = sqlite3_column_int(query, 4);
+
         self.theLevel = lvl;
     }
     else self.theLevel = nil;

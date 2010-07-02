@@ -9,8 +9,15 @@
 #import "MCLayer.h"
 
 @interface HighScoreLayer : MCLayer {
+    NSMutableArray *_buttons;
+    int _page;
+    
+    CCMenuItem *bPrev;
+    CCMenuItem *bNext;
 }
 
 - (void)gotoLevel: (id)sender;
-
+- (void)resetButtons;
+- (void)pageNext: (id)sender;
+- (void)pageBack: (id)sender;
 @end

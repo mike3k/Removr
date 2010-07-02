@@ -31,7 +31,8 @@ enum {
         _labelLevel = [CCLabel labelWithString:[NSString stringWithFormat:@"Level %d", _level]
                                       fontName:@"Marker Felt" 
                                       fontSize:18];
-        _labelLevel.position = self.anchorPointInPixels;
+        _labelLevel.position = ccp(self.anchorPointInPixels.x,self.anchorPointInPixels.y+2);
+        [_labelLevel setColor:ccc3(128, 0, 0)];
         [self addChild:_labelLevel z:1 tag:kTagLevelItem];
     }
     else {
@@ -45,6 +46,8 @@ enum {
         _labelMoves = [CCLabel labelWithString: [NSString stringWithFormat:@"(%d moves)",_moves]
                                       fontName:@"Helvetica" 
                                       fontSize:14];
+        _labelMoves.position = ccp(self.anchorPointInPixels.x,12);
+        [_labelMoves setColor: ccc3(128, 0, 0)];
         [self addChild:_labelMoves z:1 tag:kTagMovesItem];
     }
     else {
@@ -79,9 +82,27 @@ enum {
 - (void)setMoves:(NSInteger)value
 {
     if (value != _moves) {
-        _moves = value;
-        [self makeMovesLabel];
+        _moves = (value > 0) ? value : 0;
+        if (0 == value) {
+            if (nil != _labelMoves) {
+                [_labelMoves setString:@" "];
+            }
+        }
+        else {
+            [self makeMovesLabel];
+        }
     }
+}
+
+- (void)setOpacity: (GLubyte)opacity
+{
+    if (nil != _labelLevel) {
+        [_labelLevel setOpacity:opacity];
+    }
+    if (nil != _labelMoves) {
+        [_labelMoves setOpacity:opacity];
+    }
+    [super setOpacity:opacity];
 }
 
 @end

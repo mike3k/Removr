@@ -16,7 +16,7 @@
 @dynamic background;
 @dynamic index;
 #else
-@synthesize map = _map, background = _background, index = _index;
+@synthesize map = _map, background = _background, index = _index, par = _par, title = _title;
 
 - (id)alloc
 {
@@ -29,7 +29,7 @@
 {
     self.map = nil;
     self.background = nil;
-    self.index = nil;
+    self.title = nil;
     [super dealloc];
 }
 

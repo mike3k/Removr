@@ -24,6 +24,7 @@
 - (void)visitweb: (id)sender;
 
 - (int)levelCount;
+- (NSInteger) scoreForLevel: (NSInteger)level;
 
 @property (assign,nonatomic) BOOL paused;
 @property (assign,nonatomic) NSInteger curLevel;
