@@ -11,6 +11,8 @@
 
 @protocol MCLayerDelegate <NSObject>
 
+- (void)playLevel: (NSNumber*)level;
+
 - (void)play:(id)sender;
 - (void)highscores:(id)sender;
 - (void)options:(id)sender;
@@ -20,6 +22,8 @@
 - (void)pause: (id)sender;
 - (void)resume: (id)sender;
 - (void)visitweb: (id)sender;
+
+- (int)levelCount;
 
 @property (assign,nonatomic) BOOL paused;
 @property (assign,nonatomic) NSInteger curLevel;

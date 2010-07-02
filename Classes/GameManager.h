@@ -37,6 +37,8 @@
     
     BOOL _paused;
     
+    int _levelCount;
+    
 }
 
 

@@ -16,6 +16,8 @@
 		272BC26911C9DBC700F9C1C8 /* pause-restart.png in Resources */ = {isa = PBXBuildFile; fileRef = 272BC26211C9DBC700F9C1C8 /* pause-restart.png */; };
 		272BC26A11C9DBC700F9C1C8 /* pause-resume-sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 272BC26311C9DBC700F9C1C8 /* pause-resume-sel.png */; };
 		272BC26B11C9DBC700F9C1C8 /* pause-resume.png in Resources */ = {isa = PBXBuildFile; fileRef = 272BC26411C9DBC700F9C1C8 /* pause-resume.png */; };
+		272D6C0911DD2B800064FAEC /* LevelMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D6C0811DD2B800064FAEC /* LevelMenuItem.m */; };
+		272D6C7111DD40720064FAEC /* levelbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 272D6C7011DD40720064FAEC /* levelbutton.png */; };
 		2740F7ED11CC6495004FC184 /* Level.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 2740F7EB11CC6495004FC184 /* Level.xcdatamodel */; };
 		2740F87211CC7C9E004FC184 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 2740F87011CC7C9E004FC184 /* Level.m */; };
 		2740F8CA11CC8D49004FC184 /* levels.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 2740F8C811CC8D49004FC184 /* levels.sqlite3 */; };
@@ -364,6 +366,9 @@
 		272BC26211C9DBC700F9C1C8 /* pause-restart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-restart.png"; path = "Toffeenut/Removr Files - Interface/extra/pause-restart.png"; sourceTree = SOURCE_ROOT; };
 		272BC26311C9DBC700F9C1C8 /* pause-resume-sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-resume-sel.png"; path = "Toffeenut/Removr Files - Interface/extra/pause-resume-sel.png"; sourceTree = SOURCE_ROOT; };
 		272BC26411C9DBC700F9C1C8 /* pause-resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-resume.png"; path = "Toffeenut/Removr Files - Interface/extra/pause-resume.png"; sourceTree = SOURCE_ROOT; };
+		272D6C0711DD2B800064FAEC /* LevelMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelMenuItem.h; sourceTree = "<group>"; };
+		272D6C0811DD2B800064FAEC /* LevelMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelMenuItem.m; sourceTree = "<group>"; };
+		272D6C7011DD40720064FAEC /* levelbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levelbutton.png; sourceTree = "<group>"; };
 		2740F7EB11CC6495004FC184 /* Level.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Level.xcdatamodel; sourceTree = "<group>"; };
 		2740F86711CC78F5004FC184 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2740F86F11CC7C9E004FC184 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
@@ -835,6 +840,8 @@
 				27C24C7F11D63FDC006F5A47 /* AppSettings.m */,
 				27C24CB411D7B9E2006F5A47 /* LevelCompleteMsg.h */,
 				27C24CB511D7B9E2006F5A47 /* LevelCompleteMsg.m */,
+				272D6C0711DD2B800064FAEC /* LevelMenuItem.h */,
+				272D6C0811DD2B800064FAEC /* LevelMenuItem.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1207,6 +1214,7 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				272D6C7011DD40720064FAEC /* levelbutton.png */,
 				27C24DEF11D990FA006F5A47 /* spacer.png */,
 				27C24DBC11D98547006F5A47 /* visit-sel.png */,
 				27C24DBD11D98547006F5A47 /* visit.png */,
@@ -1514,6 +1522,7 @@
 				27C24DBE11D98548006F5A47 /* visit-sel.png in Resources */,
 				27C24DBF11D98548006F5A47 /* visit.png in Resources */,
 				27C24DF011D990FA006F5A47 /* spacer.png in Resources */,
+				272D6C7111DD40720064FAEC /* levelbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1544,6 +1553,7 @@
 				27C24C3211D55EA1006F5A47 /* OnOffButton.m in Sources */,
 				27C24C8011D63FDC006F5A47 /* AppSettings.m in Sources */,
 				27C24CB611D7B9E2006F5A47 /* LevelCompleteMsg.m in Sources */,
+				272D6C0911DD2B800064FAEC /* LevelMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

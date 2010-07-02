@@ -40,9 +40,11 @@ static GameManager *_sharedGameManager = nil;
     if ((self = [super init])) {
         aps = [AppSettings shared];
         self.curLevel = aps.lastLevel;
-        db = nil;
 
         self.dbpath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"sqlite3"];
+        sqlite3_open([self.dbpath UTF8String] , &db);
+
+        _levelCount = -1;
 
     }
     return self;
@@ -95,8 +97,7 @@ static GameManager *_sharedGameManager = nil;
         return _theLevel;
     }
     // open the database & prepare the query here the first time we use it instead of init
-    if (nil == db) {
-        sqlite3_open([self.dbpath UTF8String] , &db);
+    if (nil == query) {
         sqlite3_prepare_v2(db, "SELECT * FROM levels WHERE ix=?", -1, &query, NULL);
     }
     Level *lvl = nil;
@@ -123,9 +124,19 @@ static GameManager *_sharedGameManager = nil;
 
 - (int)levelCount
 {
-    //return [_levels count];
-    // TODO: Count rows in database
-    return 100;
+
+    if (_levelCount <= 0) {
+        sqlite3_stmt *scount;
+        int result = sqlite3_prepare_v2(db, "SELECT COUNT(*) FROM levels", -1, &scount, NULL);
+        result = sqlite3_step(scount);
+        if (result == SQLITE_ROW) {
+            _levelCount = sqlite3_column_int(scount, 0);
+        }
+        else _levelCount = 100; // don't freak out if the query fails
+        sqlite3_finalize(scount);
+    }
+
+    return _levelCount;
 }
 
 - (void)visitweb:(id)sender

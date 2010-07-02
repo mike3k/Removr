@@ -11,4 +11,6 @@
 @interface HighScoreLayer : MCLayer {
 }
 
+- (void)gotoLevel: (id)sender;
+
 @end
