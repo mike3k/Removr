@@ -61,12 +61,20 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 @synthesize level = _level, sheet = _sheet;
 
+- (void)setAccellerometer
+{
+    self.isAccelerometerEnabled = aps.accelerometer;
+    if (!self.isAccelerometerEnabled) {
+         space->gravity = ccp(0, -200);
+   }
+
+}
+
 -(id) init
 {
     if( (self=[super init])) {
 		aps = [AppSettings shared];
         self.isTouchEnabled = YES;
-        self.isAccelerometerEnabled = aps.accelerometer;
         
         CGSize wins = [[CCDirector sharedDirector] winSize];
     
@@ -122,18 +130,46 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         [self addChild:menu  z:zOverlayLevel tag:kTagPauseButton];
         //[self runWithMap: lvl1 size:(sizeof(lvl1) / sizeof(UInt32))];
         //[self gotoLevel: [_delegate curLevel]];
-        if (aps.sound) {
-            [self playIntroMusic];
-        }
+        [self preloadSounds];
     }
 	
 	return self;
 }
 
+- (void)preloadSounds
+{
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"remove.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"fart.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"applause.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"intro.wav"];
+}
+
+- (void)playWinSound
+{
+    if (aps.sound) {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"applause.wav"];
+    }
+}
+
+- (void)playRemoveSound
+{
+    if (aps.sound) {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"remove.wav"];
+    }
+}
+
+-( void)playLoseSound
+{
+    if (aps.sound) {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"fart.wav"];
+    }
+}
+
 - (void)playIntroMusic
 {
     if (aps.sound) {
-        [[SimpleAudioEngine sharedEngine] playEffect:@"intro.wav"];
+        NSLog(@"playing bg music");
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"intro.wav" loop:NO];
     }
 }
 
@@ -183,21 +219,19 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)play
 {
-    aps = [AppSettings shared];
-    self.isAccelerometerEnabled = aps.accelerometer;
+    [self setAccellerometer];
 
     if (_delegate.paused) {
         [self resume];
     }
     else {
+        [self playIntroMusic];
         [self gotoLevel:-1];
     }
 }
 
 - (void)playLevel: (NSNumber*)num
 {
-    aps = [AppSettings shared];
-    self.isAccelerometerEnabled = aps.accelerometer;
     [self gotoLevel:[num intValue]];
 }
 
@@ -252,6 +286,8 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         [self removeChild:pauseMenu cleanup:NO];
         pauseMenu = nil;
     }
+    // also remove win screen if present
+    [self removeChildByTag:kTagWinScreen cleanup:YES];
 }
 
 - (void)quit
@@ -268,6 +304,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)resume
 {
+    [self setAccellerometer];
     _delegate.paused = NO;
     [self hidePauseMenu];
     [self start];
@@ -280,7 +317,11 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     if ((nil != sprite) && (force || sprite.canRemove)) {
         if (sprite.mustKeep) {
             NSLog(@"removing green object - LOSE");
+            [self playLoseSound];
             lose = YES;
+        }
+        else if (!force) {
+            [self playRemoveSound];
         }
         sprite.visible = NO;
         [_sheet removeChild:sprite cleanup:NO];
@@ -344,6 +385,8 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     CGSize wins = [[CCDirector sharedDirector] winSize];    
     [self stop];
 
+    [self playWinSound];
+
     [self dimScreen];
 
     [[GameManager shared] setScore:moves forLevel:self.level];
@@ -394,7 +437,9 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     if (level < 0) {
         level = _delegate.curLevel;
     }
-    
+
+    [self setAccellerometer];
+
     self.level = level;
     
     Level *theLevel = [[GameManager shared] GetLevel: level];

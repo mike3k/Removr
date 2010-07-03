@@ -24,6 +24,9 @@
 		272D6D4E11DE6D710064FAEC /* button-next-sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 272D6D4C11DE6D710064FAEC /* button-next-sel.png */; };
 		272D6D4F11DE6D710064FAEC /* button-prev-sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 272D6D4D11DE6D710064FAEC /* button-prev-sel.png */; };
 		272D6D9111DEA4F60064FAEC /* MCMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D6D9011DEA4F60064FAEC /* MCMenuItem.m */; };
+		272D6F3111DFD5E40064FAEC /* applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = 272D6F2E11DFD5E40064FAEC /* applause.wav */; };
+		272D6F3211DFD5E40064FAEC /* fart.wav in Resources */ = {isa = PBXBuildFile; fileRef = 272D6F2F11DFD5E40064FAEC /* fart.wav */; };
+		272D6F3311DFD5E40064FAEC /* remove.wav in Resources */ = {isa = PBXBuildFile; fileRef = 272D6F3011DFD5E40064FAEC /* remove.wav */; };
 		2740F7ED11CC6495004FC184 /* Level.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 2740F7EB11CC6495004FC184 /* Level.xcdatamodel */; };
 		2740F87211CC7C9E004FC184 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 2740F87011CC7C9E004FC184 /* Level.m */; };
 		2740F8CA11CC8D49004FC184 /* levels.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 2740F8C811CC8D49004FC184 /* levels.sqlite3 */; };
@@ -382,6 +385,9 @@
 		272D6D4D11DE6D710064FAEC /* button-prev-sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-prev-sel.png"; sourceTree = "<group>"; };
 		272D6D8F11DEA4F60064FAEC /* MCMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMenuItem.h; sourceTree = "<group>"; };
 		272D6D9011DEA4F60064FAEC /* MCMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMenuItem.m; sourceTree = "<group>"; };
+		272D6F2E11DFD5E40064FAEC /* applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = applause.wav; sourceTree = "<group>"; };
+		272D6F2F11DFD5E40064FAEC /* fart.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fart.wav; sourceTree = "<group>"; };
+		272D6F3011DFD5E40064FAEC /* remove.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = remove.wav; sourceTree = "<group>"; };
 		2740F7EB11CC6495004FC184 /* Level.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Level.xcdatamodel; sourceTree = "<group>"; };
 		2740F86711CC78F5004FC184 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2740F86F11CC7C9E004FC184 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
@@ -1229,6 +1235,9 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				272D6F2E11DFD5E40064FAEC /* applause.wav */,
+				272D6F2F11DFD5E40064FAEC /* fart.wav */,
+				272D6F3011DFD5E40064FAEC /* remove.wav */,
 				272D6D4C11DE6D710064FAEC /* button-next-sel.png */,
 				272D6D4D11DE6D710064FAEC /* button-prev-sel.png */,
 				272D6D2E11DE67990064FAEC /* button-next.png */,
@@ -1548,6 +1557,9 @@
 				272D6D3111DE67990064FAEC /* button-prev.png in Resources */,
 				272D6D4E11DE6D710064FAEC /* button-next-sel.png in Resources */,
 				272D6D4F11DE6D710064FAEC /* button-prev-sel.png in Resources */,
+				272D6F3111DFD5E40064FAEC /* applause.wav in Resources */,
+				272D6F3211DFD5E40064FAEC /* fart.wav in Resources */,
+				272D6F3311DFD5E40064FAEC /* remove.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

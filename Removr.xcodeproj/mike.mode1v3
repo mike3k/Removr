@@ -284,6 +284,7 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>506EDAA3102F461B00A389B3</string>
+								<string>502BC2F7112082F900A0B92A</string>
 								<string>2D500B1D0D5A766B00DBA0E3</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>50F4144210692EE7002A0D5E</string>
@@ -294,11 +295,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>142</integer>
+									<integer>38</integer>
+									<integer>19</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 1636}, {299, 846}}</string>
+							<string>{{0, 0}, {299, 846}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -330,12 +333,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MCMenuItem.m</string>
+								<string>GameLayer.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -343,11 +348,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MCMenuItem.m</string>
+										<string>GameLayer.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>272D6F1D11DEB48A0064FAEC</string>
+										<string>272D6F4811DFD99D0064FAEC</string>
 										<key>history</key>
 										<array>
 											<string>2735E5201183491B00E8247E</string>
@@ -378,11 +383,7 @@
 											<string>27BDBCCA11D0483400D31B40</string>
 											<string>27BDBD7311D107B900D31B40</string>
 											<string>27BDBD7A11D10AF500D31B40</string>
-											<string>27BDBD8C11D1240F00D31B40</string>
-											<string>27BDBD8D11D1240F00D31B40</string>
 											<string>27BDBD8E11D1240F00D31B40</string>
-											<string>27BDBDC911D1647A00D31B40</string>
-											<string>27BDBDCA11D1647A00D31B40</string>
 											<string>27BDBDCE11D1647A00D31B40</string>
 											<string>27BDBDCF11D1647A00D31B40</string>
 											<string>27BDBDD011D1647A00D31B40</string>
@@ -431,11 +432,8 @@
 											<string>272D6BF311DC23990064FAEC</string>
 											<string>272D6BF611DC23990064FAEC</string>
 											<string>272D6BF711DC23990064FAEC</string>
-											<string>272D6BFC11DC23990064FAEC</string>
 											<string>272D6C1611DD36AA0064FAEC</string>
 											<string>272D6C1911DD36AA0064FAEC</string>
-											<string>272D6C1B11DD36AA0064FAEC</string>
-											<string>272D6C1C11DD36AA0064FAEC</string>
 											<string>272D6C1D11DD36AA0064FAEC</string>
 											<string>272D6C1E11DD36AA0064FAEC</string>
 											<string>272D6C1F11DD36AA0064FAEC</string>
@@ -464,7 +462,14 @@
 											<string>272D6F1911DEB48A0064FAEC</string>
 											<string>272D6F1A11DEB48A0064FAEC</string>
 											<string>272D6F1B11DEB48A0064FAEC</string>
-											<string>272D6F1C11DEB48A0064FAEC</string>
+											<string>272D6F2411DFBDCF0064FAEC</string>
+											<string>272D6F2511DFBDCF0064FAEC</string>
+											<string>272D6F2611DFBDCF0064FAEC</string>
+											<string>272D6F3611DFD7690064FAEC</string>
+											<string>272D6F4411DFD99D0064FAEC</string>
+											<string>272D6F4511DFD99D0064FAEC</string>
+											<string>272D6F4611DFD99D0064FAEC</string>
+											<string>272D6F4711DFD99D0064FAEC</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -486,8 +491,6 @@
 							<string>709pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -645,7 +648,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>299807882.32674003</real>
+	<real>299882909.81630403</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -664,10 +667,10 @@
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>272D6BFF11DC23990064FAEC</string>
 		<string>272D6C0011DC23990064FAEC</string>
-		<string>27ED5F5A0E52884C00CCF2AE</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/mike/Sources/mystuff/Removr/Removr.xcodeproj</string>
+		<string>27ED5F5A0E52884C00CCF2AE</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 	</array>
 	<key>WindowString</key>
 	<string>67 95 1292 905 0 0 1680 1028 </string>
@@ -691,7 +694,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>BlocksAppDelegate.m</string>
+								<string>GameLayer.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

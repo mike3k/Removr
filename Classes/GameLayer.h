@@ -37,6 +37,12 @@
 @property (retain,nonatomic) CCSpriteSheet *sheet;
 
 - (void)playIntroMusic;
+- (void)playWinSound;
+- (void)playLoseSound;
+- (void)playRemoveSound;
+- (void)preloadSounds;
+
+- (void)setAccellerometer;
 
 //+ (id) scene;
 - (void) step: (ccTime) dt;
