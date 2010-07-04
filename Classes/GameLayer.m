@@ -45,13 +45,15 @@ eachShape(void *ptr, void* unused)
 
 static void postStepRemove(cpSpace *space, cpShape *shape, void *data)
 {
+#ifndef NDEBUG
     NSLog(@"remove shape");
+#endif
     [(GameLayer*)data removeShape:shape force: YES];
 }
 
 static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 {
-    NSLog(@"collision handler");
+    //NSLog(@"collision handler");
     CP_ARBITER_GET_SHAPES(arb, a, b);
     cpSpaceAddPostStepCallback(space, (cpPostStepFunc)postStepRemove, b, data);
     return 0;
@@ -168,7 +170,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 - (void)playIntroMusic
 {
     if (aps.sound) {
-        NSLog(@"playing bg music");
+        //NSLog(@"playing bg music");
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"intro.wav" loop:NO];
     }
 }
@@ -312,11 +314,11 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)removeShape: (cpShape*)shape force: (BOOL)force
 {
-    NSLog(@"GaameScreen removeShape: %d",shape);
+    //NSLog(@"GaameScreen removeShape: %d",shape);
     ShapeSprite *sprite = shape->data;
     if ((nil != sprite) && (force || sprite.canRemove)) {
         if (sprite.mustKeep) {
-            NSLog(@"removing green object - LOSE");
+            //NSLog(@"removing green object - LOSE");
             [self playLoseSound];
             lose = YES;
         }
@@ -469,7 +471,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
                 win = NO;
         }
     }
-    NSLog(@"testWinOrLose: win=%d lose-%d",win,lose);
+    //NSLog(@"testWinOrLose: win=%d lose-%d",win,lose);
     return (win ? 1 : (lose ? -1 : 0));
 }
 

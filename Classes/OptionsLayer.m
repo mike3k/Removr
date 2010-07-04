@@ -60,13 +60,13 @@
 
 - (void)toggleSound:(id)sender
 {
-    NSLog(@"toggle sound: %@",sender);
+    //NSLog(@"toggle sound: %@",sender);
     aps.sound = bSound.on;
 }
 
 - (void)toggleAccel:(id)sender
 {
-    NSLog(@"toggle accelerometer: %@",sender);
+    //NSLog(@"toggle accelerometer: %@",sender);
     aps.accelerometer = bAccel.on;
 }
 

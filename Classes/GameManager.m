@@ -81,7 +81,11 @@ static GameManager *_sharedGameManager = nil;
         [levelstat setLength:level*sizeof(NSInteger)];
     }
     NSInteger *scores = (NSInteger*)[levelstat bytes];
-    scores[level] = (score ? score : -1);
+    // only save the score if it's lower than the last saved score
+    NSInteger oldScore = scores[level];
+    if (oldScore && (score < oldScore)) {
+        scores[level] = (score ? score : -1);
+    }
 }
 
 - (NSInteger) scoreForLevel: (NSInteger)level

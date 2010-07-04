@@ -45,7 +45,9 @@ static AppSettings *theSettings = nil;
 }
 
 - (BOOL) save {
+#ifndef NDEBUG
     NSLog(@"saving settings");
+#endif
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def setBool: self.sound forKey: @"sound"];
     [def setBool: self.accelerometer forKey: @"accel"];

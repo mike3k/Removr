@@ -92,7 +92,9 @@ static SpriteInfo sprites[] = {
 
 - (void)dealloc
 {
+#ifndef NDEBUG
     NSLog(@"dealloc sprite %@, shape=%d",self,_shape);
+#endif
 
     if (_shape != nil) {
         [self removeShape];

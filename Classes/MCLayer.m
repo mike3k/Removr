@@ -18,13 +18,17 @@
     if ((self = [super init])) {
         self.delegate = [GameManager shared];
     }
+#ifndef NDEBUG
     NSLog(@"[%@ init]",self);
+#endif
     return self;
 }
 
 - (void)dealloc
 {
+#ifndef NDEBUG
     NSLog(@"[%@ dealloc]",self);
+#endif
     [super dealloc];
 }
 
