@@ -5,13 +5,14 @@ typedef unsigned long UInt32;
 
 #include "../Classes/SpriteDefs.h"
 
-#define NUM_LEVELS 4
+#define NUM_LEVELS 5
 
 static char *backgrounds[NUM_LEVELS] = {
     "Lvl1Background.png",
     "Lvl2Background.png",
     "Lvl3Background.png",
     "background.png",
+    "background.png"
 };
 
 static UInt32 levels[NUM_LEVELS][16] = {
@@ -64,6 +65,19 @@ static UInt32 levels[NUM_LEVELS][16] = {
 
         0L
     },
+    {
+        StuffPiece(4,15,22),
+        StuffPiece(4,16,3),
+        StuffPiece(5,11,5),
+        StuffPiece(5,13,1),
+        StuffPiece(6,9,5),
+        StuffPiece(7,7,5),
+        StuffPiece(8,5,5),
+        StuffPiece(9,3,5),
+        
+        0L
+    }
+
 };
 
 sqlite3 * db;

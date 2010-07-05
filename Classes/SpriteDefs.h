@@ -67,44 +67,44 @@ typedef struct {
 
 enum    {
     RedCircle    = 1,
-    GreenCircle,
-    BlueCircle,
+    GreenCircle,    //2
+    BlueCircle,     //3
 
-    RedSquare,
-    GreenSquare,
-    BlueSquare,
+    RedSquare,      //4
+    GreenSquare,    //5
+    BlueSquare,     //6
 
-    RedCircleCB,
-    GreenCircleCB,
-    BlueCircleCB,
+    RedCircleCB,    //7
+    GreenCircleCB,  //8
+    BlueCircleCB,   //9
 
-    RedSquareCB,
-    GreenSquareCB,
-    BlueSquareCB,
+    RedSquareCB,    //10
+    GreenSquareCB,  //11
+    BlueSquareCB,   //12
 
-    RedHorizBar256,
-    GreenHorizBar256,
-    BlueHorizBar256,
+    RedHorizBar256,     //13
+    GreenHorizBar256,   //14
+    BlueHorizBar256,    //15
 
-    RedVertBar256,
-    GreenVertBar256,
-    BlueVertBar256,
+    RedVertBar256,      //16
+    GreenVertBar256,    //17
+    BlueVertBar256,     //18
 
-    RedHorizBar128,
-    GreenHorizBar128,
-    BlueHorizBar128,
+    RedHorizBar128,     //19
+    GreenHorizBar128,   //20
+    BlueHorizBar128,    //21
 
-    RedHorizBar64,
-    GreenHorizBar64,
-    BlueHorizBar64,
+    RedHorizBar64,      //22
+    GreenHorizBar64,    //23
+    BlueHorizBar64,     //24
     
-    RedVertBar128,
-    GreenVertBar128,
-    BlueVertBar128,
+    RedVertBar128,      //25
+    GreenVertBar128,    //26
+    BlueVertBar128,     //27
     
-    RedVertBar64,
-    GreenVertBar64,
-    BlueVertBar64,
+    RedVertBar64,       //28
+    GreenVertBar64,     //29
+    BlueVertBar64,      //30
 
 };
 
