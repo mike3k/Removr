@@ -76,6 +76,9 @@ static GameManager *_sharedGameManager = nil;
 
 - (void) setScore: (NSInteger)score forLevel: (NSInteger)level
 {
+#ifndef NDEBUG
+    NSLog(@"setScore:%d forLevel:%d",score,level);
+#endif
     NSMutableData *levelstat = aps.levelStatus;
     if (level > ([levelstat length]/sizeof(NSInteger))) {
         [levelstat setLength:level*sizeof(NSInteger)];
@@ -83,7 +86,7 @@ static GameManager *_sharedGameManager = nil;
     NSInteger *scores = (NSInteger*)[levelstat bytes];
     // only save the score if it's lower than the last saved score
     NSInteger oldScore = scores[level];
-    if (oldScore && (score < oldScore)) {
+    if ((0==oldScore) || (score < oldScore)) {
         scores[level] = (score ? score : -1);
     }
 }
@@ -102,7 +105,7 @@ static GameManager *_sharedGameManager = nil;
     }
     // open the database & prepare the query here the first time we use it instead of init
     if (nil == query) {
-        sqlite3_prepare_v2(db, "SELECT * FROM levels WHERE ix=?", -1, &query, NULL);
+        sqlite3_prepare_v2(db, "SELECT * FROM levels WHERE ROWID=?", -1, &query, NULL);
     }
     Level *lvl = nil;
     self.curLevel = number;

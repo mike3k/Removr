@@ -299,7 +299,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 251}, {299, 846}}</string>
+							<string>{{0, 0}, {299, 846}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -338,7 +338,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>sqlite3.h</string>
+								<string>GameManager.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -346,11 +346,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>sqlite3.h</string>
+										<string>GameManager.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>278B191811E173F5006B9FAC</string>
+										<string>278B195711E22357006B9FAC</string>
 										<key>history</key>
 										<array>
 											<string>2735E5211183491B00E8247E</string>
@@ -466,8 +466,8 @@
 											<string>278B18F211E170F2006B9FAC</string>
 											<string>278B18F311E170F2006B9FAC</string>
 											<string>278B18F411E170F2006B9FAC</string>
-											<string>278B18F511E170F2006B9FAC</string>
-											<string>278B18F611E170F2006B9FAC</string>
+											<string>278B194311E2214D006B9FAC</string>
+											<string>278B194411E2214D006B9FAC</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -646,7 +646,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>299987957.95682198</real>
+	<real>300032855.7101</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -661,10 +661,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>278B194911E2216E006B9FAC</string>
+		<string>278B194711E2214D006B9FAC</string>
 		<string>/Users/mike/Sources/mystuff/Removr/Removr.xcodeproj</string>
-		<string>27ED5F5A0E52884C00CCF2AE</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>27ED5F5A0E52884C00CCF2AE</string>
 	</array>
 	<key>WindowString</key>
 	<string>67 95 1292 905 0 0 1680 1028 </string>

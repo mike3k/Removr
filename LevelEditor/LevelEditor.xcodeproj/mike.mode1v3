@@ -233,7 +233,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>278B191311E1720A006B9FAC</string>
+						<string>278B195611E22357006B9FAC</string>
 						<key>history</key>
 						<array>
 							<string>278B190B11E17115006B9FAC</string>
@@ -392,7 +392,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>278B191211E1720A006B9FAC</string>
+										<string>278B195511E22357006B9FAC</string>
 										<key>history</key>
 										<array>
 											<string>272D6FF311E1008D0064FAEC</string>
@@ -403,7 +403,7 @@
 											<string>278B18DC11E17043006B9FAC</string>
 											<string>278B18DD11E17043006B9FAC</string>
 											<string>278B18DE11E17043006B9FAC</string>
-											<string>278B18DF11E17043006B9FAC</string>
+											<string>278B193B11E22001006B9FAC</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -582,7 +582,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>299987466.45899302</real>
+	<real>300032855.27578199</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -597,7 +597,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>278B191411E1720A006B9FAC</string>
 		<string>278B18EC11E17043006B9FAC</string>
 		<string>278B18ED11E17043006B9FAC</string>
 		<string>278B190911E17115006B9FAC</string>

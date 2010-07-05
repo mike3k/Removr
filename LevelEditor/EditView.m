@@ -128,7 +128,12 @@
     int Y = pt.y / 16;   //([self bounds].size.height - eventLocation.y) / 16;
     
     NSLog(@"Point: %d, %d",X,Y);
-    map[X][Y] = currentPiece;
+    if ([theEvent modifierFlags] & NSAlternateKeyMask) {
+        map[X][Y] = 0;
+    }
+    else {
+        map[X][Y] = currentPiece;
+    }
     [self setNeedsDisplay:YES];
 }
 

@@ -21,7 +21,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -79,9 +79,9 @@
 	};
 	272D6FEE11E0FFD90064FAEC /* EditView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1328, 3484}}";
-			sepNavSelRange = "{6711, 0}";
-			sepNavVisRange = "{5998, 1617}";
+			sepNavIntBoundsRect = "{{0, 0}, {1004, 3016}}";
+			sepNavSelRange = "{4686, 0}";
+			sepNavVisRange = "{3345, 1572}";
 		};
 	};
 	272D6FF311E1008D0064FAEC /* PlistBookmark */ = {
@@ -164,7 +164,7 @@
 			sepNavVisRange = "{1777, 937}";
 		};
 	};
-	278B18CE11E16F89006B9FAC /* EditView.m:219 */ = {
+	278B18CE11E16F89006B9FAC /* EditView.m:224 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -176,9 +176,8 @@
 		functionName = "-dumpsql";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 219;
-		location = LevelEditor;
-		modificationTime = 299987460.49858;
+		lineNumber = 224;
+		modificationTime = 300032619.945482;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -251,7 +250,7 @@
 		fRef = 272D6FEE11E0FFD90064FAEC /* EditView.m */;
 		name = "EditView.m: 222";
 		rLen = 0;
-		rLoc = 6819;
+		rLoc = 6931;
 		rType = 0;
 		vrLen = 1482;
 		vrLoc = 6055;
@@ -261,7 +260,7 @@
 		fRef = 272D6FEE11E0FFD90064FAEC /* EditView.m */;
 		name = "EditView.m: 233";
 		rLen = 0;
-		rLoc = 7448;
+		rLoc = 7560;
 		rType = 0;
 		vrLen = 1544;
 		vrLoc = 6055;
@@ -271,7 +270,7 @@
 		fRef = 272D6FEE11E0FFD90064FAEC /* EditView.m */;
 		name = "EditView.m: 223";
 		rLen = 12;
-		rLoc = 6774;
+		rLoc = 6886;
 		rType = 0;
 		vrLen = 1544;
 		vrLoc = 6055;
@@ -310,7 +309,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {705, 71604}}";
 			sepNavSelRange = "{13552, 63}";
-			sepNavVisRange = "{11131, 3281}";
+			sepNavVisRange = "{11131, 3426}";
 		};
 	};
 	278B191211E1720A006B9FAC /* PBXTextBookmark */ = {
@@ -318,7 +317,7 @@
 		fRef = 272D6FEE11E0FFD90064FAEC /* EditView.m */;
 		name = "EditView.m: 221";
 		rLen = 0;
-		rLoc = 6711;
+		rLoc = 6823;
 		rType = 0;
 		vrLen = 1617;
 		vrLoc = 5998;
@@ -333,6 +332,76 @@
 		vrLen = 3281;
 		vrLoc = 11131;
 	};
+	278B193B11E22001006B9FAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 272D6FEE11E0FFD90064FAEC /* EditView.m */;
+		name = "EditView.m: 122";
+		rLen = 16;
+		rLoc = 4265;
+		rType = 0;
+		vrLen = 1514;
+		vrLoc = 3345;
+	};
+	278B193C11E22001006B9FAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 272D6FEE11E0FFD90064FAEC /* EditView.m */;
+		name = "EditView.m: 132";
+		rLen = 0;
+		rLoc = 4686;
+		rType = 0;
+		vrLen = 1539;
+		vrLoc = 3345;
+	};
+	278B193D11E22001006B9FAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 278B190E11E17115006B9FAC /* sqlite3.h */;
+		name = "sqlite3.h: 335";
+		rLen = 63;
+		rLoc = 13552;
+		rType = 0;
+		vrLen = 3281;
+		vrLoc = 11131;
+	};
+	278B194D11E2227D006B9FAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 272D6FEE11E0FFD90064FAEC /* EditView.m */;
+		name = "EditView.m: 132";
+		rLen = 0;
+		rLoc = 4686;
+		rType = 0;
+		vrLen = 1572;
+		vrLoc = 3345;
+	};
+	278B194E11E2227D006B9FAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 278B190E11E17115006B9FAC /* sqlite3.h */;
+		name = "sqlite3.h: 335";
+		rLen = 63;
+		rLoc = 13552;
+		rType = 0;
+		vrLen = 3426;
+		vrLoc = 11131;
+	};
+	278B195511E22357006B9FAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 272D6FEE11E0FFD90064FAEC /* EditView.m */;
+		name = "EditView.m: 132";
+		rLen = 0;
+		rLoc = 4686;
+		rType = 0;
+		vrLen = 1572;
+		vrLoc = 3345;
+	};
+	278B195611E22357006B9FAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 278B190E11E17115006B9FAC /* sqlite3.h */;
+		name = "sqlite3.h: 335";
+		rLen = 63;
+		rLoc = 13552;
+		rType = 0;
+		vrLen = 3426;
+		vrLoc = 11131;
+	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 272D6FBF11E0F0D30064FAEC /* LevelEditor */;
@@ -341,7 +410,7 @@
 			8D1107260486CEB800E47090 /* LevelEditor */,
 		);
 		breakpoints = (
-			278B18CE11E16F89006B9FAC /* EditView.m:219 */,
+			278B18CE11E16F89006B9FAC /* EditView.m:224 */,
 		);
 		codeSenseManager = 272D6FCF11E0F0EE0064FAEC /* Code sense */;
 		executables = (
@@ -417,6 +486,13 @@
 			278B190D11E17115006B9FAC /* PBXTextBookmark */ = 278B190D11E17115006B9FAC /* PBXTextBookmark */;
 			278B191211E1720A006B9FAC /* PBXTextBookmark */ = 278B191211E1720A006B9FAC /* PBXTextBookmark */;
 			278B191311E1720A006B9FAC /* PBXTextBookmark */ = 278B191311E1720A006B9FAC /* PBXTextBookmark */;
+			278B193B11E22001006B9FAC /* PBXTextBookmark */ = 278B193B11E22001006B9FAC /* PBXTextBookmark */;
+			278B193C11E22001006B9FAC /* PBXTextBookmark */ = 278B193C11E22001006B9FAC /* PBXTextBookmark */;
+			278B193D11E22001006B9FAC /* PBXTextBookmark */ = 278B193D11E22001006B9FAC /* PBXTextBookmark */;
+			278B194D11E2227D006B9FAC /* PBXTextBookmark */ = 278B194D11E2227D006B9FAC /* PBXTextBookmark */;
+			278B194E11E2227D006B9FAC /* PBXTextBookmark */ = 278B194E11E2227D006B9FAC /* PBXTextBookmark */;
+			278B195511E22357006B9FAC /* PBXTextBookmark */ = 278B195511E22357006B9FAC /* PBXTextBookmark */;
+			278B195611E22357006B9FAC /* PBXTextBookmark */ = 278B195611E22357006B9FAC /* PBXTextBookmark */;
 		};
 		sourceControlManager = 272D6FCE11E0F0EE0064FAEC /* Source Control */;
 		userBuildSettings = {
