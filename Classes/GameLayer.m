@@ -294,6 +294,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)quit
 {
+    [aps save];
     [self hidePauseMenu];
     [_delegate menu:self];
 }
