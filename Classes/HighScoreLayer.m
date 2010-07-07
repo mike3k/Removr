@@ -16,6 +16,8 @@
 
 @end
 
+// TODO: make sure this is disabled in final build
+#define FORCE_ALL_LEVELS
 
 @implementation HighScoreLayer
 
@@ -23,7 +25,12 @@
 {
     int theScore = [_delegate scoreForLevel: theLevel];
     itm.level = theLevel+1;
-    if (theLevel < [_delegate levelCount] && (theScore != 0)) {
+#ifdef FORCE_ALL_LEVELS
+    if (theLevel < [_delegate levelCount])
+#else
+    if (theLevel < [_delegate levelCount] && (theScore != 0))
+#endif
+    {
         itm.moves = theScore;
         //[itm setOpacity:255];
         [itm setIsEnabled:YES];
@@ -51,14 +58,6 @@
                                                         selectedImage:@"levelbutton-sel.png"
                                                                target:self
                                                              selector:@selector(gotoLevel:)];
-//            itm.level = theLevel+1;
-//            if (theLevel < [_delegate levelCount]) {
-//                itm.moves = [_delegate scoreForLevel: theLevel];
-//            }
-//            else {
-//                [itm setOpacity: 64];
-//                [itm setIsEnabled: NO];
-//            }
             [_buttons addObject:itm];
             [menu addChild:itm z:0 tag:0];
             [self updateItem:itm forLevel:theLevel];

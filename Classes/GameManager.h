@@ -27,6 +27,7 @@
 
 
     NSString *_dbpath;
+    BOOL    dbmod;
 
     sqlite3 * db;
     sqlite3_stmt * query;
@@ -53,6 +54,11 @@
 
 //- (BOOL)LoadLevels;
 
+- (void)clearScores;
+
+- (BOOL) copydb;
+- (BOOL) opendb;
+- (BOOL) checkForDbUdate;
 
 - (Level*)GetLevel: (int)number;
 - (int)levelCount;

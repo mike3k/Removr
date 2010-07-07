@@ -10,6 +10,9 @@
 
 
 @interface AppSettings : NSObject {
+    NSInteger _version;
+    NSDate  *_last_check;
+    
     BOOL _accelerometer;
     BOOL _sound;
 
@@ -20,6 +23,10 @@
 
 @property (assign,nonatomic) BOOL accelerometer;
 @property (assign,nonatomic) BOOL sound;
+
+@property (assign,nonatomic) NSInteger version;
+
+@property (retain,nonatomic) NSDate *last_check;
 
 @property (assign,nonatomic) NSInteger lastLevel;
 @property (retain,nonatomic) NSMutableData* levelStatus;

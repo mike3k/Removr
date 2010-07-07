@@ -30,5 +30,7 @@
 - (NSString*)dumpText;
 
 - (void)dumpsql;
+- (NSString*)sqlText;
+
 
 @end

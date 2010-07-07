@@ -96,7 +96,7 @@
 	[CCTexture2D setDefaultAlphaPixelFormat:kTexture2DPixelFormat_RGBA8888];	
 	
 	[director runWithScene: [MenuScene node]];
-		
+    NSLog(@"applicationDidFinishLaunching returns");
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -111,6 +111,7 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
+    [[NSUserDefaults standardUserDefaults] synchronize];
 	[[CCDirector sharedDirector] pause];
 }
 
@@ -128,6 +129,7 @@
     NSLog(@"app will terminate");
 #endif
 	[[CCDirector sharedDirector] end];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)applicationSignificantTimeChange:(UIApplication *)application {
@@ -148,6 +150,9 @@
 //}
 
 - (void)dealloc {
+#ifndef NDEBUG
+    NSLog(@"app dealloc");
+#endif
     [[AppSettings shared] save];
 	[[CCDirector sharedDirector] release];
 	[window release];

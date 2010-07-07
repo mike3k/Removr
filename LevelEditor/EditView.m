@@ -155,6 +155,8 @@
             }
         }
     }
+    word = 0L;
+    [coded appendBytes:&word length:sizeof(word)];
     
     return coded;
 }
@@ -184,16 +186,34 @@
 {
     NSString *txt = [self dumpText];
     NSLog(txt);
+
+    NSString *sql = [self sqlText];
     
-    [self dumpsql];
-//    NSData *coded = [self encodeMap];
-//    [self decodeMap:coded];
-//    [self setNeedsDisplay:YES];
+    NSString *home = NSHomeDirectory();
+    NSString *dbpath = [[home stringByAppendingPathComponent: @"Desktop"] stringByAppendingPathComponent:@"levels.sql"];
+    FILE *out = fopen([dbpath fileSystemRepresentation], "a");
+    fprintf(out, [sql UTF8String]);
+    fprintf(out, "\n");
+    fclose(out);
 }
 
 - (IBAction)load:(id)sender
 {
 }
+
+- (NSString*)sqlText
+{
+    NSMutableString *result = [NSMutableString stringWithFormat:@"INSERT INTO levels (background,map) VALUES ('background.png',X'"];
+    NSData *encoded = [self encodeMap];
+    char *bytes = (char*)[encoded bytes];
+    int len = [encoded length];
+    for (int i=0;i<len;++i) {
+        [result appendFormat:@"%02X",bytes[i]];
+    }
+    [result appendFormat:@"');"];
+    return result;
+}
+
 
 - (NSString*)dumpText
 {
