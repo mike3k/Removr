@@ -103,10 +103,13 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 {
 #ifdef ALLOW_DB_UPDATE
     if (dbmod) {
-        NSString *timestamp_url = @"http://dl.dropbox.com/u/71477/UPDATES/timestamp";
-        NSString *update_url = @"http://dl.dropbox.com/u/71477/UPDATES/levels.sql";
-        NSString *db_url = @"http://dl.dropbox.com/u/71477/UPDATES/levels.sqlite3";
-        NSString *datestring = [NSString stringWithContentsOfURL:[NSURL URLWithString:timestamp_url] encoding:NSUTF8StringEncoding error:nil];
+        NSString *timestamp_url = @"http://apps.mc-development.com/removr/timestamp";
+        NSString *update_url = @"http://apps.mc-development.com/removr/levels.sql";
+        NSString *db_url = @"http://apps.mc-development.com/removr/levels.sqlite3";
+    
+        NSString *datestring = [NSString stringWithContentsOfURL:[NSURL URLWithString:timestamp_url]
+                                                        encoding:NSUTF8StringEncoding
+                                                           error:nil];
         
         NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
         [dateFormatter setDateFormat:@"EEE MMM d HH:mm:ss zzz yyyy\n"];
@@ -138,7 +141,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
                                                             encoding:NSUTF8StringEncoding 
                                                                       error:nil];
             if (update_sql && [update_sql length] > 4) {
-                char *sql = [update_sql UTF8String], *nextsql;
+                const char *sql = [update_sql UTF8String], *nextsql;
                 sqlite3_stmt *upd;
                 NSLog(@"running sql on database: %s",sql);
                 while (sql && (SQLITE_OK == sqlite3_prepare_v2(db, sql, -1, &upd, &nextsql)) ) {

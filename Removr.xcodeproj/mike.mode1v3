@@ -293,13 +293,11 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>33</integer>
-									<integer>19</integer>
-									<integer>0</integer>
+									<integer>90</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 269}, {299, 846}}</string>
+							<string>{{0, 0}, {299, 846}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -350,7 +348,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>279071AA11E551C10099E98E</string>
+										<string>279071C811E56EBA0099E98E</string>
 										<key>history</key>
 										<array>
 											<string>2735E5211183491B00E8247E</string>
@@ -466,7 +464,7 @@
 											<string>2790718A11E521E50099E98E</string>
 											<string>2790718B11E521E50099E98E</string>
 											<string>279071A411E54DBE0099E98E</string>
-											<string>279071A911E551C10099E98E</string>
+											<string>279071C711E56EBA0099E98E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -645,7 +643,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>300241345.40346199</real>
+	<real>300248762.813739</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -660,6 +658,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>279071C911E56EBA0099E98E</string>
 		<string>27F589990E68C99B00BF905E</string>
 		<string>27906FA111E40ED10099E98E</string>
 		<string>27906F9C11E40AAD0099E98E</string>
@@ -686,8 +685,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -710,6 +707,8 @@
 							<string>303pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -996,8 +995,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
