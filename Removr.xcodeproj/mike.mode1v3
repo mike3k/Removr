@@ -293,13 +293,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>58</integer>
+									<integer>33</integer>
 									<integer>19</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 653}, {299, 846}}</string>
+							<string>{{0, 269}, {299, 846}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -338,7 +338,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AppSettings.m</string>
+								<string>GameManager.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -346,11 +346,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AppSettings.m</string>
+										<string>GameManager.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2790718D11E521E50099E98E</string>
+										<string>279071AA11E551C10099E98E</string>
 										<key>history</key>
 										<array>
 											<string>2735E5211183491B00E8247E</string>
@@ -463,10 +463,10 @@
 											<string>2790710511E507340099E98E</string>
 											<string>2790715511E511640099E98E</string>
 											<string>2790718811E521E50099E98E</string>
-											<string>2790718911E521E50099E98E</string>
 											<string>2790718A11E521E50099E98E</string>
 											<string>2790718B11E521E50099E98E</string>
-											<string>2790718C11E521E50099E98E</string>
+											<string>279071A411E54DBE0099E98E</string>
+											<string>279071A911E551C10099E98E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -645,7 +645,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>300229093.59661901</real>
+	<real>300241345.40346199</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -664,10 +664,10 @@
 		<string>27906FA111E40ED10099E98E</string>
 		<string>27906F9C11E40AAD0099E98E</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>27ED5F5A0E52884C00CCF2AE</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/mike/Sources/mystuff/Removr/Removr.xcodeproj</string>
+		<string>27ED5F5A0E52884C00CCF2AE</string>
 	</array>
 	<key>WindowString</key>
 	<string>70 94 1292 905 0 0 1680 1028 </string>
@@ -686,6 +686,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -708,8 +710,6 @@
 							<string>303pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

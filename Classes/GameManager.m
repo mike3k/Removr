@@ -15,6 +15,8 @@
 #import "HighscoreScene.h"
 #import "SimpleAudioEngine.h"
 
+#define ALLOW_DB_UPDATE
+
 
 static GameManager *_sharedGameManager = nil;
 
@@ -99,9 +101,11 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (BOOL) checkForDbUdate
 {
+#ifdef ALLOW_DB_UPDATE
     if (dbmod) {
         NSString *timestamp_url = @"http://dl.dropbox.com/u/71477/UPDATES/timestamp";
         NSString *update_url = @"http://dl.dropbox.com/u/71477/UPDATES/levels.sql";
+        NSString *db_url = @"http://dl.dropbox.com/u/71477/UPDATES/levels.sqlite3";
         NSString *datestring = [NSString stringWithContentsOfURL:[NSURL URLWithString:timestamp_url] encoding:NSUTF8StringEncoding error:nil];
         
         NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
@@ -117,10 +121,26 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         if ((nil == aps.last_check) || ([timestamp compare:aps.last_check] == NSOrderedDescending)) {
             NSLog(@"database update requested");
             
-            NSString *update_sql = [NSString stringWithContentsOfURL:[NSURL URLWithString:update_url]];
+            // first try to replace entire sqlite database
+            NSData *newdb = [NSData dataWithContentsOfURL:[NSURL URLWithString:db_url]];
+            if ((nil != newdb) && ([newdb length] > 1024)) {
+                NSLog(@"replacing database");
+                sqlite3_close(db);
+                [newdb writeToFile:self.dbpath atomically:NO];
+                sqlite3_open([self.dbpath UTF8String] , &db);
+                [self clearScores];
+                aps.last_check = timestamp;
+                [aps save];
+                return YES;
+            }
+            // if no new database, execute sql on current database
+            NSString *update_sql = [NSString stringWithContentsOfURL:[NSURL URLWithString:update_url] 
+                                                            encoding:NSUTF8StringEncoding 
+                                                                      error:nil];
             if (update_sql && [update_sql length] > 4) {
                 char *sql = [update_sql UTF8String], *nextsql;
                 sqlite3_stmt *upd;
+                NSLog(@"running sql on database: %s",sql);
                 while (sql && (SQLITE_OK == sqlite3_prepare_v2(db, sql, -1, &upd, &nextsql)) ) {
                     int result = sqlite3_step(upd);
                     if ((result != SQLITE_DONE) && (result != SQLITE_ROW))
@@ -128,6 +148,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
                     sqlite3_reset(upd);
                     sql = nextsql;
                 }
+                [self clearScores];
                 sqlite3_finalize(upd);
                 aps.last_check = timestamp;
                 [aps save];
@@ -135,6 +156,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
             }
         }
     }
+#endif
     return NO;
 }
 
