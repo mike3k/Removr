@@ -26,6 +26,12 @@
 - (int)levelCount;
 - (NSInteger) scoreForLevel: (NSInteger)level;
 
+- (void)playIntroMusic;
+- (void)playWinSound;
+- (void)playLoseSound;
+- (void)playRemoveSound;
+- (void)preloadSounds;
+
 @property (assign,nonatomic) BOOL paused;
 @property (assign,nonatomic) NSInteger curLevel;
 

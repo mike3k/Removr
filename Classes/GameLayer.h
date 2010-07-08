@@ -36,11 +36,6 @@
 @property (assign,nonatomic) int level;
 @property (retain,nonatomic) CCSpriteSheet *sheet;
 
-- (void)playIntroMusic;
-- (void)playWinSound;
-- (void)playLoseSound;
-- (void)playRemoveSound;
-- (void)preloadSounds;
 
 - (void)setAccellerometer;
 

@@ -63,6 +63,12 @@
 - (Level*)GetLevel: (int)number;
 - (int)levelCount;
 
+- (void)playIntroMusic;
+- (void)playWinSound;
+- (void)playLoseSound;
+- (void)playRemoveSound;
+- (void)preloadSounds;
+
 - (void) setScore: (NSInteger)score forLevel: (NSInteger)level;
 - (NSInteger) scoreForLevel: (NSInteger)level;
 

@@ -43,17 +43,18 @@ static GameManager *_sharedGameManager = nil;
         aps = [AppSettings shared];
         self.curLevel = aps.lastLevel;
         _levelCount = -1;
-
+        //[self playIntroMusic];
     }
     return self;
 }
+
+#pragma mark database management
 
 static BOOL isNewer(NSString *file1, NSString *file2)
 {
     NSFileManager *fm = [NSFileManager defaultManager];
     NSDate *f1date = [[fm attributesOfItemAtPath:file1 error:nil] fileModificationDate];
     NSDate *f2date = [[fm attributesOfItemAtPath:file2 error:nil] fileModificationDate];
-    NSLog(@"File 1: %@; File 2: %@",f1date,f2date);
     return ([f1date compare: f2date] == NSOrderedDescending);
 }
 
@@ -153,6 +154,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
                 }
                 [self clearScores];
                 sqlite3_finalize(upd);
+                _levelCount = -1;
                 aps.last_check = timestamp;
                 [aps save];
                 return YES;
@@ -190,6 +192,8 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     self.ms = nil;
     [super dealloc];
 }
+
+#pragma mark Scores
 
 - (NSMutableData*)levelStatus
 {
@@ -230,6 +234,8 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     NSInteger *scores = (NSInteger*)[aps.levelStatus bytes];
     return scores[level];
 }
+
+#pragma mark Levels
 
 - (Level*)GetLevel: (int)number
 {
@@ -297,6 +303,8 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     return _levelCount;
 }
 
+#pragma mark Commands & Actions
+
 - (void)visitweb:(id)sender
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.mcdevzone.com/software"]];
@@ -353,5 +361,46 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 - (void)resume: (id)sender
 {
 }
+
+#pragma mark Sounds
+
+
+- (void)preloadSounds
+{
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"remove.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"fart.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"applause.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"intro.wav"];
+}
+
+- (void)playWinSound
+{
+    if (aps.sound) {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"applause.wav"];
+    }
+}
+
+- (void)playRemoveSound
+{
+    if (aps.sound) {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"remove.wav"];
+    }
+}
+
+-( void)playLoseSound
+{
+    if (aps.sound) {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"fart.wav"];
+    }
+}
+
+- (void)playIntroMusic
+{
+    if (aps.sound) {
+        //NSLog(@"playing bg music");
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"intro.wav" loop:NO];
+    }
+}
+
 
 @end

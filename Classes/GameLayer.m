@@ -132,47 +132,10 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         [self addChild:menu  z:zOverlayLevel tag:kTagPauseButton];
         //[self runWithMap: lvl1 size:(sizeof(lvl1) / sizeof(UInt32))];
         //[self gotoLevel: [_delegate curLevel]];
-        [self preloadSounds];
+        [_delegate preloadSounds];
     }
 	
 	return self;
-}
-
-- (void)preloadSounds
-{
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"remove.wav"];
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"fart.wav"];
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"applause.wav"];
-    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"intro.wav"];
-}
-
-- (void)playWinSound
-{
-    if (aps.sound) {
-        [[SimpleAudioEngine sharedEngine] playEffect:@"applause.wav"];
-    }
-}
-
-- (void)playRemoveSound
-{
-    if (aps.sound) {
-        [[SimpleAudioEngine sharedEngine] playEffect:@"remove.wav"];
-    }
-}
-
--( void)playLoseSound
-{
-    if (aps.sound) {
-        [[SimpleAudioEngine sharedEngine] playEffect:@"fart.wav"];
-    }
-}
-
-- (void)playIntroMusic
-{
-    if (aps.sound) {
-        //NSLog(@"playing bg music");
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"intro.wav" loop:NO];
-    }
 }
 
 -(void) addSprite: (UInt32)b
@@ -227,7 +190,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         [self resume];
     }
     else {
-        [self playIntroMusic];
+        [_delegate playIntroMusic];
         [self gotoLevel:-1];
     }
 }
@@ -320,11 +283,11 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     if ((nil != sprite) && (force || sprite.canRemove)) {
         if (sprite.mustKeep) {
             //NSLog(@"removing green object - LOSE");
-            [self playLoseSound];
+            [_delegate playLoseSound];
             lose = YES;
         }
         else if (!force) {
-            [self playRemoveSound];
+            [_delegate playRemoveSound];
         }
         sprite.visible = NO;
         [_sheet removeChild:sprite cleanup:NO];
@@ -388,7 +351,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     CGSize wins = [[CCDirector sharedDirector] winSize];    
     [self stop];
 
-    [self playWinSound];
+    [_delegate playWinSound];
 
     [self dimScreen];
 
