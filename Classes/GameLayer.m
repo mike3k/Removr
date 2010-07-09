@@ -193,6 +193,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         [self resume];
     }
     else {
+        [self hidePauseMenu];
         [_delegate playIntroMusic];
         [self gotoLevel:-1];
     }
@@ -248,10 +249,10 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void) hidePauseMenu
 {
+    [self undimScreen];
     if (nil != pauseMenu) {
         pauseMenu.visible = NO;
         //[self removeChildByTag:kTagPauseBackground cleanup:NO];
-        [self undimScreen];
         [self removeChild:pauseMenu cleanup:NO];
         pauseMenu = nil;
     }
@@ -262,6 +263,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 - (void)quit
 {
     [aps save];
+    [self stopAllActions];
     [self hidePauseMenu];
     [_delegate menu:self];
 }
@@ -385,26 +387,30 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)dimScreen
 {
-    CGSize wins = [[CCDirector sharedDirector] winSize];    
-    CCSprite *dim = [[[CCSprite alloc] initWithFile:@"blackbg.png"] autorelease];
-    dim.scaleX = wins.width;
-    dim.scaleY = wins.height;
-    dim.anchorPoint = ccp(0,0);
-    dim.position = ccp(0,0);
-    dim.opacity = floor(256 * .70);
-    [self addChild:dim z:zOverlayLevel tag:kTagPauseBackground];
+    // make sure it doessn't get re-added
+    if (nil == [self getChildByTag:kTagPauseBackground])
+    {
+        CGSize wins = [[CCDirector sharedDirector] winSize];    
+        CCSprite *dim = [[[CCSprite alloc] initWithFile:@"blackbg.png"] autorelease];
+        dim.scaleX = wins.width;
+        dim.scaleY = wins.height;
+        dim.anchorPoint = ccp(0,0);
+        dim.position = ccp(0,0);
+        dim.opacity = floor(256 * .70);
+        [self addChild:dim z:zOverlayLevel tag:kTagPauseBackground];
+    }
 }
 
 - (void)undimScreen
 {
-    [self removeChildByTag:kTagPauseBackground cleanup:NO];
+    [self removeChildByTag:kTagPauseBackground cleanup:YES];
 }
 
 
 - (void)gotoNextLevel
 {
     [self undimScreen];
-    [self removeChildByTag:kTagWinScreen cleanup:NO];
+    [self removeChildByTag:kTagWinScreen cleanup:YES];
 
     [self gotoLevel: self.level + 1];
 }
@@ -436,7 +442,9 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         return YES;
     }
     [GameManager shared].curLevel = 0;
-    [_delegate menu:self];
+    //[self undimScreen];
+    //[_delegate menu:self];
+    [self quit];
     return NO;
 }
 
@@ -471,7 +479,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 	
 	CGPoint v = ccp( -accelY, accelX);
 	
-	space->gravity = ccpMult(v, 200);
+	space->gravity = ccpMult(v, _scale*200);
 }
 
 

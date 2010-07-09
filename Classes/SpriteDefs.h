@@ -63,6 +63,10 @@ typedef struct {
 #define BAR_W   256
 #define BAR_W2  128
 #define BAR_W3  64
+
+#define PFACET      33  /* adds one extra pixel space around each piece */
+#define F_SPACING   1
+
 #endif
 
 enum    {

@@ -13,61 +13,69 @@
 #define FACETX4 (FACET*4)
 #define FACETX5 (FACET*5)
 
-#define HBAR3   (BAR_H*3)
-#define VBARS   ((FACET*2)+(BAR_H*3))
-#define VBARS2  ((FACET*2)+(BAR_H*6))
+#define PFACETX2 (F_SPACING+(PFACET*2))
+#define PFACETX3 (F_SPACING+(PFACET*3))
+#define PFACETX4 (F_SPACING+(PFACET*4))
+#define PFACETX5 (F_SPACING+(PFACET*5))
+
+#define PBARH   (F_SPACING+BAR_H)
+#define PBARV   (F_SPACING+BAR_V)
+
+#define HBAR3   (F_SPACING+(PBARH*3))
+#define VBARS   (F_SPACING+(PFACET*2)+(PBARH*3))
+#define VBARS2  (F_SPACING+(PFACET*2)+(PBARH*6))
 
 static SpriteInfo sprites[] = {
 
     // circle
-    { 0,            0,          FACET, FACET,   kCircleSprite | kMustRemove },      // RED
-    { FACET,        0,          FACET, FACET,   kCircleSprite | kMustKeep },        // GREEN
-    { FACETX2,      0,          FACET, FACET,   kCircleSprite },                    // BLUE
+    { F_SPACING,              F_SPACING,   FACET, FACET,   kCircleSprite | kMustRemove },      // RED
+    { F_SPACING+PFACET,       F_SPACING,   FACET, FACET,   kCircleSprite | kMustKeep },        // GREEN
+    { PFACETX2,               F_SPACING,   FACET, FACET,   kCircleSprite },                    // BLUE
     
     // square
-    { 0,            FACET,      FACET, FACET,   kSquareSprite | kMustRemove | kCanRemove | kIsStatic },     // RED
-    { FACET,        FACET,      FACET, FACET,   kSquareSprite | kMustKeep | kCanRemove | kIsStatic },       // GREEN
-    { FACETX2,      FACET,      FACET, FACET,   kSquareSprite | kCanRemove | kIsStatic },                   // BLUE
+    { F_SPACING,        F_SPACING+PFACET,      FACET, FACET,   kSquareSprite | kMustRemove | kCanRemove | kIsStatic },     // RED
+    { F_SPACING+PFACET, F_SPACING+PFACET,      FACET, FACET,   kSquareSprite | kMustKeep | kCanRemove | kIsStatic },       // GREEN
+    { PFACETX2,         F_SPACING+PFACET,      FACET, FACET,   kSquareSprite | kCanRemove | kIsStatic },                   // BLUE
 
     // colorblind circle
-    { FACETX3,    0,          FACET, FACET,   kCircleSprite | kMustRemove },        // RED
-    { FACETX4,    0,          FACET, FACET,   kCircleSprite | kMustKeep },          // GREEN
-    { FACETX5,    0,          FACET, FACET,   kCircleSprite },                      // BLUE
+    { PFACETX3,    F_SPACING,          FACET, FACET,   kCircleSprite | kMustRemove },        // RED
+    { PFACETX4,    F_SPACING,          FACET, FACET,   kCircleSprite | kMustKeep },          // GREEN
+    { PFACETX5,    F_SPACING,          FACET, FACET,   kCircleSprite },                      // BLUE
 
     // colorblind square
-    { FACETX3,    FACET,      FACET, FACET,   kSquareSprite | kMustRemove | kCanRemove | kIsStatic },       // RED
-    { FACETX4,    FACET,      FACET, FACET,   kSquareSprite | kMustKeep | kCanRemove | kIsStatic },         // GREEN
-    { FACETX5,    FACET,      FACET, FACET,   kSquareSprite | kCanRemove | kIsStatic },                     // BLUE
+    { PFACETX3,    F_SPACING+PFACET,      FACET, FACET,   kSquareSprite | kMustRemove | kCanRemove | kIsStatic },       // RED
+    { PFACETX4,    F_SPACING+PFACET,      FACET, FACET,   kSquareSprite | kMustKeep | kCanRemove | kIsStatic },         // GREEN
+    { PFACETX5,    F_SPACING+PFACET,      FACET, FACET,   kSquareSprite | kCanRemove | kIsStatic },                     // BLUE
 
     // horizontal 16*256
-    { 0,    FACETX2,              BAR_W, BAR_H,   kHorizBarSprite | kMustRemove | kCanRemove | kIsStatic },     // RED
-    { 0,    FACETX2 + BAR_H,      BAR_W, BAR_H,   kHorizBarSprite | kMustKeep | kCanRemove | kIsStatic },       // GREEN
-    { 0,    FACETX2 + (BAR_H*2),  BAR_W, BAR_H,   kHorizBarSprite | kCanRemove | kIsStatic },                   // BLUE
+    { F_SPACING,    PFACETX2,              BAR_W, BAR_H,   kHorizBarSprite | kMustRemove | kCanRemove | kIsStatic },     // RED
+    { F_SPACING,    PFACETX2 + PBARH,      BAR_W, BAR_H,   kHorizBarSprite | kMustKeep | kCanRemove | kIsStatic },       // GREEN
+    { F_SPACING,    PFACETX2 + (PBARH*2),  BAR_W, BAR_H,   kHorizBarSprite | kCanRemove | kIsStatic },                   // BLUE
 
     // vertical 16*256
-    { 0,        VBARS,  BAR_H, BAR_W,   kVertBarSprite | kMustRemove | kCanRemove | kIsStatic },                // RED
-    { BAR_H,    VBARS,  BAR_H, BAR_W,   kVertBarSprite | kMustKeep | kCanRemove | kIsStatic },                  // GREEN
-    { BAR_H*2,  VBARS,  BAR_H, BAR_W,   kVertBarSprite | kCanRemove | kIsStatic },                              // BLUE
+    { F_SPACING,            VBARS,  BAR_H, BAR_W,   kVertBarSprite | kMustRemove | kCanRemove | kIsStatic },                // RED
+    { F_SPACING+PBARH,      VBARS,  BAR_H, BAR_W,   kVertBarSprite | kMustKeep | kCanRemove | kIsStatic },                  // GREEN
+    { F_SPACING+(PBARH*2),  VBARS,  BAR_H, BAR_W,   kVertBarSprite | kCanRemove | kIsStatic },                              // BLUE
     
     // horizontal 16x128
     { HBAR3,    VBARS,              BAR_W2, BAR_H, kHorizBarSprite | kMustRemove | kCanRemove | kIsStatic },    // RED
-    { HBAR3,    VBARS+BAR_H,        BAR_W2, BAR_H, kHorizBarSprite | kMustKeep | kCanRemove | kIsStatic },      // GREEN
-    { HBAR3,    VBARS+(BAR_H*2),    BAR_W2, BAR_H, kVertBarSprite | kCanRemove | kIsStatic },                   // BLUE
+    { HBAR3,    VBARS+PBARH,        BAR_W2, BAR_H, kHorizBarSprite | kMustKeep | kCanRemove | kIsStatic },      // GREEN
+    { HBAR3,    VBARS+(PBARH*2),    BAR_W2, BAR_H, kVertBarSprite | kCanRemove | kIsStatic },                   // BLUE
 
     // horizontal 16x64
-    { HBAR3+BAR_W2,    VBARS,               BAR_W3, BAR_H, kHorizBarSprite | kMustRemove | kCanRemove | kIsStatic },    // RED
-    { HBAR3+BAR_W2,    VBARS+BAR_H,         BAR_W3, BAR_H, kHorizBarSprite | kMustKeep | kCanRemove | kIsStatic },      // GREEN
-    { HBAR3+BAR_W2,    VBARS+(BAR_H*2),     BAR_W3, BAR_H, kVertBarSprite | kCanRemove | kIsStatic },                   // BLUE
+    { F_SPACING+HBAR3+BAR_W2,    VBARS,               BAR_W3, BAR_H, kHorizBarSprite | kMustRemove | kCanRemove | kIsStatic },    // RED
+    { F_SPACING+HBAR3+BAR_W2,    VBARS+PBARH,         BAR_W3, BAR_H, kHorizBarSprite | kMustKeep | kCanRemove | kIsStatic },      // GREEN
+    { F_SPACING+HBAR3+BAR_W2,    VBARS+(PBARH*2),     BAR_W3, BAR_H, kVertBarSprite | kCanRemove | kIsStatic },                   // BLUE
    
     // vertical 16*128
-    { HBAR3,            VBARS2, BAR_H, BAR_W2,  kVertBarSprite | kMustRemove | kCanRemove | kIsStatic },        // RED
-    { HBAR3+BAR_H,      VBARS2, BAR_H, BAR_W2,  kVertBarSprite | kMustKeep | kCanRemove | kIsStatic },          // GREEN
-    { HBAR3+(BAR_H*2),  VBARS2, BAR_H, BAR_W2,  kVertBarSprite | kCanRemove | kIsStatic },                      // BLUE
+    { HBAR3,            VBARS2,     BAR_H, BAR_W2,  kVertBarSprite | kMustRemove | kCanRemove | kIsStatic },        // RED
+    { HBAR3+PBARH,      VBARS2,     BAR_H, BAR_W2,  kVertBarSprite | kMustKeep | kCanRemove | kIsStatic },          // GREEN
+    { HBAR3+(PBARH*2),  VBARS2,     BAR_H, BAR_W2,  kVertBarSprite | kCanRemove | kIsStatic },                      // BLUE
     
     // vertical 16*64
-    { HBAR3,            VBARS2+BAR_W2, BAR_H, BAR_W3,  kVertBarSprite | kMustRemove | kCanRemove | kIsStatic },     // RED
-    { HBAR3+BAR_H,      VBARS2+BAR_W2, BAR_H, BAR_W3,  kVertBarSprite | kMustKeep | kCanRemove | kIsStatic },       // GREEN
-    { HBAR3+(BAR_H*2),  VBARS2+BAR_W2, BAR_H, BAR_W3,  kVertBarSprite | kCanRemove | kIsStatic },                   // BLUE
+    { HBAR3,            VBARS2+BAR_W2+F_SPACING, BAR_H, BAR_W3,  kVertBarSprite | kMustRemove | kCanRemove | kIsStatic },     // RED
+    { HBAR3+PBARH,      VBARS2+BAR_W2+F_SPACING, BAR_H, BAR_W3,  kVertBarSprite | kMustKeep | kCanRemove | kIsStatic },       // GREEN
+    { HBAR3+(PBARH*2),  VBARS2+BAR_W2+F_SPACING, BAR_H, BAR_W3,  kVertBarSprite | kCanRemove | kIsStatic },                   // BLUE
 
 };
 
