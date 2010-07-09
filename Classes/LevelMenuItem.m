@@ -28,9 +28,10 @@ enum {
 - (void) makeLevelLabel
 {
     if (nil == _labelLevel) {
+        CGFloat _scale = [[UIScreen mainScreen] scale];
         _labelLevel = [CCLabel labelWithString:[NSString stringWithFormat:@"Level %d", _level]
                                       fontName:@"Marker Felt" 
-                                      fontSize:18];
+                                      fontSize:18*_scale];
         _labelLevel.position = ccp(self.anchorPointInPixels.x,self.anchorPointInPixels.y+2);
         [_labelLevel setColor:ccc3(128, 0, 0)];
         [self addChild:_labelLevel z:1 tag:kTagLevelItem];
@@ -43,10 +44,11 @@ enum {
 - (void) makeMovesLabel
 {
     if (nil == _labelMoves) {
+        CGFloat _scale = [[UIScreen mainScreen] scale];
         _labelMoves = [CCLabel labelWithString: [NSString stringWithFormat:@"(%d moves)",_moves]
                                       fontName:@"Helvetica" 
-                                      fontSize:14];
-        _labelMoves.position = ccp(self.anchorPointInPixels.x,12);
+                                      fontSize:14*_scale];
+        _labelMoves.position = ccp(self.anchorPointInPixels.x,12*_scale);
         [_labelMoves setColor: ccc3(128, 0, 0)];
         [self addChild:_labelMoves z:1 tag:kTagMovesItem];
     }

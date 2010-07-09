@@ -16,7 +16,7 @@
 #import "SimpleAudioEngine.h"
 
 #define ALLOW_DB_UPDATE
-
+#define DB_VERSION  1
 
 static GameManager *_sharedGameManager = nil;
 
@@ -70,7 +70,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         NSString *docs = [paths objectAtIndex:0];
         NSString *userdb = [docs stringByAppendingPathComponent: @"levels.sqlite3"];
         if ([fm fileExistsAtPath:userdb]) {
-            if (!isNewer(_dbpath,userdb)) {
+            if ((aps.version == DB_VERSION) && !isNewer(_dbpath,userdb)) {
 #ifndef NDEBUG
                 NSLog(@"opening database in document directory");
 #endif
@@ -89,6 +89,8 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 #ifndef NDEBUG
             NSLog(@"copied database to document directory");
 #endif
+            aps.version = DB_VERSION;
+            [aps save];
             self.dbpath = userdb;
             dbmod = YES;
             return YES;
@@ -107,6 +109,19 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         NSString *timestamp_url = @"http://apps.mc-development.com/removr/timestamp";
         NSString *update_url = @"http://apps.mc-development.com/removr/levels.sql";
         NSString *db_url = @"http://apps.mc-development.com/removr/levels.sqlite3";
+        NSString *version_url = @"http://apps.mc-development.com/removr/version";
+        
+        // check version matches our database version
+        NSInteger version = 0;
+        NSString *version_str = [NSString stringWithContentsOfURL:[NSURL URLWithString:version_url]
+                                                         encoding:NSUTF8StringEncoding
+                                                            error:nil];
+        if (nil == version_str)
+            return NO;
+        
+        [[NSScanner scannerWithString:version_str] scanInteger:&version];
+        if (version != DB_VERSION)
+            return NO;
     
         NSString *datestring = [NSString stringWithContentsOfURL:[NSURL URLWithString:timestamp_url]
                                                         encoding:NSUTF8StringEncoding

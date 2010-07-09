@@ -12,11 +12,13 @@
 @implementation MCLayer
 
 @synthesize delegate = _delegate;
+@synthesize scale = _scale;
 
 - (id)init
 {
     if ((self = [super init])) {
         self.delegate = [GameManager shared];
+        self.scale = [[UIScreen mainScreen] scale];
     }
 #ifndef NDEBUG
     NSLog(@"[%@ init]",self);
@@ -46,6 +48,15 @@
         _background.position = ccp(ap.x,ap.y);
         [self addChild:_background];
     }
+}
+
+- (NSString*)scaledFile: (NSString*)name
+{
+    if (_scale > 1) {
+        //return [name stringByAppendingString:@"@x2"];
+        return [name stringByReplacingOccurrencesOfString:@".png" withString:@"@x2.png"];
+    }
+    return name;
 }
 
 @end

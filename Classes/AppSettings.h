@@ -19,6 +19,8 @@
     NSInteger _lastLevel;
     
     NSMutableData *_levelStatus;
+    
+    CGFloat _scale;
 }
 
 @property (assign,nonatomic) BOOL accelerometer;
@@ -30,6 +32,8 @@
 
 @property (assign,nonatomic) NSInteger lastLevel;
 @property (retain,nonatomic) NSMutableData* levelStatus;
+
+@property (assign,nonatomic) CGFloat scale;
 
 + (AppSettings*)shared;
 

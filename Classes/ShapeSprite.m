@@ -80,12 +80,19 @@ static SpriteInfo sprites[] = {
 @synthesize mustRemove = _mustRemove, mustKeep = _mustKeep;
 @synthesize info = _info;
 
+static CGFloat _scale = 0;
+
+//#define _scale ([[UIScreen mainScreen] scale])
+
 // override designated initializer
 -(id)init
 {
     if ((self = [super init])) {
         self.shape = nil;
         self.space = nil;
+        if (0 == _scale) {
+            _scale = [[UIScreen mainScreen] scale];
+        }
     }
     return self;
 }
@@ -122,7 +129,7 @@ static SpriteInfo sprites[] = {
 
 //#define VECSIZE ((FACET/2) - (FACET/16))
 
-#define VECSIZE(X)  (X/2)
+#define VECSIZE(X)  ((X/2)*_scale)
 
 - (void)makeShapeForSprite
 {
@@ -151,7 +158,7 @@ static SpriteInfo sprites[] = {
 
 	cpShape* shape;
     if (_isCircle) {
-        shape = cpCircleShapeNew(body, (_info.width/2.0), ccp(0,0));
+        shape = cpCircleShapeNew(body, (_info.width/2.0)*_scale, ccp(0,0));
         shape->e = 0.75f; shape->u = 0.45f;
     }
     else {
@@ -168,13 +175,20 @@ static SpriteInfo sprites[] = {
     int posx, posy;
     int stype;
 
+    if (0 == _scale) {
+        _scale = [[UIScreen mainScreen] scale];
+    }
+
     SpriteInfo *sp = &sprites[kind-1];
-    posx = sp->posx;
-    posy = sp->posy;
+    posx = sp->posx * _scale;
+    posy = sp->posy * _scale;
 
     stype = (sp->attrib & kSpriteKindMask);
 
-    ShapeSprite *sprite = [ShapeSprite spriteWithSpriteSheet:sheet rect:CGRectMake(posx, posy, sp->width, sp->height)];
+    ShapeSprite *sprite = [ShapeSprite spriteWithSpriteSheet:sheet rect:CGRectMake(posx, 
+                                                                                   posy, 
+                                                                                   sp->width*_scale, 
+                                                                                   sp->height*_scale)];
 //    if (stype == kVertBarSprite) {
 //        x -= BAR_H / 2;
 //        y -= BAR_W / 2;

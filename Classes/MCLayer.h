@@ -37,14 +37,18 @@
 
 @end
 
-
 @interface MCLayer : CCLayer {
     id <MCLayerDelegate> _delegate;
     CCSprite *_background;
+    
+    CGFloat _scale;
 
 }
 
+- (NSString*)scaledFile: (NSString*)name;
+
 @property (retain,nonatomic) CCSprite *background;
 @property (assign,nonatomic) id <MCLayerDelegate> delegate;
+@property (assign,nonatomic) CGFloat scale;
 
 @end

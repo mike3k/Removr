@@ -45,17 +45,17 @@
 - (id)init
 {
     
-    
     if ((self = [super init])) {
+        NSString *spacer = [self scaledFile:@"spacer.png"];
         _buttons = [[NSMutableArray alloc] init];
-        self.background = [[[CCSprite alloc] initWithFile:@"background.png"] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile: @"background.png"]] autorelease];
         CGSize wins = [[CCDirector sharedDirector] winSize];
         
-        CCMenu *menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:@"spacer.png" selectedImage:@"spacer.png"],nil];
+        CCMenu *menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:spacer selectedImage:spacer],nil];
         for (int i=0;i<12;++i) {
             int theLevel = _page + i;
-            LevelMenuItem *itm = [LevelMenuItem itemFromNormalImage:@"levelbutton.png"
-                                                        selectedImage:@"levelbutton-sel.png"
+            LevelMenuItem *itm = [LevelMenuItem itemFromNormalImage:[self scaledFile: @"levelbutton.png"]
+                                                      selectedImage:[self scaledFile: @"levelbutton-sel.png"]
                                                                target:self
                                                              selector:@selector(gotoLevel:)];
             [_buttons addObject:itm];
@@ -63,22 +63,22 @@
             [self updateItem:itm forLevel:theLevel];
         }
 
-        [menu addChild:[CCMenuItemImage itemFromNormalImage:@"spacer.png" selectedImage:@"spacer.png"] z:0 tag:0];
+        [menu addChild:[CCMenuItemImage itemFromNormalImage:spacer selectedImage:spacer] z:0 tag:0];
 
-        bPrev = [MCMenuItem itemFromNormalImage:@"button-prev.png"
-                                  selectedImage:@"button-prev-sel.png" 
+        bPrev = [MCMenuItem itemFromNormalImage:[self scaledFile: @"button-prev.png"]
+                                  selectedImage:[self scaledFile: @"button-prev-sel.png"]
                                          target:self 
                                        selector:@selector(pageBack:)];
         [bPrev setIsEnabled:NO];
         [menu addChild:bPrev z:0 tag:0];
     
-        bNext = [MCMenuItem itemFromNormalImage:@"button-next.png" 
-                                  selectedImage:@"button-next-sel.png" 
+        bNext = [MCMenuItem itemFromNormalImage:[self scaledFile: @"button-next.png"]
+                                  selectedImage:[self scaledFile: @"button-next-sel.png"] 
                                          target:self selector:@selector(pageNext:)];
         [bNext setIsEnabled:([_delegate levelCount] > 12)];
         [menu addChild:bNext z:0 tag:0];
         
-        [menu addChild:[CCMenuItemImage itemFromNormalImage:@"spacer.png" selectedImage:@"spacer.png"] z:0 tag:0];
+        [menu addChild:[CCMenuItemImage itemFromNormalImage:spacer selectedImage:spacer] z:0 tag:0];
       
         [menu alignItemsInColumns:  [NSNumber numberWithInt:1], 
                                     [NSNumber numberWithInt:4],
@@ -90,12 +90,12 @@
                                     nil];
         [self addChild:menu];
         
-        CCMenu *menu2 = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:@"back.png" 
-                                                                     selectedImage:@"back-sel.png" 
+        CCMenu *menu2 = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"back.png"]
+                                                                     selectedImage:[self scaledFile: @"back-sel.png"] 
                                                                             target:_delegate 
                                                                           selector:@selector(menu:)], nil];
         [menu2 alignItemsVertically];
-        menu2.position = ccp(wins.width-60, 30);
+        menu2.position = ccp(wins.width-(60*_scale), 30*_scale);
         [self addChild:menu2];
     }
     return self;

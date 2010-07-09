@@ -16,6 +16,7 @@
 #import "AppSettings.h"
 
 @class GameManager;
+@class ShapeSprite;
 
 @interface GameLayer : MCLayer {
     CCSpriteSheet *_sheet;
@@ -31,6 +32,8 @@
     CCMenu      *pauseMenu;
     
     AppSettings *aps;
+    
+    int _facet;
 }
 
 @property (assign,nonatomic) int level;
@@ -42,6 +45,7 @@
 //+ (id) scene;
 - (void) step: (ccTime) dt;
 - (void)removeShape: (cpShape*)shape force: (BOOL)force;
+- (void)removeSprite: (ShapeSprite*)sprite force: (BOOL)force;
 
 -(void) addNewSprite: (int)kind x:(float)x y:(float)y;
 -(void) addSprite: (UInt32)b;

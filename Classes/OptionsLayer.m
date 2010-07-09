@@ -15,20 +15,25 @@
 
     if ((self = [super init])) {
         aps = [AppSettings shared];
-        self.background = [[[CCSprite alloc] initWithFile:@"background.png"] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile: @"background.png"]] autorelease];
         bSound = [OnOffButton makeButtonWithTarget: self selector: @selector(toggleSound:)];
         bAccel = [OnOffButton makeButtonWithTarget: self selector: @selector(toggleAccel:)];
 
         bSound.on = aps.sound;
         bAccel.on = aps.accelerometer;
 
+        NSString *spacer = [self scaledFile:@"spacer.png"];
+        
         CCMenu *menu = [CCMenu menuWithItems: 
-                        [CCMenuItemImage itemFromNormalImage:@"title-options.png" selectedImage:@"title-options.png"],
-                        [CCMenuItemImage itemFromNormalImage:@"label-sound.png" selectedImage:@"label-sound.png"],
+                        [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"title-options.png"]
+                                               selectedImage:[self scaledFile: @"title-options.png"]],
+                        [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"label-sound.png"]
+                                               selectedImage:[self scaledFile: @"label-sound.png"]],
                         bSound,
-                        [CCMenuItemImage itemFromNormalImage:@"label-accellerometer.png" selectedImage:@"label-accellerometer.png"],
+                        [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"label-accellerometer.png"]
+                                               selectedImage:[self scaledFile: @"label-accellerometer.png"]],
                         bAccel,
-                        [CCMenuItemImage itemFromNormalImage:@"spacer.png" selectedImage:@"spacer.png"],
+                        [CCMenuItemImage itemFromNormalImage:spacer selectedImage:spacer],
 //                        [CCMenuItemImage itemFromNormalImage:@"spacer.png" selectedImage:@"spacer.png"],
 //                        [CCMenuItemImage itemFromNormalImage:@"back.png" 
 //                                               selectedImage:@"back-sel.png" 
@@ -46,12 +51,12 @@
         [self addChild:menu];
 
         CGSize wins = [[CCDirector sharedDirector] winSize];
-        CCMenu *menu2 = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:@"back.png" 
-                                                                     selectedImage:@"back-sel.png" 
+        CCMenu *menu2 = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"back.png"] 
+                                                                     selectedImage:[self scaledFile: @"back-sel.png"]
                                                                             target:self 
                                                                           selector:@selector(done)], nil];
         [menu2 alignItemsVertically];
-        menu2.position = ccp(wins.width-60, 30);
+        menu2.position = ccp(wins.width-(60*_scale), 30*_scale);
         [self addChild:menu2];
 
     }

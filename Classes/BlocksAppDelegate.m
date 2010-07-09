@@ -86,6 +86,8 @@
 	// Sets landscape mode
 	[director setDeviceOrientation:kCCDeviceOrientationLandscapeLeft];
 
+    [director setContentScaleFactor:[[UIScreen mainScreen] scale]];
+
 	// Turn on multiple touches
 	EAGLView *view = [director openGLView];
 	[view setMultipleTouchEnabled:YES];
@@ -96,7 +98,7 @@
 	[CCTexture2D setDefaultAlphaPixelFormat:kTexture2DPixelFormat_RGBA8888];	
 	
 	[director runWithScene: [MenuScene node]];
-    NSLog(@"applicationDidFinishLaunching returns");
+    //NSLog(@"applicationDidFinishLaunching returns");
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

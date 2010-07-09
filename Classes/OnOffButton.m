@@ -13,8 +13,18 @@
 
 + (OnOffButton*) makeButtonWithTarget: (id)t selector: (SEL)s
 {
-    CCMenuItemImage *onButton = [CCMenuItemImage itemFromNormalImage:@"on.png" selectedImage:@"on-sel.png"];
-    CCMenuItemImage *offButton = [CCMenuItemImage itemFromNormalImage:@"off.png" selectedImage:@"off-sel.png"];
+    CCMenuItemImage *onButton;
+    CCMenuItemImage *offButton;
+    
+    CGFloat _scale = [[UIScreen mainScreen] scale];
+    if (_scale > 1) {
+        onButton = [CCMenuItemImage itemFromNormalImage:@"on@x2.png" selectedImage:@"on-sel@x2.png"];
+        offButton = [CCMenuItemImage itemFromNormalImage:@"off@x2.png" selectedImage:@"off-sel@x2.png"];
+    }
+    else {
+        onButton = [CCMenuItemImage itemFromNormalImage:@"on.png" selectedImage:@"on-sel.png"];
+        offButton = [CCMenuItemImage itemFromNormalImage:@"off.png" selectedImage:@"off-sel.png"];
+    }
     OnOffButton *b = [OnOffButton itemWithTarget:t selector:s items: offButton, onButton, nil];
     return b;
 }

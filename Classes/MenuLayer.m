@@ -8,6 +8,7 @@
 
 #import "MenuLayer.h"
 #import "GameManager.h"
+#import "AppSettings.h"
 
 @implementation MenuLayer
 
@@ -22,30 +23,33 @@
 - (id) init
 {
     if ((self = [super init])) {
+        NSString *tmp;
 
-        self.background = [[[CCSprite alloc] initWithFile:@"menu.png"] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:@"menu.png"]] autorelease];
         
-        CCMenuItemImage *logo = [CCMenuItemImage itemFromNormalImage:@"logo-menu.png" 
-                                                       selectedImage:@"logo-menu.png"];
+        tmp = [self scaledFile:@"logo-menu.png"];
+        
+        CCMenuItemImage *logo = [CCMenuItemImage itemFromNormalImage:tmp
+                                                       selectedImage:tmp];
         
         
-        CCMenuItemImage *play = [CCMenuItemImage itemFromNormalImage:@"button-play.png" 
-                                                       selectedImage:@"button-play-sel.png" 
+        CCMenuItemImage *play = [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"button-play.png"]
+                                                       selectedImage:[self scaledFile: @"button-play-sel.png"]
                                                               target:_delegate 
                                                             selector:@selector(play:)];
 
-        CCMenuItemImage *score = [CCMenuItemImage itemFromNormalImage:@"button-highscores.png" 
-                                                        selectedImage:@"button-highscores-sel.png" 
+        CCMenuItemImage *score = [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"button-highscores.png"]
+                                                        selectedImage:[self scaledFile: @"button-highscores-sel.png"] 
                                                                target:_delegate 
                                                              selector:@selector(highscores:)];
         
-        CCMenuItemImage *opt = [CCMenuItemImage itemFromNormalImage:@"button-options.png" 
-                                                       selectedImage:@"button-options-sel.png" 
+        CCMenuItemImage *opt = [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"button-options.png"] 
+                                                       selectedImage:[self scaledFile: @"button-options-sel.png"]
                                                               target:_delegate 
                                                             selector:@selector(options:)];
         
-        CCMenuItemImage *more = [CCMenuItemImage itemFromNormalImage:@"button-more.png" 
-                                                       selectedImage:@"button-more-sel.png" 
+        CCMenuItemImage *more = [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"button-more.png"]
+                                                       selectedImage:[self scaledFile: @"button-more-sel.png"] 
                                                               target:_delegate 
                                                             selector:@selector(info:)];
         self.menu = [CCMenu menuWithItems: logo, play, score, opt, more, nil];

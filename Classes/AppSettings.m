@@ -18,6 +18,7 @@ static AppSettings *theSettings = nil;
 @synthesize levelStatus = _levelStatus;
 @synthesize version = _version;
 @synthesize last_check = _last_check;
+@synthesize scale = _scale;
 
 + (AppSettings*)shared {
     if (nil == theSettings) {
@@ -47,6 +48,7 @@ static AppSettings *theSettings = nil;
         if (nil == _levelStatus) {
             self.levelStatus = [NSMutableData dataWithLength:(100*sizeof(NSInteger*))];
         }
+        self.scale = [[UIScreen mainScreen] scale];
     }
     return self;
 }

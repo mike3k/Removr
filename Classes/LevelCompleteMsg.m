@@ -15,19 +15,20 @@
 {
     self = [super init];
     if (self) {
-        CCSprite *msg = [[CCSprite alloc] initWithFile:@"Level-Complete.png"];
+        CGFloat _scale = [[UIScreen mainScreen] scale];
+        CCSprite *msg = [[CCSprite alloc] initWithFile:(_scale>1 ? @"Level-Complete@x2.png": @"Level-Complete.png")];
         [self addChild: msg];
-#ifdef USE_LABEL
-        label = [[CCLabel alloc] initWithString:[NSString stringWithFormat: @"%d",moves] fontName:@"Marker Felt" fontSize:36];
-        label.position = ccp(170.0/2.0,170.0/3.0);
-#else
-        label = [[CCLabelAtlas alloc] initWithString:[NSString stringWithFormat: @"%d",moves] 
-                                         charMapFile:@"Score-images.png"
-                                           itemWidth:20 
-                                          itemHeight:26
-                                        startCharMap:'0'];
-        label.position = ccp(170.0/2.0,170.0/3.0);
-#endif
+//#ifdef USE_LABEL
+        label = [[CCLabel alloc] initWithString:[NSString stringWithFormat: @"%d",moves] fontName:@"Marker Felt" fontSize:36*_scale];
+        label.position = ccp((170.0/2.0)*_scale,(170.0/3.0)*_scale);
+//#else
+//        label = [[CCLabelAtlas alloc] initWithString:[NSString stringWithFormat: @"%d",moves] 
+//                                         charMapFile:@"Score-images.png"
+//                                           itemWidth:20 
+//                                          itemHeight:26
+//                                        startCharMap:'0'];
+//        label.position = ccp(170.0/2.0,170.0/3.0);
+//#endif
         [msg addChild: label];
         [label release];
         [msg release];

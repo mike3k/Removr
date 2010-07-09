@@ -78,9 +78,11 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 		aps = [AppSettings shared];
         self.isTouchEnabled = YES;
         
+        _facet = FACET*_scale;
+    
         CGSize wins = [[CCDirector sharedDirector] winSize];
     
-        self.background = [[[CCSprite alloc] initWithFile:@"background.png"] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:@"background.png"]] autorelease];
 
         cpInitChipmunk();
 		
@@ -119,16 +121,17 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
         cpSpaceAddCollisionHandler(space, kBorderCollision, 0, collisionBegin, nil, nil, nil, self);
 
-        self.sheet = [CCSpriteSheet spriteSheetWithFile:@"Shape-Atlas.png" capacity:100];
+        self.sheet = [CCSpriteSheet spriteSheetWithFile:[self scaledFile: @"Shape-Atlas.png"] capacity:100];
         [self addChild:_sheet z:zSpritesLevel tag:kTagAtlasSpriteSheet];
 
-        CCMenu *menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:@"pause-icon.png" 
-                                                                     selectedImage:@"pause-icon.png" 
+        NSString *pauseName = [self scaledFile: @"pause-icon.png"];
+        CCMenu *menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:pauseName
+                                                                     selectedImage:pauseName
                                                                             target:self 
                                                                           selector:@selector(pause)], nil];
         [menu alignItemsVertically];
         menu.anchorPoint = ccp(1,1);
-        menu.position = ccp(wins.width - 42, wins.height - 16);
+        menu.position = ccp(wins.width - (_scale*42), wins.height - (_scale*16));
         [self addChild:menu  z:zOverlayLevel tag:kTagPauseButton];
         //[self runWithMap: lvl1 size:(sizeof(lvl1) / sizeof(UInt32))];
         //[self gotoLevel: [_delegate curLevel]];
@@ -140,7 +143,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 -(void) addSprite: (UInt32)b
 {
-    int x = (MapXValue(b) * (FACET/2)), y = (MapYValue(b) * (FACET/2)), kind = MapPieceValue(b);
+    int x = (MapXValue(b) * (_facet/2)), y = (MapYValue(b) * (_facet/2)), kind = MapPieceValue(b);
     [self addNewSprite: kind x:x y:y];
 }
 
@@ -215,24 +218,25 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
         [self dimScreen];
         CCMenuItemImage *item1;
-        CCMenuItemImage *item2 = [CCMenuItemImage itemFromNormalImage:@"pause-restart.png" 
-                                                        selectedImage:@"pause-restart-sel.png" 
+        CCMenuItemImage *item2 = [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"pause-restart.png"]
+                                                        selectedImage:[self scaledFile: @"pause-restart-sel.png"]
                                                                target:self 
                                                              selector:@selector(restart)];
         
-        CCMenuItemImage *item3 = [CCMenuItemImage itemFromNormalImage:@"pause-quit.png"
-                                                        selectedImage:@"pause-quit-sel.png"
+        CCMenuItemImage *item3 = [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"pause-quit.png"]
+                                                        selectedImage:[self scaledFile: @"pause-quit-sel.png"]
                                                                target:self 
                                                              selector:@selector(quit)];
         
         if (canResume) {
-            item1 = [CCMenuItemImage itemFromNormalImage:@"pause-resume.png"
-                                           selectedImage:@"pause-resume-sel.png"
+            item1 = [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"pause-resume.png"]
+                                           selectedImage:[self scaledFile: @"pause-resume-sel.png"]
                                                   target:self 
                                                 selector:@selector(resume)];
         }
         else {
-            item1 = [CCMenuItemImage itemFromNormalImage:@"uhoh.png" selectedImage:@"uhoh.png"];
+            item1 = [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"uhoh.png"] 
+                                           selectedImage:[self scaledFile: @"uhoh.png"]];
         }
         
         pauseMenu = [CCMenu menuWithItems: item1, item2, item3, nil];
@@ -280,6 +284,11 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 {
     //NSLog(@"GaameScreen removeShape: %d",shape);
     ShapeSprite *sprite = shape->data;
+    [self removeSprite: sprite force: force];
+}
+
+- (void)removeSprite: (ShapeSprite*)sprite force: (BOOL)force
+{
     if ((nil != sprite) && (force || sprite.canRemove)) {
         if (sprite.mustKeep) {
             //NSLog(@"removing green object - LOSE");
@@ -328,16 +337,25 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         [self showLoseScreen];
 }
 
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	for( UITouch *touch in touches ) {
-        CGPoint location = [touch locationInView: [touch view]];
-		
-        location = [[CCDirector sharedDirector] convertToGL: location];
-		
-        cpShape *shape = cpSpacePointQueryFirst(space, location, CP_ALL_LAYERS, 0);
-        if (nil != shape) {
-            [self removeShape: shape force: NO];
+//        CGPoint location = [touch locationInView: [touch view]];
+//		
+//        location = [[CCDirector sharedDirector] convertToGL: location];
+//		
+//        cpShape *shape = cpSpacePointQueryFirst(space, location, CP_ALL_LAYERS, 0);
+//        if (nil != shape) {
+//            [self removeShape: shape force: NO];
+//        }
+        CGPoint location = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
+        ShapeSprite *child;
+        for (child in [_sheet children]) {
+            if (CGRectContainsPoint([child boundingBox], location)) {
+                [self removeSprite: child force: NO];
+                break;
+            }
         }
 	}
 }
@@ -412,7 +430,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     
     NSData *map = theLevel.map;
     if (nil != map) {
-        self.background = [[[CCSprite alloc] initWithFile:theLevel.background] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile: theLevel.background]] autorelease];
 
         [self runWithMap: (UInt32*)[map bytes]];
         return YES;
