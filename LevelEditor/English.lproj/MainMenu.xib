@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="587"/>
+			<integer value="540"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1412,9 +1412,9 @@
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">400</int>
 								<int key="NSPeriodicInterval">75</int>
-								<object class="NSMenuItem" key="NSMenuItem" id="886194943">
+								<object class="NSMenuItem" key="NSMenuItem" id="88283888">
 									<reference key="NSMenu" ref="916633108"/>
-									<string key="NSTitle">Blue 64px Horizontal Bar</string>
+									<string key="NSTitle">Red Circle</string>
 									<string key="NSKeyEquiv"/>
 									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
@@ -1422,7 +1422,7 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 									<string key="NSAction">_popUpItemAction:</string>
-									<int key="NSTag">24</int>
+									<int key="NSTag">1</int>
 									<reference key="NSTarget" ref="319362430"/>
 								</object>
 								<bool key="NSMenuItemRespectAlignment">YES</bool>
@@ -1430,18 +1430,7 @@
 									<string key="NSTitle">OtherViews</string>
 									<object class="NSMutableArray" key="NSMenuItems">
 										<bool key="EncodedWithXMLCoder">YES</bool>
-										<object class="NSMenuItem" id="88283888">
-											<reference key="NSMenu" ref="916633108"/>
-											<string key="NSTitle">Red Circle</string>
-											<string key="NSKeyEquiv"/>
-											<int key="NSKeyEquivModMask">1048576</int>
-											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="35465992"/>
-											<reference key="NSMixedImage" ref="502551668"/>
-											<string key="NSAction">_popUpItemAction:</string>
-											<int key="NSTag">1</int>
-											<reference key="NSTarget" ref="319362430"/>
-										</object>
+										<reference ref="88283888"/>
 										<object class="NSMenuItem" id="206060945">
 											<reference key="NSMenu" ref="916633108"/>
 											<string key="NSTitle">Green Circle</string>
@@ -1550,7 +1539,18 @@
 											<int key="NSTag">23</int>
 											<reference key="NSTarget" ref="319362430"/>
 										</object>
-										<reference ref="886194943"/>
+										<object class="NSMenuItem" id="886194943">
+											<reference key="NSMenu" ref="916633108"/>
+											<string key="NSTitle">Blue 64px Horizontal Bar</string>
+											<string key="NSKeyEquiv"/>
+											<int key="NSKeyEquivModMask">1048576</int>
+											<int key="NSMnemonicLoc">2147483647</int>
+											<reference key="NSOnImage" ref="35465992"/>
+											<reference key="NSMixedImage" ref="502551668"/>
+											<string key="NSAction">_popUpItemAction:</string>
+											<int key="NSTag">24</int>
+											<reference key="NSTarget" ref="319362430"/>
+										</object>
 										<object class="NSMenuItem" id="973553989">
 											<reference key="NSMenu" ref="916633108"/>
 											<bool key="NSIsDisabled">YES</bool>
@@ -1694,7 +1694,6 @@
 									</object>
 									<reference key="NSMenuFont" ref="756046241"/>
 								</object>
-								<int key="NSSelectedIndex">10</int>
 								<int key="NSPreferredEdge">1</int>
 								<bool key="NSUsesItemFromMenu">YES</bool>
 								<bool key="NSAltersState">YES</bool>

@@ -187,8 +187,10 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)play
 {
-    [self setAccellerometer];
+    win = lose = NO;
 
+    [self setAccellerometer];
+    
     if (_delegate.paused) {
         [self resume];
     }
@@ -263,6 +265,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 - (void)quit
 {
     [aps save];
+    _delegate.paused = NO;
     [self stopAllActions];
     [self hidePauseMenu];
     [_delegate menu:self];
