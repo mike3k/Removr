@@ -7,17 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
-#define MAPWIDTH    30
-#define MAPHEIGHT   19
+#import "LevelMap.h"
 
 @interface EditView : NSView {
-    UInt32 map[MAPWIDTH][MAPHEIGHT];
+    LevelMap *theLevelMap;
     
     UInt32 currentPiece;
 }
 
 @property (assign) UInt32 currentPiece;
+@property (assign) LevelMap * theLevelMap;
 
 - (IBAction)clearMap:(id)sender;
 - (IBAction)save:(id)sender;
@@ -25,10 +24,10 @@
 
 - (IBAction)choose: (id)sender;
 
-- (NSData*)encodeMap;
-- (void)decodeMap:(NSData*)coded;
-- (NSString*)dumpText;
-
+//- (NSData*)encodeMap;
+//- (void)decodeMap:(NSData*)coded;
+//- (NSString*)dumpText;
+//
 - (void)dumpsql;
 - (NSString*)sqlText;
 

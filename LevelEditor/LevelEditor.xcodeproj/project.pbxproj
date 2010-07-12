@@ -10,6 +10,10 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* LevelEditorAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* LevelEditorAppDelegate.m */; };
 		272D6FEF11E0FFD90064FAEC /* EditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D6FEE11E0FFD90064FAEC /* EditView.m */; };
+		273247E011E7F84600D5F78D /* LevelMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 273247DF11E7F84600D5F78D /* LevelMap.m */; };
+		2732482E11E9235300D5F78D /* EditWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732482D11E9235300D5F78D /* EditWindowController.m */; };
+		2732486211E940CE00D5F78D /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732486111E940CE00D5F78D /* Level.m */; };
+		27324B5811EA9C4300D5F78D /* ICON.icns in Resources */ = {isa = PBXBuildFile; fileRef = 27324B5711EA9C4200D5F78D /* ICON.icns */; };
 		278B17EC11E109B8006B9FAC /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 278B17EB11E109B8006B9FAC /* BackgroundView.m */; };
 		278B17F511E10C1D006B9FAC /* LevelTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 278B17F311E10C1D006B9FAC /* LevelTemplate.png */; };
 		278B18C911E16C4B006B9FAC /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 278B18C811E16C4B006B9FAC /* libsqlite3.0.dylib */; };
@@ -28,6 +32,13 @@
 		256AC3F00F4B6AF500CF3369 /* LevelEditor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelEditor_Prefix.pch; sourceTree = "<group>"; };
 		272D6FED11E0FFD90064FAEC /* EditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditView.h; sourceTree = "<group>"; };
 		272D6FEE11E0FFD90064FAEC /* EditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditView.m; sourceTree = "<group>"; };
+		273247DE11E7F84600D5F78D /* LevelMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelMap.h; sourceTree = "<group>"; };
+		273247DF11E7F84600D5F78D /* LevelMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelMap.m; sourceTree = "<group>"; };
+		2732482C11E9235300D5F78D /* EditWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditWindowController.h; sourceTree = "<group>"; };
+		2732482D11E9235300D5F78D /* EditWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditWindowController.m; sourceTree = "<group>"; };
+		2732486011E940CE00D5F78D /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		2732486111E940CE00D5F78D /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
+		27324B5711EA9C4200D5F78D /* ICON.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ICON.icns; path = English.lproj/ICON.icns; sourceTree = "<group>"; };
 		278B17EA11E109B8006B9FAC /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundView.h; sourceTree = "<group>"; };
 		278B17EB11E109B8006B9FAC /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
 		278B17F411E10C1D006B9FAC /* English */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = English; path = English.lproj/LevelTemplate.png; sourceTree = "<group>"; };
@@ -59,10 +70,16 @@
 				278B185C11E118F8006B9FAC /* SpriteDefs.h */,
 				256AC3D80F4B6AC300CF3369 /* LevelEditorAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* LevelEditorAppDelegate.m */,
+				273247DE11E7F84600D5F78D /* LevelMap.h */,
+				273247DF11E7F84600D5F78D /* LevelMap.m */,
 				272D6FED11E0FFD90064FAEC /* EditView.h */,
 				272D6FEE11E0FFD90064FAEC /* EditView.m */,
 				278B17EA11E109B8006B9FAC /* BackgroundView.h */,
 				278B17EB11E109B8006B9FAC /* BackgroundView.m */,
+				2732482C11E9235300D5F78D /* EditWindowController.h */,
+				2732482D11E9235300D5F78D /* EditWindowController.m */,
+				2732486011E940CE00D5F78D /* Level.h */,
+				2732486111E940CE00D5F78D /* Level.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -122,6 +139,7 @@
 				8D1107310486CEB800E47090 /* LevelEditor-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				27324B5711EA9C4200D5F78D /* ICON.icns */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -181,6 +199,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				278B17F511E10C1D006B9FAC /* LevelTemplate.png in Resources */,
+				27324B5811EA9C4300D5F78D /* ICON.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +214,9 @@
 				256AC3DA0F4B6AC300CF3369 /* LevelEditorAppDelegate.m in Sources */,
 				272D6FEF11E0FFD90064FAEC /* EditView.m in Sources */,
 				278B17EC11E109B8006B9FAC /* BackgroundView.m in Sources */,
+				273247E011E7F84600D5F78D /* LevelMap.m in Sources */,
+				2732482E11E9235300D5F78D /* EditWindowController.m in Sources */,
+				2732486211E940CE00D5F78D /* Level.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +264,9 @@
 				GCC_PREFIX_HEADER = LevelEditor_Prefix.pch;
 				INFOPLIST_FILE = "LevelEditor-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = LevelEditor;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -256,6 +280,7 @@
 				GCC_PREFIX_HEADER = LevelEditor_Prefix.pch;
 				INFOPLIST_FILE = "LevelEditor-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = LevelEditor;
 			};
 			name = Release;

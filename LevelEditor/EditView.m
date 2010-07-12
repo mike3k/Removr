@@ -13,6 +13,7 @@
 
 @implementation EditView
 
+@synthesize theLevelMap;
 @synthesize currentPiece;
 
 - (id)initWithFrame:(NSRect)frame {
@@ -33,9 +34,9 @@
 //    [[NSColor redColor] setFill];
 //    NSFrameRect([self bounds]);
 
-    for (int i=0;i<MAPWIDTH;++i) {
-        for (int j=0;j<MAPHEIGHT;++j) {
-            int piece = map[i][j];
+    for (int i=0;i<theLevelMap.MapWidth;++i) {
+        for (int j=0;j<theLevelMap.MapHeight;++j) {
+            int piece = [theLevelMap getPieceX:i Y:j];
             if (0 != piece) {
                 switch (piece) {
                     case RedCircle:
@@ -44,6 +45,8 @@
                     case RedVertBar64:
                     case RedHorizBar128:
                     case RedVertBar128:
+                    case RedVertBar256:
+                    case RedHorizBar256:
                         [[NSColor redColor] setFill];
                         break;
                     case GreenCircle:
@@ -52,6 +55,8 @@
                     case GreenHorizBar128:
                     case GreenVertBar64:
                     case GreenVertBar128:
+                    case GreenVertBar256:
+                    case GreenHorizBar256:
                         [[NSColor greenColor] setFill];
                         break;
                     case BlueCircle:
@@ -60,6 +65,8 @@
                     case BlueVertBar64:
                     case BlueHorizBar128:
                     case BlueVertBar128:
+                    case BlueVertBar256:
+                    case BlueHorizBar256:
                         [[NSColor blueColor] setFill];
                         break;
                 };
@@ -108,6 +115,22 @@
                         NSRectFill(box);
                         [NSBezierPath strokeRect:box];
                         break;
+
+                    case RedHorizBar256:
+                    case GreenHorizBar256:
+                    case BlueHorizBar256:
+                        box = NSMakeRect(i*16, j*16, 256.0, 16.0);
+                        NSRectFill(box);
+                        [NSBezierPath strokeRect:box];
+                        break;
+                    case RedVertBar256:
+                    case GreenVertBar256:
+                    case BlueVertBar256:
+                        box = NSMakeRect(i*16, j*16, 16.0, 256.0);
+                        NSRectFill(box);
+                        [NSBezierPath strokeRect:box];
+                        break;
+
                     default:
                         break;
                 }
@@ -129,52 +152,22 @@
     
     NSLog(@"Point: %d, %d",X,Y);
     if ([theEvent modifierFlags] & NSAlternateKeyMask) {
-        map[X][Y] = 0;
+        //theLevelMap[X][Y] = 0;
+        [theLevelMap setPiece:0 X:X Y:Y];
     }
     else {
-        map[X][Y] = currentPiece;
+        //theLevelMap[X][Y] = currentPiece;
+        [theLevelMap setPiece:currentPiece X:X Y:Y];
     }
     [self setNeedsDisplay:YES];
 }
 
 - (IBAction)clearMap:(id)sender
 {
-    memset(&map[0][0],0,MAPWIDTH*MAPHEIGHT*sizeof(UInt32));
+    [theLevelMap clear];
     [self setNeedsDisplay:YES];
 }
 
-- (NSData*)encodeMap
-{
-    UInt32 word,piece;
-    NSMutableData *coded = [NSMutableData data];
-    for (int i=0;i<MAPWIDTH;++i) {
-        for (int j=0;j<MAPHEIGHT;++j) {
-            if (0 != (piece = map[i][j])) {
-                word = StuffPiece(i,j,piece);
-                [coded appendBytes:&word length:sizeof(word)];
-            }
-        }
-    }
-    word = 0L;
-    [coded appendBytes:&word length:sizeof(word)];
-    
-    return coded;
-}
-
-- (void)decodeMap:(NSData*)coded
-{
-    UInt32* bytes = (UInt32*)[coded bytes];
-    UInt32 piece;
-    int count = [coded length] / sizeof(UInt32);
-
-    [self clearMap:self];
-    for (int i=0;i<count;++i) {
-        if (0 != (piece = bytes[i])) {
-            int x = MapXValue(piece), y = MapYValue(piece);
-            map[x][y] = MapPieceValue(piece);
-        }
-    }
-}
 
 - (IBAction)choose: (id)sender
 {
@@ -184,7 +177,7 @@
 
 - (IBAction)save:(id)sender
 {
-    NSString *txt = [self dumpText];
+    NSString *txt = [theLevelMap generateSource];
     NSLog(txt);
 
     NSString *sql = [self sqlText];
@@ -197,42 +190,11 @@
     fclose(out);
 }
 
-- (IBAction)load:(id)sender
-{
-}
-
 - (NSString*)sqlText
 {
-    NSMutableString *result = [NSMutableString stringWithFormat:@"INSERT INTO levels (background,map) VALUES ('background.png',X'"];
-    NSData *encoded = [self encodeMap];
-    char *bytes = (char*)[encoded bytes];
-    int len = [encoded length];
-    for (int i=0;i<len;++i) {
-        [result appendFormat:@"%02X",bytes[i]];
-    }
-    [result appendFormat:@"');"];
-    return result;
+    return [NSString stringWithFormat:@"INSERT INTO levels (background,map) VALUES ('background.png',%@);", [theLevelMap generateHex]];
 }
 
-
-- (NSString*)dumpText
-{
-    NSMutableString *result = [NSMutableString string];
-    
-    [result appendString:@"\n{\n"];
-    for (int i=0;i<MAPWIDTH;++i) {
-        for (int j=0;j<MAPHEIGHT;++j) {
-            int piece = map[i][j];
-            if (0 != piece) {
-                [result appendFormat:@"\tStuffPiece(%d,%d,%d),\n",i,j,piece];
-            }
-        }
-    }
-    
-    [result appendString:@"\t0L\n}\n"];
-    
-    return result;
-}
 
 static sqlite3 * db;
 static sqlite3_stmt * stmt;
@@ -251,7 +213,7 @@ static sqlite3_stmt * stmt;
         result = sqlite3_finalize(stmt);
         result = sqlite3_prepare(db, "INSERT INTO levels (background,map,par) VALUES ('background.png',?,0)", -1, &stmt, NULL);
     }
-    NSData *coded = [self encodeMap];
+    NSData *coded = [theLevelMap encode];
     printf("writing to database\n");
     result = sqlite3_bind_blob(stmt, 1, [coded bytes], [coded length], SQLITE_STATIC);
     result = sqlite3_step(stmt);
