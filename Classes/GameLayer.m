@@ -13,7 +13,7 @@
 #import "LevelCompleteMsg.h"
 
 enum {
-	kTagAtlasSpriteSheet = 1,
+	kTagAtlasSpriteSheet = 2,
     kTagPauseButton,
     kTagPauseBackground,
     kTagPauseMenu,
@@ -72,6 +72,11 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 }
 
+- (void) setDefaultBackground
+{
+    self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:@"background.png"]] autorelease];
+}
+
 -(id) init
 {
     if( (self=[super init])) {
@@ -82,8 +87,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     
         CGSize wins = [[CCDirector sharedDirector] winSize];
     
-        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:@"background.png"]] autorelease];
-
+        [self setDefaultBackground];
         cpInitChipmunk();
 		
         space = cpSpaceNew();
@@ -439,7 +443,15 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     
     NSData *map = theLevel.map;
     if (nil != map) {
-        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile: theLevel.background]] autorelease];
+        if (nil != theLevel.background) {
+            self.background = [[[CCSprite alloc] initWithFile:[self scaledFile: theLevel.background]] autorelease];
+            [self removeClouds];
+        }
+        else {
+            [self setDefaultBackground];
+            [self addClouds];
+            [self moveClouds];
+        }
 
         [self runWithMap: (UInt32*)[map bytes]];
         return YES;

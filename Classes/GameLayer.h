@@ -41,6 +41,7 @@
 
 
 - (void)setAccellerometer;
+- (void)setDefaultBackground;
 
 //+ (id) scene;
 - (void) step: (ccTime) dt;

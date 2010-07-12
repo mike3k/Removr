@@ -276,8 +276,11 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         lvl.index = sqlite3_column_int(query, 0);
         
         str = (char*)sqlite3_column_text(query, 1);
-        if (nil != str) {
+        if ((nil != str) && str[0]) {
             lvl.background = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
+        }
+        else {
+            lvl.background = nil;
         }
         
         blob = (void*)sqlite3_column_blob(query,2);

@@ -42,8 +42,24 @@
     CCSprite *_background;
     
     CGFloat _scale;
+    
+    CCSprite *_sun;
+    CCSprite *_cloud1;
+    CCSprite *_cloud2;
+    
+    CCAction *_move1;
+    CCAction *_move2;
 
 }
+
+- (void) moveClouds;
+- (void) addSun;
+- (void) addClouds;
+
+- (void) removeSun;
+- (void) removeClouds;
+- (void) stopClouds;
+
 
 - (NSString*)scaledFile: (NSString*)name;
 

@@ -59,26 +59,26 @@
                                                                target:self
                                                              selector:@selector(gotoLevel:)];
             [_buttons addObject:itm];
-            [menu addChild:itm z:0 tag:0];
+            [menu addChild:itm z:1 tag:0];
             [self updateItem:itm forLevel:theLevel];
         }
 
-        [menu addChild:[CCMenuItemImage itemFromNormalImage:spacer selectedImage:spacer] z:0 tag:0];
+        [menu addChild:[CCMenuItemImage itemFromNormalImage:spacer selectedImage:spacer] z:1 tag:0];
 
         bPrev = [MCMenuItem itemFromNormalImage:[self scaledFile: @"button-prev.png"]
                                   selectedImage:[self scaledFile: @"button-prev-sel.png"]
                                          target:self 
                                        selector:@selector(pageBack:)];
         [bPrev setIsEnabled:NO];
-        [menu addChild:bPrev z:0 tag:0];
+        [menu addChild:bPrev z:1 tag:0];
     
         bNext = [MCMenuItem itemFromNormalImage:[self scaledFile: @"button-next.png"]
                                   selectedImage:[self scaledFile: @"button-next-sel.png"] 
                                          target:self selector:@selector(pageNext:)];
         [bNext setIsEnabled:([_delegate levelCount] > 12)];
-        [menu addChild:bNext z:0 tag:0];
+        [menu addChild:bNext z:1 tag:0];
         
-        [menu addChild:[CCMenuItemImage itemFromNormalImage:spacer selectedImage:spacer] z:0 tag:0];
+        [menu addChild:[CCMenuItemImage itemFromNormalImage:spacer selectedImage:spacer] z:1 tag:0];
       
         [menu alignItemsInColumns:  [NSNumber numberWithInt:1], 
                                     [NSNumber numberWithInt:4],
@@ -88,7 +88,7 @@
                                     [NSNumber numberWithInt:2],
                                     [NSNumber numberWithInt:1], 
                                     nil];
-        [self addChild:menu];
+        [self addChild:menu z: 1];
         
         CCMenu *menu2 = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"back.png"]
                                                                      selectedImage:[self scaledFile: @"back-sel.png"] 
@@ -96,7 +96,9 @@
                                                                           selector:@selector(menu:)], nil];
         [menu2 alignItemsVertically];
         menu2.position = ccp(wins.width-(60*_scale), 30*_scale);
-        [self addChild:menu2];
+        [self addChild:menu2 z: 1];
+        [self addClouds];
+        [self moveClouds];
     }
     return self;
 }

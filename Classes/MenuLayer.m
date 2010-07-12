@@ -25,7 +25,7 @@
     if ((self = [super init])) {
         NSString *tmp;
 
-        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:@"menu.png"]] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:@"background.png"]] autorelease];
         
         tmp = [self scaledFile:@"logo-menu.png"];
         
@@ -54,10 +54,23 @@
                                                             selector:@selector(info:)];
         self.menu = [CCMenu menuWithItems: logo, play, score, opt, more, nil];
         [_menu alignItemsVertically];
-        [self addChild:_menu];
-        
+        [self addChild:_menu z: 1];
+        [self addClouds];
+        [self moveClouds];
     }
     return self;
+}
+
+- (void)onEnter
+{
+    [self moveClouds];
+    [super onEnter];
+}
+
+- (void)onExit
+{
+    [self stopClouds];
+    [super onExit];
 }
 
 + (CCMenuItemFont *) getSpacerItem
@@ -65,33 +78,5 @@
 	[CCMenuItemFont setFontSize:2];
 	return [CCMenuItemFont itemFromString:@" " target:self selector:nil];
 }
-
-//- (void)play:(id)sender
-//{
-//    if ([_delegate respondsToSelector:@selector(play:)]) {
-//        [_delegate play: sender];
-//    }
-//}
-//
-//- (void)highscores:(id)sender
-//{
-//    if ([_delegate respondsToSelector:@selector(highscores:)]) {
-//        [_delegate highscores: sender];
-//    }
-//}
-//
-//- (void)options:(id)sender
-//{
-//    if ([_delegate respondsToSelector:@selector(options:)]) {
-//        [_delegate options: sender];
-//    }
-//}
-//
-//- (void)info:(id)sender
-//{
-//    if ([_delegate respondsToSelector:@selector(options:)]) {
-//        [_delegate options: sender];
-//    }
-//}
 
 @end
