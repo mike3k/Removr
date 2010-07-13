@@ -96,6 +96,7 @@
 	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
 	// You can change anytime.
 	[CCTexture2D setDefaultAlphaPixelFormat:kTexture2DPixelFormat_RGBA8888];	
+    //[CCTexture2D setDefaultAlphaPixelFormat:kTexture2DPixelFormat_RGBA4444];
 	
 	[director runWithScene: [MenuScene node]];
     //NSLog(@"applicationDidFinishLaunching returns");
