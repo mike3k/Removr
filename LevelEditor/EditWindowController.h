@@ -24,6 +24,7 @@
     sqlite3_stmt * update;
     sqlite3_stmt * insert;
     sqlite3_stmt * delete;
+    sqlite3_stmt * vacuum;
     sqlite3_stmt * allrecords;
     
     NSMutableArray * levels;
@@ -51,5 +52,8 @@
 
 - (BOOL) open_database: (NSString *)name create:(BOOL)create;
 - (void) reloadTable;
+
+- (void) cleanup_database;
+
 
 @end

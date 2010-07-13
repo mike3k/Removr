@@ -35,6 +35,8 @@
 
 - (void)dealloc
 {
+    [self cleanup_database];
+
     if (nil != select)
         sqlite3_finalize(select);
     
@@ -43,6 +45,15 @@
     
     if (nil != insert)
         sqlite3_finalize(insert);
+
+    if (nil != delete)
+        sqlite3_finalize(delete);
+    
+    if (nil != vacuum)
+        sqlite3_finalize(vacuum);
+    
+    if (nil != allrecords)
+        sqlite3_finalize(allrecords);
 
     if (nil != db)
         sqlite3_close(db);
@@ -90,6 +101,7 @@
         result = sqlite3_bind_int(delete, 1, rowid);
         result = sqlite3_step(delete);
         [self reloadTable];
+        [self cleanup_database];
     }
 }
 
@@ -114,6 +126,7 @@
         result = sqlite3_step(insert);
         self.rowid = sqlite3_last_insert_rowid(db);
         [self reloadTable];
+        [self cleanup_database];
         NSLog(@"inserting new level");
     }
     else {
@@ -128,6 +141,13 @@
     }
     theLevelMap.dirty = NO;
 }
+
+- (void) cleanup_database
+{
+    sqlite3_reset(vacuum);
+    sqlite3_step(vacuum);
+}
+
 
 - (IBAction) tableSelect: (id)sender
 {
@@ -171,6 +191,7 @@ static char * update_sql = "UPDATE levels SET name=?, map=? WHERE rowid=?;";
 static char * insert_sql = "INSERT INTO levels (name,map) VALUES (?,?);";
 static char * create_sql = "CREATE TABLE levels (background text,map blob NOT NULL,name text,par integer DEFAULT 0);";
 static char * allrecords_sql = "SELECT rowid,name,map FROM levels;";
+static char * vacuum_sql = "VACUUM;";
 
 - (BOOL) open_database: (NSString *)name create:(BOOL)create
 {
@@ -178,10 +199,12 @@ static char * allrecords_sql = "SELECT rowid,name,map FROM levels;";
 
     // close current database, if any
     if (nil != db) {
+        [self cleanup_database];
         sqlite3_finalize(select);
         sqlite3_finalize(update);
         sqlite3_finalize(insert);
         sqlite3_finalize(delete);
+        sqlite3_finalize(vacuum);
         sqlite3_finalize(allrecords);
         sqlite3_close(db);
         select = update = insert = delete = allrecords = db = nil;
@@ -195,6 +218,7 @@ static char * allrecords_sql = "SELECT rowid,name,map FROM levels;";
     sqlite3_prepare_v2(db, insert_sql, -1, &insert, nil);
     sqlite3_prepare_v2(db, allrecords_sql, -1, &allrecords, nil);
     sqlite3_prepare_v2(db, delete_sql, -1, &delete, nil);
+    sqlite3_prepare_v2(db, vacuum_sql, -1, &vacuum, nil);
 
     if (YES == create) {
         self.levels = [NSMutableArray arrayWithCapacity:1];

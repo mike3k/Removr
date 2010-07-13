@@ -347,9 +347,33 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 }
 
 
-- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	for( UITouch *touch in touches ) {
+    CGPoint location = [touch locationInView: [touch view]];
+    location = [[CCDirector sharedDirector] convertToGL: location];
+    cpShape *shape = cpSpacePointQueryFirst(space, location, CP_ALL_LAYERS, 0);
+    if (nil != shape) {
+        [self removeShape: shape force: NO];
+        return YES;
+    }
+    return NO;
+}
+
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for( UITouch *touch in touches ) {
+        CGPoint location = [touch locationInView: [touch view]];
+        location = [[CCDirector sharedDirector] convertToGL: location];
+        cpShape *shape = cpSpacePointQueryFirst(space, location, CP_ALL_LAYERS, 0);
+        if (nil != shape) {
+            [self removeShape: shape force: NO];
+        }
+    }
+}
+
+//- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//	for( UITouch *touch in touches ) {
 //        CGPoint location = [touch locationInView: [touch view]];
 //		
 //        location = [[CCDirector sharedDirector] convertToGL: location];
@@ -358,16 +382,18 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 //        if (nil != shape) {
 //            [self removeShape: shape force: NO];
 //        }
-        CGPoint location = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
-        ShapeSprite *child;
-        for (child in [_sheet children]) {
-            if (CGRectContainsPoint([child boundingBox], location)) {
-                [self removeSprite: child force: NO];
-                break;
-            }
-        }
-	}
-}
+///////
+//        CGPoint location = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
+//        ShapeSprite *child;
+//        for (child in [_sheet children]) {
+//            if (CGRectContainsPoint([child boundingBox], location)) {
+//                [self removeSprite: child force: NO];
+//                break;
+//            }
+//        }
+//////
+//	}
+//}
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
