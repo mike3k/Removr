@@ -47,8 +47,8 @@
     CCSprite *_cloud1;
     CCSprite *_cloud2;
     
-    CCFiniteTimeAction *_move1;
-    CCFiniteTimeAction *_move2;
+//    CCFiniteTimeAction *_move1;
+//    CCFiniteTimeAction *_move2;
 
 }
 
