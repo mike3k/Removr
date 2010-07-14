@@ -9,6 +9,7 @@
 #import "HighScoreLayer.h"
 #import "LevelMenuItem.h"
 #import "MCMenuItem.h"
+#import "AppSettings.h"
 
 @interface HighScoreLayer (private)
 
@@ -16,7 +17,6 @@
 
 @end
 
-// TODO: make sure this is disabled in final build
 #define FORCE_ALL_LEVELS
 
 @implementation HighScoreLayer
@@ -28,7 +28,8 @@
 #ifdef FORCE_ALL_LEVELS
     if (theLevel < [_delegate levelCount])
 #else
-    if (theLevel < [_delegate levelCount] && (theScore != 0))
+    //if (theLevel < [_delegate levelCount] && (theScore != 0))
+    if (theLevel <= [[AppSettings shared] highestLevel])
 #endif
     {
         itm.moves = theScore;
@@ -88,7 +89,7 @@
                                     [NSNumber numberWithInt:2],
                                     [NSNumber numberWithInt:1], 
                                     nil];
-        [self addChild:menu z: 1];
+        [self addChild:menu z: zMenuLayer];
         
         CCMenu *menu2 = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"back.png"]
                                                                      selectedImage:[self scaledFile: @"back-sel.png"] 
@@ -96,9 +97,10 @@
                                                                           selector:@selector(menu:)], nil];
         [menu2 alignItemsVertically];
         menu2.position = ccp(wins.width-(60*_scale), 30*_scale);
-        [self addChild:menu2 z: 1];
-        [self addClouds];
-        [self moveClouds];
+        [self addChild:menu2 z: zMenuLayer];
+        if ([self addClouds]) {
+            [self moveClouds];
+        }
     }
     return self;
 }
