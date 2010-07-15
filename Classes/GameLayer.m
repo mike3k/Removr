@@ -12,19 +12,7 @@
 #import "SimpleAudioEngine.h"
 #import "LevelCompleteMsg.h"
 
-enum {
-	kTagAtlasSpriteSheet = 2,
-    kTagPauseButton,
-    kTagPauseBackground,
-    kTagPauseMenu,
-    kTagWinScreen,
-};
-
-#define zSpritesLevel       1
-#define zOverlayLevel       2
-
 #define kBorderCollision  888
-
 
 static void
 eachShape(void *ptr, void* unused)
@@ -194,13 +182,14 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     win = lose = NO;
 
     [self setAccellerometer];
+    [_delegate playIntroMusic];
     
     if (_delegate.paused) {
         [self resume];
     }
     else {
         [self hidePauseMenu];
-        [_delegate playIntroMusic];
+//        [_delegate playIntroMusic];
         [self gotoLevel:-1];
     }
 }
@@ -464,6 +453,11 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     [self setAccellerometer];
 
     self.level = level;
+    aps.lastLevel = level;
+    if (level > aps.highestLevel) {
+        aps.highestLevel = level;
+        [aps save];
+    }
     
     Level *theLevel = [[GameManager shared] GetLevel: level];
     
@@ -483,8 +477,6 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         return YES;
     }
     [GameManager shared].curLevel = 0;
-    //[self undimScreen];
-    //[_delegate menu:self];
     [self quit];
     return NO;
 }
