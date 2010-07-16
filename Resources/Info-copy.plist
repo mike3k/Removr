@@ -48,7 +48,7 @@
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
 	<key>UIApplicationExitsOnSuspend</key>
-	<true/>
+	<false/>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 </dict>
