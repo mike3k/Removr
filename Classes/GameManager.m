@@ -41,9 +41,10 @@ static GameManager *_sharedGameManager = nil;
 {
     if ((self = [super init])) {
         aps = [AppSettings shared];
-        [self preloadSounds];
         self.curLevel = aps.lastLevel;
         _levelCount = -1;
+        //[self performSelectorOnMainThread:@selector(preloadSounds) withObject:nil waitUntilDone:NO];
+        [self preloadSounds];
     }
 #ifndef NDEBUG
     NSLog(@"GameManager init");
@@ -274,10 +275,11 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     }
     [self initLevels];
     Level *lvl = nil;
+    int result;
     self.curLevel = number;
     // request a record for the level
     sqlite3_bind_int(query, 1, number+1);
-    if (sqlite3_step(query) == SQLITE_ROW) {
+    if ((result=sqlite3_step(query)) == SQLITE_ROW) {
         char *str;
         void *blob;
         int nbytes;
@@ -308,7 +310,12 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
         self.theLevel = lvl;
     }
-    else self.theLevel = nil;
+    else {
+#ifndef NDEBUG
+        NSLog(@"SQL query returned: %d",result);
+#endif
+        self.theLevel = nil;
+    }
     sqlite3_reset(query);
     return [lvl autorelease];
 }
@@ -340,7 +347,6 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (void)playLevel: (NSNumber*)level
 {
-    [self initLevels];
     if (nil == _gs) {
 #ifndef NDEBUG
         NSLog(@"initializing GameScene");
@@ -357,7 +363,6 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (void)play:(id)sender
 {
-    [self initLevels];
     if (nil == _gs) {
 #ifndef NDEBUG
         NSLog(@"initializing GameScene");

@@ -76,7 +76,10 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 		aps = [AppSettings shared];
         self.isTouchEnabled = YES;
         
+        _level = -1;
         _facet = FACET*_scale;
+        
+        _delegate.paused = NO;
     
         CGSize wins = [[CCDirector sharedDirector] winSize];
     
@@ -89,8 +92,6 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 		
         space->gravity = ccp(0, -200);
         space->elasticIterations = space->iterations;
-
-        _level = 1;
         
         // create the border to test for collisions
         cpBody *staticBody = cpBodyNew(INFINITY, INFINITY);
@@ -193,7 +194,6 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     }
     else {
         [self hidePauseMenu];
-//        [_delegate playIntroMusic];
         [self gotoLevel:-1];
     }
 }
