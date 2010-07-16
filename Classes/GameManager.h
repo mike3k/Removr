@@ -54,6 +54,8 @@
 
 //- (BOOL)LoadLevels;
 
+- (void)initLevels;
+
 - (void)clearScores;
 
 - (BOOL) copydb;

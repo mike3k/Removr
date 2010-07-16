@@ -98,6 +98,8 @@
 	[CCTexture2D setDefaultAlphaPixelFormat:kTexture2DPixelFormat_RGBA8888];	
     //[CCTexture2D setDefaultAlphaPixelFormat:kTexture2DPixelFormat_RGBA4444];
 	
+    [GameManager shared];   // create and initialize the manager
+
 	[director runWithScene: [MenuScene node]];
     //NSLog(@"applicationDidFinishLaunching returns");
 }

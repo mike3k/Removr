@@ -14,6 +14,11 @@
 @synthesize delegate = _delegate;
 @synthesize scale = _scale;
 
+static CCAction *_cloud1Action = nil;
+static CCAction *_cloud2Action = nil;
+static CCFiniteTimeAction *_move1;
+static CCFiniteTimeAction *_move2;
+
 - (id)init
 {
     if ((self = [super init])) {
@@ -21,7 +26,7 @@
         self.scale = [[UIScreen mainScreen] scale];
     }
 #ifndef NDEBUG
-    NSLog(@"[%@ init]",self);
+    NSLog(@"MCLayer: [%@ init]",self);
 #endif
     return self;
 }
@@ -72,19 +77,28 @@
     [self addChild:_sun];
 }
 
-- (void)addClouds
+- (BOOL)addClouds
 {
     CGSize wins = [[CCDirector sharedDirector] winSize];
 
+    if ([self getChildByTag:kTagCloud1]) {
+        [_cloud1 stopAllActions];
+        [_cloud2 stopAllActions];
+        _cloud1.position = ccp(0, wins.height);
+        _cloud2.position = ccp(wins.width - (CLOUDPOSV*_scale),wins.height-(CLOUDPOSH*_scale));
+        return NO;
+    }
+    
     _cloud1 = [[[CCSprite alloc] initWithFile:[self scaledFile:@"cloud-1.png"]] autorelease];
     _cloud1.anchorPoint = ccp(0.0,1.0);
     _cloud1.position = ccp(0, wins.height);
-    [self addChild:_cloud1];
+    [self addChild:_cloud1 z:zCloudLevel tag:kTagCloud1];
     
     _cloud2 = [[[CCSprite alloc] initWithFile:[self scaledFile:@"cloud-2.png"]] autorelease];
     _cloud2.anchorPoint = ccp(1.0,1.0);
     _cloud2.position = ccp(wins.width - (CLOUDPOSV*_scale),wins.height-(CLOUDPOSH*_scale));
-    [self addChild:_cloud2];
+    [self addChild:_cloud2 z:zCloudLevel tag:kTagCloud1];
+    return YES;
 }
 
 - (void) moveClouds
@@ -94,14 +108,27 @@
     // reset position
     _cloud1.position = ccp(0, wins.height);
     _cloud2.position = ccp(wins.width - (CLOUDPOSV*_scale),wins.height-(CLOUDPOSH*_scale));
-
-    _move1 = [CCMoveBy actionWithDuration:40 position:ccp(wins.width / 2, 0.0)];
-    _move2 = [CCMoveBy actionWithDuration:40 position:ccp(-(wins.width / 2), 0.0)];
     
-    [_cloud1 runAction: [CCRepeatForever actionWithAction: 
-                         [CCSequence actions: _move1, [_move1 reverse], nil]]];
-    [_cloud2 runAction: [CCRepeatForever actionWithAction: 
-                         [CCSequence actions:  _move2, [_move2 reverse], nil]]];
+    // MEC 07-13-2010 - reuse actions instead of re-creating them
+    if (nil == _cloud1Action) {
+        _move1 = [CCMoveBy actionWithDuration:40 position:ccp(wins.width / 2, 0.0)];
+        _move2 = [CCMoveBy actionWithDuration:40 position:ccp(-(wins.width / 2), 0.0)];
+        
+        _cloud1Action = [[CCRepeatForever actionWithAction: [CCSequence actions: _move1, [_move1 reverse], nil]] retain];
+        _cloud2Action = [[CCRepeatForever actionWithAction: [CCSequence actions:  _move2, [_move2 reverse], nil]] retain];
+    }
+
+    [_cloud1 runAction: _cloud1Action];
+
+    [_cloud2 runAction: _cloud2Action];
+
+//    _move1 = [CCMoveBy actionWithDuration:40 position:ccp(wins.width / 2, 0.0)];
+//    _move2 = [CCMoveBy actionWithDuration:40 position:ccp(-(wins.width / 2), 0.0)];
+//    
+//    [_cloud1 runAction: [CCRepeatForever actionWithAction: 
+//                         [CCSequence actions: _move1, [_move1 reverse], nil]]];
+//    [_cloud2 runAction: [CCRepeatForever actionWithAction: 
+//                         [CCSequence actions:  _move2, [_move2 reverse], nil]]];
 
 }
 
@@ -118,12 +145,10 @@
     if (nil != _cloud1) {
         [self removeChild:_cloud1 cleanup:YES];
         _cloud1 = nil;
-        _move1 = nil;
     }
     if (nil != _cloud2) {
         [self removeChild:_cloud2 cleanup:YES];
         _cloud2 = nil;
-        _move2 = nil;
     }
 }
 
@@ -133,12 +158,10 @@
     if (nil != _cloud1) {
         [_cloud1 stopAllActions];
         _cloud1.position = ccp(0, wins.height);
-        _move1 = nil;
     }
     if (nil != _cloud2) {
         [_cloud2 stopAllActions];
         _cloud2.position = ccp(wins.width - (CLOUDPOSV*_scale),wins.height-(CLOUDPOSH*_scale));
-        _move2 = nil;
     }
 }
 

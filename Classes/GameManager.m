@@ -15,7 +15,7 @@
 #import "HighscoreScene.h"
 #import "SimpleAudioEngine.h"
 
-#define ALLOW_DB_UPDATE
+#undef ALLOW_DB_UPDATE
 #define DB_VERSION  1
 
 static GameManager *_sharedGameManager = nil;
@@ -41,11 +41,23 @@ static GameManager *_sharedGameManager = nil;
 {
     if ((self = [super init])) {
         aps = [AppSettings shared];
+        [self preloadSounds];
         self.curLevel = aps.lastLevel;
         _levelCount = -1;
-        //[self playIntroMusic];
     }
+#ifndef NDEBUG
+    NSLog(@"GameManager init");
+#endif
     return self;
+}
+
+- (void) initLevels
+{
+    // open the database & prepare the query here the first time we use it instead of init
+    if (nil == db) {
+        [self opendb];
+        sqlite3_prepare_v2(db, "SELECT rowid,background,map,name,par FROM levels WHERE ROWID=?", -1, &query, NULL);
+    }
 }
 
 #pragma mark database management
@@ -104,7 +116,8 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (BOOL) checkForDbUdate
 {
-#ifdef ALLOW_DB_UPDATE
+/*
+ #ifdef ALLOW_DB_UPDATE
     if (dbmod) {
         NSString *timestamp_url = @"http://apps.mc-development.com/removr/timestamp";
         NSString *update_url = @"http://apps.mc-development.com/removr/levels.sql";
@@ -177,6 +190,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         }
     }
 #endif
+ */
     return NO;
 }
 
@@ -258,11 +272,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     if ((number == _curLevel) && (_theLevel != nil)) {
         return _theLevel;
     }
-    // open the database & prepare the query here the first time we use it instead of init
-    if (nil == query) {
-        [self opendb];
-        sqlite3_prepare_v2(db, "SELECT rowid,background,map,name,par FROM levels WHERE ROWID=?", -1, &query, NULL);
-    }
+    [self initLevels];
     Level *lvl = nil;
     self.curLevel = number;
     // request a record for the level
@@ -330,9 +340,16 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (void)playLevel: (NSNumber*)level
 {
+    [self initLevels];
     if (nil == _gs) {
+#ifndef NDEBUG
+        NSLog(@"initializing GameScene");
+#endif
         self.gs = [GameScene node];
     }
+#ifndef NDEBUG
+    NSLog(@"showing game scene: %@",_gs);
+#endif
     [[CCDirector sharedDirector] replaceScene: _gs];
 
     [_gs playLevel:level];
@@ -340,9 +357,16 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (void)play:(id)sender
 {
+    [self initLevels];
     if (nil == _gs) {
+#ifndef NDEBUG
+        NSLog(@"initializing GameScene");
+#endif
         self.gs = [GameScene node];
     }
+#ifndef NDEBUG
+    NSLog(@"showing game scene: %@",_gs);
+#endif
     [[CCDirector sharedDirector] replaceScene: _gs];
 
     [_gs play:self];

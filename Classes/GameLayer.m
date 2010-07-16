@@ -67,7 +67,12 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 -(id) init
 {
-    if( (self=[super init])) {
+#ifndef NDEBUG
+    NSLog(@"Entering GameLayer init");
+#endif
+    self = [super init];
+
+    if ( self ) {
 		aps = [AppSettings shared];
         self.isTouchEnabled = YES;
         
@@ -125,11 +130,10 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         menu.anchorPoint = ccp(1,1);
         menu.position = ccp(wins.width - (_scale*42), wins.height - (_scale*16));
         [self addChild:menu  z:zOverlayLevel tag:kTagPauseButton];
-        //[self runWithMap: lvl1 size:(sizeof(lvl1) / sizeof(UInt32))];
-        //[self gotoLevel: [_delegate curLevel]];
-        [_delegate preloadSounds];
     }
-	
+#ifndef NDEBUG
+    NSLog(@"Leaving GameLayer init");
+#endif
 	return self;
 }
 

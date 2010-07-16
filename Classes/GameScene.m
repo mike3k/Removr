@@ -17,10 +17,16 @@
 
 - (id) init
 {
+#ifndef NDEBUG
+    NSLog(@"Entering GameScene Init");
+#endif
     if ((self = [super init])) {
 		self.game = [GameLayer node];
         [self addChild:_game];
     }
+#ifndef NDEBUG
+    NSLog(@"Leaving GameScene Init");
+#endif
     return self;
 }
 
@@ -47,11 +53,17 @@
 
 - (void)play:(id)sender
 {
+#ifndef NDEBUG
+    NSLog(@"[Gamescene play:]");
+#endif
     [_game play];
 }
 
 - (void)playLevel:(NSNumber*)level
 {
+#ifndef NDEBUG
+    NSLog(@"[Gamescene playLevel:%@]",level);
+#endif
     [_game playLevel:level];
 }
 
