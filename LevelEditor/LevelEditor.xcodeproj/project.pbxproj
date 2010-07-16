@@ -13,7 +13,7 @@
 		273247E011E7F84600D5F78D /* LevelMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 273247DF11E7F84600D5F78D /* LevelMap.m */; };
 		2732482E11E9235300D5F78D /* EditWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732482D11E9235300D5F78D /* EditWindowController.m */; };
 		2732486211E940CE00D5F78D /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732486111E940CE00D5F78D /* Level.m */; };
-		27324B5811EA9C4300D5F78D /* ICON.icns in Resources */ = {isa = PBXBuildFile; fileRef = 27324B5711EA9C4200D5F78D /* ICON.icns */; };
+		27324F2211EE579500D5F78D /* ICON2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 27324F2011EE579500D5F78D /* ICON2.icns */; };
 		278B17EC11E109B8006B9FAC /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 278B17EB11E109B8006B9FAC /* BackgroundView.m */; };
 		278B17F511E10C1D006B9FAC /* LevelTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 278B17F311E10C1D006B9FAC /* LevelTemplate.png */; };
 		278B18C911E16C4B006B9FAC /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 278B18C811E16C4B006B9FAC /* libsqlite3.0.dylib */; };
@@ -38,7 +38,7 @@
 		2732482D11E9235300D5F78D /* EditWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditWindowController.m; sourceTree = "<group>"; };
 		2732486011E940CE00D5F78D /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		2732486111E940CE00D5F78D /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
-		27324B5711EA9C4200D5F78D /* ICON.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ICON.icns; path = English.lproj/ICON.icns; sourceTree = "<group>"; };
+		27324F2111EE579500D5F78D /* English */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = English; path = English.lproj/ICON2.icns; sourceTree = "<group>"; };
 		278B17EA11E109B8006B9FAC /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundView.h; sourceTree = "<group>"; };
 		278B17EB11E109B8006B9FAC /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
 		278B17F411E10C1D006B9FAC /* English */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = English; path = English.lproj/LevelTemplate.png; sourceTree = "<group>"; };
@@ -135,11 +135,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27324F2011EE579500D5F78D /* ICON2.icns */,
 				278B17F311E10C1D006B9FAC /* LevelTemplate.png */,
 				8D1107310486CEB800E47090 /* LevelEditor-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
-				27324B5711EA9C4200D5F78D /* ICON.icns */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -199,7 +199,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				278B17F511E10C1D006B9FAC /* LevelTemplate.png in Resources */,
-				27324B5811EA9C4300D5F78D /* ICON.icns in Resources */,
+				27324F2211EE579500D5F78D /* ICON2.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +237,14 @@
 				1DDD58150DA1D0A300B32029 /* English */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		27324F2011EE579500D5F78D /* ICON2.icns */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27324F2111EE579500D5F78D /* English */,
+			);
+			name = ICON2.icns;
 			sourceTree = "<group>";
 		};
 		278B17F311E10C1D006B9FAC /* LevelTemplate.png */ = {
