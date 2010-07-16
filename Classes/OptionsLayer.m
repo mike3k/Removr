@@ -48,7 +48,7 @@
 //                                    [NSNumber numberWithInt:1],
          nil];
 
-        [self addChild:menu z: 1];
+        [self addChild:menu z: zMenuLayer];
 
         CGSize wins = [[CCDirector sharedDirector] winSize];
         CCMenu *menu2 = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"back.png"] 
@@ -57,9 +57,10 @@
                                                                           selector:@selector(done)], nil];
         [menu2 alignItemsVertically];
         menu2.position = ccp(wins.width-(60*_scale), 30*_scale);
-        [self addChild:menu2 z: 1];
-        [self addClouds];
-        [self moveClouds];
+        [self addChild:menu2 z: zMenuLayer];
+        if ([self addClouds]) {
+            [self moveClouds];
+        }
 
     }
     return self;

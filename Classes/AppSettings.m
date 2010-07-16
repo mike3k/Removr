@@ -15,6 +15,7 @@ static AppSettings *theSettings = nil;
 @synthesize sound = _sound;
 @synthesize accelerometer = _accelerometer;
 @synthesize lastLevel = _lastLevel;
+@synthesize highestLevel = _highestLevel;
 @synthesize levelStatus = _levelStatus;
 @synthesize version = _version;
 @synthesize last_check = _last_check;
@@ -36,6 +37,7 @@ static AppSettings *theSettings = nil;
             self.sound = YES;
             self.accelerometer = YES;
             self.lastLevel = 0;
+            self.highestLevel = 0;
             _levelStatus = nil;
         }
         else {
@@ -43,6 +45,7 @@ static AppSettings *theSettings = nil;
             self.accelerometer = [def boolForKey: @"accel"];
             self.lastLevel = [def integerForKey:@"lastLevel"];
             self.levelStatus = [[[def dataForKey:@"levelStatus"] mutableCopy] autorelease];
+            self.highestLevel = [def integerForKey:@"highestLevel"];
             self.last_check = [def objectForKey:@"lastUpdate"];
         }
         if (nil == _levelStatus) {
@@ -71,7 +74,7 @@ static AppSettings *theSettings = nil;
     [def setInteger:self.lastLevel forKey:@"lastLevel"];
     [def setObject:self.levelStatus forKey:@"levelStatus"];
     [def setObject:self.last_check forKey:@"lastUpdate"];
-    
+    [def setInteger:self.highestLevel forKey:@"highestLevel"];
     return YES;
 }
 

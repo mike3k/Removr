@@ -17,6 +17,7 @@
     BOOL _sound;
 
     NSInteger _lastLevel;
+    NSInteger _highestLevel;
     
     NSMutableData *_levelStatus;
     
@@ -29,10 +30,12 @@
 @property (assign,nonatomic) NSInteger version;
 
 @property (retain,nonatomic) NSDate *last_check;
-
-@property (assign,nonatomic) NSInteger lastLevel;
 @property (retain,nonatomic) NSMutableData* levelStatus;
 
+@property (assign,nonatomic) NSInteger lastLevel;
+@property (assign,nonatomic) NSInteger highestLevel;
+
+// just for convenience
 @property (assign,nonatomic) CGFloat scale;
 
 + (AppSettings*)shared;

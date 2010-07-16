@@ -54,9 +54,8 @@
                                                             selector:@selector(info:)];
         self.menu = [CCMenu menuWithItems: logo, play, score, opt, more, nil];
         [_menu alignItemsVertically];
-        [self addChild:_menu z: 1];
+        [self addChild:_menu z: zMenuLayer];
         [self addClouds];
-        [self moveClouds];
     }
     return self;
 }

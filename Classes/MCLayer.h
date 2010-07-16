@@ -9,6 +9,23 @@
 #import "cocos2d.h"
 #import "chipmunk.h"
 
+enum {
+	kTagAtlasSpriteSheet = 2,
+    kTagPauseButton,
+    kTagPauseBackground,
+    kTagPauseMenu,
+    kTagWinScreen,
+    kTagCloud1,
+    kTagCloud2,
+    kTagCloudAction1,
+    kTagCloudAction2,
+};
+
+#define zCloudLevel         1
+#define zMenuLayer          2
+#define zSpritesLevel       3
+#define zOverlayLevel       4
+
 @protocol MCLayerDelegate <NSObject>
 
 - (void)playLevel: (NSNumber*)level;
@@ -54,7 +71,7 @@
 
 - (void) moveClouds;
 - (void) addSun;
-- (void) addClouds;
+- (BOOL) addClouds;
 
 - (void) removeSun;
 - (void) removeClouds;

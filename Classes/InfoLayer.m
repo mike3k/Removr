@@ -23,7 +23,7 @@
                                                                           selector:@selector(menu:)], nil];
         [menu alignItemsVertically];
         menu.position = ccp(wins.width-(60*self.scale), 30*self.scale);
-        [self addChild:menu];
+        [self addChild:menu z: zMenuLayer];
         
         CCMenu *menu2 = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"visit.png"]
                                                                       selectedImage:[self scaledFile: @"visit-sel.png"]
@@ -31,7 +31,7 @@
                                                                            selector:@selector(visitweb:)],nil];
         [menu2 alignItemsVertically];
         menu2.position = ccp(wins.width/2,80*self.scale);
-        [self addChild:menu2];
+        [self addChild:menu2 z:zMenuLayer];
         
     }
     return self;
