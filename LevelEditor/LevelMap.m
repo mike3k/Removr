@@ -15,8 +15,8 @@
 
 @synthesize dirty;
 
-- (UInt32)MapWidth  { return MAPWIDTH; }
-- (UInt32)MapHeight { return MAPHEIGHT; }
+- (NSInteger)MapWidth  { return MAPWIDTH; }
+- (NSInteger)MapHeight { return MAPHEIGHT; }
 
 // Access
 
