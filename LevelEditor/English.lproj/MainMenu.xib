@@ -1931,6 +1931,46 @@
 								</object>
 							</object>
 						</object>
+						<object class="NSButton" id="495804724">
+							<reference key="NSNextResponder" ref="311104037"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{20, 5}, {166, 23}}</string>
+							<reference key="NSSuperview" ref="311104037"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="560093100">
+								<int key="NSCellFlags">-2080244224</int>
+								<int key="NSCellFlags2">134217728</int>
+								<string key="NSContents">Import Level</string>
+								<reference key="NSSupport" ref="756046241"/>
+								<reference key="NSControlView" ref="495804724"/>
+								<int key="NSButtonFlags">-2033434369</int>
+								<int key="NSButtonFlags2">162</int>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">400</int>
+								<int key="NSPeriodicInterval">75</int>
+							</object>
+						</object>
+						<object class="NSButton" id="1046787670">
+							<reference key="NSNextResponder" ref="311104037"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{194, 5}, {166, 23}}</string>
+							<reference key="NSSuperview" ref="311104037"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="712002164">
+								<int key="NSCellFlags">-2080244224</int>
+								<int key="NSCellFlags2">134217728</int>
+								<string key="NSContents">Export Level</string>
+								<reference key="NSSupport" ref="756046241"/>
+								<reference key="NSControlView" ref="1046787670"/>
+								<int key="NSButtonFlags">-2033434369</int>
+								<int key="NSButtonFlags2">162</int>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">400</int>
+								<int key="NSPeriodicInterval">75</int>
+							</object>
+						</object>
 					</object>
 					<string key="NSFrameSize">{1095, 498}</string>
 					<reference key="NSSuperview"/>
@@ -1941,6 +1981,9 @@
 			</object>
 			<object class="NSCustomObject" id="505255193">
 				<string key="NSClassName">EditWindowController</string>
+			</object>
+			<object class="NSUserDefaultsController" id="387524624">
+				<bool key="NSSharedInstance">YES</bool>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -2873,6 +2916,102 @@
 						<reference key="destination" ref="722745758"/>
 					</object>
 					<int key="connectionID">674</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">ImportLevel:</string>
+						<reference key="source" ref="505255193"/>
+						<reference key="destination" ref="495804724"/>
+					</object>
+					<int key="connectionID">679</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">ExportLevel:</string>
+						<reference key="source" ref="505255193"/>
+						<reference key="destination" ref="1046787670"/>
+					</object>
+					<int key="connectionID">680</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: dbopen</string>
+						<reference key="source" ref="560093100"/>
+						<reference key="destination" ref="505255193"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="560093100"/>
+							<reference key="NSDestination" ref="505255193"/>
+							<string key="NSLabel">enabled: dbopen</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">dbopen</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">682</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: levelSelected</string>
+						<reference key="source" ref="1046787670"/>
+						<reference key="destination" ref="505255193"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="1046787670"/>
+							<reference key="NSDestination" ref="505255193"/>
+							<string key="NSLabel">enabled: levelSelected</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">levelSelected</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">690</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: levelSelected</string>
+						<reference key="source" ref="65422772"/>
+						<reference key="destination" ref="505255193"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="65422772"/>
+							<reference key="NSDestination" ref="505255193"/>
+							<string key="NSLabel">enabled: levelSelected</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">levelSelected</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">693</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: dbopen</string>
+						<reference key="source" ref="11588405"/>
+						<reference key="destination" ref="505255193"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="11588405"/>
+							<reference key="NSDestination" ref="505255193"/>
+							<string key="NSLabel">enabled: dbopen</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">dbopen</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">696</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: dbopen</string>
+						<reference key="source" ref="495804724"/>
+						<reference key="destination" ref="505255193"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="495804724"/>
+							<reference key="NSDestination" ref="505255193"/>
+							<string key="NSLabel">enabled: dbopen</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">dbopen</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">699</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3923,6 +4062,8 @@
 							<reference ref="875129892"/>
 							<reference ref="1059807971"/>
 							<reference ref="503515946"/>
+							<reference ref="495804724"/>
+							<reference ref="1046787670"/>
 						</object>
 						<reference key="parent" ref="512338619"/>
 					</object>
@@ -4229,6 +4370,39 @@
 						<reference key="object" ref="338587706"/>
 						<reference key="parent" ref="529264922"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">675</int>
+						<reference key="object" ref="495804724"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="560093100"/>
+						</object>
+						<reference key="parent" ref="311104037"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">676</int>
+						<reference key="object" ref="560093100"/>
+						<reference key="parent" ref="495804724"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">677</int>
+						<reference key="object" ref="1046787670"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="712002164"/>
+						</object>
+						<reference key="parent" ref="311104037"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">678</int>
+						<reference key="object" ref="712002164"/>
+						<reference key="parent" ref="1046787670"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">684</int>
+						<reference key="object" ref="387524624"/>
+						<reference key="parent" ref="0"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -4486,13 +4660,13 @@
 					<string>611.IBPluginDependency</string>
 					<string>612.IBPluginDependency</string>
 					<string>613.IBPluginDependency</string>
-					<string>633.IBPluginDependency</string>
 					<string>638.IBPluginDependency</string>
 					<string>639.IBPluginDependency</string>
 					<string>640.IBPluginDependency</string>
 					<string>641.IBPluginDependency</string>
 					<string>643.IBPluginDependency</string>
 					<string>646.IBPluginDependency</string>
+					<string>650.IBPluginDependency</string>
 					<string>652.IBPluginDependency</string>
 					<string>653.IBPluginDependency</string>
 					<string>655.IBPluginDependency</string>
@@ -4503,6 +4677,10 @@
 					<string>665.IBPluginDependency</string>
 					<string>666.IBPluginDependency</string>
 					<string>667.IBPluginDependency</string>
+					<string>675.IBPluginDependency</string>
+					<string>676.IBPluginDependency</string>
+					<string>677.IBPluginDependency</string>
+					<string>678.IBPluginDependency</string>
 					<string>72.IBPluginDependency</string>
 					<string>72.ImportedFromIB2</string>
 					<string>73.IBPluginDependency</string>
@@ -4801,6 +4979,10 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
@@ -4844,7 +5026,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">674</int>
+			<int key="maxID">699</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4919,6 +5101,8 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>DeleteLevel:</string>
+							<string>ExportLevel:</string>
+							<string>ImportLevel:</string>
 							<string>NewDatabase:</string>
 							<string>NewLevel:</string>
 							<string>OpenDatabase:</string>
@@ -4927,6 +5111,8 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -4940,6 +5126,8 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>DeleteLevel:</string>
+							<string>ExportLevel:</string>
+							<string>ImportLevel:</string>
 							<string>NewDatabase:</string>
 							<string>NewLevel:</string>
 							<string>OpenDatabase:</string>
@@ -4950,6 +5138,14 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">DeleteLevel:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">ExportLevel:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">ImportLevel:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -5150,6 +5346,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="95515342">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSControl.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSController</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -5684,6 +5888,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSTextView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSUserDefaultsController</string>
+					<string key="superclassName">NSController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSUserDefaultsController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
