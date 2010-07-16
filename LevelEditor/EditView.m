@@ -192,7 +192,7 @@
 
 - (NSString*)sqlText
 {
-    return [NSString stringWithFormat:@"INSERT INTO levels (background,map) VALUES ('background.png',%@);", [theLevelMap generateHex]];
+    return [NSString stringWithFormat:@"INSERT INTO levels (name,map) VALUES ('New Level',%@);\n", [theLevelMap generateHex]];
 }
 
 

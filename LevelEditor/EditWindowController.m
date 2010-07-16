@@ -21,6 +21,10 @@
 @synthesize curLevel;
 @synthesize rowid;
 
+- (NSNumber*) dbopen { return [NSNumber numberWithBool:(nil != db)]; }
+
+- (NSNumber*) levelSelected { return [NSNumber numberWithBool:((nil != db) && ([theTableView selectedRow] >= 0))]; }
+
 - (id) init
 {
     self = [super init];
@@ -80,7 +84,9 @@
     NSOpenPanel *openPanel = [NSOpenPanel openPanel];
     [openPanel setAllowedFileTypes:[NSArray arrayWithObject:@"sqlite3"]];
     if ([openPanel runModal] == NSFileHandlingPanelOKButton) {
+        [self willChangeValueForKey:@"dbopen"];
         [self open_database: [[openPanel URL] path] create:NO];
+        [self didChangeValueForKey:@"dbopen"];
     }
 }
 
@@ -89,7 +95,9 @@
     NSSavePanel *savePanel = [NSSavePanel savePanel];
     [savePanel setAllowedFileTypes:[NSArray arrayWithObject:@"sqlite3"]];
     if ([savePanel runModal] == NSFileHandlingPanelOKButton) {
+        [self willChangeValueForKey:@"dbopen"];
         [self open_database: [[savePanel URL] path] create:YES];
+        [self didChangeValueForKey:@"dbopen"];
     }
 }
 
@@ -110,8 +118,15 @@
     self.rowid = -1;
     self.curLevel = -1;
     self.title = @"New Level";
+    Level *level = [[Level alloc] init];
+    level.rowid = self.rowid;
+    level.name = self.title;
+    [levels addObject: level];
+    [theTableView reloadData];
+    [level release];
     [theLevelMap clear];
     [theEditView setNeedsDisplay:YES];
+    [theTableView selectRow:[levels count]-1 byExtendingSelection:NO];
 }
 
 - (IBAction) SaveLevel: (id)sender
@@ -153,7 +168,7 @@
 {
 //    NSLog(@"table select");
 //    curLevel = [theTableView clickedRow];
-    
+    [self willChangeValueForKey:@"levelSelected"];
 }
 
 // TableViewDelegate
@@ -172,6 +187,7 @@
     self.title = theLevel.name;
     self.curLevel = newlevel;
     theLevelMap.dirty = NO;
+    [self didChangeValueForKey:@"levelSelected"];
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
@@ -207,7 +223,8 @@ static char * vacuum_sql = "VACUUM;";
         sqlite3_finalize(vacuum);
         sqlite3_finalize(allrecords);
         sqlite3_close(db);
-        select = update = insert = delete = allrecords = db = nil;
+        select = update = insert = delete = allrecords = nil;
+        db = nil;
     }
 
     sqlite3_open([name UTF8String], &db);
@@ -233,6 +250,38 @@ static char * vacuum_sql = "VACUUM;";
     curLevel = -1;
     
     return YES;
+}
+
+- (IBAction) ImportLevel: (id)sender
+{
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+    [openPanel setAllowedFileTypes:[NSArray arrayWithObjects:@"sql", @"txt", nil]];
+    if ([openPanel runModal] == NSFileHandlingPanelOKButton) {
+        NSString *sql = [NSString stringWithContentsOfURL:[openPanel URL] encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"read SQL: %@",sql);
+        const char *sqlstr = [sql UTF8String], *nextsql;
+        sqlite3_stmt *import;
+        while (sql && (SQLITE_OK == sqlite3_prepare_v2(db, sqlstr, -1, &import, &nextsql)) ) {
+            int result = sqlite3_step(import);
+            if ((result != SQLITE_DONE) && (result != SQLITE_ROW))
+                break;
+            sqlite3_reset(import);
+            sqlstr = nextsql;
+        }
+        sqlite3_finalize(import);
+    }
+    [self reloadTable];
+}
+
+- (IBAction) ExportLevel: (id)sender
+{
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    [savePanel setAllowedFileTypes:[NSArray arrayWithObjects:@"sql", @"txt", nil]];
+    if ([savePanel runModal] == NSFileHandlingPanelOKButton) {
+        NSString *sql = [theEditView sqlText];
+        NSLog(@"Exporting SQL: %@",sql);
+        [sql writeToURL:[savePanel URL] atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    }
 }
 
 - (void)reloadTable

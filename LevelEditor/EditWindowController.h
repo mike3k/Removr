@@ -40,6 +40,9 @@
 @property (assign) NSInteger curLevel;
 @property (assign) NSInteger rowid;
 
+@property (readonly) NSNumber* dbopen;
+@property (readonly) NSNumber* levelSelected;
+
 @property (retain,nonatomic) NSString * title;
 
 - (IBAction) OpenDatabase: (id)sender;
@@ -47,6 +50,9 @@
 - (IBAction) NewLevel: (id)sender;
 - (IBAction) SaveLevel: (id)sender;
 - (IBAction) DeleteLevel: (id)sender;
+
+- (IBAction) ImportLevel: (id)sender;
+- (IBAction) ExportLevel: (id)sender;
 
 - (IBAction) tableSelect: (id)sender;
 
