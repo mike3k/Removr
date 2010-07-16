@@ -68,6 +68,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 #import "CCConfiguration.h"
 #import "ccMacros.h"
 #import "ES1Renderer.h"
+#import "CCDirector.h"
 
 //CLASS IMPLEMENTATIONS:
 
@@ -77,7 +78,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 @implementation EAGLView
 
-@synthesize delegate=delegate_, surfaceSize=size_;
+@synthesize surfaceSize=size_;
 @synthesize pixelFormat=pixelformat_, depthFormat=depthFormat_;
 @synthesize touchDelegate=touchDelegate_;
 @synthesize context=context_;
@@ -133,7 +134,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 {
 	if( (self = [super initWithCoder:aDecoder]) ) {
 		
-		CAEAGLLayer*			eaglLayer = (CAEAGLLayer*)[self layer];
+		CAEAGLLayer *eaglLayer = (CAEAGLLayer*)[self layer];
 		
 		pixelformat_ = kEAGLColorFormatRGB565;
 		depthFormat_ = 0; // GL_DEPTH_COMPONENT24_OES;
@@ -183,6 +184,13 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 {
     [renderer_ resizeFromLayer:(CAEAGLLayer*)self.layer];
 	size_ = [renderer_ backingSize];
+
+	// Issue #914 #924
+	CCDirector *director = [CCDirector sharedDirector];
+	[director recalculateProjectionAndEAGLViewSize];
+
+	// Avoid flicker. Issue #350
+	[director drawScene];
 }
 
 - (void) swapBuffers
