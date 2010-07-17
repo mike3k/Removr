@@ -62,7 +62,6 @@
 
 - (void)onEnter
 {
-    [_delegate initLevels];
     [self moveClouds];
     [super onEnter];
 }

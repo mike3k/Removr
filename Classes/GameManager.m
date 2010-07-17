@@ -43,7 +43,6 @@ static GameManager *_sharedGameManager = nil;
         aps = [AppSettings shared];
         self.curLevel = aps.lastLevel;
         _levelCount = -1;
-        //[self performSelectorOnMainThread:@selector(preloadSounds) withObject:nil waitUntilDone:NO];
         [self preloadSounds];
     }
 #ifndef NDEBUG
@@ -56,8 +55,15 @@ static GameManager *_sharedGameManager = nil;
 {
     // open the database & prepare the query here the first time we use it instead of init
     if (nil == db) {
+#ifndef NDEBUG
+    NSLog(@"initLevels");
+#endif
+        int result;
         [self opendb];
-        sqlite3_prepare_v2(db, "SELECT rowid,background,map,name,par FROM levels WHERE ROWID=?", -1, &query, NULL);
+        result = sqlite3_prepare_v2(db, "SELECT rowid,background,map,name,par FROM levels WHERE ROWID=?", -1, &query, NULL);
+#ifndef NDEBUG
+        NSLog(@"prepare returned %d",result);
+#endif
     }
 }
 
@@ -273,13 +279,21 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     if ((number == _curLevel) && (_theLevel != nil)) {
         return _theLevel;
     }
-    [self initLevels];
     Level *lvl = nil;
     int result;
     self.curLevel = number;
     // request a record for the level
-    sqlite3_bind_int(query, 1, number+1);
-    if ((result=sqlite3_step(query)) == SQLITE_ROW) {
+    [self initLevels];
+#ifndef NDEBUG
+    NSLog(@"Requesting level %d",number);
+    NSLog(@"Query: %x",query);
+#endif
+    result = sqlite3_bind_int(query, 1, number+1);
+#ifndef NDEBUG
+    NSLog(@"bind returned %d",result);
+#endif
+    result=sqlite3_step(query);
+    if (result == SQLITE_ROW) {
         char *str;
         void *blob;
         int nbytes;
@@ -325,13 +339,16 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
     if (_levelCount <= 0) {
         sqlite3_stmt *scount;
-        [self opendb];
+        [self initLevels];
         int result = sqlite3_prepare_v2(db, "SELECT COUNT(*) FROM levels", -1, &scount, NULL);
         result = sqlite3_step(scount);
         if (result == SQLITE_ROW) {
             _levelCount = sqlite3_column_int(scount, 0);
         }
         else _levelCount = 100; // don't freak out if the query fails
+#ifndef NDEBUG
+        NSLog(@"Row Count query returned %d, # of levels is %d",result,_levelCount);
+#endif
         sqlite3_finalize(scount);
     }
 
@@ -342,7 +359,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (void)visitweb:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.mcdevzone.com/software"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://removrapp.com/news"]];
 }
 
 - (void)playLevel: (NSNumber*)level

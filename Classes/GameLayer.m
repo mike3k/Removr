@@ -452,6 +452,10 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 {
     if (level < 0) {
         level = _delegate.curLevel;
+        if (level >= [_delegate levelCount]) {
+            _delegate.curLevel = 0;
+            level = 0;
+        }
     }
 
     [self setAccellerometer];
