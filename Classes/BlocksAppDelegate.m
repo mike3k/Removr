@@ -159,7 +159,7 @@
     NSLog(@"app dealloc");
 #endif
     [[AppSettings shared] save];
-	[[CCDirector sharedDirector] release];
+//	[[CCDirector sharedDirector] release];
 	[window release];
 	[super dealloc];
 }

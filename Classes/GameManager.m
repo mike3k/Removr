@@ -66,9 +66,8 @@ static GameManager *_sharedGameManager = nil;
 #ifndef NDEBUG
     NSLog(@"initLevels");
 #endif
-        int result;
         [self opendb];
-        result = sqlite3_prepare_v2(db, "SELECT rowid,background,map,name,par FROM levels WHERE ROWID=?", -1, &query, NULL);
+        sqlite3_prepare_v2(db, "SELECT rowid,background,map,name,par FROM levels WHERE ROWID=?", -1, &query, NULL);
 #ifndef NDEBUG
         NSLog(@"prepare returned %d",result);
 #endif
@@ -296,7 +295,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     NSLog(@"Requesting level %d",number);
     NSLog(@"Query: %x",query);
 #endif
-    result = sqlite3_bind_int(query, 1, number+1);
+    sqlite3_bind_int(query, 1, number+1);
 #ifndef NDEBUG
     NSLog(@"bind returned %d",result);
 #endif
@@ -348,7 +347,8 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     if (_levelCount <= 0) {
         sqlite3_stmt *scount;
         [self initLevels];
-        int result = sqlite3_prepare_v2(db, "SELECT COUNT(*) FROM levels", -1, &scount, NULL);
+        int result;
+        sqlite3_prepare_v2(db, "SELECT COUNT(*) FROM levels", -1, &scount, NULL);
         result = sqlite3_step(scount);
         if (result == SQLITE_ROW) {
             _levelCount = sqlite3_column_int(scount, 0);

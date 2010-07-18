@@ -148,7 +148,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 {
     //CCSpriteSheet *sheet = (CCSpriteSheet*) [self getChildByTag:kTagAtlasSpriteSheet];
 	
-    ShapeSprite *sprite = [ShapeSprite NewSprite:kind x:x y:y withSheet:_sheet];
+    ShapeSprite *sprite = [ShapeSprite Sprite:kind x:x y:y withSheet:_sheet];
     [sprite addToSpace:space];
 	
 }

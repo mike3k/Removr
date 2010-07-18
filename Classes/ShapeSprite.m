@@ -177,11 +177,11 @@ static CGFloat _scale = 0;
     self.shape = shape;
 }
 
-+ (ShapeSprite*)NewSprite: (int)kind x:(float)x y:(float)y withSheet: (CCSpriteSheet*)sheet
++ (ShapeSprite*)Sprite: (int)kind x:(float)x y:(float)y withSheet: (CCSpriteSheet*)sheet
 {
     CGPoint ap;
     int posx, posy;
-    int stype;
+//    int stype;
 
     if (0 == _scale) {
         _scale = [[UIScreen mainScreen] scale];
@@ -191,7 +191,7 @@ static CGFloat _scale = 0;
     posx = sp->posx * _scale;
     posy = sp->posy * _scale;
 
-    stype = (sp->attrib & kSpriteKindMask);
+//    stype = (sp->attrib & kSpriteKindMask);
 
     ShapeSprite *sprite = [ShapeSprite spriteWithSpriteSheet:sheet rect:CGRectMake(posx, 
                                                                                    posy, 
