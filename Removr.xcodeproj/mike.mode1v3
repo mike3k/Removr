@@ -294,7 +294,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>33</integer>
+									<integer>38</integer>
 									<integer>19</integer>
 									<integer>0</integer>
 								</array>
@@ -339,7 +339,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>GameManager.m</string>
+								<string>GameLayer.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -347,11 +347,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>GameManager.m</string>
+										<string>GameLayer.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>27233C6311F2993D0047BADA</string>
+										<string>27233D0911F3A4220047BADA</string>
 										<key>history</key>
 										<array>
 											<string>2735E5211183491B00E8247E</string>
@@ -459,8 +459,6 @@
 											<string>27324D8411ED03FF00D5F78D</string>
 											<string>27324D8511ED03FF00D5F78D</string>
 											<string>27324D8711ED03FF00D5F78D</string>
-											<string>27324D9111ED096400D5F78D</string>
-											<string>27324D9211ED096400D5F78D</string>
 											<string>27324D9E11ED0DAE00D5F78D</string>
 											<string>27324E7211EE144E00D5F78D</string>
 											<string>27324E7311EE144E00D5F78D</string>
@@ -484,14 +482,16 @@
 											<string>27233A8C11F0EC510047BADA</string>
 											<string>27233A8D11F0EC510047BADA</string>
 											<string>27233AED11F11B900047BADA</string>
-											<string>27233B1E11F25EDC0047BADA</string>
 											<string>27233B1F11F25EDC0047BADA</string>
 											<string>27233B2011F25EDC0047BADA</string>
 											<string>27233B2111F25EDC0047BADA</string>
 											<string>27233B2211F25EDC0047BADA</string>
 											<string>27233B2411F25EDC0047BADA</string>
 											<string>27233B3311F261300047BADA</string>
-											<string>27233B3411F261300047BADA</string>
+											<string>27233C8411F36FDF0047BADA</string>
+											<string>27233C8511F36FDF0047BADA</string>
+											<string>27233C8611F36FDF0047BADA</string>
+											<string>27233C8711F36FDF0047BADA</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -670,7 +670,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>301111613.33175498</real>
+	<real>301179938.35493702</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -685,15 +685,16 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>27F589990E68C99B00BF905E</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>27914BB20E8D399D00DB5A14</string>
 		<string>272339D211EFEC7D0047BADA</string>
 		<string>272339C411EFEB9B0047BADA</string>
 		<string>27233AC211F1113B0047BADA</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/mike/Sources/mystuff/Removr/Removr.xcodeproj</string>
 		<string>27ED5F5A0E52884C00CCF2AE</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>60 85 1292 905 0 0 1680 1028 </string>
@@ -717,7 +718,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>OnOffButton.m</string>
+								<string>GameManager.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -1597,7 +1598,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>27F589990E68C99B00BF905E</string>
-				<string>2790710811E507340099E98E</string>
+				<string>27233C8911F36FDF0047BADA</string>
 				<string>27F589980E68C99B00BF905E</string>
 			</array>
 			<key>WindowString</key>
