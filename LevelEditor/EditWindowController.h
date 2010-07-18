@@ -14,6 +14,7 @@
 
 @interface EditWindowController : NSObject <NSTableViewDelegate, NSTableViewDataSource> {
     IBOutlet NSWindow * window;
+    IBOutlet NSView * backgroundView;
     IBOutlet EditView * theEditView;
     IBOutlet NSTableView * theTableView;
     LevelMap * theLevelMap;
@@ -50,6 +51,8 @@
 - (IBAction) NewLevel: (id)sender;
 - (IBAction) SaveLevel: (id)sender;
 - (IBAction) DeleteLevel: (id)sender;
+- (IBAction) PrintLevel: (id)sender;
+- (IBAction) SaveLevelImage: (id)sender;
 
 - (IBAction) ImportLevel: (id)sender;
 - (IBAction) ExportLevel: (id)sender;

@@ -101,6 +101,21 @@
     }
 }
 
+- (IBAction) PrintLevel: (id)sender
+{
+}
+
+- (IBAction) SaveLevelImage: (id)sender
+{
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    [savePanel setAllowedFileTypes:[NSArray arrayWithObject:@"pdf"]];
+    if ([savePanel runModal] == NSFileHandlingPanelOKButton) {
+        NSRect bounds = [theEditView bounds];
+        NSData* theData = [theEditView dataWithPDFInsideRect:bounds];
+        [theData writeToURL:[savePanel URL] atomically:YES];
+    }
+}
+
 - (IBAction) DeleteLevel: (id)sender
 {
     int result;

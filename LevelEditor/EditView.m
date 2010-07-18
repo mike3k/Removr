@@ -25,14 +25,40 @@
     return self;
 }
 
+- (void)drawPageBorderWithSize:(NSSize)borderSize
+{
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     // Drawing code here.
     NSGraphicsContext* aContext = [NSGraphicsContext currentContext];
-    [aContext saveGraphicsState];
     NSRect box;
-    
-//    [[NSColor redColor] setFill];
-//    NSFrameRect([self bounds]);
+ 
+//    [NSBezierPath setDefaultLineWidth:0.0];
+
+    if ([aContext isDrawingToScreen] == NO) {
+        box = [self bounds];
+        int x,y;
+
+        [aContext saveGraphicsState];
+
+        [[NSColor colorWithDeviceRed:0.7 green:0.8 blue:1.0 alpha:0.4] setFill];
+        NSRectFill(box);
+
+        [aContext restoreGraphicsState];
+        
+        [[NSColor blackColor] setFill];
+        [[NSColor blackColor] setStroke];
+
+        for (x = 0; x <= box.size.width; x += 16) {
+            [NSBezierPath strokeLineFromPoint:NSMakePoint((float)x, 0) toPoint:NSMakePoint((float)x, box.size.height)];
+        }
+        for (y = 0; y <= box.size.height; y += 16) {
+            [NSBezierPath strokeLineFromPoint:NSMakePoint(9, (float)y) toPoint:NSMakePoint(box.size.width, (float)y)];
+        }
+       
+      
+    }
 
     for (int i=0;i<theLevelMap.MapWidth;++i) {
         for (int j=0;j<theLevelMap.MapHeight;++j) {
@@ -137,7 +163,6 @@
             }
         }
     }
-    [aContext restoreGraphicsState];
 }
 
 - (void)mouseDown:(NSEvent *)theEvent
