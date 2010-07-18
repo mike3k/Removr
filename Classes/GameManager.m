@@ -43,7 +43,15 @@ static GameManager *_sharedGameManager = nil;
         aps = [AppSettings shared];
         self.curLevel = aps.lastLevel;
         _levelCount = -1;
+    
+        [CDAudioManager configure:kAMM_FxPlusMusicIfNoOtherAudio];
+    
         [self preloadSounds];
+
+        UInt32 category = kAudioSessionCategory_AmbientSound;
+		AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(category), &category);
+
+    
     }
 #ifndef NDEBUG
     NSLog(@"GameManager init");
