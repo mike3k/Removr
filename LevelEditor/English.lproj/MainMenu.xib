@@ -1971,6 +1971,26 @@
 								<int key="NSPeriodicInterval">75</int>
 							</object>
 						</object>
+						<object class="NSButton" id="977440815">
+							<reference key="NSNextResponder" ref="311104037"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{368, 5}, {166, 23}}</string>
+							<reference key="NSSuperview" ref="311104037"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="898520922">
+								<int key="NSCellFlags">-2080244224</int>
+								<int key="NSCellFlags2">134217728</int>
+								<string key="NSContents">Save as image</string>
+								<reference key="NSSupport" ref="756046241"/>
+								<reference key="NSControlView" ref="977440815"/>
+								<int key="NSButtonFlags">-2033434369</int>
+								<int key="NSButtonFlags2">162</int>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">400</int>
+								<int key="NSPeriodicInterval">75</int>
+							</object>
+						</object>
 					</object>
 					<string key="NSFrameSize">{1095, 498}</string>
 					<reference key="NSSuperview"/>
@@ -2004,14 +2024,6 @@
 						<reference key="destination" ref="625202149"/>
 					</object>
 					<int key="connectionID">39</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">print:</string>
-						<reference key="source" ref="1014"/>
-						<reference key="destination" ref="49223823"/>
-					</object>
-					<int key="connectionID">86</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -3012,6 +3024,46 @@
 						</object>
 					</object>
 					<int key="connectionID">699</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">print:</string>
+						<reference key="source" ref="140480972"/>
+						<reference key="destination" ref="49223823"/>
+					</object>
+					<int key="connectionID">701</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">backgroundView</string>
+						<reference key="source" ref="505255193"/>
+						<reference key="destination" ref="167869649"/>
+					</object>
+					<int key="connectionID">702</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: levelSelected</string>
+						<reference key="source" ref="977440815"/>
+						<reference key="destination" ref="505255193"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="977440815"/>
+							<reference key="NSDestination" ref="505255193"/>
+							<string key="NSLabel">enabled: levelSelected</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">levelSelected</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">706</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">SaveLevelImage:</string>
+						<reference key="source" ref="505255193"/>
+						<reference key="destination" ref="977440815"/>
+					</object>
+					<int key="connectionID">707</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -4064,6 +4116,7 @@
 							<reference ref="503515946"/>
 							<reference ref="495804724"/>
 							<reference ref="1046787670"/>
+							<reference ref="977440815"/>
 						</object>
 						<reference key="parent" ref="512338619"/>
 					</object>
@@ -4403,6 +4456,20 @@
 						<reference key="object" ref="387524624"/>
 						<reference key="parent" ref="0"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">703</int>
+						<reference key="object" ref="977440815"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="898520922"/>
+						</object>
+						<reference key="parent" ref="311104037"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">704</int>
+						<reference key="object" ref="898520922"/>
+						<reference key="parent" ref="977440815"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -4681,6 +4748,9 @@
 					<string>676.IBPluginDependency</string>
 					<string>677.IBPluginDependency</string>
 					<string>678.IBPluginDependency</string>
+					<string>684.IBPluginDependency</string>
+					<string>703.IBPluginDependency</string>
+					<string>704.IBPluginDependency</string>
 					<string>72.IBPluginDependency</string>
 					<string>72.ImportedFromIB2</string>
 					<string>73.IBPluginDependency</string>
@@ -4983,6 +5053,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
@@ -5026,7 +5099,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">699</int>
+			<int key="maxID">707</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5106,11 +5179,15 @@
 							<string>NewDatabase:</string>
 							<string>NewLevel:</string>
 							<string>OpenDatabase:</string>
+							<string>PrintLevel:</string>
 							<string>SaveLevel:</string>
+							<string>SaveLevelImage:</string>
 							<string>tableSelect:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -5131,7 +5208,9 @@
 							<string>NewDatabase:</string>
 							<string>NewLevel:</string>
 							<string>OpenDatabase:</string>
+							<string>PrintLevel:</string>
 							<string>SaveLevel:</string>
+							<string>SaveLevelImage:</string>
 							<string>tableSelect:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -5161,7 +5240,15 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">PrintLevel:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">SaveLevel:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">SaveLevelImage:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -5174,12 +5261,14 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>backgroundView</string>
 							<string>theEditView</string>
 							<string>theTableView</string>
 							<string>window</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSView</string>
 							<string>EditView</string>
 							<string>NSTableView</string>
 							<string>NSWindow</string>
@@ -5189,12 +5278,17 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>backgroundView</string>
 							<string>theEditView</string>
 							<string>theTableView</string>
 							<string>window</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">backgroundView</string>
+								<string key="candidateClassName">NSView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">theEditView</string>
 								<string key="candidateClassName">EditView</string>
