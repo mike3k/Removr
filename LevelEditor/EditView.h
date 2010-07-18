@@ -31,5 +31,6 @@
 - (void)dumpsql;
 - (NSString*)sqlText;
 
+- (NSData*)getImageData;
 
 @end

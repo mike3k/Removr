@@ -29,6 +29,17 @@
 {
 }
 
+- (NSData*)getImageData
+{
+    [self lockFocus];
+    NSBitmapImageRep  *rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:self.bounds];
+    NSGraphicsContext *gc = [NSGraphicsContext graphicsContextWithBitmapImageRep:rep];
+    NSData *png = [rep representationUsingType:NSPNGFileType properties:nil];
+    [self unlockFocus];
+    [rep release];
+    return png;
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     // Drawing code here.
     NSGraphicsContext* aContext = [NSGraphicsContext currentContext];

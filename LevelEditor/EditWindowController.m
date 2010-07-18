@@ -108,10 +108,9 @@
 - (IBAction) SaveLevelImage: (id)sender
 {
     NSSavePanel *savePanel = [NSSavePanel savePanel];
-    [savePanel setAllowedFileTypes:[NSArray arrayWithObject:@"pdf"]];
+    [savePanel setAllowedFileTypes:[NSArray arrayWithObject:@"png"]];
     if ([savePanel runModal] == NSFileHandlingPanelOKButton) {
-        NSRect bounds = [theEditView bounds];
-        NSData* theData = [theEditView dataWithPDFInsideRect:bounds];
+        NSData* theData = [theEditView getImageData];
         [theData writeToURL:[savePanel URL] atomically:YES];
     }
 }
@@ -130,6 +129,9 @@
 
 - (IBAction) NewLevel: (id)sender
 {
+    if (theLevelMap.dirty) {
+        [self SaveLevel:self];
+    }
     self.rowid = -1;
     self.curLevel = -1;
     self.title = @"New Level";
@@ -141,7 +143,10 @@
     [level release];
     [theLevelMap clear];
     [theEditView setNeedsDisplay:YES];
+    [self willChangeValueForKey:@"levelSelected"];
     [theTableView selectRow:[levels count]-1 byExtendingSelection:NO];
+    [self didChangeValueForKey:@"levelSelected"];
+    theLevelMap.dirty = YES;
 }
 
 - (IBAction) SaveLevel: (id)sender
