@@ -17,7 +17,7 @@
 
 @end
 
-#define FORCE_ALL_LEVELS
+#undef FORCE_ALL_LEVELS
 
 @implementation HighScoreLayer
 
@@ -29,7 +29,7 @@
     if (theLevel < [_delegate levelCount])
 #else
     //if (theLevel < [_delegate levelCount] && (theScore != 0))
-    if (theLevel <= [[AppSettings shared] highestLevel])
+    if (theLevel <= MIN([[AppSettings shared] highestLevel],[_delegate levelCount]))
 #endif
     {
         itm.moves = theScore;
