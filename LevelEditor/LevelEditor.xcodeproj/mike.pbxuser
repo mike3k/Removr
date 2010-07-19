@@ -61,11 +61,10 @@
 		delayBeforeContinue = 0;
 		fileReference = 272D6FEE11E0FFD90064FAEC /* EditView.m */;
 		functionName = "-getImageData";
-		hitCount = 1;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 34;
-		location = LevelEditor;
-		modificationTime = 301178409.561124;
+		modificationTime = 301239172.183196;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -396,7 +395,7 @@
 		ignoreCount = 0;
 		lineNumber = 234;
 		location = LevelEditor;
-		modificationTime = 301178341.673519;
+		modificationTime = 301239138.754911;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -504,7 +503,7 @@
 		ignoreCount = 0;
 		lineNumber = 200;
 		location = LevelEditor;
-		modificationTime = 301178341.677841;
+		modificationTime = 301239138.755065;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -522,7 +521,7 @@
 		ignoreCount = 0;
 		lineNumber = 155;
 		location = LevelEditor;
-		modificationTime = 301178341.683032;
+		modificationTime = 301239138.755144;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -579,8 +578,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 121;
-		location = LevelEditor;
-		modificationTime = 301178353.805013;
+		modificationTime = 301239172.183156;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -608,8 +606,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 280;
-		location = LevelEditor;
-		modificationTime = 301178353.861763;
+		modificationTime = 301239172.183007;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -661,8 +658,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 242;
-		location = LevelEditor;
-		modificationTime = 301178353.697333;
+		modificationTime = 301239172.183093;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
