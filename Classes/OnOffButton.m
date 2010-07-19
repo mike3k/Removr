@@ -7,7 +7,7 @@
 //
 
 #import "OnOffButton.h"
-
+#import "AppSettings.h"
 
 @implementation OnOffButton
 
@@ -16,7 +16,7 @@
     CCMenuItemImage *onButton;
     CCMenuItemImage *offButton;
     
-    CGFloat _scale = [[UIScreen mainScreen] scale];
+    CGFloat _scale = [[AppSettings shared] scale];
     if (_scale > 1) {
         onButton = [CCMenuItemImage itemFromNormalImage:@"on@x2.png" selectedImage:@"on-sel@x2.png"];
         offButton = [CCMenuItemImage itemFromNormalImage:@"off@x2.png" selectedImage:@"off-sel@x2.png"];

@@ -7,6 +7,7 @@
 //
 
 #import "ShapeSprite.h"
+#import "AppSettings.h"
 
 #define FACETX2 (FACET*2)
 #define FACETX3 (FACET*3)
@@ -99,7 +100,7 @@ static CGFloat _scale = 0;
         self.shape = nil;
         self.space = nil;
         if (0 == _scale) {
-            _scale = [[UIScreen mainScreen] scale];
+            _scale = [[AppSettings shared] scale];
         }
     }
     return self;
@@ -184,7 +185,7 @@ static CGFloat _scale = 0;
 //    int stype;
 
     if (0 == _scale) {
-        _scale = [[UIScreen mainScreen] scale];
+        _scale = [[AppSettings shared] scale];
     }
 
     SpriteInfo *sp = &sprites[kind-1];

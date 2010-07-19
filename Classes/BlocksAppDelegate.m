@@ -86,7 +86,7 @@
 	// Sets landscape mode
 	[director setDeviceOrientation:kCCDeviceOrientationLandscapeLeft];
 
-    [director setContentScaleFactor:[[UIScreen mainScreen] scale]];
+    [director setContentScaleFactor:[[AppSettings shared] scale]];
 
 	// Turn on multiple touches
 	EAGLView *view = [director openGLView];

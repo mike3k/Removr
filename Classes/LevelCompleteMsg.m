@@ -7,7 +7,7 @@
 //
 
 #import "LevelCompleteMsg.h"
-
+#import "AppSettings.h"
 
 @implementation LevelCompleteMsg
 
@@ -15,7 +15,7 @@
 {
     self = [super init];
     if (self) {
-        CGFloat _scale = [[UIScreen mainScreen] scale];
+        CGFloat _scale = [[AppSettings shared] scale];
         CCSprite *msg = [[CCSprite alloc] initWithFile:(_scale>1 ? @"Level-Complete@x2.png": @"Level-Complete.png")];
         [self addChild: msg];
 //#ifdef USE_LABEL

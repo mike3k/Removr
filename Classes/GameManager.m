@@ -68,9 +68,6 @@ static GameManager *_sharedGameManager = nil;
 #endif
         [self opendb];
         sqlite3_prepare_v2(db, "SELECT rowid,background,map,name,par FROM levels WHERE ROWID=?", -1, &query, NULL);
-#ifndef NDEBUG
-        NSLog(@"prepare returned %d",result);
-#endif
     }
 }
 

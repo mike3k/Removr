@@ -8,6 +8,7 @@
 
 #import "MCLayer.h"
 #import "GameManager.h"
+#import "AppSettings.h"
 
 @implementation MCLayer
 
@@ -23,10 +24,10 @@ static CCFiniteTimeAction *_move2;
 {
     if ((self = [super init])) {
         self.delegate = [GameManager shared];
-        self.scale = [[UIScreen mainScreen] scale];
+        self.scale = [[AppSettings shared] scale];
     }
 #ifndef NDEBUG
-    NSLog(@"MCLayer: [%@ init]",self);
+    NSLog(@"MCLayer: [%@ init] - scale=%f",self,self.scale);
 #endif
     return self;
 }

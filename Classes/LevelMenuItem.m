@@ -7,6 +7,7 @@
 //
 
 #import "LevelMenuItem.h"
+#import "AppSettings.h"
 
 @interface LevelMenuItem (private)
 
@@ -28,7 +29,7 @@ enum {
 - (void) makeLevelLabel
 {
     if (nil == _labelLevel) {
-        CGFloat _scale = [[UIScreen mainScreen] scale];
+        CGFloat _scale = [[AppSettings shared] scale];
         _labelLevel = [CCLabel labelWithString:[NSString stringWithFormat:@"Level %d", _level]
                                       fontName:@"Marker Felt" 
                                       fontSize:18*_scale];
@@ -44,7 +45,7 @@ enum {
 - (void) makeMovesLabel
 {
     if (nil == _labelMoves) {
-        CGFloat _scale = [[UIScreen mainScreen] scale];
+        CGFloat _scale = [[AppSettings shared] scale];
         _labelMoves = [CCLabel labelWithString: [NSString stringWithFormat:@"(%d moves)",_moves]
                                       fontName:@"Helvetica" 
                                       fontSize:14*_scale];
