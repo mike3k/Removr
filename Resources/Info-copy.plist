@@ -14,8 +14,8 @@
 	<string></string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Removr-57-springboard</string>
-		<string>Removr-114</string>
+		<string>Removr-57-springboard.png</string>
+		<string>Removr-114.png</string>
 	</array>
 	<key>CFBundleIconFiles~ipad</key>
 	<array/>
