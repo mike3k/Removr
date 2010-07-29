@@ -16,7 +16,7 @@
 
 #else
 
-@interface Level : NSObject {
+@interface Level : NSObject <NSCoding> {
     NSData * _map;
     NSString * _background;
     NSInteger _index;
@@ -31,6 +31,13 @@
 @property (nonatomic, retain) NSString * title;
 @property (assign) NSInteger index;
 @property (assign) NSInteger par;
+
+- (id)initWithCoder:(NSCoder *)aDecoder;
+- (void)encodeWithCoder:(NSCoder *)encoder;
+
+- (NSData*)data;
+
++ (Level*)levelFromData: (NSData*)data;
 
 @end
 

@@ -12,6 +12,8 @@
 #import "AppSettings.h"
 #import "MenuScene.h"
 
+#import "FlurryAPI.h"
+
 @implementation BlocksAppDelegate
 
 @synthesize window;
@@ -98,6 +100,8 @@
 	[CCTexture2D setDefaultAlphaPixelFormat:kTexture2DPixelFormat_RGBA8888];	
     //[CCTexture2D setDefaultAlphaPixelFormat:kTexture2DPixelFormat_RGBA4444];
 	
+    [FlurryAPI startSession:@"C8ZTGV4IBD33BR5FTXF7"];
+
     [GameManager shared];   // create and initialize the manager
 
 	[director runWithScene: [MenuScene node]];

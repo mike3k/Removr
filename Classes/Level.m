@@ -18,11 +18,33 @@
 #else
 @synthesize map = _map, background = _background, index = _index, par = _par, title = _title;
 
-- (id)alloc
+- (id)init
 {
-    if ((self = [super init])) {
-    }
+    self = [super init];
+
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    
+    self.map = [aDecoder decodeObjectForKey:@"m"];
+    self.background = [aDecoder decodeObjectForKey:@"b"];
+    self.index = [aDecoder decodeIntegerForKey:@"i"];
+    self.par = [aDecoder decodeIntegerForKey:@"p"];
+    self.title = [aDecoder decodeObjectForKey:@"t"];
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:_map forKey:@"m"];
+    [encoder encodeObject:_background forKey:@"b"];
+    [encoder encodeInteger:_index forKey:@"i"];
+    [encoder encodeInteger:_par forKey:@"p"];
+    [encoder encodeObject:_title forKey:@"t"];
 }
 
 - (void)dealloc
@@ -31,6 +53,16 @@
     self.background = nil;
     self.title = nil;
     [super dealloc];
+}
+
+- (NSData*)data
+{
+    return [NSKeyedArchiver archivedDataWithRootObject:self];
+}
+
++ (Level*)levelFromData: (NSData*)data
+{
+    return (Level*)[NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
 #endif
