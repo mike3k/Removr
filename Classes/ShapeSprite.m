@@ -168,11 +168,16 @@ static CGFloat _scale = 0;
 	cpShape* shape;
     if (_isCircle) {
         shape = cpCircleShapeNew(body, (_info.width/2.0)*_scale, ccp(0,0));
-        shape->e = 0.75f; shape->u = 0.45f;
+        shape->e = 0.80f; shape->u = 0.30;
     }
     else {
         shape = cpPolyShapeNew(body, num, verts, CGPointZero);
-        shape->e = 0.5f; shape->u = 0.5f;
+//        if (IsBar(_attributes)) {
+//            shape->e = 0.55f; shape->u = 0.45f;
+//        }
+//        else {
+            shape->e = 0.5f; shape->u = 0.35f;
+//        }
     }
 	shape->data = self;
     self.shape = shape;

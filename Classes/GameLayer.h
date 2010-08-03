@@ -25,8 +25,11 @@
     
     BOOL    win;
     BOOL    lose;
+    BOOL    moved;
     
     int             moves;
+    int             blueRemoved;
+
     NSTimeInterval  time;
     
     CCMenu      *pauseMenu;
@@ -38,7 +41,7 @@
 
 @property (assign,nonatomic) int level;
 @property (retain,nonatomic) CCSpriteSheet *sheet;
-
+@property (assign,nonatomic) BOOL moved;
 
 - (void)setAccellerometer;
 - (void)setDefaultBackground;

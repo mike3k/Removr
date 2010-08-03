@@ -277,6 +277,18 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 #pragma mark Levels
 
+- (Level*)GetLevelFromURL: (NSURL*)url
+{
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    return [Level levelFromData:data];
+}
+
+- (Level*)GetLevelFromFile: (NSString*)path
+{
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    return [Level levelFromData:data];
+}
+
 - (Level*)GetLevel: (int)number
 {
     // if we're restarting the current level, use the saved copy

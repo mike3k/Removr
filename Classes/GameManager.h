@@ -62,6 +62,9 @@
 - (BOOL) opendb;
 - (BOOL) checkForDbUdate;
 
+- (Level*)GetLevelFromURL: (NSURL*)url;
+- (Level*)GetLevelFromFile: (NSString*)path;
+
 - (Level*)GetLevel: (int)number;
 - (int)levelCount;
 

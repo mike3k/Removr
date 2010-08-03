@@ -44,6 +44,7 @@ typedef struct {
 #define IsCircle(B)     ((B & kSpriteKindMask) == kCircleSprite)
 #define IsVBar(B)       ((B & kSpriteKindMask) == kVertBarSprite)
 #define IsHBar(B)       ((B & kSpriteKindMask) == kHorizBarSprite)
+#define IsBar(B)        (IsVBar(B) || IsHBar(B))
 
 #define kMapPieceMask       0x000000ff
 #define kMapYMask           0x0000ff00

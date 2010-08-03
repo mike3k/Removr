@@ -14,8 +14,18 @@
 
 #define kBorderCollision  888
 
+static BOOL BigMove(CGPoint p1, CGPoint p2)
+{
+#define BigMoveAmount   2
+    if (ABS(p1.x - p2.x) > BigMoveAmount)
+        return YES;
+    if (ABS(p1.y - p2.y) > BigMoveAmount)
+        return YES;
+    return NO;
+}
+
 static void
-eachShape(void *ptr, void* unused)
+eachShape(void *ptr, void* data)
 {
 	cpShape *shape = (cpShape*) ptr;
 	CCSprite *sprite = shape->data;
@@ -25,6 +35,11 @@ eachShape(void *ptr, void* unused)
 		// TIP: cocos2d and chipmunk uses the same struct to store it's position
 		// chipmunk uses: cpVect, and cocos2d uses CGPoint but in reality the are the same
 		// since v0.7.1 you can mix them if you want.		
+        
+        // see  if piece moved
+        if (BigMove([sprite position], body->p)) {
+            ((GameLayer*)data).moved = YES;
+        }
 		[sprite setPosition: body->p];
 		
 		[sprite setRotation: (float) CC_RADIANS_TO_DEGREES( -body->a )];
@@ -50,6 +65,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 @implementation GameLayer
 
 @synthesize level = _level, sheet = _sheet;
+@synthesize moved;
 
 - (void)setAccellerometer
 {
@@ -157,6 +173,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 {
     win = NO;
     lose = NO;
+    blueRemoved = 0;
 
     [self clearBoard];
     for (int i=0; map[i]; ++i) {
@@ -301,6 +318,9 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
             [_delegate playRemoveSound];
         }
         sprite.visible = NO;
+        if (!sprite.mustRemove && !sprite.mustKeep) {
+            blueRemoved += 1;
+        }
         [_sheet removeChild:sprite cleanup:NO];
         if (!force) {
             moves += 1;
@@ -327,21 +347,29 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 	int steps = 2;
 	CGFloat dt = delta/(CGFloat)steps;
 	
+    moved = NO;
+    
 	for(int i=0; i<steps; i++){
 		cpSpaceStep(space, dt);
 	}
-	cpSpaceHashEach(space->activeShapes, &eachShape, nil);
-	cpSpaceHashEach(space->staticShapes, &eachShape, nil);
+	cpSpaceHashEach(space->activeShapes, &eachShape, self);
+	cpSpaceHashEach(space->staticShapes, &eachShape, self);
 
-    if (win) 
+    if (win && !moved) {
+        NSLog(@"%d blue pieces removed",blueRemoved);
         [self showWinScreen];
-    else if (lose) 
+    }
+    else if (lose) {
         [self showLoseScreen];
+    }
 }
 
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    if (win || lose)
+        return NO;
+
     CGPoint location = [touch locationInView: [touch view]];
     location = [[CCDirector sharedDirector] convertToGL: location];
     cpShape *shape = cpSpacePointQueryFirst(space, location, CP_ALL_LAYERS, 0);
@@ -354,6 +382,9 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (win || lose)
+        return NO;
+   
     for( UITouch *touch in touches ) {
         CGPoint location = [touch locationInView: [touch view]];
         location = [[CCDirector sharedDirector] convertToGL: location];
