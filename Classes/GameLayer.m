@@ -383,7 +383,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (win || lose)
-        return NO;
+        return;
    
     for( UITouch *touch in touches ) {
         CGPoint location = [touch locationInView: [touch view]];

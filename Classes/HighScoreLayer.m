@@ -28,7 +28,6 @@
 #ifdef FORCE_ALL_LEVELS
     if (theLevel < [_delegate levelCount])
 #else
-    //if (theLevel <= [_delegate levelCount] && (theScore != 0))
     if (theLevel <= MIN([[AppSettings shared] highestLevel],[_delegate levelCount]-1))
 #endif
     {
@@ -41,6 +40,7 @@
         //[itm setOpacity: 64];
         [itm setIsEnabled: NO];
     }
+    itm.visible = (theLevel < [_delegate levelCount]);
 }
 
 - (id)init

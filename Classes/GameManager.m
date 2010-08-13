@@ -106,7 +106,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 #endif
             // remove existing userdb
             [fm removeItemAtPath:userdb error:nil];
-            [self clearScores];
+            //[self clearScores];
         }
         if ([fm copyItemAtPath:self.dbpath toPath:userdb error:NULL]) {
 #ifndef NDEBUG
