@@ -12,16 +12,19 @@
 
 @interface LevelCompleteMsg : CCSprite {
     int _moves;
-
-#ifdef USE_LABEL
+    int _level;
+    int _blueRemoved;
+    
     CCLabel *label;
-#else
-    CCLabelAtlas *label;
-#endif
+    CCLabel *label2;
+    CCLabel *label3;
 }
 
 @property (assign,nonatomic) int moves;
+@property (assign,nonatomic) int level;
+@property (assign,nonatomic) int blueRemoved;
 
+- (id) initWithMoves: (int)moves level: (int)level blues: (int)blues;
 - (id) initWithMoves: (int)moves;
 
 @end

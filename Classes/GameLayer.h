@@ -74,11 +74,15 @@
 
 - (void)playLevel: (NSNumber*)num;
 
+- (void) handleTouch: (CGPoint)touch;
+
 
 - (void)play;
 - (void)pause;
 - (void)resume;
 - (void)quit;
+
+- (BOOL)hasBluePieces;
 
 - (void)showWinScreen;
 - (void)showLoseScreen;

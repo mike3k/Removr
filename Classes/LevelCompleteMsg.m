@@ -11,6 +11,36 @@
 
 @implementation LevelCompleteMsg
 
+- (id) initWithMoves: (int)moves level: (int)level blues: (int)blues
+{
+    self = [super init];
+    if (self) {
+        CGFloat _scale = [[AppSettings shared] scale];
+//        label = [[CCLabel alloc] initWithString:[NSString stringWithFormat: @"Completed Level %d\nin %d moves%s",level,moves,bluemsg] 
+        label = [[CCLabel alloc] initWithString:[NSString stringWithFormat: @"Completed Level %d",level+1]
+                                                                  fontName:@"Marker Felt" 
+                                                                  fontSize:34*_scale];
+    
+        label2 =  [[CCLabel alloc] initWithString:[NSString stringWithFormat:@"in %d move%s",moves,(moves!=1)?"s":" "] 
+                                         fontName:@"Marker Felt" 
+                                         fontSize:34*_scale];
+        label2.position = ccp(label.position.x,label.position.y-label.contentSize.height);
+        [self addChild:label];
+        [self addChild:label2];
+        if (0 == blues) {
+            label3 = [[CCLabel alloc] initWithString:@"Good work! No blue pieces removed!" 
+                                            fontName:@"Marker Felt" 
+                                            fontSize:24*_scale];
+            label3.position = ccp(label2.position.x,label2.position.y-label2.contentSize.height);
+            [self addChild:label3];
+        }
+        _moves = moves;
+        _level = level;
+        _blueRemoved = blues;
+    }
+    return self;
+}
+
 - (id) initWithMoves: (int)moves
 {
     self = [super init];
@@ -18,17 +48,8 @@
         CGFloat _scale = [[AppSettings shared] scale];
         CCSprite *msg = [[CCSprite alloc] initWithFile:(_scale>1 ? @"Level-Complete@x2.png": @"Level-Complete.png")];
         [self addChild: msg];
-//#ifdef USE_LABEL
         label = [[CCLabel alloc] initWithString:[NSString stringWithFormat: @"%d",moves] fontName:@"Marker Felt" fontSize:36*_scale];
         label.position = ccp((170.0/2.0)*_scale,(170.0/3.0)*_scale);
-//#else
-//        label = [[CCLabelAtlas alloc] initWithString:[NSString stringWithFormat: @"%d",moves] 
-//                                         charMapFile:@"Score-images.png"
-//                                           itemWidth:20 
-//                                          itemHeight:26
-//                                        startCharMap:'0'];
-//        label.position = ccp(170.0/2.0,170.0/3.0);
-//#endif
         [msg addChild: label];
         [label release];
         [msg release];
@@ -56,6 +77,26 @@
 - (int) moves
 {
     return _moves;
+}
+
+-(void) setLevel: (int)value
+{
+    _level = value;
+}
+
+- (int) level
+{
+    return _level;
+}
+
+- (void)setBlueRemoved: (int)value
+{
+    _blueRemoved = value;
+}
+
+- (int)blueRemoved
+{
+    return _blueRemoved;
 }
 
 @end

@@ -332,6 +332,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 -(void) onEnter
 {
 	[super onEnter];
+    self.isTouchEnabled = YES;
 	
 	[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / 60)];
 }
@@ -356,7 +357,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 	cpSpaceHashEach(space->staticShapes, &eachShape, self);
 
     if (win && !moved) {
-        NSLog(@"%d blue pieces removed",blueRemoved);
+        //NSLog(@"%d blue pieces removed",blueRemoved);
         [self showWinScreen];
     }
     else if (lose) {
@@ -364,37 +365,91 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     }
 }
 
+// *** Should not be used
+//- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//    if (win || lose)
+//        return NO;
+//
+//    CGPoint location = [touch locationInView: [touch view]];
+//    location = [[CCDirector sharedDirector] convertToGL: location];
+//    cpShape *shape = cpSpacePointQueryFirst(space, location, CP_ALL_LAYERS, 0);
+//    if (nil != shape) {
+//        [self removeShape: shape force: NO];
+//        return YES;
+//    }
+//    return NO;
+//}
 
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+
+- (void) handleTouch: (CGPoint)touch
 {
-    if (win || lose)
-        return NO;
+    ShapeSprite *sprite;
+    
+//    if (win && (nil != (sprite = [self getChildByTag:kTagWinScreen])) ) {
+//        if ( CGRectContainsPoint([sprite boundingBox], touch) ) {
+//            [self stopAllActions];
+//            [self runAction: [CCCallFunc actionWithTarget:self selector:@selector(gotoNextLevel)]];
+//            return;
+//        }
+//    }
 
-    CGPoint location = [touch locationInView: [touch view]];
-    location = [[CCDirector sharedDirector] convertToGL: location];
-    cpShape *shape = cpSpacePointQueryFirst(space, location, CP_ALL_LAYERS, 0);
-    if (nil != shape) {
-        [self removeShape: shape force: NO];
-        return YES;
-    }
-    return NO;
-}
-
-- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (win || lose)
-        return;
-   
-    for( UITouch *touch in touches ) {
-        CGPoint location = [touch locationInView: [touch view]];
-        location = [[CCDirector sharedDirector] convertToGL: location];
-        cpShape *shape = cpSpacePointQueryFirst(space, location, CP_ALL_LAYERS, 0);
-        if (nil != shape) {
-            [self removeShape: shape force: NO];
+    CCArray *allSprites = [_sheet children];
+    for (int i = 0; i < [allSprites count]; i++) {
+		sprite = (ShapeSprite *)[allSprites objectAtIndex:i];
+        if ( CGRectContainsPoint([sprite boundingBox], touch) ) {
+            [self removeSprite:sprite force:NO];
+            break;
         }
     }
 }
 
+- (void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *) event
+{
+	UITouch *touch = [touches anyObject];
+	CGPoint point = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
+	
+	if(!_delegate.paused) {
+        [self handleTouch: point];   //CGPointMake(point.x, 480 - point.y)];
+    }
+	
+	//return YES;
+}
+
+- (void) ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *) event
+{
+	//UITouch *touch = [touches anyObject];
+	//CGPoint point = [touch locationInView: [touch view]];
+	
+	//return YES;
+}
+
+- (void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *) event
+{
+	//UITouch *touch = [touches anyObject];
+	//CGPoint point = [touch locationInView: [touch view]];
+	
+	//return YES;
+}
+
+
+// *** Version 1.0 Code
+//- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    if (win || lose)
+//        return;
+//   
+//    for( UITouch *touch in touches ) {
+//        CGPoint location = [touch locationInView: [touch view]];
+//        location = [[CCDirector sharedDirector] convertToGL: location];
+//        cpShape *shape = cpSpacePointQueryFirst(space, location, CP_ALL_LAYERS, 0);
+//        if (nil != shape) {
+//            [self removeShape: shape force: NO];
+//        }
+//    }
+//}
+
+// *** Test Version
 //- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 //{
 //	for( UITouch *touch in touches ) {
@@ -423,9 +478,25 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 {
 }
 
+- (BOOL)hasBluePieces
+{
+    CCArray *allSprites = [_sheet children];
+    ShapeSprite *sprite;
+    for (int i = 0; i < [allSprites count]; i++) {
+		sprite = (ShapeSprite *)[allSprites objectAtIndex:i];
+        if (!sprite.mustRemove && !sprite.mustKeep) {
+            return YES;
+        }
+    }
+    ++blueRemoved;
+    return NO;
+}
+
+
 - (void)showWinScreen
 {
-    CGSize wins = [[CCDirector sharedDirector] winSize];    
+    CGSize wins = [[CCDirector sharedDirector] winSize];
+    LevelCompleteMsg *msg = nil;
     [self stop];
 
     [_delegate playWinSound];
@@ -434,8 +505,15 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
     [[GameManager shared] setScore:moves forLevel:self.level];
 
-    LevelCompleteMsg *msg = [[LevelCompleteMsg alloc] initWithMoves:moves];
-    msg.position = ccp(wins.width / 2, wins.height / 2);
+    if (self.level == INT16_MAX) {
+        msg = [[LevelCompleteMsg alloc] initWithMoves:moves];
+        msg.position = ccp(wins.width / 2, wins.height / 2);
+    }
+    else {
+        [self hasBluePieces];
+        msg = [[LevelCompleteMsg alloc] initWithMoves:moves level:self.level blues:blueRemoved];
+        msg.position = ccp(wins.width / 2, wins.height / 1.8);
+    }
     [self addChild:msg z:zOverlayLevel tag:kTagWinScreen];
     [msg release];
     [self runAction: [CCSequence actions:[CCDelayTime actionWithDuration:3], [CCCallFunc actionWithTarget:self selector:@selector(gotoNextLevel)],nil]];
@@ -469,7 +547,12 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     [self undimScreen];
     [self removeChildByTag:kTagWinScreen cleanup:YES];
 
-    [self gotoLevel: self.level + 1];
+    if (self.level == INT16_MAX) {
+        [self gotoLevel: self.level];
+    }
+    else {
+        [self gotoLevel: self.level + 1];
+    }
 }
 
 - (void)showLoseScreen
@@ -490,12 +573,14 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     }
 
     [self setAccellerometer];
-
-    self.level = level;
-    aps.lastLevel = level;
-    if (level > aps.highestLevel) {
-        aps.highestLevel = level;
-        [aps save];
+        
+    if (level < INT16_MAX) {
+        self.level = level;
+        aps.lastLevel = level;
+        if (level > aps.highestLevel) {
+            aps.highestLevel = level;
+            [aps save];
+        }
     }
     
     Level *theLevel = [[GameManager shared] GetLevel: level];

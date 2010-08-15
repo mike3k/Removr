@@ -254,6 +254,9 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (void) setScore: (NSInteger)score forLevel: (NSInteger)level
 {
+    if (level == INT16_MAX)
+        return;
+
 #ifndef NDEBUG
     NSLog(@"setScore:%d forLevel:%d",score,level);
 #endif
@@ -271,6 +274,9 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (NSInteger) scoreForLevel: (NSInteger)level
 {
+    if (level == INT16_MAX)
+        return 0;
+
     NSInteger *scores = (NSInteger*)[aps.levelStatus bytes];
     return scores[level];
 }
@@ -291,6 +297,9 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (Level*)GetLevel: (int)number
 {
+    if (number == INT16_MAX) {
+        return [self GetRandomLevel];
+    }
     // if we're restarting the current level, use the saved copy
     if ((number == _curLevel) && (_theLevel != nil)) {
         return _theLevel;

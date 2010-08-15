@@ -89,3 +89,9 @@
 - (void)resume: (id)sender;
 
 @end
+
+@interface GameManager (RandomLevel)
+
+- (Level*)GetRandomLevel;
+
+@end

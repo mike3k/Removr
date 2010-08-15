@@ -56,6 +56,7 @@
 		276D00F711794F29002A396A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506EDBA4102F4C9F00A389B3 /* AVFoundation.framework */; };
 		276D00F811794F29002A396A /* libcocos2d libraries.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 506EE05E10304ED200A389B3 /* libcocos2d libraries.a */; };
 		276D02C9117AA8A1002A396A /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D02C8117AA8A1002A396A /* GameLayer.m */; };
+		277BBC9A12165BC0009F6996 /* GameManager+RandomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 277BBC9912165BC0009F6996 /* GameManager+RandomLevel.m */; };
 		27822515118BB7C900A9D0B4 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27822513118BB7C800A9D0B4 /* GameManager.m */; };
 		27912BE611C835A400A61660 /* Removr-57-springboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 27912BE211C835A400A61660 /* Removr-57-springboard.png */; };
 		27912BE811C835A400A61660 /* Removr-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 27912BE311C835A400A61660 /* Removr-114.png */; };
@@ -465,6 +466,7 @@
 		276D0326117BB779002A396A /* SpriteDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteDefs.h; sourceTree = "<group>"; };
 		276D037F117E5BE0002A396A /* ShapeSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeSprite.h; sourceTree = "<group>"; };
 		276DFF2C1177F494002A396A /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		277BBC9912165BC0009F6996 /* GameManager+RandomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GameManager+RandomLevel.m"; sourceTree = "<group>"; };
 		27822512118BB7C800A9D0B4 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		27822513118BB7C800A9D0B4 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		27912BE211C835A400A61660 /* Removr-57-springboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Removr-57-springboard.png"; path = "Toffeenut/Icon/Removr-57-springboard.png"; sourceTree = SOURCE_ROOT; };
@@ -952,6 +954,7 @@
 				507022A2107672FA00393637 /* BlocksAppDelegate.m */,
 				27822512118BB7C800A9D0B4 /* GameManager.h */,
 				27822513118BB7C800A9D0B4 /* GameManager.m */,
+				277BBC9912165BC0009F6996 /* GameManager+RandomLevel.m */,
 				2740F96411CD82F4004FC184 /* GameManager+Create.m */,
 				27085FAB1198A18C00674CA4 /* GameScene.h */,
 				27085FAC1198A18C00674CA4 /* GameScene.m */,
@@ -1812,6 +1815,7 @@
 				27C24CB611D7B9E2006F5A47 /* LevelCompleteMsg.m in Sources */,
 				272D6C0911DD2B800064FAEC /* LevelMenuItem.m in Sources */,
 				272D6D9111DEA4F60064FAEC /* MCMenuItem.m in Sources */,
+				277BBC9A12165BC0009F6996 /* GameManager+RandomLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
