@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+// utility functions
+NSString *format_time(NSTimeInterval tm);
 
 @interface AppSettings : NSObject {
     NSInteger _version;
@@ -20,6 +22,7 @@
     NSInteger _highestLevel;
     
     NSMutableData *_levelStatus;
+    NSMutableData *_levelTimes;
     
     CGFloat _scale;
 }
@@ -31,6 +34,7 @@
 
 @property (retain,nonatomic) NSDate *last_check;
 @property (retain,nonatomic) NSMutableData* levelStatus;
+@property (retain,nonatomic) NSMutableData* levelTimes;
 
 @property (assign,nonatomic) NSInteger lastLevel;
 @property (assign,nonatomic) NSInteger highestLevel;

@@ -251,7 +251,6 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     }
 }
 
-
 - (void) setScore: (NSInteger)score forLevel: (NSInteger)level
 {
     if (level == INT16_MAX)
@@ -280,6 +279,33 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     NSInteger *scores = (NSInteger*)[aps.levelStatus bytes];
     return scores[level];
 }
+
+- (void) setTime: (NSTimeInterval)tm forLevel: (NSInteger)level
+{
+    if (level == INT16_MAX)
+        return;
+
+    NSMutableData *timeStat = aps.levelTimes;
+    if (level > ([timeStat length]/sizeof(NSTimeInterval))) {
+        [timeStat setLength:level*sizeof(NSTimeInterval)];
+    }
+    NSTimeInterval *times = (NSTimeInterval*)[timeStat bytes];
+    // only save the score if it's lower than the last saved score
+    NSTimeInterval oldTime = times[level];
+    if ((0==oldTime) || (tm < oldTime)) {
+        times[level] = (tm ? tm : -1);
+    }
+}
+
+- (NSTimeInterval) timeForLevel: (NSInteger)level
+{
+    if (level == INT16_MAX)
+        return 0;
+
+    NSTimeInterval *times = (NSTimeInterval*)[aps.levelTimes bytes];
+    return times[level];
+}
+
 
 #pragma mark Levels
 

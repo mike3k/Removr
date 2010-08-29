@@ -24,6 +24,7 @@
 - (void)updateItem: (LevelMenuItem*)itm forLevel: (int)theLevel
 {
     int theScore = [_delegate scoreForLevel: theLevel];
+    NSTimeInterval theTime = [_delegate timeForLevel: theLevel];
     itm.level = theLevel+1;
 #ifdef FORCE_ALL_LEVELS
     if (theLevel < [_delegate levelCount])
@@ -32,11 +33,13 @@
 #endif
     {
         itm.moves = theScore;
+        itm.time = theTime;
         //[itm setOpacity:255];
         [itm setIsEnabled:YES];
     }
     else {
         itm.moves = 0;
+        itm.time = 0;
         //[itm setOpacity: 64];
         [itm setIsEnabled: NO];
     }

@@ -11,7 +11,7 @@
 
 @implementation LevelCompleteMsg
 
-- (id) initWithMoves: (int)moves level: (int)level blues: (int)blues
+- (id) initWithMoves: (int)moves level: (int)level time: (float)time blues: (int)blues
 {
     self = [super init];
     if (self) {
@@ -21,10 +21,10 @@
                                                                   fontName:@"Marker Felt" 
                                                                   fontSize:34*_scale];
     
-        label2 =  [[CCLabel alloc] initWithString:[NSString stringWithFormat:@"in %d move%s",moves,(moves!=1)?"s":" "] 
+        label2 =  [[CCLabel alloc] initWithString:[NSString stringWithFormat:@"in %@ with %d move%s",format_time(time),moves,(moves!=1)?"s":" "] 
                                          fontName:@"Marker Felt" 
-                                         fontSize:34*_scale];
-        label2.position = ccp(label.position.x,label.position.y-label.contentSize.height);
+                                         fontSize:22*_scale];
+        label2.position = ccp(label.position.x,label.position.y-label.contentSize.height + (6*_scale));
         [self addChild:label];
         [self addChild:label2];
         if (0 == blues) {
@@ -36,6 +36,7 @@
         }
         _moves = moves;
         _level = level;
+        _time = time;
         _blueRemoved = blues;
     }
     return self;
@@ -87,6 +88,16 @@
 - (int) level
 {
     return _level;
+}
+
+- (float) time
+{
+    return _time;
+}
+
+- (void) setTime: (float)value
+{
+    _time = value;
 }
 
 - (void)setBlueRemoved: (int)value

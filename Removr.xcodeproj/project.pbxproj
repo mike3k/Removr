@@ -1990,7 +1990,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mike Cohen (4SN9986HAQ)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -2017,7 +2017,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = Removr;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "86866A14-88FF-44DF-A0A6-6E1FD2FB37AC";
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -2069,6 +2069,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Removr;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "63B914C0-8528-41CC-AD36-84A28B0F8AF4";
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wall";
 			};

@@ -10,6 +10,12 @@
 
 static AppSettings *theSettings = nil;
 
+NSString *format_time(NSTimeInterval tm)
+{
+    long _time = floor(tm);
+    return [NSString stringWithFormat: @"%02d:%02d", /*(_time / 3600),*/ (_time / 60), _time % 60 ];
+}
+
 @implementation AppSettings
 
 @synthesize sound = _sound;
@@ -17,6 +23,7 @@ static AppSettings *theSettings = nil;
 @synthesize lastLevel = _lastLevel;
 @synthesize highestLevel = _highestLevel;
 @synthesize levelStatus = _levelStatus;
+@synthesize levelTimes = _levelTimes;
 @synthesize version = _version;
 @synthesize last_check = _last_check;
 @synthesize scale = _scale;
@@ -39,17 +46,22 @@ static AppSettings *theSettings = nil;
             self.lastLevel = 0;
             self.highestLevel = 0;
             _levelStatus = nil;
+            _levelTimes = nil;
         }
         else {
             self.sound = [def boolForKey: @"sound"];
             self.accelerometer = [def boolForKey: @"accel"];
             self.lastLevel = [def integerForKey:@"lastLevel"];
             self.levelStatus = [[[def dataForKey:@"levelStatus"] mutableCopy] autorelease];
+            self.levelTimes = [[[def dataForKey:@"levelTimes"] mutableCopy] autorelease];
             self.highestLevel = [def integerForKey:@"highestLevel"];
             self.last_check = [def objectForKey:@"lastUpdate"];
         }
         if (nil == _levelStatus) {
             self.levelStatus = [NSMutableData dataWithLength:(100*sizeof(NSInteger*))];
+        }
+        if (nil == _levelTimes) {
+            self.levelTimes = [NSMutableData dataWithLength:(100*sizeof(NSTimeInterval))];
         }
         self.scale = [[UIScreen mainScreen] scale];
         // 2x scaling only works in iOS4 or newer
@@ -78,6 +90,7 @@ static AppSettings *theSettings = nil;
     [def setBool: self.accelerometer forKey: @"accel"];
     [def setInteger:self.lastLevel forKey:@"lastLevel"];
     [def setObject:self.levelStatus forKey:@"levelStatus"];
+    [def setObject:self.levelTimes forKey:@"levelTimes"];
     [def setObject:self.last_check forKey:@"lastUpdate"];
     [def setInteger:self.highestLevel forKey:@"highestLevel"];
     return YES;

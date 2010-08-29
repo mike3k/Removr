@@ -30,12 +30,15 @@
     int             moves;
     int             blueRemoved;
 
-    NSTimeInterval  time;
+    NSTimeInterval  elapsedtime;
+    NSTimeInterval  startTime;
     
     CCMenu      *pauseMenu;
     
     AppSettings *aps;
     
+    //CCLabelAtlas *timeLabel;
+    CCLabel *timeLabel;
     int _facet;
 }
 
@@ -47,6 +50,7 @@
 - (void)setDefaultBackground;
 
 //+ (id) scene;
+- (void) updateTime: (ccTime) dt;
 - (void) step: (ccTime) dt;
 - (void)removeShape: (cpShape*)shape force: (BOOL)force;
 - (void)removeSprite: (ShapeSprite*)sprite force: (BOOL)force;

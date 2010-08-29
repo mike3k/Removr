@@ -12,6 +12,7 @@
 
 @interface LevelCompleteMsg : CCSprite {
     int _moves;
+    float _time;
     int _level;
     int _blueRemoved;
     
@@ -22,9 +23,10 @@
 
 @property (assign,nonatomic) int moves;
 @property (assign,nonatomic) int level;
+@property (assign,nonatomic) float time;
 @property (assign,nonatomic) int blueRemoved;
 
-- (id) initWithMoves: (int)moves level: (int)level blues: (int)blues;
+- (id) initWithMoves: (int)moves level: (int)level time:(float)time blues: (int)blues;
 - (id) initWithMoves: (int)moves;
 
 @end

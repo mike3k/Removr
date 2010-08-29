@@ -147,6 +147,15 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         menu.anchorPoint = ccp(1,1);
         menu.position = ccp(wins.width - (_scale*42), wins.height - (_scale*16));
         [self addChild:menu  z:zOverlayLevel tag:kTagPauseButton];
+        
+        //timeLabel = [CCLabelAtlas labelAtlasWithString:@"00:00:00" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'];
+        timeLabel = [CCLabel labelWithString:@"00:00" fontName:@"Helvetica" fontSize:18*_scale];
+        timeLabel.anchorPoint = ccp(0,1);
+        timeLabel.position = ccp(10,wins.height - (_scale*2));
+//        timeLabel.scaleX = _scale;
+//        timeLabel.scaleY = _scale;
+        [timeLabel setColor:ccc3(255,255,0)];
+        [self addChild:timeLabel z:zOverlayLevel];
     }
 #ifndef NDEBUG
     NSLog(@"Leaving GameLayer init");
@@ -186,17 +195,21 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 - (void) resetScore
 {
     moves = 0;
-    time = 0;
+    elapsedtime = 0;
+    [timeLabel setString:@"00:00"];
 }
 
 - (void)start
 {
     [self schedule: @selector(step:)];
+    [self schedule: @selector(updateTime:) interval:1.0];
+    startTime = time(0L);
 }
 
 - (void)stop
 {
     [self unschedule: @selector(step:)];
+    [self unschedule: @selector(updateTime:)];
 }
 
 - (void)play
@@ -341,6 +354,13 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 -(void) clearBoard
 {
     [_sheet removeAllChildrenWithCleanup:YES];
+}
+
+- (void) updateTime: (ccTime) dt
+{
+    elapsedtime += dt;
+    [timeLabel setString: format_time(elapsedtime)];
+     //[NSString stringWithFormat:@"%04.0f",elapsedtime]];
 }
 
 -(void) step: (ccTime) delta
@@ -504,6 +524,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     [self dimScreen];
 
     [[GameManager shared] setScore:moves forLevel:self.level];
+    [[GameManager shared] setTime:elapsedtime forLevel:self.level];
 
     if (self.level == INT16_MAX) {
         msg = [[LevelCompleteMsg alloc] initWithMoves:moves];
@@ -511,7 +532,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     }
     else {
         [self hasBluePieces];
-        msg = [[LevelCompleteMsg alloc] initWithMoves:moves level:self.level blues:blueRemoved];
+        msg = [[LevelCompleteMsg alloc] initWithMoves:moves level:self.level time:elapsedtime blues:blueRemoved];
         msg.position = ccp(wins.width / 2, wins.height / 1.8);
     }
     [self addChild:msg z:zOverlayLevel tag:kTagWinScreen];

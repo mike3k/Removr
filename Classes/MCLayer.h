@@ -42,6 +42,7 @@ enum {
 
 - (int)levelCount;
 - (NSInteger) scoreForLevel: (NSInteger)level;
+- (NSTimeInterval) timeForLevel: (NSInteger)level;
 
 - (void)playIntroMusic;
 - (void)playWinSound;
@@ -85,3 +86,4 @@ enum {
 @property (assign,nonatomic) CGFloat scale;
 
 @end
+

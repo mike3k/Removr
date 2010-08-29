@@ -77,6 +77,10 @@
 - (void) setScore: (NSInteger)score forLevel: (NSInteger)level;
 - (NSInteger) scoreForLevel: (NSInteger)level;
 
+- (void) setTime: (NSTimeInterval)tm forLevel: (NSInteger)level;
+- (NSTimeInterval) timeForLevel: (NSInteger)level;
+
+
 - (void)playLevel: (NSNumber*)level;
 
 - (void)play:(id)sender;
