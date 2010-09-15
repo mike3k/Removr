@@ -28,7 +28,7 @@
 	<key>CFBundleURLTypes</key>
 	<array/>
 	<key>CFBundleVersion</key>
-	<string>1.0.3</string>
+	<string>1.0.4</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationExitsOnSuspend</key>
@@ -39,6 +39,8 @@
 	<string>UIInterfaceOrientationLandscapeLeft</string>
 	<key>UIInterfaceOrientation~ipad</key>
 	<string>UIInterfaceOrientationLandscapeLeft</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UIStatusBarStyle</key>
@@ -51,7 +53,5 @@
 	<array/>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
-	<key>UIPrerenderedIcon</key>
-	<true/>
 </dict>
 </plist>
