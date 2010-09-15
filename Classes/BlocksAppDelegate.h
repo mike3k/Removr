@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class GameManager;
+@class GameViewController;
 
 @interface BlocksAppDelegate : NSObject <UIApplicationDelegate> {
 	UIWindow *window;
     GameManager *gm;
+    GameViewController *controller;
 }
 
 @property (nonatomic, retain) UIWindow *window;

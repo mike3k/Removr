@@ -29,7 +29,7 @@
     
 }
 
-+ (ShapeSprite*)Sprite: (int)kind x:(float)x y:(float)y withSheet: (CCSpriteSheet*)sheet;
++ (ShapeSprite*)Sprite: (int)kind x:(float)x y:(float)y withSheet: (CCSpriteBatchNode*)sheet;
 - (void)addToSpace:(cpSpace*)space;
 - (void)makeShapeForSprite;
 - (void)removeShape;

@@ -19,7 +19,7 @@
 @class ShapeSprite;
 
 @interface GameLayer : MCLayer {
-    CCSpriteSheet *_sheet;
+    CCSpriteBatchNode *_sheet;
     cpSpace *space;
     int _level;
     
@@ -38,12 +38,12 @@
     AppSettings *aps;
     
     //CCLabelAtlas *timeLabel;
-    CCLabel *timeLabel;
+    CCLabelTTF  *timeLabel;
     int _facet;
 }
 
 @property (assign,nonatomic) int level;
-@property (retain,nonatomic) CCSpriteSheet *sheet;
+@property (retain,nonatomic) CCSpriteBatchNode *sheet;
 @property (assign,nonatomic) BOOL moved;
 
 - (void)setAccellerometer;

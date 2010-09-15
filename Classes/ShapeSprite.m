@@ -183,7 +183,7 @@ static CGFloat _scale = 0;
     self.shape = shape;
 }
 
-+ (ShapeSprite*)Sprite: (int)kind x:(float)x y:(float)y withSheet: (CCSpriteSheet*)sheet
++ (ShapeSprite*)Sprite: (int)kind x:(float)x y:(float)y withSheet: (CCSpriteBatchNode*)sheet
 {
     CGPoint ap;
     int posx, posy;
@@ -199,7 +199,7 @@ static CGFloat _scale = 0;
 
 //    stype = (sp->attrib & kSpriteKindMask);
 
-    ShapeSprite *sprite = [ShapeSprite spriteWithSpriteSheet:sheet rect:CGRectMake(posx, 
+    ShapeSprite *sprite = [ShapeSprite spriteWithBatchNode:sheet rect:CGRectMake(posx, 
                                                                                    posy, 
                                                                                    sp->width*_scale, 
                                                                                    sp->height*_scale)];

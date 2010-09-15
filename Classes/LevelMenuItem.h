@@ -14,9 +14,9 @@
     NSTimeInterval _time;
     NSInteger _moves;
     
-    CCLabel *_labelMoves;
-    CCLabel *_labelLevel;
-    CCLabel *_labelTime;
+    CCLabelTTF *_labelMoves;
+    CCLabelTTF *_labelLevel;
+    CCLabelTTF *_labelTime;
 
 }
 

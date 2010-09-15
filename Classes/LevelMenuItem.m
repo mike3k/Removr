@@ -32,7 +32,7 @@ enum {
 {
     if (nil == _labelLevel) {
         CGFloat _scale = [[AppSettings shared] scale];
-        _labelLevel = [CCLabel labelWithString:[NSString stringWithFormat:@"Level %d", _level]
+        _labelLevel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Level %d", _level]
                                       fontName:@"Marker Felt" 
                                       fontSize:16*_scale];
         //_labelLevel.position = ccp(self.anchorPointInPixels.x,self.anchorPointInPixels.y+2);
@@ -50,7 +50,7 @@ enum {
 {
     if (nil == _labelMoves) {
         CGFloat _scale = [[AppSettings shared] scale];
-        _labelMoves = [CCLabel labelWithString: [NSString stringWithFormat:@"(%d move%@)",_moves,(_moves>1?@"s":@"")]
+        _labelMoves = [CCLabelTTF labelWithString: [NSString stringWithFormat:@"(%d move%@)",_moves,(_moves>1?@"s":@"")]
                                       fontName:@"Helvetica" 
                                       fontSize:14*_scale];
         //_labelMoves.position = ccp(self.anchorPointInPixels.x,12*_scale);
@@ -69,7 +69,7 @@ enum {
     if (nil == _labelTime) {
         CGFloat _scale = [[AppSettings shared] scale];
         //[NSString stringWithFormat:@"(%.0f seconds)",_time]
-        _labelTime = [CCLabel labelWithString: format_time(_time)
+        _labelTime = [CCLabelTTF labelWithString: format_time(_time)
                                      fontName:@"Helvetica" 
                                       fontSize:14*_scale];
         //_labelTime.position = ccp(self.anchorPointInPixels.x,24*_scale);

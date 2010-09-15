@@ -63,11 +63,19 @@ NSString *format_time(NSTimeInterval tm)
         if (nil == _levelTimes) {
             self.levelTimes = [NSMutableData dataWithLength:(100*sizeof(NSTimeInterval))];
         }
-        self.scale = [[UIScreen mainScreen] scale];
+//        self.scale = [[UIScreen mainScreen] scale];
+//        // 2x scaling only works in iOS4 or newer
+//        if ((_scale > 1) 
+//            && ( [[[UIDevice currentDevice] systemVersion] compare:@"4.0" options:NSNumericSearch] == NSOrderedAscending)) {
+//            self.scale = 1;
+//        }
         // 2x scaling only works in iOS4 or newer
-        if ((_scale > 1) 
-            && ( [[[UIDevice currentDevice] systemVersion] compare:@"4.0" options:NSNumericSearch] == NSOrderedAscending)) {
+        if ( [[[UIDevice currentDevice] systemVersion] compare:@"4.0" options:NSNumericSearch] == NSOrderedAscending ) {
             self.scale = 1;
+        }
+        else {
+            self.scale = [[UIScreen mainScreen] scale];
+
         }
     }
     return self;

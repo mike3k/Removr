@@ -135,7 +135,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
         cpSpaceAddCollisionHandler(space, kBorderCollision, 0, collisionBegin, nil, nil, nil, self);
 
-        self.sheet = [CCSpriteSheet spriteSheetWithFile:[self scaledFile: @"Shape-Atlas.png"] capacity:100];
+        self.sheet = [CCSpriteBatchNode batchNodeWithFile:[self scaledFile: @"Shape-Atlas.png"] capacity:100];
         [self addChild:_sheet z:zSpritesLevel tag:kTagAtlasSpriteSheet];
 
         NSString *pauseName = [self scaledFile: @"pause-icon.png"];
@@ -149,7 +149,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         [self addChild:menu  z:zOverlayLevel tag:kTagPauseButton];
         
         //timeLabel = [CCLabelAtlas labelAtlasWithString:@"00:00:00" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'];
-        timeLabel = [CCLabel labelWithString:@"00:00" fontName:@"Helvetica" fontSize:18*_scale];
+        timeLabel = [CCLabelTTF labelWithString:@"00:00" fontName:@"Helvetica" fontSize:18*_scale];
         timeLabel.anchorPoint = ccp(0,1);
         timeLabel.position = ccp(10,wins.height - (_scale*2));
 //        timeLabel.scaleX = _scale;
@@ -171,7 +171,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 -(void) addNewSprite: (int)kind x:(float)x y:(float)y
 {
-    //CCSpriteSheet *sheet = (CCSpriteSheet*) [self getChildByTag:kTagAtlasSpriteSheet];
+    //CCSpriteBatchNode *sheet = (CCSpriteBatchNode*) [self getChildByTag:kTagAtlasSpriteSheet];
 	
     ShapeSprite *sprite = [ShapeSprite Sprite:kind x:x y:y withSheet:_sheet];
     [sprite addToSpace:space];

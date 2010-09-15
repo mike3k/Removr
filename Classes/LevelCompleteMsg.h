@@ -16,9 +16,9 @@
     int _level;
     int _blueRemoved;
     
-    CCLabel *label;
-    CCLabel *label2;
-    CCLabel *label3;
+    CCLabelTTF *label;
+    CCLabelTTF *label2;
+    CCLabelTTF *label3;
 }
 
 @property (assign,nonatomic) int moves;
