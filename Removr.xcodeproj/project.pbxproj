@@ -2090,7 +2090,7 @@
 					"\"$(SRCROOT)/FlurryLib\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "-UNS_BLOCKS_AVAILABLE";
+				OTHER_CFLAGS = "-DNS_BLOCKS_AVAILABLE=0";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -2128,7 +2128,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/FlurryLib\"",
 				);
-				OTHER_CFLAGS = "-UNS_BLOCKS_AVAILABLE";
+				OTHER_CFLAGS = "-DNS_BLOCKS_AVAILABLE=0";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -2183,7 +2183,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/FlurryLib\"",
 				);
-				OTHER_CFLAGS = "-UNS_BLOCKS_AVAILABLE";
+				OTHER_CFLAGS = "-DNS_BLOCKS_AVAILABLE=0";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -2263,14 +2263,14 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/FlurryLib\"",
 				);
-				OTHER_CFLAGS = "-UNS_BLOCKS_AVAILABLE";
+				OTHER_CFLAGS = "-DNS_BLOCKS_AVAILABLE=0";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Removr;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "243BE5BD-F3A9-4841-A8E2-4D729C28C9D4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "039330F2-A07D-4171-9DE1-49B565D4C3E7";
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wall";
 			};

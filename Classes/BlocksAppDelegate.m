@@ -31,6 +31,7 @@
 
     EAGLView *glView = [EAGLView viewWithFrame:[window bounds] pixelFormat:kEAGLColorFormatRGB565 depthFormat:0 preserveBackbuffer:NO];
     [director setOpenGLView:glView];
+	[glView setMultipleTouchEnabled:YES];
     
     controller = [[GameViewController alloc] init];
     [window addSubview:controller.view];
