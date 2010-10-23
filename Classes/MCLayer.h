@@ -67,6 +67,8 @@ enum {
     
 //    CCFiniteTimeAction *_move1;
 //    CCFiniteTimeAction *_move2;
+    
+    BOOL    _nightMode;
 
 }
 
@@ -78,12 +80,19 @@ enum {
 - (void) removeClouds;
 - (void) stopClouds;
 
+- (NSString*)altScaledFile: (NSString*)name;
 
 - (NSString*)scaledFile: (NSString*)name;
 
 @property (retain,nonatomic) CCSprite *background;
 @property (assign,nonatomic) id <MCLayerDelegate> delegate;
 @property (assign,nonatomic) CGFloat scale;
+@property (assign,nonatomic) BOOL nightMode;
+
+@property (readonly) NSString *cloud1;
+@property (readonly) NSString *cloud2;
+@property (readonly) NSString *sunFileName;
+@property (readonly) NSString *bgFileName;
 
 @end
 

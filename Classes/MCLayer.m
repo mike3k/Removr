@@ -14,6 +14,7 @@
 
 @synthesize delegate = _delegate;
 @synthesize scale = _scale;
+@synthesize nightMode = _nightMode;
 
 static CCAction *_cloud1Action = nil;
 static CCAction *_cloud2Action = nil;
@@ -23,8 +24,13 @@ static CCFiniteTimeAction *_move2;
 - (id)init
 {
     if ((self = [super init])) {
+
         self.delegate = [GameManager shared];
         self.scale = [[AppSettings shared] scale];
+        
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:[NSDate date]];
+        NSInteger hour = [components hour];
+        self.nightMode = (hour <= 6) || (hour >= 18);
     }
 #ifndef NDEBUG
     NSLog(@"MCLayer: [%@ init] - scale=%f",self,self.scale);
@@ -56,6 +62,17 @@ static CCFiniteTimeAction *_move2;
     }
 }
 
+- (NSString*)altScaledFile: (NSString*)name
+{
+    NSString *_tmpName = _nightMode ? [NSString stringWithFormat:@"alt-%@",name] : name;
+
+    if (_scale > 1) {
+        //return [name stringByAppendingString:@"@x2"];
+        return [_tmpName stringByReplacingOccurrencesOfString:@".png" withString:@"@x2.png"];
+    }
+    return _tmpName;
+}
+
 - (NSString*)scaledFile: (NSString*)name
 {
     if (_scale > 1) {
@@ -65,6 +82,26 @@ static CCFiniteTimeAction *_move2;
     return name;
 }
 
+- (NSString*)cloud1
+{
+    return _nightMode ? @"alt-cloud-1.png" : @"cloud-1.png";
+}
+
+- (NSString*)cloud2
+{
+    return _nightMode ? @"alt-cloud-2.png" : @"alt-cloud-2.png";
+}
+
+- (NSString*)sunFileName
+{
+    return _nightMode ? @"alt-sun-menu.png" : @"sun-menu.png";
+}
+
+- (NSString*)bgFileName
+{
+    return _nightMode ? @"alt-background.png" : @"background.png";
+}
+
 #define CLOUDPOSH   20
 #define CLOUDPOSV   50
 
@@ -72,7 +109,7 @@ static CCFiniteTimeAction *_move2;
 {
     CGSize wins = [[CCDirector sharedDirector] winSize];
 
-    _sun = [[[CCSprite alloc] initWithFile:[self scaledFile:@"sun-menu.png"]] autorelease];
+    _sun = [[[CCSprite alloc] initWithFile:[self scaledFile:self.sunFileName]] autorelease];
     _sun.anchorPoint = ccp(1.0,1.0);
     _sun.position = ccp(wins.width, wins.height);
     [self addChild:_sun];
@@ -90,12 +127,12 @@ static CCFiniteTimeAction *_move2;
         return NO;
     }
     
-    _cloud1 = [[[CCSprite alloc] initWithFile:[self scaledFile:@"cloud-1.png"]] autorelease];
+    _cloud1 = [[[CCSprite alloc] initWithFile:[self scaledFile:self.cloud1]] autorelease];
     _cloud1.anchorPoint = ccp(0.0,1.0);
     _cloud1.position = ccp(0, wins.height);
     [self addChild:_cloud1 z:zCloudLevel tag:kTagCloud1];
     
-    _cloud2 = [[[CCSprite alloc] initWithFile:[self scaledFile:@"cloud-2.png"]] autorelease];
+    _cloud2 = [[[CCSprite alloc] initWithFile:[self scaledFile:self.cloud2]] autorelease];
     _cloud2.anchorPoint = ccp(1.0,1.0);
     _cloud2.position = ccp(wins.width - (CLOUDPOSV*_scale),wins.height-(CLOUDPOSH*_scale));
     [self addChild:_cloud2 z:zCloudLevel tag:kTagCloud1];

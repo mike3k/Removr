@@ -78,7 +78,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void) setDefaultBackground
 {
-    self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:@"background.png"]] autorelease];
+    self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:self.bgFileName]] autorelease];
 }
 
 -(id) init
@@ -138,7 +138,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         self.sheet = [CCSpriteBatchNode batchNodeWithFile:[self scaledFile: @"Shape-Atlas.png"] capacity:100];
         [self addChild:_sheet z:zSpritesLevel tag:kTagAtlasSpriteSheet];
 
-        NSString *pauseName = [self scaledFile: @"pause-icon.png"];
+        NSString *pauseName = [self scaledFile: _nightMode ? @"alt-pause-icon.png" : @"pause-icon.png"];
         CCMenu *menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:pauseName
                                                                      selectedImage:pauseName
                                                                             target:self 
@@ -609,7 +609,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     NSData *map = theLevel.map;
     if (nil != map) {
         if (nil != theLevel.background) {
-            self.background = [[[CCSprite alloc] initWithFile:[self scaledFile: theLevel.background]] autorelease];
+            self.background = [[[CCSprite alloc] initWithFile:[self altScaledFile: theLevel.background]] autorelease];
             [self removeClouds];
         }
         else {

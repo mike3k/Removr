@@ -411,7 +411,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (void)visitweb:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://removrapp.com/news"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://news.removrapp.com/"]];
 }
 
 - (void)playLevel: (NSNumber*)level

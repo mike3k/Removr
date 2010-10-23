@@ -15,7 +15,7 @@
 
     if ((self = [super init])) {
         aps = [AppSettings shared];
-        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile: @"background.png"]] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile: self.bgFileName]] autorelease];
         bSound = [OnOffButton makeButtonWithTarget: self selector: @selector(toggleSound:)];
         bAccel = [OnOffButton makeButtonWithTarget: self selector: @selector(toggleAccel:)];
 

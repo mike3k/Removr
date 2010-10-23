@@ -25,7 +25,7 @@
     if ((self = [super init])) {
         NSString *tmp;
 
-        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:@"background.png"]] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:self.bgFileName]] autorelease];
         
         tmp = [self scaledFile:@"logo-menu.png"];
         
