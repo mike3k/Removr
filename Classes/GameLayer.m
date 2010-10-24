@@ -12,6 +12,12 @@
 #import "SimpleAudioEngine.h"
 #import "LevelCompleteMsg.h"
 
+@interface GameLayer (private)
+
+- (void) addPauseButton;
+
+@end
+
 #define kBorderCollision  888
 
 static BOOL BigMove(CGPoint p1, CGPoint p2)
@@ -138,15 +144,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         self.sheet = [CCSpriteBatchNode batchNodeWithFile:[self scaledFile: @"Shape-Atlas.png"] capacity:100];
         [self addChild:_sheet z:zSpritesLevel tag:kTagAtlasSpriteSheet];
 
-        NSString *pauseName = [self scaledFile: _nightMode ? @"alt-pause-icon.png" : @"pause-icon.png"];
-        CCMenu *menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:pauseName
-                                                                     selectedImage:pauseName
-                                                                            target:self 
-                                                                          selector:@selector(pause)], nil];
-        [menu alignItemsVertically];
-        menu.anchorPoint = ccp(1,1);
-        menu.position = ccp(wins.width - (_scale*42), wins.height - (_scale*16));
-        [self addChild:menu  z:zOverlayLevel tag:kTagPauseButton];
+        [self addPauseButton];
         
         //timeLabel = [CCLabelAtlas labelAtlasWithString:@"00:00:00" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'];
         timeLabel = [CCLabelTTF labelWithString:@"00:00" fontName:@"Helvetica" fontSize:18*_scale];
@@ -161,6 +159,24 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     NSLog(@"Leaving GameLayer init");
 #endif
 	return self;
+}
+
+- (void) addPauseButton
+{
+    CGSize wins = [[CCDirector sharedDirector] winSize];
+    CCMenu *menu = (CCMenu*)[self getChildByTag:kTagPauseButton];
+    if (nil != menu) {
+        [self removeChild:menu cleanup:YES];
+    }
+    NSString *pauseName = [self scaledFile: _nightMode ? @"alt-pause-icon.png" : @"pause-icon.png"];
+    menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:pauseName
+                                                                 selectedImage:pauseName
+                                                                        target:self 
+                                                                      selector:@selector(pause)], nil];
+    [menu alignItemsVertically];
+    menu.anchorPoint = ccp(1,1);
+    menu.position = ccp(wins.width - (_scale*42), wins.height - (_scale*16));
+    [self addChild:menu  z:zOverlayLevel tag:kTagPauseButton];
 }
 
 -(void) addSprite: (UInt32)b
@@ -401,10 +417,33 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 //    return NO;
 //}
 
+- (ShapeSprite*) itemForTouch: (CGPoint)touch
+{
+//	touch = [[CCDirector sharedDirector] convertToGL: touch];
+	
+	ShapeSprite* sprite;
+	CCARRAY_FOREACH([_sheet children], sprite){
+		// ignore invisible and disabled items: issue #779, #866
+        if (nil != sprite) {
+            CGPoint local = [sprite convertToNodeSpace:touch];
+			
+			CGRect r = [sprite rect];
+			r.origin = CGPointZero;
+			
+			if( CGRectContainsPoint( r, local ) )
+				return sprite;
+        }
+	}
+	return nil;
+}
+
 
 - (void) handleTouch: (CGPoint)touch
 {
-    ShapeSprite *sprite;
+    ShapeSprite *sprite = [self itemForTouch:touch];
+    if (nil != sprite) {
+        [self removeSprite:sprite force:NO];
+    }
     
 //    if (win && (nil != (sprite = [self getChildByTag:kTagWinScreen])) ) {
 //        if ( CGRectContainsPoint([sprite boundingBox], touch) ) {
@@ -414,6 +453,7 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
 //        }
 //    }
 
+    /*
     CCArray *allSprites = [_sheet children];
     for (int i = 0; i < [allSprites count]; i++) {
 		sprite = (ShapeSprite *)[allSprites objectAtIndex:i];
@@ -422,6 +462,8 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
             break;
         }
     }
+     */
+    
 }
 
 - (void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *) event
@@ -608,6 +650,11 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     
     NSData *map = theLevel.map;
     if (nil != map) {
+        BOOL tmpNightMode = isNightMode();
+        if (self.nightMode != tmpNightMode) {
+            self.nightMode = tmpNightMode;
+            [self addPauseButton];
+        }
         if (nil != theLevel.background) {
             self.background = [[[CCSprite alloc] initWithFile:[self altScaledFile: theLevel.background]] autorelease];
             [self removeClouds];

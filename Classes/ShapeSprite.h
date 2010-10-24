@@ -13,6 +13,12 @@
 
 #import "SpriteDefs.h"
 
+@interface CCSprite (Utility)
+
+- (CGRect) rect;
+
+@end
+
 @interface ShapeSprite : CCSprite {
     cpShape *_shape;
     cpSpace *_space;

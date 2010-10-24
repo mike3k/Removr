@@ -82,6 +82,17 @@ static SpriteInfo sprites[] = {
 
 #define kUniqueSprites  (sizeof(sprites) / sizeof(SpriteInfo))
 
+@implementation CCSprite (Utility)
+
+- (CGRect) rect
+{
+	return CGRectMake( self.position.x - contentSize_.width*anchorPoint_.x, self.position.y-
+					  contentSize_.height*anchorPoint_.y,
+					  contentSize_.width, contentSize_.height);
+}
+
+@end
+
 @implementation ShapeSprite
 
 @synthesize shape = _shape, space = _space;

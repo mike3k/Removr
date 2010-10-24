@@ -62,6 +62,13 @@
 
 - (void)onEnter
 {
+    BOOL tmpNightMode = isNightMode();
+    if (tmpNightMode != self.nightMode) {
+        self.nightMode = tmpNightMode;
+        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:self.bgFileName]] autorelease];
+        [self removeClouds];
+        [self addClouds];
+    }
     [self moveClouds];
     [super onEnter];
 }

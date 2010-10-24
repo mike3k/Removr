@@ -96,3 +96,5 @@ enum {
 
 @end
 
+BOOL isNightMode();
+

@@ -10,6 +10,22 @@
 #import "GameManager.h"
 #import "AppSettings.h"
 
+BOOL isNightMode()
+{
+#if 0
+    // testing version
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:[NSDate date]];
+    NSInteger hour = [components hour];
+    NSInteger minutes = [components minute];
+    return (hour <= 6) || (hour > 11) || ((hour==11) && (minutes>32));
+#else
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:[NSDate date]];
+    NSInteger hour = [components hour];
+    return (hour < 7) || (hour > 18);
+#endif
+}
+
+
 @implementation MCLayer
 
 @synthesize delegate = _delegate;
@@ -27,10 +43,7 @@ static CCFiniteTimeAction *_move2;
 
         self.delegate = [GameManager shared];
         self.scale = [[AppSettings shared] scale];
-        
-        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:[NSDate date]];
-        NSInteger hour = [components hour];
-        self.nightMode = (hour <= 6) || (hour >= 18);
+        self.nightMode = isNightMode();
     }
 #ifndef NDEBUG
     NSLog(@"MCLayer: [%@ init] - scale=%f",self,self.scale);
@@ -46,6 +59,12 @@ static CCFiniteTimeAction *_move2;
     [super dealloc];
 }
 
+-(void) onEnter
+{
+    self.nightMode = isNightMode();
+	[super onEnter];
+}
+
 - (CCSprite*)background
 {
     return _background;
@@ -54,7 +73,7 @@ static CCFiniteTimeAction *_move2;
 - (void)setBackground: (CCSprite*)value
 {
     if (value != _background) {
-        [self removeChild:_background cleanup:NO];
+        [self removeChild:_background cleanup:YES];
         _background = value;
         CGPoint ap = _background.anchorPointInPixels;
         _background.position = ccp(ap.x,ap.y);
@@ -89,7 +108,7 @@ static CCFiniteTimeAction *_move2;
 
 - (NSString*)cloud2
 {
-    return _nightMode ? @"alt-cloud-2.png" : @"alt-cloud-2.png";
+    return _nightMode ? @"alt-cloud-2.png" : @"cloud-2.png";
 }
 
 - (NSString*)sunFileName
