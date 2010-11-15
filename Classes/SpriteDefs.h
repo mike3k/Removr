@@ -16,12 +16,14 @@
 #define kRedPiece       0x00000010
 #define kGreenPiece     0x00000020
 #define kBluePiece      0x00000030
+#define kYellowPiece    0x00000040
 
 #define kCanRemove      0x00001000
 #define kIsStatic       0x00002000
 
 #define kMustRemove     0x00010000
 #define kMustKeep       0x00020000
+#define kExplosive      0x00040000
 
 #define kSpriteKindMask     0x0000000f
 #define kSpriteColorMask    0x000000f0
@@ -37,14 +39,23 @@ typedef struct {
     UInt32  attrib;
 } SpriteInfo;
 
+#define kBorderCollision    888
+#define kExplodeCollission  999
+
+
 #define CanRemove(B)    ((B & kCanRemove) != 0)
 #define IsStatic(B)     ((B & kIsStatic) != 0)
 #define MustRemove(B)   ((B & kMustRemove) != 0)
 #define MustKeep(B)     ((B & kMustKeep) != 0)
+#define IsExplosive(B)  ((B & kExplosive) != 0)
 #define IsCircle(B)     ((B & kSpriteKindMask) == kCircleSprite)
 #define IsVBar(B)       ((B & kSpriteKindMask) == kVertBarSprite)
 #define IsHBar(B)       ((B & kSpriteKindMask) == kHorizBarSprite)
 #define IsBar(B)        (IsVBar(B) || IsHBar(B))
+
+#define IsBlue(B)       ((B & kSpriteColorMask) == kBluePiece)
+#define IsRed(B)        ((B & kSpriteColorMask) == kRedPiece)
+#define IsGreen(B)      ((B & kSpriteColorMask) == kGreenPiece)
 
 #define kMapPieceMask       0x000000ff
 #define kMapYMask           0x0000ff00
@@ -111,5 +122,6 @@ enum    {
     GreenVertBar64,     //29
     BlueVertBar64,      //30
 
+    YellowBall
 };
 

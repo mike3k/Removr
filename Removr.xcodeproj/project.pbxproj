@@ -2170,6 +2170,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = Removr;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -2209,6 +2210,7 @@
 				PRODUCT_NAME = Removr;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "20A7585C-D314-46F3-B881-BD624C08492E";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -2262,6 +2264,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Removr;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -2343,6 +2346,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = Removr;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "039330F2-A07D-4171-9DE1-49B565D4C3E7";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -2427,7 +2431,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};

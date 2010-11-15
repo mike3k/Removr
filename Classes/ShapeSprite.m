@@ -78,6 +78,9 @@ static SpriteInfo sprites[] = {
     { HBAR3+PBARH,      VBARS2+BAR_W2+F_SPACING, BAR_H, BAR_W3,  kVertBarSprite | kMustKeep | kCanRemove | kIsStatic },       // GREEN
     { HBAR3+(PBARH*2),  VBARS2+BAR_W2+F_SPACING, BAR_H, BAR_W3,  kVertBarSprite | kCanRemove | kIsStatic },                   // BLUE
 
+    // yellow ball - explodes any red or green piece it hits
+    { F_SPACING+(PFACET*6),   F_SPACING,   FACET, FACET,   kCircleSprite | kExplosive }
+    
 };
 
 #define kUniqueSprites  (sizeof(sprites) / sizeof(SpriteInfo))
@@ -191,6 +194,9 @@ static CGFloat _scale = 0;
 //        }
     }
 	shape->data = self;
+    if (IsExplosive(_attributes)) {
+        shape->collision_type = kExplodeCollission;
+    }
     self.shape = shape;
 }
 

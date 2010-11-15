@@ -18,8 +18,6 @@
 
 @end
 
-#define kBorderCollision  888
-
 static BOOL BigMove(CGPoint p1, CGPoint p2)
 {
 #define BigMoveAmount   2
@@ -66,6 +64,22 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
     CP_ARBITER_GET_SHAPES(arb, a, b);
     cpSpaceAddPostStepCallback(space, (cpPostStepFunc)postStepRemove, b, data);
     return 0;
+}
+
+static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
+{
+    CP_ARBITER_GET_SHAPES(arb, a, b);
+    ShapeSprite *sprite = b->data;
+    if (sprite) {
+
+        if (sprite.canRemove && (sprite.mustRemove || sprite.mustKeep)) {
+            // we need an explosion here
+            cpSpaceAddPostStepCallback(space, (cpPostStepFunc)postStepRemove, b, data);
+            return 0;
+        }
+    }
+
+    return 1;
 }
 
 @implementation GameLayer
@@ -140,6 +154,8 @@ static int collisionBegin(cpArbiter *arb, struct cpSpace *space, void *data)
         cpSpaceAddStaticShape(space, shape);
 
         cpSpaceAddCollisionHandler(space, kBorderCollision, 0, collisionBegin, nil, nil, nil, self);
+        cpSpaceAddCollisionHandler(space, kBorderCollision, kExplodeCollission, collisionBegin, nil, nil, nil, self);
+        cpSpaceAddCollisionHandler(space, kExplodeCollission, 0, explosion, nil, nil, nil, self);
 
         self.sheet = [CCSpriteBatchNode batchNodeWithFile:[self scaledFile: @"Shape-Atlas.png"] capacity:100];
         [self addChild:_sheet z:zSpritesLevel tag:kTagAtlasSpriteSheet];
