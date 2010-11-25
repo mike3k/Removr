@@ -57,6 +57,8 @@
 		2740F8F811CD12E7004FC184 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2740F8F711CD12E7004FC184 /* libsqlite3.dylib */; };
 		2740F9B011CEEB37004FC184 /* Shape-Atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 2740F9AF11CEEB37004FC184 /* Shape-Atlas.png */; };
 		275CD7BE11F61C8100AD18F0 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 275CD7BD11F61C8100AD18F0 /* libFlurry.a */; };
+		276586F0129DD18C005BE421 /* explosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 276586EF129DD18C005BE421 /* explosion.plist */; };
+		27658727129DD81F005BE421 /* explosion.png in Resources */ = {isa = PBXBuildFile; fileRef = 27658726129DD81F005BE421 /* explosion.png */; };
 		276D00E511794F29002A396A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144410692EE7002A0D5E /* Default.png */; };
 		276D00E611794F29002A396A /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144510692EE7002A0D5E /* fps_images.png */; };
 		276D00E711794F29002A396A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144610692EE7002A0D5E /* Icon.png */; };
@@ -511,6 +513,8 @@
 		275CD7BB11F61C8100AD18F0 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdDelegate.h; sourceTree = "<group>"; };
 		275CD7BC11F61C8100AD18F0 /* FlurryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAPI.h; sourceTree = "<group>"; };
 		275CD7BD11F61C8100AD18F0 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
+		276586EF129DD18C005BE421 /* explosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = explosion.plist; path = ../removr/explosion.plist; sourceTree = SOURCE_ROOT; };
+		27658726129DD81F005BE421 /* explosion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = explosion.png; path = ../removr/explosion.png; sourceTree = SOURCE_ROOT; };
 		276D00FC11794F29002A396A /* Removr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Removr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		276D00FE11794F29002A396A /* Info-copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-copy.plist"; sourceTree = "<group>"; };
 		276D02B0117A9B74002A396A /* pieces.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pieces.png; sourceTree = "<group>"; };
@@ -1283,6 +1287,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				276586EF129DD18C005BE421 /* explosion.plist */,
+				27658726129DD81F005BE421 /* explosion.png */,
 				504DFC8A10AF177C006D82FE /* LICENSE.cocos2d */,
 				504DFC8B10AF177C006D82FE /* LICENSE.cocosdenshion */,
 				506EDAA3102F461B00A389B3 /* cocos2d Sources */,
@@ -1965,6 +1971,8 @@
 				273E11FD12726D0100740F8A /* alt-Lvl2Background@x2.png in Resources */,
 				273E11FE12726D0100740F8A /* alt-Lvl3Background.png in Resources */,
 				273E11FF12726D0100740F8A /* alt-Lvl3Background@x2.png in Resources */,
+				276586F0129DD18C005BE421 /* explosion.plist in Resources */,
+				27658727129DD81F005BE421 /* explosion.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

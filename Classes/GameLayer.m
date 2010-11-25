@@ -50,6 +50,18 @@ eachShape(void *ptr, void* data)
 	}
 }
 
+static void postStepExplode(cpSpace *space, cpShape *shape, void *data)
+{
+	CCSprite *sprite = shape->data;
+    GameLayer *layer = (GameLayer*)data;
+    CCParticleSystemQuad *explosion = [CCParticleSystemQuad particleWithFile: @"explosion.plist"];
+    //layer.anExplosion = explosion;
+    explosion.position = sprite.position;
+    explosion.autoRemoveOnFinish = YES;
+    [layer addChild:explosion z:zOverlayLevel];
+    [layer removeSprite:sprite force:YES];
+}
+
 static void postStepRemove(cpSpace *space, cpShape *shape, void *data)
 {
 #ifndef NDEBUG
@@ -73,9 +85,24 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     if (sprite) {
 
         if (sprite.canRemove && (sprite.mustRemove || sprite.mustKeep)) {
-            // we need an explosion here
-            cpSpaceAddPostStepCallback(space, (cpPostStepFunc)postStepRemove, b, data);
-            return 0;
+            // see if we're moving in the same direction
+            cpVect pos1 = a->body->p, pos2 = b->body->p;
+            cpVect vel1 = a->body->v;
+#ifndef NDEBUG
+            NSLog(@"collision a=(%f,%f), b=(%f,%f), v=(%f,%f)",pos1.x,pos1.y, pos2.x,pos2.y, vel1.x,vel1.y );
+#endif
+            if ( ((pos1.x < pos2.x) && (vel1.x > 0)) 
+                || ((pos1.x > pos2.x) && (vel1.x > 0))
+                || ((pos1.x > pos2.x) && (vel1.x < 0))
+                || ((pos1.y > pos2.y) && (vel1.y < 0)) 
+                 ) {
+#ifndef NDEBUG
+                NSLog(@"*BOOM*");
+#endif
+                cpSpaceAddPostStepCallback(space, (cpPostStepFunc)postStepExplode, a, data);
+                cpSpaceAddPostStepCallback(space, (cpPostStepFunc)postStepRemove, b, data);
+                return 0;
+            }
         }
     }
 
@@ -86,6 +113,7 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
 
 @synthesize level = _level, sheet = _sheet;
 @synthesize moved;
+@synthesize anExplosion;
 
 - (void)setAccellerometer
 {

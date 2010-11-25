@@ -32,6 +32,7 @@
 
 - (void)dealloc
 {
+    [[CCTextureCache sharedTextureCache] removeUnusedTextures];
     self.game = nil;
     [super dealloc];
 }

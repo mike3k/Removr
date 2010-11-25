@@ -40,11 +40,14 @@
     //CCLabelAtlas *timeLabel;
     CCLabelTTF  *timeLabel;
     int _facet;
+    
+    CCParticleSystem *anExplosion;
 }
 
 @property (assign,nonatomic) int level;
 @property (retain,nonatomic) CCSpriteBatchNode *sheet;
 @property (assign,nonatomic) BOOL moved;
+@property (retain,nonatomic) CCParticleSystem *anExplosion;
 
 - (void)setAccellerometer;
 - (void)setDefaultBackground;

@@ -106,6 +106,9 @@
                     case BlueHorizBar256:
                         [[NSColor blueColor] setFill];
                         break;
+                    case YellowBall:
+                        [[NSColor yellowColor] setFill];
+                        break;
                 };
                 switch (piece) {
                     case RedSquare:
@@ -118,6 +121,7 @@
                     case RedCircle:
                     case BlueCircle:
                     case GreenCircle:
+                    case YellowBall:
                         box = NSMakeRect(i*16, j*16, 32.0, 32.0);
                         NSBezierPath *circle = [NSBezierPath bezierPath];
                         [circle appendBezierPathWithOvalInRect:box];
