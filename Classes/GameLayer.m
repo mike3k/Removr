@@ -56,6 +56,7 @@ static void postStepExplode(cpSpace *space, cpShape *shape, void *data)
     GameLayer *layer = (GameLayer*)data;
     CCParticleSystemQuad *explosion = [CCParticleSystemQuad particleWithFile: @"explosion.plist"];
     //layer.anExplosion = explosion;
+    [layer.delegate playExplodeSound];
     explosion.position = sprite.position;
     explosion.autoRemoveOnFinish = YES;
     [layer addChild:explosion z:zOverlayLevel];

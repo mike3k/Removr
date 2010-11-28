@@ -20,6 +20,7 @@ NSString *format_time(NSTimeInterval tm)
 
 @synthesize sound = _sound;
 @synthesize accelerometer = _accelerometer;
+@synthesize nightmode = _nightmode;
 @synthesize lastLevel = _lastLevel;
 @synthesize highestLevel = _highestLevel;
 @synthesize levelStatus = _levelStatus;
@@ -43,6 +44,7 @@ NSString *format_time(NSTimeInterval tm)
             self.version = 1;
             self.sound = YES;
             self.accelerometer = YES;
+            self.nightmode = NO;
             self.lastLevel = 0;
             self.highestLevel = 0;
             _levelStatus = nil;
@@ -51,6 +53,7 @@ NSString *format_time(NSTimeInterval tm)
         else {
             self.sound = [def boolForKey: @"sound"];
             self.accelerometer = [def boolForKey: @"accel"];
+            self.nightmode = [def boolForKey: @"nightmode"];
             self.lastLevel = [def integerForKey:@"lastLevel"];
             self.levelStatus = [[[def dataForKey:@"levelStatus"] mutableCopy] autorelease];
             self.levelTimes = [[[def dataForKey:@"levelTimes"] mutableCopy] autorelease];
@@ -96,6 +99,7 @@ NSString *format_time(NSTimeInterval tm)
     [def setInteger:self.version forKey:@"version"];
     [def setBool: self.sound forKey: @"sound"];
     [def setBool: self.accelerometer forKey: @"accel"];
+    [def setBool: self.nightmode forKey: @"nightmode"];
     [def setInteger:self.lastLevel forKey:@"lastLevel"];
     [def setObject:self.levelStatus forKey:@"levelStatus"];
     [def setObject:self.levelTimes forKey:@"levelTimes"];

@@ -12,17 +12,14 @@
 
 BOOL isNightMode()
 {
-#if 0
-    // testing version
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:[NSDate date]];
-    NSInteger hour = [components hour];
-    NSInteger minutes = [components minute];
-    return (hour <= 6) || (hour > 11) || ((hour==11) && (minutes>32));
-#else
+    // only allow night mode if enabled in settings
+    if (NO == [[AppSettings shared] nightmode])
+        return NO;
+
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:[NSDate date]];
     NSInteger hour = [components hour];
     return (hour < 7) || (hour > 18);
-#endif
+
 }
 
 

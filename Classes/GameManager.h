@@ -72,6 +72,7 @@
 - (void)playWinSound;
 - (void)playLoseSound;
 - (void)playRemoveSound;
+- (void)playExplodeSound;
 - (void)preloadSounds;
 
 - (void) setScore: (NSInteger)score forLevel: (NSInteger)level;

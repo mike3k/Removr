@@ -14,11 +14,13 @@
 @interface OptionsLayer : MCLayer {
     OnOffButton *bSound;
     OnOffButton *bAccel;
+    OnOffButton *bNight;
     
     AppSettings *aps;
 }
 
 - (void)toggleSound:(id)sender;
 - (void)toggleAccel:(id)sender;
+- (void)toggleNight:(id)sender;
 
 @end

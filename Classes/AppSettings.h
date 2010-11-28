@@ -17,6 +17,7 @@ NSString *format_time(NSTimeInterval tm);
     
     BOOL _accelerometer;
     BOOL _sound;
+    BOOL _nightmode;
 
     NSInteger _lastLevel;
     NSInteger _highestLevel;
@@ -29,6 +30,7 @@ NSString *format_time(NSTimeInterval tm);
 
 @property (assign,nonatomic) BOOL accelerometer;
 @property (assign,nonatomic) BOOL sound;
+@property (assign,nonatomic) BOOL nightmode;
 
 @property (assign,nonatomic) NSInteger version;
 

@@ -388,6 +388,9 @@
 		27C24DBF11D98548006F5A47 /* visit.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24DBD11D98547006F5A47 /* visit.png */; };
 		27C24DF011D990FA006F5A47 /* spacer.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24DEF11D990FA006F5A47 /* spacer.png */; };
 		27C24E4111DA42EB006F5A47 /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BDBDA511D1387000D31B40 /* CDOpenALSupport.m */; };
+		27DE3C3D12A1B9F600CF18F6 /* pew.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27DE3C3C12A1B9F600CF18F6 /* pew.wav */; };
+		27DE3C4212A1DA2500CF18F6 /* label-nightmode.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DE3C4012A1DA2500CF18F6 /* label-nightmode.png */; };
+		27DE3C4312A1DA2500CF18F6 /* label-nightmode@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DE3C4112A1DA2500CF18F6 /* label-nightmode@x2.png */; };
 		502BC300112082F900A0B92A /* CDAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 502BC2F8112082F900A0B92A /* CDAudioManager.h */; };
 		502BC301112082F900A0B92A /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 502BC2F9112082F900A0B92A /* CDAudioManager.m */; };
 		502BC302112082F900A0B92A /* CDConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 502BC2FA112082F900A0B92A /* CDConfig.h */; };
@@ -856,6 +859,9 @@
 		27C24DBC11D98547006F5A47 /* visit-sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visit-sel.png"; sourceTree = "<group>"; };
 		27C24DBD11D98547006F5A47 /* visit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visit.png; sourceTree = "<group>"; };
 		27C24DEF11D990FA006F5A47 /* spacer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spacer.png; sourceTree = "<group>"; };
+		27DE3C3C12A1B9F600CF18F6 /* pew.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = pew.wav; path = ../removr/Resources/pew.wav; sourceTree = SOURCE_ROOT; };
+		27DE3C4012A1DA2500CF18F6 /* label-nightmode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "label-nightmode.png"; path = "../removr/Resources/label-nightmode.png"; sourceTree = SOURCE_ROOT; };
+		27DE3C4112A1DA2500CF18F6 /* label-nightmode@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "label-nightmode@x2.png"; path = "../removr/Resources/label-nightmode@x2.png"; sourceTree = SOURCE_ROOT; };
 		27F3DDCA11B86BE0002C51E4 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		502BC2F8112082F900A0B92A /* CDAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAudioManager.h; sourceTree = "<group>"; };
@@ -1491,6 +1497,9 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27DE3C4012A1DA2500CF18F6 /* label-nightmode.png */,
+				27DE3C4112A1DA2500CF18F6 /* label-nightmode@x2.png */,
+				27DE3C3C12A1B9F600CF18F6 /* pew.wav */,
 				273E11F012726D0100740F8A /* alt-info-background.png */,
 				273E11F112726D0100740F8A /* alt-info-background@x2.png */,
 				273E11F212726D0100740F8A /* alt-Lvl1Background.png */,
@@ -1973,6 +1982,9 @@
 				273E11FF12726D0100740F8A /* alt-Lvl3Background@x2.png in Resources */,
 				276586F0129DD18C005BE421 /* explosion.plist in Resources */,
 				27658727129DD81F005BE421 /* explosion.png in Resources */,
+				27DE3C3D12A1B9F600CF18F6 /* pew.wav in Resources */,
+				27DE3C4212A1DA2500CF18F6 /* label-nightmode.png in Resources */,
+				27DE3C4312A1DA2500CF18F6 /* label-nightmode@x2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

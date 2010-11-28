@@ -486,7 +486,15 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"remove.wav"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"fart.wav"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"applause.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"pew.wav"];
     [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"intro.wav"];
+}
+
+- (void)playExplodeSound
+{
+    if (aps.sound) {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"pew.wav"];
+    }
 }
 
 - (void)playWinSound

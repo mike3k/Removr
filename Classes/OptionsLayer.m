@@ -18,9 +18,11 @@
         self.background = [[[CCSprite alloc] initWithFile:[self scaledFile: self.bgFileName]] autorelease];
         bSound = [OnOffButton makeButtonWithTarget: self selector: @selector(toggleSound:)];
         bAccel = [OnOffButton makeButtonWithTarget: self selector: @selector(toggleAccel:)];
+        bNight = [OnOffButton makeButtonWithTarget: self selector: @selector(toggleNight:)];
 
         bSound.on = aps.sound;
         bAccel.on = aps.accelerometer;
+        bNight.on = aps.nightmode;
 
         NSString *spacer = [self scaledFile:@"spacer.png"];
         
@@ -33,6 +35,9 @@
                         [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"label-accellerometer.png"]
                                                selectedImage:[self scaledFile: @"label-accellerometer.png"]],
                         bAccel,
+                        [CCMenuItemImage itemFromNormalImage:[self scaledFile:@"label-nightmode.png"]
+                                               selectedImage:[self scaledFile:@"label-nightmode.png"]],
+                        bNight,
                         [CCMenuItemImage itemFromNormalImage:spacer selectedImage:spacer],
 //                        [CCMenuItemImage itemFromNormalImage:@"spacer.png" selectedImage:@"spacer.png"],
 //                        [CCMenuItemImage itemFromNormalImage:@"back.png" 
@@ -42,6 +47,7 @@
                         nil];
 
         [menu alignItemsInColumns:  [NSNumber numberWithInt:1],
+                                    [NSNumber numberWithInt:2],
                                     [NSNumber numberWithInt:2],
                                     [NSNumber numberWithInt:2],
                                     [NSNumber numberWithInt:1],
@@ -70,6 +76,11 @@
 {
     //NSLog(@"toggle sound: %@",sender);
     aps.sound = bSound.on;
+}
+
+- (void)toggleNight:(id)sender
+{
+    aps.nightmode = bNight.on;
 }
 
 - (void)toggleAccel:(id)sender
