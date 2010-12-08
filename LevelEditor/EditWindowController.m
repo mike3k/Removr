@@ -20,6 +20,7 @@
 @synthesize levels;
 @synthesize curLevel;
 @synthesize rowid;
+@synthesize par;
 
 - (NSNumber*) dbopen { return [NSNumber numberWithBool:(nil != db)]; }
 
@@ -33,6 +34,7 @@
         self.curLevel = -1;
         self.rowid = -1;
         [self addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
+        [self addObserver:self forKeyPath:@"par" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -158,6 +160,7 @@
         result = sqlite3_reset(insert);
         result = sqlite3_bind_text(insert, 1, [title UTF8String], -1, SQLITE_STATIC);
         result = sqlite3_bind_blob(insert, 2, [data bytes], [data length], SQLITE_STATIC);
+        result = sqlite3_bind_int(insert, 2, par);
         result = sqlite3_step(insert);
         self.rowid = sqlite3_last_insert_rowid(db);
         [self reloadTable];
@@ -169,7 +172,8 @@
         result = sqlite3_reset(update);
         result = sqlite3_bind_text(update, 1, [title UTF8String], -1, SQLITE_STATIC);
         result = sqlite3_bind_blob(update, 2, [data bytes], [data length], SQLITE_STATIC);
-        result = sqlite3_bind_int(update, 3, rowid);
+        result = sqlite3_bind_int(update, 3, par);
+        result = sqlite3_bind_int(update, 4, rowid);
         result = sqlite3_step(update);
         NSLog(@"saving level %d",rowid);
         [self reloadTable];
@@ -205,6 +209,7 @@
     [theEditView setNeedsDisplay:YES];
     self.rowid = theLevel.rowid;
     self.title = theLevel.name;
+    self.par = theLevel.par;
     self.curLevel = newlevel;
     theLevelMap.dirty = NO;
     [self didChangeValueForKey:@"levelSelected"];
@@ -222,11 +227,11 @@
 }
 
 static char * delete_sql = "DELETE FROM levels WHERE rowid=?;";
-static char * select_sql = "SELECT rowid,name,map FROM levels WHERE name=?;";
-static char * update_sql = "UPDATE levels SET name=?, map=? WHERE rowid=?;";
-static char * insert_sql = "INSERT INTO levels (name,map) VALUES (?,?);";
+static char * select_sql = "SELECT rowid,name,map,par FROM levels WHERE name=?;";
+static char * update_sql = "UPDATE levels SET name=?, map=?, par=? WHERE rowid=?;";
+static char * insert_sql = "INSERT INTO levels (name,map,par) VALUES (?,?,?);";
 static char * create_sql = "CREATE TABLE levels (background text,map blob NOT NULL,name text,par integer DEFAULT 0);";
-static char * allrecords_sql = "SELECT rowid,name,map FROM levels;";
+static char * allrecords_sql = "SELECT rowid,name,map,par FROM levels;";
 static char * vacuum_sql = "VACUUM;";
 
 - (BOOL) open_database: (NSString *)name create:(BOOL)create
@@ -322,6 +327,7 @@ static char * vacuum_sql = "VACUUM;";
         void *blob = sqlite3_column_blob(allrecords, 2);
         int blobsize = sqlite3_column_bytes(allrecords, 2);
         level.map = [NSData dataWithBytes:blob length:blobsize];
+        level.par = sqlite3_column_int(allrecords, 3);
         [levels addObject: level];
         [level release];
     }

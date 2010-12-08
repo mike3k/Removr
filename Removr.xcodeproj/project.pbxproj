@@ -33,6 +33,8 @@
 		27324BBD11EACEC400D5F78D /* cloud-2@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 27324BB711EACEC400D5F78D /* cloud-2@x2.png */; };
 		27324BBE11EACEC400D5F78D /* sun-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 27324BB811EACEC400D5F78D /* sun-menu.png */; };
 		27324BBF11EACEC400D5F78D /* sun-menu@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 27324BB911EACEC400D5F78D /* sun-menu@x2.png */; };
+		273862C812AEC6CF00313129 /* ios_game_center_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273862C612AEC6CF00313129 /* ios_game_center_icon.png */; };
+		273862C912AEC6CF00313129 /* ios_game_center_icon@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 273862C712AEC6CF00313129 /* ios_game_center_icon@x2.png */; };
 		273E119A1272583D00740F8A /* alt-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 273E11921272583D00740F8A /* alt-background.png */; };
 		273E119B1272583D00740F8A /* alt-background@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 273E11931272583D00740F8A /* alt-background@x2.png */; };
 		273E119C1272583D00740F8A /* alt-cloud-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 273E11941272583D00740F8A /* alt-cloud-1.png */; };
@@ -388,6 +390,8 @@
 		27C24DBF11D98548006F5A47 /* visit.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24DBD11D98547006F5A47 /* visit.png */; };
 		27C24DF011D990FA006F5A47 /* spacer.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C24DEF11D990FA006F5A47 /* spacer.png */; };
 		27C24E4111DA42EB006F5A47 /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BDBDA511D1387000D31B40 /* CDOpenALSupport.m */; };
+		27C65D9912A93E2F0099C251 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C65D9812A93E2F0099C251 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		27C65DA012A93FCC0099C251 /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C65D9F12A93FCC0099C251 /* GameKitHelper.m */; };
 		27DE3C3D12A1B9F600CF18F6 /* pew.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27DE3C3C12A1B9F600CF18F6 /* pew.wav */; };
 		27DE3C4212A1DA2500CF18F6 /* label-nightmode.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DE3C4012A1DA2500CF18F6 /* label-nightmode.png */; };
 		27DE3C4312A1DA2500CF18F6 /* label-nightmode@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DE3C4112A1DA2500CF18F6 /* label-nightmode@x2.png */; };
@@ -487,6 +491,9 @@
 		27324BB711EACEC400D5F78D /* cloud-2@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud-2@x2.png"; sourceTree = "<group>"; };
 		27324BB811EACEC400D5F78D /* sun-menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sun-menu.png"; sourceTree = "<group>"; };
 		27324BB911EACEC400D5F78D /* sun-menu@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sun-menu@x2.png"; sourceTree = "<group>"; };
+		27385CA312AC995B00313129 /* achievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = achievements.h; sourceTree = "<group>"; };
+		273862C612AEC6CF00313129 /* ios_game_center_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios_game_center_icon.png; sourceTree = "<group>"; };
+		273862C712AEC6CF00313129 /* ios_game_center_icon@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios_game_center_icon@x2.png"; sourceTree = "<group>"; };
 		273E11921272583D00740F8A /* alt-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alt-background.png"; path = "../removr/Resources/alt-background.png"; sourceTree = SOURCE_ROOT; };
 		273E11931272583D00740F8A /* alt-background@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alt-background@x2.png"; path = "../removr/Resources/alt-background@x2.png"; sourceTree = SOURCE_ROOT; };
 		273E11941272583D00740F8A /* alt-cloud-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alt-cloud-1.png"; path = "../removr/Resources/alt-cloud-1.png"; sourceTree = SOURCE_ROOT; };
@@ -859,6 +866,9 @@
 		27C24DBC11D98547006F5A47 /* visit-sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visit-sel.png"; sourceTree = "<group>"; };
 		27C24DBD11D98547006F5A47 /* visit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visit.png; sourceTree = "<group>"; };
 		27C24DEF11D990FA006F5A47 /* spacer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spacer.png; sourceTree = "<group>"; };
+		27C65D9812A93E2F0099C251 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		27C65D9E12A93FCC0099C251 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameKitHelper.h; path = Classes/GameKitHelper.h; sourceTree = "<group>"; };
+		27C65D9F12A93FCC0099C251 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameKitHelper.m; path = Classes/GameKitHelper.m; sourceTree = "<group>"; };
 		27DE3C3C12A1B9F600CF18F6 /* pew.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = pew.wav; path = ../removr/Resources/pew.wav; sourceTree = SOURCE_ROOT; };
 		27DE3C4012A1DA2500CF18F6 /* label-nightmode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "label-nightmode.png"; path = "../removr/Resources/label-nightmode.png"; sourceTree = SOURCE_ROOT; };
 		27DE3C4112A1DA2500CF18F6 /* label-nightmode@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "label-nightmode@x2.png"; path = "../removr/Resources/label-nightmode@x2.png"; sourceTree = SOURCE_ROOT; };
@@ -941,6 +951,7 @@
 				276D00F811794F29002A396A /* libcocos2d libraries.a in Frameworks */,
 				2740F8F811CD12E7004FC184 /* libsqlite3.dylib in Frameworks */,
 				275CD7BE11F61C8100AD18F0 /* libFlurry.a in Frameworks */,
+				27C65D9912A93E2F0099C251 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1293,6 +1304,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				27385CA312AC995B00313129 /* achievements.h */,
 				276586EF129DD18C005BE421 /* explosion.plist */,
 				27658726129DD81F005BE421 /* explosion.png */,
 				504DFC8A10AF177C006D82FE /* LICENSE.cocos2d */,
@@ -1308,6 +1320,7 @@
 				2740F8F711CD12E7004FC184 /* libsqlite3.dylib */,
 				270611F211D26E2900730B3A /* DBCreator-Info.plist */,
 				2706121511D26EF500730B3A /* libsqlite3.0.dylib */,
+				27C65D9812A93E2F0099C251 /* GameKit.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1315,6 +1328,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				27C65D9E12A93FCC0099C251 /* GameKitHelper.h */,
+				27C65D9F12A93FCC0099C251 /* GameKitHelper.m */,
 				275CD7BA11F61C8100AD18F0 /* FlurryLib */,
 				1F3B9A820EF2151B00286867 /* Blocks_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
@@ -1497,6 +1512,8 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				273862C612AEC6CF00313129 /* ios_game_center_icon.png */,
+				273862C712AEC6CF00313129 /* ios_game_center_icon@x2.png */,
 				27DE3C4012A1DA2500CF18F6 /* label-nightmode.png */,
 				27DE3C4112A1DA2500CF18F6 /* label-nightmode@x2.png */,
 				27DE3C3C12A1B9F600CF18F6 /* pew.wav */,
@@ -1985,6 +2002,8 @@
 				27DE3C3D12A1B9F600CF18F6 /* pew.wav in Resources */,
 				27DE3C4212A1DA2500CF18F6 /* label-nightmode.png in Resources */,
 				27DE3C4312A1DA2500CF18F6 /* label-nightmode@x2.png in Resources */,
+				273862C812AEC6CF00313129 /* ios_game_center_icon.png in Resources */,
+				273862C912AEC6CF00313129 /* ios_game_center_icon@x2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2018,6 +2037,7 @@
 				272D6C0911DD2B800064FAEC /* LevelMenuItem.m in Sources */,
 				272D6D9111DEA4F60064FAEC /* MCMenuItem.m in Sources */,
 				277BBC9A12165BC0009F6996 /* GameManager+RandomLevel.m in Sources */,
+				27C65DA012A93FCC0099C251 /* GameKitHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

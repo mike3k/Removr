@@ -15,5 +15,6 @@
 @synthesize name;
 @synthesize map;
 @synthesize dirty;
+@synthesize par;
 
 @end

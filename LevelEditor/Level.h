@@ -13,6 +13,7 @@
     NSInteger rowid;
     NSString * name;
     NSData * map;
+    NSInteger par;
     
     BOOL    dirty;
 }
@@ -21,5 +22,6 @@
 @property (retain,nonatomic) NSString * name;
 @property (retain,nonatomic) NSData * map;
 @property (assign) BOOL dirty;
+@property (assign) NSInteger par;
 
 @end

@@ -30,6 +30,7 @@
     
     NSMutableArray * levels;
     
+    NSInteger par;
     NSInteger curLevel;
     NSInteger rowid;
 }
@@ -40,6 +41,7 @@
 @property (retain,nonatomic) NSMutableArray * levels;
 @property (assign) NSInteger curLevel;
 @property (assign) NSInteger rowid;
+@property (assign) NSInteger par;
 
 @property (readonly) NSNumber* dbopen;
 @property (readonly) NSNumber* levelSelected;
