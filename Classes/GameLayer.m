@@ -11,6 +11,7 @@
 #import "GameManager.h"
 #import "SimpleAudioEngine.h"
 #import "LevelCompleteMsg.h"
+#import "achievements.h"
 
 @interface GameLayer (private)
 
@@ -65,9 +66,9 @@ static void postStepExplode(cpSpace *space, cpShape *shape, void *data)
 
 static void postStepRemove(cpSpace *space, cpShape *shape, void *data)
 {
-#ifndef NDEBUG
-    NSLog(@"remove shape");
-#endif
+//#ifndef NDEBUG
+//    NSLog(@"remove shape");
+//#endif
     [(GameLayer*)data removeShape:shape force: YES];
 }
 
@@ -89,17 +90,17 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
             // see if we're moving in the same direction
             cpVect pos1 = a->body->p, pos2 = b->body->p;
             cpVect vel1 = a->body->v;
-#ifndef NDEBUG
-            NSLog(@"collision a=(%f,%f), b=(%f,%f), v=(%f,%f)",pos1.x,pos1.y, pos2.x,pos2.y, vel1.x,vel1.y );
-#endif
+//#ifndef NDEBUG
+//            NSLog(@"collision a=(%f,%f), b=(%f,%f), v=(%f,%f)",pos1.x,pos1.y, pos2.x,pos2.y, vel1.x,vel1.y );
+//#endif
             if ( ((pos1.x < pos2.x) && (vel1.x > 0)) 
                 || ((pos1.x > pos2.x) && (vel1.x > 0))
                 || ((pos1.x > pos2.x) && (vel1.x < 0))
                 || ((pos1.y > pos2.y) && (vel1.y < 0)) 
                  ) {
-#ifndef NDEBUG
-                NSLog(@"*BOOM*");
-#endif
+//#ifndef NDEBUG
+//                NSLog(@"*BOOM*");
+//#endif
                 cpSpaceAddPostStepCallback(space, (cpPostStepFunc)postStepExplode, a, data);
                 cpSpaceAddPostStepCallback(space, (cpPostStepFunc)postStepRemove, b, data);
                 return 0;
@@ -115,6 +116,7 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
 @synthesize level = _level, sheet = _sheet;
 @synthesize moved;
 @synthesize anExplosion;
+@synthesize theLevelInfo;
 
 - (void)setAccellerometer
 {
@@ -132,15 +134,15 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
 
 -(id) init
 {
-#ifndef NDEBUG
-    NSLog(@"Entering GameLayer init");
-#endif
+//#ifndef NDEBUG
+//    NSLog(@"Entering GameLayer init");
+//#endif
     self = [super init];
 
     if ( self ) {
 		aps = [AppSettings shared];
         self.isTouchEnabled = YES;
-        
+
         _level = -1;
         _facet = FACET*_scale;
         
@@ -200,9 +202,9 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
         [timeLabel setColor:ccc3(255,255,0)];
         [self addChild:timeLabel z:zOverlayLevel];
     }
-#ifndef NDEBUG
-    NSLog(@"Leaving GameLayer init");
-#endif
+//#ifndef NDEBUG
+//    NSLog(@"Leaving GameLayer init");
+//#endif
 	return self;
 }
 
@@ -613,6 +615,8 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     [[GameManager shared] setScore:moves forLevel:self.level];
     [[GameManager shared] setTime:elapsedtime forLevel:self.level];
 
+    NSInteger totalPoints = [theLevelInfo pointValue:moves];
+
     if (self.level == INT16_MAX) {
         msg = [[LevelCompleteMsg alloc] initWithMoves:moves];
         msg.position = ccp(wins.width / 2, wins.height / 2);
@@ -626,6 +630,8 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     [msg release];
     [self runAction: [CCSequence actions:[CCDelayTime actionWithDuration:3], [CCCallFunc actionWithTarget:self selector:@selector(gotoNextLevel)],nil]];
 
+    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    [gkHelper submitScore:totalPoints category:gk_score_category];
 }
 
 - (void)dimScreen
@@ -691,17 +697,17 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
         }
     }
     
-    Level *theLevel = [[GameManager shared] GetLevel: level];
+    self.theLevelInfo = [[GameManager shared] GetLevel: level];
     
-    NSData *map = theLevel.map;
+    NSData *map = theLevelInfo.map;
     if (nil != map) {
         BOOL tmpNightMode = isNightMode();
         if (self.nightMode != tmpNightMode) {
             self.nightMode = tmpNightMode;
             [self addPauseButton];
         }
-        if (nil != theLevel.background) {
-            self.background = [[[CCSprite alloc] initWithFile:[self altScaledFile: theLevel.background]] autorelease];
+        if (nil != theLevelInfo.background) {
+            self.background = [[[CCSprite alloc] initWithFile:[self altScaledFile: theLevelInfo.background]] autorelease];
             [self removeClouds];
         }
         else {
@@ -751,6 +757,5 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
 	
 	space->gravity = ccpMult(v, _scale*200);
 }
-
 
 @end

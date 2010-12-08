@@ -17,6 +17,7 @@
 
 @class GameManager;
 @class ShapeSprite;
+@class Level;
 
 @interface GameLayer : MCLayer {
     CCSpriteBatchNode *_sheet;
@@ -42,12 +43,15 @@
     int _facet;
     
     CCParticleSystem *anExplosion;
+    
+    Level *theLevelInfo;
 }
 
 @property (assign,nonatomic) int level;
 @property (retain,nonatomic) CCSpriteBatchNode *sheet;
 @property (assign,nonatomic) BOOL moved;
 @property (retain,nonatomic) CCParticleSystem *anExplosion;
+@property (retain,nonatomic) Level * theLevelInfo;
 
 - (void)setAccellerometer;
 - (void)setDefaultBackground;

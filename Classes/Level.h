@@ -39,6 +39,8 @@
 
 + (Level*)levelFromData: (NSData*)data;
 
+- (NSInteger)pointValue: (int)moves;
+
 @end
 
 

@@ -55,6 +55,21 @@
     [super dealloc];
 }
 
+- (NSInteger)pointValue: (int)moves
+{
+    NSInteger pt;
+
+    if (_par > 0) {
+        pt = (2*_par) - moves;
+    }
+    else {
+        pt = 10-(2*moves);
+    }
+    
+    return (pt > 0) ? pt : 1;
+}
+
+
 - (NSData*)data
 {
     return [NSKeyedArchiver archivedDataWithRootObject:self];

@@ -122,9 +122,9 @@ static CGFloat _scale = 0;
 
 - (void)dealloc
 {
-#ifndef NDEBUG
-    NSLog(@"dealloc sprite %@, shape=%d",self,_shape);
-#endif
+//#ifndef NDEBUG
+//    NSLog(@"dealloc sprite %@, shape=%d",self,_shape);
+//#endif
 
     if (_shape != nil) {
         [self removeShape];

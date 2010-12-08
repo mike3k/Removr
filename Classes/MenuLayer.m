@@ -55,6 +55,18 @@
         self.menu = [CCMenu menuWithItems: logo, play, score, opt, more, nil];
         [_menu alignItemsVertically];
         [self addChild:_menu z: zMenuLayer];
+        
+        if ([GameKitHelper sharedGameKitHelper].isGameCenterAvailable) {
+            CCMenu *gcMenu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:@"ios_game_center_icon.png"
+                                                                           selectedImage:@"ios_game_center_icon.png"
+                                                                                  target: self
+                                                                                selector: @selector(showGameCenter:)],nil];
+            [gcMenu alignItemsVertically];
+            gcMenu.anchorPoint = ccp(0,0);
+            gcMenu.position = ccp(22,22);
+            [self addChild: gcMenu z: zMenuLayer];
+        }
+        
         [self addClouds];
     }
     return self;
@@ -77,6 +89,12 @@
 {
     [self stopClouds];
     [super onExit];
+}
+
+- (void)showGameCenter: (id)sender
+{
+    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    [gkHelper showLeaderboard];
 }
 
 + (CCMenuItemFont *) getSpacerItem

@@ -12,6 +12,8 @@
 #import "Level.h"
 #import "AppSettings.h"
 
+#import "GameKitHelper.h"
+
 #import <sqlite3.h>
 
 @class GameScene;
@@ -19,7 +21,7 @@
 
 
 
-@interface GameManager : NSObject <MCLayerDelegate> {
+@interface GameManager : NSObject <MCLayerDelegate,GameKitHelperProtocol> {
     AppSettings *aps;
     
     NSInteger _curLevel;
@@ -92,6 +94,7 @@
 - (void)menu: (id)sender;
 - (void)pause: (id)sender;
 - (void)resume: (id)sender;
+
 
 @end
 

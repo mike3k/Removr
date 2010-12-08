@@ -43,7 +43,11 @@ static GameManager *_sharedGameManager = nil;
         aps = [AppSettings shared];
         self.curLevel = aps.lastLevel;
         _levelCount = -1;
-    
+
+		GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+		gkHelper.delegate = self;
+		[gkHelper authenticateLocalPlayer];
+
         [CDAudioManager configure:kAMM_FxPlusMusicIfNoOtherAudio];
     
         [self preloadSounds];
@@ -335,14 +339,14 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     self.curLevel = number;
     // request a record for the level
     [self initLevels];
-#ifndef NDEBUG
-    NSLog(@"Requesting level %d",number);
-    NSLog(@"Query: %x",query);
-#endif
+//#ifndef NDEBUG
+//    NSLog(@"Requesting level %d",number);
+//    NSLog(@"Query: %x",query);
+//#endif
     sqlite3_bind_int(query, 1, number+1);
-#ifndef NDEBUG
-    NSLog(@"bind returned %d",result);
-#endif
+//#ifndef NDEBUG
+//    NSLog(@"bind returned %d",result);
+//#endif
     result=sqlite3_step(query);
     if (result == SQLITE_ROW) {
         char *str;
@@ -376,9 +380,9 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         self.theLevel = lvl;
     }
     else {
-#ifndef NDEBUG
-        NSLog(@"SQL query returned: %d",result);
-#endif
+//#ifndef NDEBUG
+//        NSLog(@"SQL query returned: %d",result);
+//#endif
         self.theLevel = nil;
     }
     sqlite3_reset(query);
@@ -478,6 +482,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 {
 }
 
+
 #pragma mark Sounds
 
 
@@ -524,6 +529,128 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         //NSLog(@"playing bg music");
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"intro.wav" loop:NO];
     }
+}
+
+#pragma mark GameKitHelper delegate methods
+-(void) onLocalPlayerAuthenticationChanged
+{
+	GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
+	CCLOG(@"LocalPlayer isAuthenticated changed to: %@", localPlayer.authenticated ? @"YES" : @"NO");
+	
+	if (localPlayer.authenticated)
+	{
+		GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+		[gkHelper getLocalPlayerFriends];
+		//[gkHelper resetAchievements];
+	}	
+}
+
+-(void) onFriendListReceived:(NSArray*)friends
+{
+	CCLOG(@"onFriendListReceived: %@", [friends description]);
+	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+	[gkHelper getPlayerInfo:friends];
+}
+
+-(void) onPlayerInfoReceived:(NSArray*)players
+{
+	CCLOG(@"onPlayerInfoReceived: %@", [players description]);
+	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+//	[gkHelper submitScore:1234 category:@"Playtime"];
+	
+	//[gkHelper showLeaderboard];
+	
+//	GKMatchRequest* request = [[[GKMatchRequest alloc] init] autorelease];
+//	request.minPlayers = 2;
+//	request.maxPlayers = 4;
+	
+	//GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+//	[gkHelper showMatchmakerWithRequest:request];
+//	[gkHelper queryMatchmakingActivity];
+}
+
+-(void) onScoresSubmitted:(bool)success
+{
+	CCLOG(@"onScoresSubmitted: %@", success ? @"YES" : @"NO");
+}
+
+-(void) onScoresReceived:(NSArray*)scores
+{
+	CCLOG(@"onScoresReceived: %@", [scores description]);
+//	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+//	[gkHelper showAchievements];
+}
+
+-(void) onAchievementReported:(GKAchievement*)achievement
+{
+	CCLOG(@"onAchievementReported: %@", achievement);
+}
+
+-(void) onAchievementsLoaded:(NSDictionary*)achievements
+{
+	CCLOG(@"onLocalPlayerAchievementsLoaded: %@", [achievements description]);
+}
+
+-(void) onResetAchievements:(bool)success
+{
+	CCLOG(@"onResetAchievements: %@", success ? @"YES" : @"NO");
+}
+
+-(void) onLeaderboardViewDismissed
+{
+	CCLOG(@"onLeaderboardViewDismissed");
+	
+//	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+//	[gkHelper retrieveTopTenAllTimeGlobalScores];
+}
+
+-(void) onAchievementsViewDismissed
+{
+	CCLOG(@"onAchievementsViewDismissed");
+}
+
+-(void) onReceivedMatchmakingActivity:(NSInteger)activity
+{
+	CCLOG(@"receivedMatchmakingActivity: %i", activity);
+}
+
+-(void) onMatchFound:(GKMatch*)match
+{
+	CCLOG(@"onMatchFound: %@", match);
+}
+
+-(void) onPlayersAddedToMatch:(bool)success
+{
+	CCLOG(@"onPlayersAddedToMatch: %@", success ? @"YES" : @"NO");
+}
+
+-(void) onMatchmakingViewDismissed
+{
+	CCLOG(@"onMatchmakingViewDismissed");
+}
+-(void) onMatchmakingViewError
+{
+	CCLOG(@"onMatchmakingViewError");
+}
+
+-(void) onPlayerConnected:(NSString*)playerID
+{
+	CCLOG(@"onPlayerConnected: %@", playerID);
+}
+
+-(void) onPlayerDisconnected:(NSString*)playerID
+{
+	CCLOG(@"onPlayerDisconnected: %@", playerID);
+}
+
+-(void) onStartMatch
+{
+	CCLOG(@"onStartMatch");
+}
+
+-(void) onReceivedData:(NSData*)data fromPlayer:(NSString*)playerID
+{
+	CCLOG(@"onReceivedData: %@ fromPlayer: %@", data, playerID);
 }
 
 

@@ -34,6 +34,9 @@
 	[glView setMultipleTouchEnabled:YES];
     
     controller = [[GameViewController alloc] init];
+    if ([window respondsToSelector:@selector(setRootViewController:)]) {
+        window.rootViewController = controller;
+    }
     [window addSubview:controller.view];
 
     [FlurryAPI startSession:@"C8ZTGV4IBD33BR5FTXF7"];

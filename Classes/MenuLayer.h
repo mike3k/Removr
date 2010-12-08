@@ -21,6 +21,8 @@
 //- (void)options:(id)sender;
 //- (void)info:(id)sender;
 
+- (void)showGameCenter: (id)sender;
+
 @property (retain,nonatomic) CCMenu *menu;
 
 @end
