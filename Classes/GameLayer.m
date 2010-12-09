@@ -636,6 +636,9 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     if (self.level <= 9) {
         [self reportAchievement:complete_10_levels percentComplete:(self.level + 1)*10];
     }
+    if (self.level <= 19) {
+        [self reportAchievement:complete_20_levels percentComplete:(self.level + 1)*5];
+    }
 
     if (self.level == INT16_MAX) {
         msg = [[LevelCompleteMsg alloc] initWithMoves:moves];
