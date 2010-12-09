@@ -35,6 +35,14 @@
 		27324BBF11EACEC400D5F78D /* sun-menu@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 27324BB911EACEC400D5F78D /* sun-menu@x2.png */; };
 		273862C812AEC6CF00313129 /* ios_game_center_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273862C612AEC6CF00313129 /* ios_game_center_icon.png */; };
 		273862C912AEC6CF00313129 /* ios_game_center_icon@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 273862C712AEC6CF00313129 /* ios_game_center_icon@x2.png */; };
+		2738636B12B0130B00313129 /* best-scores-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738636712B0130B00313129 /* best-scores-selected.png */; };
+		2738636C12B0130B00313129 /* best-scores-selected@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738636812B0130B00313129 /* best-scores-selected@x2.png */; };
+		2738636D12B0130B00313129 /* best-scores.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738636912B0130B00313129 /* best-scores.png */; };
+		2738636E12B0130B00313129 /* best-scores@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738636A12B0130B00313129 /* best-scores@x2.png */; };
+		2738637312B0131B00313129 /* leaderboard-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738636F12B0131B00313129 /* leaderboard-selected.png */; };
+		2738637412B0131B00313129 /* leaderboard-selected@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738637012B0131B00313129 /* leaderboard-selected@x2.png */; };
+		2738637512B0131B00313129 /* leaderboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738637112B0131B00313129 /* leaderboard.png */; };
+		2738637612B0131B00313129 /* leaderboard@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738637212B0131B00313129 /* leaderboard@x2.png */; };
 		273E119A1272583D00740F8A /* alt-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 273E11921272583D00740F8A /* alt-background.png */; };
 		273E119B1272583D00740F8A /* alt-background@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 273E11931272583D00740F8A /* alt-background@x2.png */; };
 		273E119C1272583D00740F8A /* alt-cloud-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 273E11941272583D00740F8A /* alt-cloud-1.png */; };
@@ -494,6 +502,14 @@
 		27385CA312AC995B00313129 /* achievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = achievements.h; sourceTree = "<group>"; };
 		273862C612AEC6CF00313129 /* ios_game_center_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios_game_center_icon.png; sourceTree = "<group>"; };
 		273862C712AEC6CF00313129 /* ios_game_center_icon@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios_game_center_icon@x2.png"; sourceTree = "<group>"; };
+		2738636712B0130B00313129 /* best-scores-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "best-scores-selected.png"; sourceTree = "<group>"; };
+		2738636812B0130B00313129 /* best-scores-selected@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "best-scores-selected@x2.png"; sourceTree = "<group>"; };
+		2738636912B0130B00313129 /* best-scores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "best-scores.png"; sourceTree = "<group>"; };
+		2738636A12B0130B00313129 /* best-scores@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "best-scores@x2.png"; sourceTree = "<group>"; };
+		2738636F12B0131B00313129 /* leaderboard-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leaderboard-selected.png"; sourceTree = "<group>"; };
+		2738637012B0131B00313129 /* leaderboard-selected@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leaderboard-selected@x2.png"; sourceTree = "<group>"; };
+		2738637112B0131B00313129 /* leaderboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderboard.png; sourceTree = "<group>"; };
+		2738637212B0131B00313129 /* leaderboard@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leaderboard@x2.png"; sourceTree = "<group>"; };
 		273E11921272583D00740F8A /* alt-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alt-background.png"; path = "../removr/Resources/alt-background.png"; sourceTree = SOURCE_ROOT; };
 		273E11931272583D00740F8A /* alt-background@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alt-background@x2.png"; path = "../removr/Resources/alt-background@x2.png"; sourceTree = SOURCE_ROOT; };
 		273E11941272583D00740F8A /* alt-cloud-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alt-cloud-1.png"; path = "../removr/Resources/alt-cloud-1.png"; sourceTree = SOURCE_ROOT; };
@@ -1512,6 +1528,14 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2738636F12B0131B00313129 /* leaderboard-selected.png */,
+				2738637012B0131B00313129 /* leaderboard-selected@x2.png */,
+				2738637112B0131B00313129 /* leaderboard.png */,
+				2738637212B0131B00313129 /* leaderboard@x2.png */,
+				2738636712B0130B00313129 /* best-scores-selected.png */,
+				2738636812B0130B00313129 /* best-scores-selected@x2.png */,
+				2738636912B0130B00313129 /* best-scores.png */,
+				2738636A12B0130B00313129 /* best-scores@x2.png */,
 				273862C612AEC6CF00313129 /* ios_game_center_icon.png */,
 				273862C712AEC6CF00313129 /* ios_game_center_icon@x2.png */,
 				27DE3C4012A1DA2500CF18F6 /* label-nightmode.png */,
@@ -2004,6 +2028,14 @@
 				27DE3C4312A1DA2500CF18F6 /* label-nightmode@x2.png in Resources */,
 				273862C812AEC6CF00313129 /* ios_game_center_icon.png in Resources */,
 				273862C912AEC6CF00313129 /* ios_game_center_icon@x2.png in Resources */,
+				2738636B12B0130B00313129 /* best-scores-selected.png in Resources */,
+				2738636C12B0130B00313129 /* best-scores-selected@x2.png in Resources */,
+				2738636D12B0130B00313129 /* best-scores.png in Resources */,
+				2738636E12B0130B00313129 /* best-scores@x2.png in Resources */,
+				2738637312B0131B00313129 /* leaderboard-selected.png in Resources */,
+				2738637412B0131B00313129 /* leaderboard-selected@x2.png in Resources */,
+				2738637512B0131B00313129 /* leaderboard.png in Resources */,
+				2738637612B0131B00313129 /* leaderboard@x2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

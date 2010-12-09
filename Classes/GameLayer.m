@@ -53,7 +53,7 @@ eachShape(void *ptr, void* data)
 
 static void postStepExplode(cpSpace *space, cpShape *shape, void *data)
 {
-	CCSprite *sprite = shape->data;
+	ShapeSprite *sprite = shape->data;
     GameLayer *layer = (GameLayer*)data;
     CCParticleSystemQuad *explosion = [CCParticleSystemQuad particleWithFile: @"explosion.plist"];
     //layer.anExplosion = explosion;
@@ -90,17 +90,18 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
             // see if we're moving in the same direction
             cpVect pos1 = a->body->p, pos2 = b->body->p;
             cpVect vel1 = a->body->v;
-//#ifndef NDEBUG
-//            NSLog(@"collision a=(%f,%f), b=(%f,%f), v=(%f,%f)",pos1.x,pos1.y, pos2.x,pos2.y, vel1.x,vel1.y );
-//#endif
+
             if ( ((pos1.x < pos2.x) && (vel1.x > 0)) 
                 || ((pos1.x > pos2.x) && (vel1.x > 0))
                 || ((pos1.x > pos2.x) && (vel1.x < 0))
                 || ((pos1.y > pos2.y) && (vel1.y < 0)) 
                  ) {
-//#ifndef NDEBUG
-//                NSLog(@"*BOOM*");
-//#endif
+
+                if (sprite.mustRemove) {
+                    GameLayer *layer = (GameLayer*)data;
+                    [layer reportAchievement:red_exploded percentComplete:100];
+                }
+
                 cpSpaceAddPostStepCallback(space, (cpPostStepFunc)postStepExplode, a, data);
                 cpSpaceAddPostStepCallback(space, (cpPostStepFunc)postStepRemove, b, data);
                 return 0;
@@ -601,6 +602,16 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     return NO;
 }
 
+- (BOOL)reportAchievement: (NSString*)identifier percentComplete: (float)percent
+{
+    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    GKAchievement* achievement = [gkHelper getAchievementByID:identifier];
+    if (achievement.completed == NO) {
+        [gkHelper reportAchievementWithID:identifier percentComplete:percent];
+        return achievement.completed;
+    }
+    return YES;
+}
 
 - (void)showWinScreen
 {
@@ -615,7 +626,16 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     [[GameManager shared] setScore:moves forLevel:self.level];
     [[GameManager shared] setTime:elapsedtime forLevel:self.level];
 
-    NSInteger totalPoints = [theLevelInfo pointValue:moves];
+    NSInteger levelPoints = [theLevelInfo pointValue:moves];
+    NSInteger totalPoints = aps.totalPoints + levelPoints;
+    aps.totalPoints = totalPoints;
+
+    if (self.level == 2) {
+        [self reportAchievement:complete_tutorial percentComplete:100.0];
+    }
+    if (self.level <= 9) {
+        [self reportAchievement:complete_10_levels percentComplete:(self.level + 1)*10];
+    }
 
     if (self.level == INT16_MAX) {
         msg = [[LevelCompleteMsg alloc] initWithMoves:moves];
@@ -623,6 +643,9 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     }
     else {
         [self hasBluePieces];
+        if (blueRemoved == 0) {
+            [self reportAchievement:no_blue_pieces percentComplete:100];
+        }
         msg = [[LevelCompleteMsg alloc] initWithMoves:moves level:self.level time:elapsedtime blues:blueRemoved];
         msg.position = ccp(wins.width / 2, wins.height / 1.8);
     }
@@ -681,6 +704,7 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     if (level < 0) {
         level = _delegate.curLevel;
         if (level >= [_delegate levelCount]) {
+            [self reportAchievement:complete_all_levels percentComplete:100];
             _delegate.curLevel = 0;
             level = 0;
         }

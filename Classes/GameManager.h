@@ -95,6 +95,8 @@
 - (void)pause: (id)sender;
 - (void)resume: (id)sender;
 
+- (void)showLeaderBoard: (id)sender;
+- (void)showAchievements: (id)sender;
 
 @end
 

@@ -98,4 +98,7 @@
 - (void)showWinScreen;
 - (void)showLoseScreen;
 
+- (BOOL)reportAchievement: (NSString*)identifier percentComplete: (float)percent;
+
+
 @end

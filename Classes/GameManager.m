@@ -531,6 +531,18 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     }
 }
 
+- (void)showLeaderBoard: (id)sender
+{
+    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    [gkHelper showLeaderboard];
+}
+
+- (void)showAchievements: (id)sender
+{
+    GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+    [gkHelper showAchievements];
+}
+
 #pragma mark GameKitHelper delegate methods
 -(void) onLocalPlayerAuthenticationChanged
 {
@@ -540,22 +552,28 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 	if (localPlayer.authenticated)
 	{
 		GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
-		[gkHelper getLocalPlayerFriends];
+		//[gkHelper getLocalPlayerFriends];
 		//[gkHelper resetAchievements];
+        [gkHelper retrieveScoresForPlayers:[NSArray arrayWithObject: [GKLocalPlayer localPlayer].playerID]
+                                  category:nil 
+                                     range:NSMakeRange(1, 1)
+                               playerScope:GKLeaderboardPlayerScopeGlobal
+                                 timeScope:GKLeaderboardTimeScopeAllTime];
+
 	}	
 }
 
 -(void) onFriendListReceived:(NSArray*)friends
 {
 	CCLOG(@"onFriendListReceived: %@", [friends description]);
-	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
-	[gkHelper getPlayerInfo:friends];
+//	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+//	[gkHelper getPlayerInfo:friends];
 }
 
 -(void) onPlayerInfoReceived:(NSArray*)players
 {
 	CCLOG(@"onPlayerInfoReceived: %@", [players description]);
-	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+//	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
 //	[gkHelper submitScore:1234 category:@"Playtime"];
 	
 	//[gkHelper showLeaderboard];
@@ -577,13 +595,22 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 -(void) onScoresReceived:(NSArray*)scores
 {
 	CCLOG(@"onScoresReceived: %@", [scores description]);
-//	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
-//	[gkHelper showAchievements];
+    NSInteger topScore = 0;
+    if ([scores count] > 0) {
+        GKScore * theScore = [scores objectAtIndex:0];
+        topScore = [theScore value];
+        if (topScore > aps.totalPoints) {
+            aps.totalPoints = topScore;
+            [aps save];
+        }
+    }
 }
 
 -(void) onAchievementReported:(GKAchievement*)achievement
 {
 	CCLOG(@"onAchievementReported: %@", achievement);
+    if (achievement.completed == YES) {
+    }
 }
 
 -(void) onAchievementsLoaded:(NSDictionary*)achievements

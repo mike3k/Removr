@@ -25,6 +25,8 @@ NSString *format_time(NSTimeInterval tm);
     NSMutableData *_levelStatus;
     NSMutableData *_levelTimes;
     
+    NSInteger _totalPoints;
+    
     CGFloat _scale;
 }
 
@@ -40,6 +42,7 @@ NSString *format_time(NSTimeInterval tm);
 
 @property (assign,nonatomic) NSInteger lastLevel;
 @property (assign,nonatomic) NSInteger highestLevel;
+@property (assign,nonatomic) NSInteger totalPoints;
 
 // just for convenience
 @property (assign,nonatomic) CGFloat scale;

@@ -28,6 +28,7 @@ NSString *format_time(NSTimeInterval tm)
 @synthesize version = _version;
 @synthesize last_check = _last_check;
 @synthesize scale = _scale;
+@synthesize totalPoints = _totalPoints;
 
 + (AppSettings*)shared {
     if (nil == theSettings) {
@@ -47,6 +48,7 @@ NSString *format_time(NSTimeInterval tm)
             self.nightmode = NO;
             self.lastLevel = 0;
             self.highestLevel = 0;
+            self.totalPoints = 0;
             _levelStatus = nil;
             _levelTimes = nil;
         }
@@ -59,6 +61,7 @@ NSString *format_time(NSTimeInterval tm)
             self.levelTimes = [[[def dataForKey:@"levelTimes"] mutableCopy] autorelease];
             self.highestLevel = [def integerForKey:@"highestLevel"];
             self.last_check = [def objectForKey:@"lastUpdate"];
+            self.totalPoints = [def integerForKey:@"totalPoints"];
         }
         if (nil == _levelStatus) {
             self.levelStatus = [NSMutableData dataWithLength:(100*sizeof(NSInteger*))];
@@ -105,6 +108,7 @@ NSString *format_time(NSTimeInterval tm)
     [def setObject:self.levelTimes forKey:@"levelTimes"];
     [def setObject:self.last_check forKey:@"lastUpdate"];
     [def setInteger:self.highestLevel forKey:@"highestLevel"];
+    [def setInteger:self.totalPoints forKey:@"totalPoints"];
     return YES;
 }
 

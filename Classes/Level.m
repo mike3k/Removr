@@ -60,10 +60,10 @@
     NSInteger pt;
 
     if (_par > 0) {
-        pt = (2*_par) - moves;
+        pt = ((_par - moves)+(_par/2)) * 2;
     }
     else {
-        pt = 10-(2*moves);
+        pt = 6-(2*moves);
     }
     
     return (pt > 0) ? pt : 1;

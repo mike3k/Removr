@@ -7,7 +7,7 @@
 //
 
 #import "InfoLayer.h"
-
+#import "GameKitHelper.h"
 
 @implementation InfoLayer
 
@@ -30,8 +30,25 @@
                                                                              target:_delegate
                                                                            selector:@selector(visitweb:)],nil];
         [menu2 alignItemsVertically];
-        menu2.position = ccp(wins.width/2,80*self.scale);
+        menu2.position = ccp(wins.width/2,50*self.scale);
         [self addChild:menu2 z:zMenuLayer];
+        
+        if ([GameKitHelper sharedGameKitHelper].isGameCenterAvailable) {
+            CCMenu *menu3 = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:[self scaledFile:@"best-scores.png"] 
+                                                                          selectedImage:[self scaledFile:@"best-scores-selected.png"]
+                                                                                 target: _delegate
+                                                                               selector: @selector(showLeaderBoard:)],
+            
+            
+                                                    [CCMenuItemImage itemFromNormalImage:[self scaledFile:@"leaderboard.png"] 
+                                                                           selectedImage:[self scaledFile:@"leaderboard-selected.png"]
+                                                                                  target:_delegate
+                                                                                selector:@selector(showAchievements:)],nil];
+            [menu3 alignItemsHorizontallyWithPadding:20*self.scale];
+            menu3.position = ccp(wins.width/2,92*self.scale);
+            [self addChild:menu3 z:zMenuLayer];
+        }
+
         
     }
     return self;

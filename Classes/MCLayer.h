@@ -48,6 +48,7 @@ enum {
 - (void)playWinSound;
 - (void)playLoseSound;
 - (void)playRemoveSound;
+- (void)playExplodeSound;
 - (void)preloadSounds;
 
 @property (assign,nonatomic) BOOL paused;
