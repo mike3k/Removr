@@ -33,7 +33,7 @@
 /** Base class for Grid actions */
 @interface CCGridAction : CCActionInterval
 {
-	ccGridSize gridSize;
+	ccGridSize gridSize_;
 }
 
 /** size of the grid */
@@ -55,7 +55,6 @@
  */
 @interface CCGrid3DAction : CCGridAction
 {
-	
 }
 
 /** returns the vertex than belongs to certain position in the grid */
@@ -72,7 +71,6 @@
 /** Base class for CCTiledGrid3D actions */
 @interface CCTiledGrid3DAction : CCGridAction
 {
-	
 }
 
 /** returns the tile that belongs to a certain position of the grid */

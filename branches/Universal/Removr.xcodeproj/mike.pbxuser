@@ -1353,19 +1353,31 @@
 	};
 	27DD39E012DF93B700296325 /* PBXBookmark */ = {
 		isa = PBXBookmark;
-		fRef = 273E11951272583D00740F8A /* alt-cloud-1@x2.png */;
+		fRef = 273E11951272583D00740F8A /* alt-cloud-1-hd.png */;
 	};
-	27DD39E112DF93B700296325 /* PBXBookmark */ = {
+	27DD3A3D12DFABD300296325 /* PBXBookmark */ = {
 		isa = PBXBookmark;
-		fRef = 273E11971272583D00740F8A /* alt-cloud-2@x2.png */;
+		fRef = 273E11931272583D00740F8A /* alt-background-hd.png */;
 	};
-	27DD39E212DF93B700296325 /* PBXBookmark */ = {
+	27DD3A3E12DFABD300296325 /* PBXBookmark */ = {
 		isa = PBXBookmark;
-		fRef = 273E11931272583D00740F8A /* alt-background@x2.png */;
+		fRef = 2738637012B0131B00313129 /* leaderboard-selected-hd.png */;
 	};
-	27DD39E312DF93B700296325 /* PBXBookmark */ = {
+	27DD3A3F12DFABD300296325 /* PBXBookmark */ = {
 		isa = PBXBookmark;
-		fRef = 273E11931272583D00740F8A /* alt-background@x2.png */;
+		fRef = 2738636F12B0131B00313129 /* leaderboard-selected.png */;
+	};
+	27DD3A4012DFABD300296325 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 2738637212B0131B00313129 /* leaderboard-hd.png */;
+	};
+	27DD3A4112DFABD300296325 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 2738636912B0130B00313129 /* best-scores.png */;
+	};
+	27DD3A4212DFABD300296325 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 2738636912B0130B00313129 /* best-scores.png */;
 	};
 	27EE84C012B0765E00F37CEC /* GameManager.m:597 */ = {
 		isa = PBXFileBreakpoint;
@@ -1566,14 +1578,17 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 316641084;
-			PBXWorkspaceStateSaveDate = 316641084;
+			PBXPerProjectTemplateStateSaveDate = 316643364;
+			PBXWorkspaceStateSaveDate = 316643364;
 		};
 		perUserProjectItems = {
 			27DD39E012DF93B700296325 /* PBXBookmark */ = 27DD39E012DF93B700296325 /* PBXBookmark */;
-			27DD39E112DF93B700296325 /* PBXBookmark */ = 27DD39E112DF93B700296325 /* PBXBookmark */;
-			27DD39E212DF93B700296325 /* PBXBookmark */ = 27DD39E212DF93B700296325 /* PBXBookmark */;
-			27DD39E312DF93B700296325 /* PBXBookmark */ = 27DD39E312DF93B700296325 /* PBXBookmark */;
+			27DD3A3D12DFABD300296325 /* PBXBookmark */ = 27DD3A3D12DFABD300296325 /* PBXBookmark */;
+			27DD3A3E12DFABD300296325 /* PBXBookmark */ = 27DD3A3E12DFABD300296325 /* PBXBookmark */;
+			27DD3A3F12DFABD300296325 /* PBXBookmark */ = 27DD3A3F12DFABD300296325 /* PBXBookmark */;
+			27DD3A4012DFABD300296325 /* PBXBookmark */ = 27DD3A4012DFABD300296325 /* PBXBookmark */;
+			27DD3A4112DFABD300296325 /* PBXBookmark */ = 27DD3A4112DFABD300296325 /* PBXBookmark */;
+			27DD3A4212DFABD300296325 /* PBXBookmark */ = 27DD3A4212DFABD300296325 /* PBXBookmark */;
 		};
 		sourceControlManager = 27B7B0E4117525EB003A7035 /* Source Control */;
 		userBuildSettings = {

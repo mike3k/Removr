@@ -35,6 +35,7 @@
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 #import "Platforms/iOS/CCTouchDispatcher.h"
+#import "Platforms/iOS/CCDirectorIOS.h"
 #elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
 #import "Platforms/Mac/CCEventDispatcher.h"
 #endif
@@ -174,9 +175,6 @@
 	// since events are propagated in reverse order
 	if (isTouchEnabled_)
 		[self registerWithTouchDispatcher];
-	
-	if( isAccelerometerEnabled_ )
-		[[UIAccelerometer sharedAccelerometer] setDelegate:self];
 
 #elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
 	if( isMouseEnabled_ )
@@ -188,9 +186,20 @@
 	
 	// then iterate over all the children
 	[super onEnter];
-	
-	
 }
+
+// issue #624.
+// Can't register mouse, touches here because of #issue #1018, and #1021
+-(void) onEnterTransitionDidFinish
+{
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+	if( isAccelerometerEnabled_ )
+		[[UIAccelerometer sharedAccelerometer] setDelegate:self];
+#endif
+	
+	[super onEnterTransitionDidFinish];
+}
+
 
 -(void) onExit
 {
@@ -222,17 +231,17 @@
 @end
 
 #pragma mark -
-#pragma mark ColorLayer
+#pragma mark LayerColor
 
-@interface CCColorLayer (Private)
+@interface CCLayerColor (Private)
 -(void) updateColor;
 @end
 
-@implementation CCColorLayer
+@implementation CCLayerColor
 
 // Opacity and RGB color protocol
-@synthesize opacity=opacity_, color=color_;
-@synthesize blendFunc=blendFunc_;
+@synthesize opacity = opacity_, color = color_;
+@synthesize blendFunc = blendFunc_;
 
 
 + (id) layerWithColor:(ccColor4B)color width:(GLfloat)w  height:(GLfloat) h
@@ -242,7 +251,7 @@
 
 + (id) layerWithColor:(ccColor4B)color
 {
-	return [[(CCColorLayer*)[self alloc] initWithColor:color] autorelease];
+	return [[(CCLayerColor*)[self alloc] initWithColor:color] autorelease];
 }
 
 - (id) initWithColor:(ccColor4B)color width:(GLfloat)w  height:(GLfloat) h
@@ -257,11 +266,11 @@
 		color_.b = color.b;
 		opacity_ = color.a;
 		
-		for (NSUInteger i=0; i<sizeof(squareVertices) / sizeof( squareVertices[0]); i++ )
+		for (NSUInteger i = 0; i<sizeof(squareVertices) / sizeof( squareVertices[0]); i++ )
 			squareVertices[i] = 0.0f;
 				
 		[self updateColor];
-		[self setContentSize:CGSizeMake(w,h)];
+		[self setContentSize:CGSizeMake(w, h) ];
 	}
 	return self;
 }
@@ -275,41 +284,37 @@
 // override contentSize
 -(void) setContentSize: (CGSize) size
 {
-	squareVertices[2] = size.width;
-	squareVertices[5] = size.height;
-	squareVertices[6] = size.width;
-	squareVertices[7] = size.height;
+	squareVertices[2] = size.width * CC_CONTENT_SCALE_FACTOR();
+	squareVertices[5] = size.height * CC_CONTENT_SCALE_FACTOR();
+	squareVertices[6] = size.width * CC_CONTENT_SCALE_FACTOR();
+	squareVertices[7] = size.height * CC_CONTENT_SCALE_FACTOR();
 	
 	[super setContentSize:size];
 }
 
 - (void) changeWidth: (GLfloat) w height:(GLfloat) h
 {
-	[self setContentSize:CGSizeMake(w,h)];
+	[self setContentSize:CGSizeMake(w, h)];
 }
 
 -(void) changeWidth: (GLfloat) w
 {
-	[self setContentSize:CGSizeMake(w,contentSize_.height)];
+	[self setContentSize:CGSizeMake(w, contentSize_.height)];
 }
 
 -(void) changeHeight: (GLfloat) h
 {
-	[self setContentSize:CGSizeMake(contentSize_.width,h)];
+	[self setContentSize:CGSizeMake(contentSize_.width, h)];
 }
 
 - (void) updateColor
 {
-	for( NSUInteger i=0; i < sizeof(squareColors) / sizeof(squareColors[0]);i++ )
+	for( NSUInteger i = 0; i < 4; i++ )
 	{
-		if( i % 4 == 0 )
-			squareColors[i] = color_.r;
-		else if( i % 4 == 1)
-			squareColors[i] = color_.g;
-		else if( i % 4 ==2  )
-			squareColors[i] = color_.b;
-		else
-			squareColors[i] = opacity_;
+		squareColors[i*4]	= color_.r;
+		squareColors[i*4+1] = color_.g;
+		squareColors[i*4+2] = color_.b;
+		squareColors[i*4+3] = opacity_;
 	}
 }
 
@@ -324,11 +329,11 @@
 	glVertexPointer(2, GL_FLOAT, 0, squareVertices);
 	glColorPointer(4, GL_UNSIGNED_BYTE, 0, squareColors);
 	
-	BOOL newBlend = NO;
-	if( blendFunc_.src != CC_BLEND_SRC || blendFunc_.dst != CC_BLEND_DST ) {
-		newBlend = YES;
-		glBlendFunc(blendFunc_.src, blendFunc_.dst);
-	}
+	
+	BOOL newBlend = blendFunc_.src != CC_BLEND_SRC || blendFunc_.dst != CC_BLEND_DST;
+	if( newBlend )
+		glBlendFunc( blendFunc_.src, blendFunc_.dst );
+	
 	else if( opacity_ != 255 ) {
 		newBlend = YES;
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -358,6 +363,134 @@
 	opacity_ = o;
 	[self updateColor];
 }
+@end
+
+// XXX Deprecated
+@implementation CCColorLayer
+@end
+
+
+#pragma mark -
+#pragma mark LayerGradient
+
+@implementation CCLayerGradient
+
+@synthesize startOpacity = startOpacity_;
+@synthesize endColor = endColor_, endOpacity = endOpacity_;
+@synthesize vector = vector_;
+
++ (id) layerWithColor: (ccColor4B) start fadingTo: (ccColor4B) end
+{
+    return [[[self alloc] initWithColor:start fadingTo:end] autorelease];
+}
+
++ (id) layerWithColor: (ccColor4B) start fadingTo: (ccColor4B) end alongVector: (CGPoint) v
+{
+    return [[[self alloc] initWithColor:start fadingTo:end alongVector:v] autorelease];
+}
+
+- (id) initWithColor: (ccColor4B) start fadingTo: (ccColor4B) end
+{
+    return [self initWithColor:start fadingTo:end alongVector:ccp(0, -1)];
+}
+
+- (id) initWithColor: (ccColor4B) start fadingTo: (ccColor4B) end alongVector: (CGPoint) v
+{
+	endColor_.r = end.r;
+	endColor_.g = end.g;
+	endColor_.b = end.b;
+	
+	endOpacity_		= end.a;
+	startOpacity_	= start.a;
+	vector_ = v;
+
+	start.a	= 255;
+    return [self initWithColor:start];
+}
+
+- (void) updateColor
+{
+    [super updateColor];
+
+	float h = sqrtf(vector_.x*vector_.x + vector_.y*vector_.y);
+    if (h == 0)
+		return;
+
+    double c = sqrt(2);
+    CGPoint u = ccp(vector_.x / h, vector_.y / h);
+
+	float opacityf = (float)opacity_/255.0f;
+	
+    ccColor4B S = {
+		color_.r,
+		color_.g,
+		color_.b,
+		startOpacity_*opacityf
+	};
+
+    ccColor4B E = {
+		endColor_.r,
+		endColor_.g,
+		endColor_.b,
+		endOpacity_*opacityf
+	};
+
+    // (-1, -1)
+	squareColors[0]  = E.r + (S.r - E.r) * ((c + u.x + u.y) / (2.0f * c));
+	squareColors[1]  = E.g + (S.g - E.g) * ((c + u.x + u.y) / (2.0f * c));
+	squareColors[2]  = E.b + (S.b - E.b) * ((c + u.x + u.y) / (2.0f * c));
+	squareColors[3]  = E.a + (S.a - E.a) * ((c + u.x + u.y) / (2.0f * c));
+    // (1, -1)
+	squareColors[4]  = E.r + (S.r - E.r) * ((c - u.x + u.y) / (2.0f * c));
+	squareColors[5]  = E.g + (S.g - E.g) * ((c - u.x + u.y) / (2.0f * c));
+	squareColors[6]  = E.b + (S.b - E.b) * ((c - u.x + u.y) / (2.0f * c));
+	squareColors[7]  = E.a + (S.a - E.a) * ((c - u.x + u.y) / (2.0f * c));
+	// (-1, 1)
+	squareColors[8]  = E.r + (S.r - E.r) * ((c + u.x - u.y) / (2.0f * c));
+	squareColors[9]  = E.g + (S.g - E.g) * ((c + u.x - u.y) / (2.0f * c));
+	squareColors[10] = E.b + (S.b - E.b) * ((c + u.x - u.y) / (2.0f * c));
+	squareColors[11] = E.a + (S.a - E.a) * ((c + u.x - u.y) / (2.0f * c));
+	// (1, 1)
+	squareColors[12] = E.r + (S.r - E.r) * ((c - u.x - u.y) / (2.0f * c));
+	squareColors[13] = E.g + (S.g - E.g) * ((c - u.x - u.y) / (2.0f * c));
+	squareColors[14] = E.b + (S.b - E.b) * ((c - u.x - u.y) / (2.0f * c));
+	squareColors[15] = E.a + (S.a - E.a) * ((c - u.x - u.y) / (2.0f * c));
+}
+
+-(ccColor3B) startColor
+{
+	return color_;
+}
+
+-(void) setStartColor:(ccColor3B)colors
+{
+	[self setColor:colors];
+}
+
+-(void) setEndColor:(ccColor3B)colors
+{
+    endColor_ = colors;
+    [self updateColor];
+}
+
+-(void) setStartOpacity: (GLubyte) o
+{
+	startOpacity_ = o;
+    [self updateColor];
+}
+
+-(void) setEndOpacity: (GLubyte) o
+{
+    endOpacity_ = o;
+    [self updateColor];
+}
+
+-(void) setVector: (CGPoint) v
+{
+    vector_ = v;
+    [self updateColor];
+}
+
 @end
 
 #pragma mark -

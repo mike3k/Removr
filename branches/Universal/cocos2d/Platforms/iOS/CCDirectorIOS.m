@@ -51,6 +51,12 @@
 #import "../../Support/CCProfiling.h"
 #endif
 
+
+#pragma mark -
+#pragma mark Director - global variables (optimization)
+
+CGFloat	__ccContentScaleFactor = 1;
+
 #pragma mark -
 #pragma mark Director iOS
 
@@ -127,8 +133,7 @@
 		// portrait mode default
 		deviceOrientation_ = CCDeviceOrientationPortrait;
 		
-		contentScaleFactor_ = 1;
-		screenSize_ = surfaceSize_ = CGSizeZero;
+		__ccContentScaleFactor = 1;
 		isContentScaleSupported_ = NO;
 		
 		// running thread is main thread on iOS
@@ -172,6 +177,10 @@
 	
 	/* draw the scene */
 	[runningScene_ visit];
+	
+	/* draw the notification node */
+	[notificationNode_ visit];
+
 	if( displayFPS_ )
 		[self showFPS];
 	
@@ -186,6 +195,45 @@
 	[openGLView_ swapBuffers];
 }
 
+-(void) setProjection:(ccDirectorProjection)projection
+{
+	CGSize size = winSizeInPixels_;
+	
+	switch (projection) {
+		case kCCDirectorProjection2D:
+			glViewport(0, 0, size.width, size.height);
+			glMatrixMode(GL_PROJECTION);
+			glLoadIdentity();
+			ccglOrtho(0, size.width, 0, size.height, -1024 * CC_CONTENT_SCALE_FACTOR(), 1024 * CC_CONTENT_SCALE_FACTOR());
+			glMatrixMode(GL_MODELVIEW);
+			glLoadIdentity();
+			break;
+			
+		case kCCDirectorProjection3D:
+			glViewport(0, 0, size.width, size.height);
+			glMatrixMode(GL_PROJECTION);
+			glLoadIdentity();
+			gluPerspective(60, (GLfloat)size.width/size.height, 0.5f, 1500.0f);
+			
+			glMatrixMode(GL_MODELVIEW);	
+			glLoadIdentity();
+			gluLookAt( size.width/2, size.height/2, [self getZEye],
+					  size.width/2, size.height/2, 0,
+					  0.0f, 1.0f, 0.0f);			
+			break;
+			
+		case kCCDirectorProjectionCustom:
+			if( projectionDelegate_ )
+				[projectionDelegate_ updateProjection];
+			break;
+			
+		default:
+			CCLOG(@"cocos2d: Director: unrecognized projecgtion");
+			break;
+	}
+	
+	projection_ = projection;
+}
 
 #pragma mark Director Scene iPhone Specific
 
@@ -287,7 +335,13 @@
 		}
 		
 		// alloc and init the opengl view
-		openGLView_ = [[EAGLView alloc] initWithFrame:rect pixelFormat:pFormat depthFormat:depthFormat preserveBackbuffer:NO];
+		openGLView_ = [[EAGLView alloc] initWithFrame:rect
+										  pixelFormat:pFormat
+										  depthFormat:depthFormat
+								   preserveBackbuffer:NO 
+										   sharegroup:nil
+										multiSampling:NO
+									  numberOfSamples:0];
 		
 		// check if the view was alloced and initialized
 		NSAssert( openGLView_, @"FATAL: Could not alloc and init the OpenGL view. ");
@@ -301,8 +355,8 @@
 		[openGLView_ setFrame:rect];
 	}
 	
-	screenSize_ = rect.size;
-	surfaceSize_ = CGSizeMake(screenSize_.width * contentScaleFactor_, screenSize_.height * contentScaleFactor_);
+	winSizeInPoints_ = rect.size;
+	winSizeInPixels_ = CGSizeMake(winSizeInPoints_.width * __ccContentScaleFactor, winSizeInPoints_.height * __ccContentScaleFactor);
 	
 	
 	// set the touch delegate of the glview to self
@@ -348,9 +402,9 @@
 		[super setOpenGLView:view];
 
 		// set size
-		surfaceSize_ = CGSizeMake(screenSize_.width * contentScaleFactor_, screenSize_.height *contentScaleFactor_);
+		winSizeInPixels_ = CGSizeMake(winSizeInPoints_.width * __ccContentScaleFactor, winSizeInPoints_.height *__ccContentScaleFactor);
 		
-		if( contentScaleFactor_ != 1 )
+		if( __ccContentScaleFactor != 1 )
 			[self updateContentScaleFactor];
 		
 		CCTouchDispatcher *touchDispatcher = [CCTouchDispatcher sharedDispatcher];
@@ -363,15 +417,15 @@
 
 -(CGFloat) contentScaleFactor
 {
-	return contentScaleFactor_;
+	return __ccContentScaleFactor;
 }
 
 -(void) setContentScaleFactor:(CGFloat)scaleFactor
 {
-	if( scaleFactor != contentScaleFactor_ ) {
+	if( scaleFactor != __ccContentScaleFactor ) {
 		
-		contentScaleFactor_ = scaleFactor;
-		surfaceSize_ = CGSizeMake( screenSize_.width * scaleFactor, screenSize_.height * scaleFactor );
+		__ccContentScaleFactor = scaleFactor;
+		winSizeInPixels_ = CGSizeMake( winSizeInPoints_.width * scaleFactor, winSizeInPoints_.height * scaleFactor );
 		
 		if( openGLView_ )
 			[self updateContentScaleFactor];
@@ -386,36 +440,43 @@
 	// Based on code snippet from: http://developer.apple.com/iphone/prerelease/library/snippets/sp2010/sp28.html
 	if ([openGLView_ respondsToSelector:@selector(setContentScaleFactor:)])
 	{			
-		// XXX: To avoid compile warning when using Xcode 3.2.2
-		// Version 1.0 will only support Xcode 3.2.3 or newer
-		typedef void (*CC_CONTENT_SCALE)(id, SEL, float);
-		
-		SEL selector = @selector(setContentScaleFactor:);
-		CC_CONTENT_SCALE method = (CC_CONTENT_SCALE) [openGLView_ methodForSelector:selector];
-		method(openGLView_,selector, contentScaleFactor_);
-		
-		//		[openGLView_ setContentScaleFactor: contentScaleFactor_];
+		[openGLView_ setContentScaleFactor: __ccContentScaleFactor];
 		
 		isContentScaleSupported_ = YES;
 	}
 	else
-	{
-		CCLOG(@"cocos2d: WARNING: calling setContentScaleFactor on iOS < 4. Using fallback mechanism");
-		/* on pre-4.0 iOS, use bounds/transform */
-		openGLView_.bounds = CGRectMake(0, 0,
-										openGLView_.bounds.size.width * contentScaleFactor_,
-										openGLView_.bounds.size.height * contentScaleFactor_);
-		openGLView_.transform = CGAffineTransformScale(openGLView_.transform, 1 / contentScaleFactor_, 1 / contentScaleFactor_); 
-		
-		isContentScaleSupported_ = NO;
-	}
+		CCLOG(@"cocos2d: 'setContentScaleFactor:' is not supported on this device");
+}
+
+-(BOOL) enableRetinaDisplay:(BOOL)enabled
+{
+	// Already enabled ?
+	if( enabled && __ccContentScaleFactor == 2 )
+		return YES;
+	
+	// Already disabled
+	if( ! enabled && __ccContentScaleFactor == 1 )
+		return YES;
+
+	// setContentScaleFactor is not supported
+	if (! [openGLView_ respondsToSelector:@selector(setContentScaleFactor:)])
+		return NO;
+
+	// SD device
+	if ([[UIScreen mainScreen] scale] == 1.0)
+		return NO;
+
+	float newScale = enabled ? 2 : 1;
+	[self setContentScaleFactor:newScale];
+	
+	return YES;
 }
 
 // overriden, don't call super
 -(void) reshapeProjection:(CGSize)size
 {
-	screenSize_ = [openGLView_ bounds].size;
-	surfaceSize_ = CGSizeMake(screenSize_.width * contentScaleFactor_, screenSize_.height *contentScaleFactor_);
+	winSizeInPoints_ = [openGLView_ bounds].size;
+	winSizeInPixels_ = CGSizeMake(winSizeInPoints_.width * __ccContentScaleFactor, winSizeInPoints_.height *__ccContentScaleFactor);
 	
 	[self setProjection:projection_];
 }
@@ -424,7 +485,7 @@
 
 -(CGPoint)convertToGL:(CGPoint)uiPoint
 {
-	CGSize s = screenSize_;
+	CGSize s = winSizeInPoints_;
 	float newY = s.height - uiPoint.y;
 	float newX = s.width - uiPoint.x;
 	
@@ -446,14 +507,14 @@
 			break;
 	}
 	
-	if( contentScaleFactor_ != 1 && isContentScaleSupported_ )
-		ret = ccpMult(ret, contentScaleFactor_);
+//	if( __ccContentScaleFactor != 1 && isContentScaleSupported_ )
+//		ret = ccpMult(ret, __ccContentScaleFactor);
 	return ret;
 }
 
 -(CGPoint)convertToUI:(CGPoint)glPoint
 {
-	CGSize winSize = surfaceSize_;
+	CGSize winSize = winSizeInPoints_;
 	int oppositeX = winSize.width - glPoint.x;
 	int oppositeY = winSize.height - glPoint.y;
 	CGPoint uiPoint = CGPointZero;
@@ -473,14 +534,14 @@
 			break;
 	}
 	
-	uiPoint = ccpMult(uiPoint, 1/contentScaleFactor_);
+	uiPoint = ccpMult(uiPoint, 1/__ccContentScaleFactor);
 	return uiPoint;
 }
 
 // get the current size of the glview
--(CGSize)winSize
+-(CGSize) winSize
 {
-	CGSize s = surfaceSize_;
+	CGSize s = winSizeInPoints_;
 	
 	if( deviceOrientation_ == CCDeviceOrientationLandscapeLeft || deviceOrientation_ == CCDeviceOrientationLandscapeRight ) {
 		// swap x,y in landscape mode
@@ -488,6 +549,16 @@
 		s.width = tmp.height;
 		s.height = tmp.width;
 	}
+	return s;
+}
+
+-(CGSize) winSizeInPixels
+{
+	CGSize s = [self winSize];
+	
+	s.width *= CC_CONTENT_SCALE_FACTOR();
+	s.height *= CC_CONTENT_SCALE_FACTOR();
+	
 	return s;
 }
 
@@ -522,7 +593,7 @@
 
 -(void) applyOrientation
 {	
-	CGSize s = surfaceSize_;
+	CGSize s = winSizeInPixels_;
 	float w = s.width / 2;
 	float h = s.height / 2;
 	

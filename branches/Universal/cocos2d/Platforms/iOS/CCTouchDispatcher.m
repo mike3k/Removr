@@ -106,8 +106,7 @@ static CCTouchDispatcher *sharedDispatcher = nil;
 		if( h.priority < handler.priority )
 			i++;
 		
-		if( h.delegate == handler.delegate )
-			[NSException raise:NSInvalidArgumentException format:@"Delegate already added to touch dispatcher."];
+		NSAssert( h.delegate != handler.delegate, @"Delegate already added to touch dispatcher.");
 	}
 	[array insertObject:handler atIndex:i];		
 }
@@ -214,7 +213,7 @@ static CCTouchDispatcher *sharedDispatcher = nil;
 //
 -(void) touches:(NSSet*)touches withEvent:(UIEvent*)event withTouchType:(unsigned int)idx;
 {
-	NSAssert(idx >=0 && idx < 4, @"Invalid idx value");
+	NSAssert(idx < 4, @"Invalid idx value");
 
 	id mutableTouches;
 	locked = YES;

@@ -62,7 +62,7 @@
 
 @implementation CCParticleSystem
 @synthesize active, duration;
-@synthesize centerOfGravity, posVar;
+@synthesize sourcePosition, posVar;
 @synthesize particleCount;
 @synthesize life, lifeVar;
 @synthesize angle, angleVar;
@@ -84,11 +84,9 @@
 }
 
 -(id) init {
-	NSException* myException = [NSException
-								exceptionWithName:@"Particle.init"
-								reason:@"Particle.init shall not be called. Use initWithTotalParticles instead."
-								userInfo:nil];
-	@throw myException;	
+	NSAssert(NO, @"CCParticleSystem: Init not supported.");
+	[self release];
+	return nil;	
 }
 
 -(id) initWithFile:(NSString *)plistFile
@@ -154,7 +152,7 @@
 		// position
 		float x = [[dictionary valueForKey:@"sourcePositionx"] floatValue];
 		float y = [[dictionary valueForKey:@"sourcePositiony"] floatValue];
-		position_ = ccp(x,y);
+		self.position = ccp(x,y);
 		posVar.x = [[dictionary valueForKey:@"sourcePositionVariancex"] floatValue];
 		posVar.y = [[dictionary valueForKey:@"sourcePositionVariancey"] floatValue];
 				
@@ -228,7 +226,7 @@
 			NSAssert( buffer != NULL, @"CCParticleSystem: error decoding textureImageData");
 				
 			unsigned char *deflated = NULL;
-			NSUInteger deflatedLen = inflateMemory(buffer, len, &deflated);
+			NSUInteger deflatedLen = ccInflateMemory(buffer, len, &deflated);
 			free( buffer );
 				
 			NSAssert( deflated != NULL, @"CCParticleSystem: error ungzipping textureImageData");
@@ -239,6 +237,9 @@
 #elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
 			NSBitmapImageRep *image = [[NSBitmapImageRep alloc] initWithData:data];
 #endif
+			
+			free(deflated); deflated = NULL;
+
 			self.texture = [[CCTextureCache sharedTextureCache] addCGImage:[image CGImage] forKey:textureName];
 			[data release];
 			[image release];
@@ -334,8 +335,10 @@
 	particle->timeToLive = MAX(0, life + lifeVar * CCRANDOM_MINUS1_1() );
 
 	// position
-	particle->pos.x = centerOfGravity.x + posVar.x * CCRANDOM_MINUS1_1();
-	particle->pos.y = centerOfGravity.y + posVar.y * CCRANDOM_MINUS1_1();
+	particle->pos.x = sourcePosition.x + posVar.x * CCRANDOM_MINUS1_1();
+	particle->pos.x *= CC_CONTENT_SCALE_FACTOR();
+	particle->pos.y = sourcePosition.y + posVar.y * CCRANDOM_MINUS1_1();
+	particle->pos.y *= CC_CONTENT_SCALE_FACTOR();
 	
 	// Color
 	ccColor4F start;
@@ -358,6 +361,7 @@
 	
 	// size
 	float startS = MAX(0, startSize + startSizeVar * CCRANDOM_MINUS1_1() ); // no negative size
+	startS *= CC_CONTENT_SCALE_FACTOR();
 	
 	particle->size = startS;
 	if( endSize == kCCParticleStartSizeEqualToEndSize )
@@ -365,6 +369,7 @@
 	else {
 		float endS = endSize + endSizeVar * CCRANDOM_MINUS1_1();
 		endS = MAX(0, endS);
+		endS *= CC_CONTENT_SCALE_FACTOR();
 		particle->deltaSize = (endS - startS) / particle->timeToLive;
 	}
 	
@@ -375,8 +380,13 @@
 	particle->deltaRotation = (endA - startA) / particle->timeToLive;
 	
 	// position
-	if( positionType_ == kCCPositionTypeFree )
-		particle->startPos = [self convertToWorldSpace:CGPointZero];
+	if( positionType_ == kCCPositionTypeFree ) {
+		CGPoint p = [self convertToWorldSpace:CGPointZero];
+		particle->startPos = ccpMult( p, CC_CONTENT_SCALE_FACTOR() );
+	}
+	else if( positionType_ == kCCPositionTypeRelative ) {
+		particle->startPos = ccpMult( position_, CC_CONTENT_SCALE_FACTOR() );
+	}
 	
 	// direction
 	float a = CC_DEGREES_TO_RADIANS( angle + angleVar * CCRANDOM_MINUS1_1() );	
@@ -384,20 +394,21 @@
 	// Mode Gravity: A
 	if( emitterMode_ == kCCParticleModeGravity ) {
 
-		
-		CGPoint v;
-		v.y = sinf( a );
-		v.x = cosf( a );
+		CGPoint v = {cosf( a ), sinf( a )};
 		float s = mode.A.speed + mode.A.speedVar * CCRANDOM_MINUS1_1();
+		s *= CC_CONTENT_SCALE_FACTOR();
 		
 		// direction
 		particle->mode.A.dir = ccpMult( v, s );
 		
 		// radial accel
 		particle->mode.A.radialAccel = mode.A.radialAccel + mode.A.radialAccelVar * CCRANDOM_MINUS1_1();
+		particle->mode.A.radialAccel *= CC_CONTENT_SCALE_FACTOR();
 		
 		// tangential accel
 		particle->mode.A.tangentialAccel = mode.A.tangentialAccel + mode.A.tangentialAccelVar * CCRANDOM_MINUS1_1();
+		particle->mode.A.tangentialAccel *= CC_CONTENT_SCALE_FACTOR();
+
 	}
 	
 	// Mode Radius: B
@@ -406,6 +417,9 @@
 		float startRadius = mode.B.startRadius + mode.B.startRadiusVar * CCRANDOM_MINUS1_1();
 		float endRadius = mode.B.endRadius + mode.B.endRadiusVar * CCRANDOM_MINUS1_1();
 
+		startRadius *= CC_CONTENT_SCALE_FACTOR();
+		endRadius *= CC_CONTENT_SCALE_FACTOR();
+		
 		particle->mode.B.radius = startRadius;
 
 		if( mode.B.endRadius == kCCParticleStartRadiusEqualToEndRadius )
@@ -415,7 +429,6 @@
 	
 		particle->mode.B.angle = a;
 		particle->mode.B.degreesPerSecond = CC_DEGREES_TO_RADIANS(mode.B.rotatePerSecond + mode.B.rotatePerSecondVar * CCRANDOM_MINUS1_1());
-		
 	}	
 }
 
@@ -466,8 +479,16 @@
 	
 	
 	CGPoint currentPosition = CGPointZero;
-	if( positionType_ == kCCPositionTypeFree )
+	if( positionType_ == kCCPositionTypeFree ) {
 		currentPosition = [self convertToWorldSpace:CGPointZero];
+		currentPosition.x *= CC_CONTENT_SCALE_FACTOR();
+		currentPosition.y *= CC_CONTENT_SCALE_FACTOR();
+	}
+	else if( positionType_ == kCCPositionTypeRelative ) {
+		currentPosition = position_;
+		currentPosition.x *= CC_CONTENT_SCALE_FACTOR();
+		currentPosition.y *= CC_CONTENT_SCALE_FACTOR();
+	}
 	
 	while( particleIdx < particleCount )
 	{
@@ -486,6 +507,7 @@
 				// radial acceleration
 				if(p->pos.x || p->pos.y)
 					radial = ccpNormalize(p->pos);
+				
 				tangential = radial;
 				radial = ccpMult(radial, p->mode.A.radialAccel);
 				
@@ -532,7 +554,7 @@
 			
 			CGPoint	newPos;
 			
-			if( positionType_ == kCCPositionTypeFree ) {
+			if( positionType_ == kCCPositionTypeFree || positionType_ == kCCPositionTypeRelative ) {
 				CGPoint diff = ccpSub( currentPosition, p->startPos );
 				newPos = ccpSub(p->pos, diff);
 				

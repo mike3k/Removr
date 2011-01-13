@@ -32,7 +32,7 @@
 
 @implementation CCGridAction
 
-@synthesize gridSize;
+@synthesize gridSize = gridSize_;
 
 +(id) actionWithSize:(ccGridSize)size duration:(ccTime)d
 {
@@ -43,7 +43,7 @@
 {
 	if ( (self = [super initWithDuration:d]) )
 	{
-		gridSize = gSize;
+		gridSize_ = gSize;
 	}
 	
 	return self;
@@ -60,19 +60,16 @@
 	
 	if ( targetGrid && targetGrid.reuseGrid > 0 )
 	{
-		if ( targetGrid.active && targetGrid.gridSize.x == gridSize.x && targetGrid.gridSize.y == gridSize.y && [targetGrid isKindOfClass:[newgrid class]] )
-		{
+		if ( targetGrid.active && targetGrid.gridSize.x == gridSize_.x && targetGrid.gridSize.y == gridSize_.y && [targetGrid isKindOfClass:[newgrid class]] )
 			[targetGrid reuse];
-		}
 		else
-		{
 			[NSException raise:@"GridBase" format:@"Cannot reuse grid"];
-		}
 	}
 	else
 	{
 		if ( targetGrid && targetGrid.active )
 			targetGrid.active = NO;
+		
 		t.grid = newgrid;
 		t.grid.active = YES;
 	}	
@@ -91,7 +88,7 @@
 
 -(id) copyWithZone: (NSZone*) zone
 {
-	CCGridAction *copy = [[[self class] allocWithZone:zone] initWithSize:gridSize duration:duration_];
+	CCGridAction *copy = [[[self class] allocWithZone:zone] initWithSize:gridSize_ duration:duration_];
 	return copy;
 }
 @end
@@ -105,7 +102,7 @@
 
 -(CCGridBase *)grid
 {
-	return [CCGrid3D gridWithSize:gridSize];
+	return [CCGrid3D gridWithSize:gridSize_];
 }
 
 -(ccVertex3F)vertex:(ccGridSize)pos
@@ -136,7 +133,7 @@
 
 -(CCGridBase *)grid
 {
-	return [CCTiledGrid3D gridWithSize:gridSize];
+	return [CCTiledGrid3D gridWithSize:gridSize_];
 }
 
 -(ccQuad3)tile:(ccGridSize)pos
@@ -372,9 +369,7 @@
 -(id)initWithTimes:(int)times
 {
 	if ( (self = [super init]) )
-	{
 		t = times;
-	}
 	
 	return self;
 }
