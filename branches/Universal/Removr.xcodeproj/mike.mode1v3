@@ -246,8 +246,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -289,6 +287,7 @@
 								<string>2D500B1D0D5A766B00DBA0E3</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>275CD7BA11F61C8100AD18F0</string>
+								<string>50F4144210692EE7002A0D5E</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
@@ -297,12 +296,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>91</integer>
-									<integer>89</integer>
+									<integer>69</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {299, 867}}</string>
+							<string>{{0, 1081}, {299, 867}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -339,7 +338,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AppSettings.h</string>
+								<string>alt-background@x2.png</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -347,7 +346,17 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AppSettings.h</string>
+										<string>alt-background@x2.png</string>
+										<key>_historyCapacity</key>
+										<integer>0</integer>
+										<key>bookmark</key>
+										<string>27DD39E312DF93B700296325</string>
+										<key>history</key>
+										<array>
+											<string>27DD39E012DF93B700296325</string>
+											<string>27DD39E112DF93B700296325</string>
+											<string>27DD39E212DF93B700296325</string>
+										</array>
 									</dict>
 									<key>SplitCount</key>
 									<string>1</string>
@@ -358,14 +367,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1183, 664}}</string>
+								<string>{{0, 0}, {1183, 659}}</string>
 								<key>RubberWindowFrame</key>
 								<string>606 492 1504 926 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>664pt</string>
+							<string>659pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -378,14 +387,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 669}, {1183, 216}}</string>
+								<string>{{0, 664}, {1183, 221}}</string>
 								<key>RubberWindowFrame</key>
 								<string>606 492 1504 926 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>216pt</string>
+							<string>221pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -404,9 +413,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>279106F712DBA94200246C3A</string>
+				<string>27DD39CB12DF8F4F00296325</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>279106F812DBA94200246C3A</string>
+				<string>27DD39CC12DF8F4F00296325</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -525,7 +534,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>316385602.88617897</real>
+	<real>316642231.51694202</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -542,7 +551,7 @@
 	<array>
 		<string>27ED5F5A0E52884C00CCF2AE</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/mike/Sources/mystuff/Removr/Removr.xcodeproj</string>
+		<string>/Users/mike/Sources/mystuff/Removr-Universal/Removr.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>606 492 1504 926 0 0 2560 1418 </string>
@@ -622,7 +631,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>27ED5F5A0E52884C00CCF2AE</string>
-				<string>279106F912DBA94200246C3A</string>
+				<string>27DD39CD12DF8F4F00296325</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -742,13 +751,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>279106FA12DBA94200246C3A</string>
+				<string>27DD39CE12DF8F4F00296325</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>279106FB12DBA94200246C3A</string>
-				<string>279106FC12DBA94200246C3A</string>
-				<string>279106FD12DBA94200246C3A</string>
-				<string>279106FE12DBA94200246C3A</string>
-				<string>279106FF12DBA94200246C3A</string>
+				<string>27DD39CF12DF8F4F00296325</string>
+				<string>27DD39D012DF8F4F00296325</string>
+				<string>27DD39D112DF8F4F00296325</string>
+				<string>27DD39D212DF8F4F00296325</string>
+				<string>27DD39D312DF8F4F00296325</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
