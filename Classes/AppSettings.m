@@ -77,11 +77,15 @@ NSString *format_time(NSTimeInterval tm)
 //        }
         // 2x scaling only works in iOS4 or newer
         if ( [[[UIDevice currentDevice] systemVersion] compare:@"4.0" options:NSNumericSearch] == NSOrderedAscending ) {
-            self.scale = 1;
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+                self.scale = 2;
+            }
+            else {
+                self.scale = 1;
+            }
         }
         else {
             self.scale = [[UIScreen mainScreen] scale];
-
         }
     }
     return self;
