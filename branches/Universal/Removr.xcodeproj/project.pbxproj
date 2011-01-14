@@ -27,6 +27,13 @@
 		272D6F3111DFD5E40064FAEC /* applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = 272D6F2E11DFD5E40064FAEC /* applause.wav */; };
 		272D6F3211DFD5E40064FAEC /* fart.wav in Resources */ = {isa = PBXBuildFile; fileRef = 272D6F2F11DFD5E40064FAEC /* fart.wav */; };
 		272D6F3311DFD5E40064FAEC /* remove.wav in Resources */ = {isa = PBXBuildFile; fileRef = 272D6F3011DFD5E40064FAEC /* remove.wav */; };
+		272F2FBD12DFBA2D004AE70A /* CCAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 272F2FB912DFBA2D004AE70A /* CCAnimation.h */; };
+		272F2FBE12DFBA2D004AE70A /* CCAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 272F2FBA12DFBA2D004AE70A /* CCAnimation.m */; };
+		272F2FBF12DFBA2D004AE70A /* CCAnimationCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 272F2FBB12DFBA2D004AE70A /* CCAnimationCache.h */; };
+		272F2FC012DFBA2D004AE70A /* CCAnimationCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 272F2FBC12DFBA2D004AE70A /* CCAnimationCache.m */; };
+		272F2FDC12DFBD20004AE70A /* cpSpaceComponent.c in Sources */ = {isa = PBXBuildFile; fileRef = 272F2FD912DFBD20004AE70A /* cpSpaceComponent.c */; };
+		272F2FDD12DFBD20004AE70A /* cpSpaceQuery.c in Sources */ = {isa = PBXBuildFile; fileRef = 272F2FDA12DFBD20004AE70A /* cpSpaceQuery.c */; };
+		272F2FDE12DFBD20004AE70A /* cpSpaceStep.c in Sources */ = {isa = PBXBuildFile; fileRef = 272F2FDB12DFBD20004AE70A /* cpSpaceStep.c */; };
 		27324BBA11EACEC400D5F78D /* cloud-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 27324BB411EACEC400D5F78D /* cloud-1.png */; };
 		27324BBB11EACEC400D5F78D /* cloud-1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 27324BB511EACEC400D5F78D /* cloud-1-hd.png */; };
 		27324BBC11EACEC400D5F78D /* cloud-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 27324BB611EACEC400D5F78D /* cloud-2.png */; };
@@ -493,6 +500,13 @@
 		272D6F2E11DFD5E40064FAEC /* applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = applause.wav; sourceTree = "<group>"; };
 		272D6F2F11DFD5E40064FAEC /* fart.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fart.wav; sourceTree = "<group>"; };
 		272D6F3011DFD5E40064FAEC /* remove.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = remove.wav; sourceTree = "<group>"; };
+		272F2FB912DFBA2D004AE70A /* CCAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAnimation.h; sourceTree = "<group>"; };
+		272F2FBA12DFBA2D004AE70A /* CCAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAnimation.m; sourceTree = "<group>"; };
+		272F2FBB12DFBA2D004AE70A /* CCAnimationCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAnimationCache.h; sourceTree = "<group>"; };
+		272F2FBC12DFBA2D004AE70A /* CCAnimationCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAnimationCache.m; sourceTree = "<group>"; };
+		272F2FD912DFBD20004AE70A /* cpSpaceComponent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cpSpaceComponent.c; path = src/cpSpaceComponent.c; sourceTree = "<group>"; };
+		272F2FDA12DFBD20004AE70A /* cpSpaceQuery.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cpSpaceQuery.c; path = src/cpSpaceQuery.c; sourceTree = "<group>"; };
+		272F2FDB12DFBD20004AE70A /* cpSpaceStep.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cpSpaceStep.c; path = src/cpSpaceStep.c; sourceTree = "<group>"; };
 		27324BB411EACEC400D5F78D /* cloud-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud-1.png"; sourceTree = "<group>"; };
 		27324BB511EACEC400D5F78D /* cloud-1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud-1-hd.png"; sourceTree = "<group>"; };
 		27324BB611EACEC400D5F78D /* cloud-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud-2.png"; sourceTree = "<group>"; };
@@ -1010,6 +1024,9 @@
 		27AD0C32123C61FF00E290D5 /* Chipmunk */ = {
 			isa = PBXGroup;
 			children = (
+				272F2FD912DFBD20004AE70A /* cpSpaceComponent.c */,
+				272F2FDA12DFBD20004AE70A /* cpSpaceQuery.c */,
+				272F2FDB12DFBD20004AE70A /* cpSpaceStep.c */,
 				27AD0C33123C61FF00E290D5 /* chipmunk-docs.html */,
 				27AD0C34123C61FF00E290D5 /* CMakeLists.txt */,
 				27AD0C35123C61FF00E290D5 /* cocos2d_chipmunk_demo.patch */,
@@ -1118,6 +1135,10 @@
 		27AD0C8D123C61FF00E290D5 /* cocos2d */ = {
 			isa = PBXGroup;
 			children = (
+				272F2FB912DFBA2D004AE70A /* CCAnimation.h */,
+				272F2FBA12DFBA2D004AE70A /* CCAnimation.m */,
+				272F2FBB12DFBA2D004AE70A /* CCAnimationCache.h */,
+				272F2FBC12DFBA2D004AE70A /* CCAnimationCache.m */,
 				27AD0C8E123C61FF00E290D5 /* CCAction.h */,
 				27AD0C8F123C61FF00E290D5 /* CCAction.m */,
 				27AD0C90123C61FF00E290D5 /* CCActionCamera.h */,
@@ -1822,6 +1843,8 @@
 				27AD0E1E123C61FF00E290D5 /* utlist.h in Headers */,
 				27AD0E1F123C61FF00E290D5 /* ZipUtils.h in Headers */,
 				2792E301123DAFFE0040F5E6 /* GameViewController.h in Headers */,
+				272F2FBD12DFBA2D004AE70A /* CCAnimation.h in Headers */,
+				272F2FBF12DFBA2D004AE70A /* CCAnimationCache.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2196,6 +2219,11 @@
 				27AD0E1C123C61FF00E290D5 /* TransformUtils.m in Sources */,
 				27AD0E20123C61FF00E290D5 /* ZipUtils.m in Sources */,
 				2792E302123DAFFE0040F5E6 /* GameViewController.m in Sources */,
+				272F2FBE12DFBA2D004AE70A /* CCAnimation.m in Sources */,
+				272F2FC012DFBA2D004AE70A /* CCAnimationCache.m in Sources */,
+				272F2FDC12DFBD20004AE70A /* cpSpaceComponent.c in Sources */,
+				272F2FDD12DFBD20004AE70A /* cpSpaceQuery.c in Sources */,
+				272F2FDE12DFBD20004AE70A /* cpSpaceStep.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2228,7 +2256,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FlurryLib\"",
@@ -2268,7 +2296,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FlurryLib\"",
@@ -2324,7 +2352,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FlurryLib\"",
@@ -2405,7 +2433,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FlurryLib\"",

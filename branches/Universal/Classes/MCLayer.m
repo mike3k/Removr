@@ -81,20 +81,23 @@ static CCFiniteTimeAction *_move2;
 - (NSString*)altScaledFile: (NSString*)name
 {
     NSString *_tmpName = _nightMode ? [NSString stringWithFormat:@"alt-%@",name] : name;
-
+/*
     if (_scale > 1) {
         //return [name stringByAppendingString:@"@x2"];
         return [_tmpName stringByReplacingOccurrencesOfString:@".png" withString:@"@x2.png"];
     }
+ */
     return _tmpName;
 }
 
 - (NSString*)scaledFile: (NSString*)name
 {
+    /*
     if (_scale > 1) {
         //return [name stringByAppendingString:@"@x2"];
         return [name stringByReplacingOccurrencesOfString:@".png" withString:@"@x2.png"];
     }
+     */
     return name;
 }
 

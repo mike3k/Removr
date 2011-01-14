@@ -29,9 +29,19 @@
 
     [director setAnimationInterval:1.0/60];
 
-    EAGLView *glView = [EAGLView viewWithFrame:[window bounds] pixelFormat:kEAGLColorFormatRGB565 depthFormat:0 preserveBackbuffer:NO];
+    EAGLView *glView = [EAGLView viewWithFrame:[window bounds] 
+                                   pixelFormat:kEAGLColorFormatRGB565 
+                                   depthFormat:0 preserveBackbuffer:NO
+                                    sharegroup:nil
+                                 multiSampling:NO
+                               numberOfSamples:0
+                        ];
+    
     [director setOpenGLView:glView];
-	[glView setMultipleTouchEnabled:YES];
+    [glView setMultipleTouchEnabled:YES];
+    
+    if( ! [director enableRetinaDisplay:YES] )
+        CCLOG(@"Retina Display Not supported");
     
     controller = [[GameViewController alloc] init];
     if ([window respondsToSelector:@selector(setRootViewController:)]) {
