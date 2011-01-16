@@ -69,18 +69,6 @@ NSString *format_time(NSTimeInterval tm)
         if (nil == _levelTimes) {
             self.levelTimes = [NSMutableData dataWithLength:(100*sizeof(NSTimeInterval))];
         }
-//        if ( [[[UIDevice currentDevice] systemVersion] compare:@"4.0" options:NSNumericSearch] == NSOrderedAscending ) {
-//            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-//                self.scale = 2;
-//            }
-//            else {
-//                self.scale = 1;
-//            }
-//        }
-//        else {
-//            self.scale = [[UIScreen mainScreen] scale];
-//        }
-//        self.scale = 1;
     }
     return self;
 }

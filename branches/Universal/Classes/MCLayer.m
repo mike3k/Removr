@@ -22,7 +22,7 @@
 
 CGFloat DeviceScale()
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         return 2.0;
     }
     else {
@@ -62,7 +62,7 @@ static CCFiniteTimeAction *_move2;
         self.nightMode = isNightMode();
         self.scale = DeviceScale();
         _screen.size = [[CCDirector sharedDirector] winSize];
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             _screen.origin.x = (_screen.size.width - 960)/2;
             _screen.origin.y = (_screen.size.height - 640)/2;
             _screen.size = CGSizeMake(960, 640);

@@ -28,7 +28,7 @@
 		ignoreCount = 0;
 		lineNumber = 161;
 		location = Blocks;
-		modificationTime = 316839847.876311;
+		modificationTime = 316891724.040145;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -74,7 +74,7 @@
 		ignoreCount = 0;
 		lineNumber = 35;
 		location = Removr;
-		modificationTime = 316839847.898913;
+		modificationTime = 316891724.188675;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -92,7 +92,7 @@
 		ignoreCount = 0;
 		lineNumber = 281;
 		location = Removr;
-		modificationTime = 316839847.895978;
+		modificationTime = 316891724.152501;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -110,7 +110,7 @@
 		ignoreCount = 0;
 		lineNumber = 144;
 		location = Removr;
-		modificationTime = 316839847.896761;
+		modificationTime = 316891724.154251;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -128,7 +128,7 @@
 		ignoreCount = 0;
 		lineNumber = 423;
 		location = Removr;
-		modificationTime = 316839847.897487;
+		modificationTime = 316891724.155511;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -146,7 +146,7 @@
 		ignoreCount = 0;
 		lineNumber = 718;
 		location = Removr;
-		modificationTime = 316839847.898231;
+		modificationTime = 316891724.187245;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -159,7 +159,7 @@
 	};
 	272D6C0811DD2B800064FAEC /* LevelMenuItem.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {958, 2067}}";
+			sepNavIntBoundsRect = "{{0, 0}, {958, 2080}}";
 			sepNavSelRange = "{2158, 0}";
 			sepNavVisRange = "{3023, 631}";
 		};
@@ -178,7 +178,7 @@
 		ignoreCount = 0;
 		lineNumber = 395;
 		location = Removr;
-		modificationTime = 316839847.879066;
+		modificationTime = 316891724.049358;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -196,7 +196,7 @@
 		ignoreCount = 0;
 		lineNumber = 56;
 		location = Removr;
-		modificationTime = 316839847.87972;
+		modificationTime = 316891724.050526;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -214,7 +214,7 @@
 		ignoreCount = 0;
 		lineNumber = 35;
 		location = Removr;
-		modificationTime = 316839847.880369;
+		modificationTime = 316891724.134863;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -232,7 +232,7 @@
 		ignoreCount = 0;
 		lineNumber = 55;
 		location = Removr;
-		modificationTime = 316839847.890056;
+		modificationTime = 316891724.136231;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -250,7 +250,7 @@
 		ignoreCount = 0;
 		lineNumber = 27;
 		location = Removr;
-		modificationTime = 316839847.89107;
+		modificationTime = 316891724.138191;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -328,11 +328,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 507022A2107672FA00393637 /* BlocksAppDelegate.m */;
 		functionName = "-applicationDidFinishLaunching:";
-		hitCount = 1;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 23;
 		location = Removr;
-		modificationTime = 316839851.27501;
+		modificationTime = 316891725.186566;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -360,11 +360,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 27AD0D09123C61FF00E290D5 /* CCDirectorIOS.m */;
 		functionName = "-enableRetinaDisplay:";
-		hitCount = 1;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 453;
 		location = Removr;
-		modificationTime = 316839855.680823;
+		modificationTime = 316891725.279933;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -402,7 +402,7 @@
 		ignoreCount = 0;
 		lineNumber = 98;
 		location = Removr;
-		modificationTime = 316839847.906296;
+		modificationTime = 316891724.21825;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -420,7 +420,7 @@
 		ignoreCount = 0;
 		lineNumber = 247;
 		location = Removr;
-		modificationTime = 316839847.907194;
+		modificationTime = 316891725.367147;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -448,7 +448,7 @@
 		ignoreCount = 0;
 		lineNumber = 38;
 		location = Removr;
-		modificationTime = 316839847.907993;
+		modificationTime = 316891725.421498;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -466,7 +466,7 @@
 		ignoreCount = 0;
 		lineNumber = 107;
 		location = Removr;
-		modificationTime = 316839847.908874;
+		modificationTime = 316891724.222201;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -484,7 +484,7 @@
 		ignoreCount = 0;
 		lineNumber = 145;
 		location = Removr;
-		modificationTime = 316839847.909765;
+		modificationTime = 316891724.223358;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -578,11 +578,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 507022A2107672FA00393637 /* BlocksAppDelegate.m */;
 		functionName = "-applicationDidFinishLaunching:";
-		hitCount = 1;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 54;
 		location = Removr;
-		modificationTime = 316839917.435503;
+		modificationTime = 316891725.507377;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -788,7 +788,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 42";
 		rLen = 0;
-		rLoc = 1346;
+		rLoc = 1326;
 		rType = 0;
 		vrLen = 783;
 		vrLoc = 658;
@@ -798,7 +798,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 100";
 		rLen = 0;
-		rLoc = 3088;
+		rLoc = 3048;
 		rType = 0;
 		vrLen = 1048;
 		vrLoc = 1278;
@@ -837,7 +837,7 @@
 		ignoreCount = 0;
 		lineNumber = 214;
 		location = Removr;
-		modificationTime = 316839847.895162;
+		modificationTime = 316891724.149719;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -862,7 +862,7 @@
 		ignoreCount = 0;
 		lineNumber = 618;
 		location = Removr;
-		modificationTime = 316839847.904085;
+		modificationTime = 316891725.080997;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -880,7 +880,7 @@
 		ignoreCount = 0;
 		lineNumber = 470;
 		location = Removr;
-		modificationTime = 316839847.901778;
+		modificationTime = 316891724.191347;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1070,7 +1070,7 @@
 		ignoreCount = 0;
 		lineNumber = 334;
 		location = Removr;
-		modificationTime = 316839847.877752;
+		modificationTime = 316891724.045783;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1115,7 +1115,7 @@
 		ignoreCount = 0;
 		lineNumber = 56;
 		location = Removr;
-		modificationTime = 316839847.902599;
+		modificationTime = 316891724.20294;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1133,7 +1133,7 @@
 		ignoreCount = 0;
 		lineNumber = 96;
 		location = Removr;
-		modificationTime = 316839847.903377;
+		modificationTime = 316891724.204653;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1150,7 +1150,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 166;
-		modificationTime = 316839847.872997;
+		modificationTime = 316891724.017462;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1252,7 +1252,7 @@
 		ignoreCount = 0;
 		lineNumber = 505;
 		location = Removr;
-		modificationTime = 316839847.899607;
+		modificationTime = 316891724.190123;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1270,7 +1270,7 @@
 		ignoreCount = 0;
 		lineNumber = 136;
 		location = Removr;
-		modificationTime = 316839847.893095;
+		modificationTime = 316891724.145563;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1288,7 +1288,7 @@
 		ignoreCount = 0;
 		lineNumber = 326;
 		location = Removr;
-		modificationTime = 316839847.875692;
+		modificationTime = 316891724.023043;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1320,7 +1320,7 @@
 		ignoreCount = 0;
 		lineNumber = 266;
 		location = Removr;
-		modificationTime = 316839847.891755;
+		modificationTime = 316891724.142082;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1338,7 +1338,7 @@
 		ignoreCount = 0;
 		lineNumber = 90;
 		location = Removr;
-		modificationTime = 316839847.892417;
+		modificationTime = 316891724.144119;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1370,7 +1370,7 @@
 		ignoreCount = 0;
 		lineNumber = 141;
 		location = Blocks;
-		modificationTime = 316839847.873978;
+		modificationTime = 316891724.019509;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1388,7 +1388,7 @@
 		ignoreCount = 0;
 		lineNumber = 207;
 		location = Blocks;
-		modificationTime = 316839847.874674;
+		modificationTime = 316891724.021518;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1471,9 +1471,9 @@
 	};
 	279B6CD711B19E3200243BF7 /* MCLayer.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1221, 3731}}";
-			sepNavSelRange = "{2432, 0}";
-			sepNavVisRange = "{2534, 576}";
+			sepNavIntBoundsRect = "{{0, 0}, {958, 3874}}";
+			sepNavSelRange = "{461, 18}";
+			sepNavVisRange = "{278, 950}";
 		};
 	};
 	27A389CC118132BE00FBC9EE /* ShapeSprite.m */ = {
@@ -1815,7 +1815,7 @@
 		ignoreCount = 0;
 		lineNumber = 99;
 		location = Removr;
-		modificationTime = 316839847.877117;
+		modificationTime = 316891724.043233;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1874,7 +1874,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 90;
-		modificationTime = 316839847.871892;
+		modificationTime = 316891724.01381;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1899,7 +1899,7 @@
 		ignoreCount = 0;
 		lineNumber = 577;
 		location = Removr;
-		modificationTime = 316839847.893741;
+		modificationTime = 316891724.147156;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1917,7 +1917,7 @@
 		ignoreCount = 0;
 		lineNumber = 388;
 		location = Removr;
-		modificationTime = 316839847.894436;
+		modificationTime = 316891724.148554;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1944,9 +1944,9 @@
 	};
 	27C24C7F11D63FDC006F5A47 /* AppSettings.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {958, 1482}}";
-			sepNavSelRange = "{2576, 79}";
-			sepNavVisRange = "{1497, 1569}";
+			sepNavIntBoundsRect = "{{0, 0}, {958, 1300}}";
+			sepNavSelRange = "{2438, 0}";
+			sepNavVisRange = "{1497, 1628}";
 		};
 	};
 	27C24CB411D7B9E2006F5A47 /* LevelCompleteMsg.h */ = {
@@ -1977,7 +1977,7 @@
 		ignoreCount = 0;
 		lineNumber = 72;
 		location = Removr;
-		modificationTime = 316839847.878413;
+		modificationTime = 316891724.047209;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -2000,7 +2000,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 100";
 		rLen = 0;
-		rLoc = 3088;
+		rLoc = 3048;
 		rType = 0;
 		vrLen = 595;
 		vrLoc = 1713;
@@ -2010,7 +2010,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 100";
 		rLen = 0;
-		rLoc = 3088;
+		rLoc = 3048;
 		rType = 0;
 		vrLen = 595;
 		vrLoc = 1713;
@@ -2070,7 +2070,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 75";
 		rLen = 19;
-		rLoc = 2307;
+		rLoc = 2267;
 		rType = 0;
 		vrLen = 1066;
 		vrLoc = 1441;
@@ -2110,7 +2110,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 19";
 		rLen = 0;
-		rLoc = 576;
+		rLoc = 556;
 		rType = 0;
 		vrLen = 883;
 		vrLoc = 0;
@@ -2199,7 +2199,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 83";
 		rLen = 0;
-		rLoc = 2156;
+		rLoc = 2116;
 		rType = 0;
 		vrLen = 657;
 		vrLoc = 1629;
@@ -2326,7 +2326,7 @@
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 83";
 		rLen = 0;
-		rLoc = 2913;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 1664;
 		vrLoc = 1292;
@@ -2336,7 +2336,7 @@
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 83";
 		rLen = 0;
-		rLoc = 2913;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 1645;
 		vrLoc = 1292;
@@ -2356,7 +2356,7 @@
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 83";
 		rLen = 0;
-		rLoc = 2913;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 623;
 		vrLoc = 2333;
@@ -2366,7 +2366,7 @@
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 88";
 		rLen = 0;
-		rLoc = 2913;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 1380;
 		vrLoc = 2198;
@@ -2376,7 +2376,7 @@
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 88";
 		rLen = 0;
-		rLoc = 2913;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 1266;
 		vrLoc = 2198;
@@ -2386,7 +2386,7 @@
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 88";
 		rLen = 0;
-		rLoc = 2913;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 651;
 		vrLoc = 2425;
@@ -2396,7 +2396,7 @@
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 88";
 		rLen = 0;
-		rLoc = 2913;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 1380;
 		vrLoc = 2198;
@@ -2406,7 +2406,7 @@
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 83";
 		rLen = 0;
-		rLoc = 2896;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 1457;
 		vrLoc = 2198;
@@ -2446,7 +2446,7 @@
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 84";
 		rLen = 0;
-		rLoc = 2913;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 534;
 		vrLoc = 2425;
@@ -2466,7 +2466,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 83";
 		rLen = 0;
-		rLoc = 2156;
+		rLoc = 2116;
 		rType = 0;
 		vrLen = 657;
 		vrLoc = 1629;
@@ -2540,7 +2540,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 83";
 		rLen = 0;
-		rLoc = 2156;
+		rLoc = 2116;
 		rType = 0;
 		vrLen = 657;
 		vrLoc = 1629;
@@ -2560,7 +2560,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 83";
 		rLen = 0;
-		rLoc = 2156;
+		rLoc = 2116;
 		rType = 0;
 		vrLen = 1073;
 		vrLoc = 1469;
@@ -2627,7 +2627,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 83";
 		rLen = 0;
-		rLoc = 2156;
+		rLoc = 2116;
 		rType = 0;
 		vrLen = 570;
 		vrLoc = 1530;
@@ -2637,7 +2637,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 83";
 		rLen = 0;
-		rLoc = 2156;
+		rLoc = 2116;
 		rType = 0;
 		vrLen = 983;
 		vrLoc = 1380;
@@ -2684,7 +2684,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 83";
 		rLen = 0;
-		rLoc = 2156;
+		rLoc = 2116;
 		rType = 0;
 		vrLen = 570;
 		vrLoc = 1530;
@@ -2830,7 +2830,7 @@
 		ignoreCount = 0;
 		lineNumber = 668;
 		location = Removr;
-		modificationTime = 316839847.911308;
+		modificationTime = 316891725.773533;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -3006,7 +3006,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 83";
 		rLen = 0;
-		rLoc = 2156;
+		rLoc = 2116;
 		rType = 0;
 		vrLen = 480;
 		vrLoc = 1530;
@@ -3093,7 +3093,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 83";
 		rLen = 0;
-		rLoc = 2156;
+		rLoc = 2116;
 		rType = 0;
 		vrLen = 480;
 		vrLoc = 1530;
@@ -3170,7 +3170,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 53";
 		rLen = 0;
-		rLoc = 1346;
+		rLoc = 1326;
 		rType = 0;
 		vrLen = 779;
 		vrLoc = 746;
@@ -3189,8 +3189,8 @@
 		isa = PBXTextBookmark;
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 81";
-		rLen = 5;
-		rLoc = 2864;
+		rLen = 0;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 1569;
 		vrLoc = 1497;
@@ -3300,7 +3300,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 16";
 		rLen = 0;
-		rLoc = 573;
+		rLoc = 553;
 		rType = 0;
 		vrLen = 803;
 		vrLoc = 0;
@@ -3309,8 +3309,8 @@
 		isa = PBXTextBookmark;
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 83";
-		rLen = 5;
-		rLoc = 2901;
+		rLen = 0;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 1569;
 		vrLoc = 1497;
@@ -3529,8 +3529,8 @@
 		isa = PBXTextBookmark;
 		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
 		name = "AppSettings.m: 73";
-		rLen = 79;
-		rLoc = 2576;
+		rLen = 0;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 1569;
 		vrLoc = 1497;
@@ -3540,7 +3540,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 57";
 		rLen = 0;
-		rLoc = 1346;
+		rLoc = 1326;
 		rType = 0;
 		vrLen = 862;
 		vrLoc = 589;
@@ -3550,7 +3550,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 118";
 		rLen = 0;
-		rLoc = 3088;
+		rLoc = 3048;
 		rType = 0;
 		vrLen = 1065;
 		vrLoc = 1606;
@@ -3560,7 +3560,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 118";
 		rLen = 0;
-		rLoc = 3088;
+		rLoc = 3048;
 		rType = 0;
 		vrLen = 1065;
 		vrLoc = 1606;
@@ -3570,7 +3570,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 118";
 		rLen = 0;
-		rLoc = 3088;
+		rLoc = 3048;
 		rType = 0;
 		vrLen = 1044;
 		vrLoc = 1606;
@@ -3590,7 +3590,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 118";
 		rLen = 0;
-		rLoc = 3088;
+		rLoc = 3048;
 		rType = 0;
 		vrLen = 490;
 		vrLoc = 2181;
@@ -3600,7 +3600,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 118";
 		rLen = 0;
-		rLoc = 3088;
+		rLoc = 3048;
 		rType = 0;
 		vrLen = 1056;
 		vrLoc = 1799;
@@ -3610,7 +3610,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 118";
 		rLen = 0;
-		rLoc = 3088;
+		rLoc = 3048;
 		rType = 0;
 		vrLen = 1051;
 		vrLoc = 1799;
@@ -3620,7 +3620,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 118";
 		rLen = 0;
-		rLoc = 3088;
+		rLoc = 3048;
 		rType = 0;
 		vrLen = 490;
 		vrLoc = 2181;
@@ -3630,7 +3630,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 105";
 		rLen = 0;
-		rLoc = 2794;
+		rLoc = 2754;
 		rType = 0;
 		vrLen = 1055;
 		vrLoc = 1799;
@@ -3640,7 +3640,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 105";
 		rLen = 0;
-		rLoc = 2794;
+		rLoc = 2754;
 		rType = 0;
 		vrLen = 1050;
 		vrLoc = 1799;
@@ -3650,7 +3650,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 105";
 		rLen = 0;
-		rLoc = 2794;
+		rLoc = 2754;
 		rType = 0;
 		vrLen = 489;
 		vrLoc = 2181;
@@ -3660,7 +3660,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 105";
 		rLen = 0;
-		rLoc = 2794;
+		rLoc = 2754;
 		rType = 0;
 		vrLen = 1055;
 		vrLoc = 1799;
@@ -3700,7 +3700,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 105";
 		rLen = 0;
-		rLoc = 2794;
+		rLoc = 2754;
 		rType = 0;
 		vrLen = 489;
 		vrLoc = 2181;
@@ -3730,7 +3730,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 105";
 		rLen = 0;
-		rLoc = 2794;
+		rLoc = 2754;
 		rType = 0;
 		vrLen = 722;
 		vrLoc = 889;
@@ -3765,11 +3765,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		functionName = "-init";
-		hitCount = 2;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 65;
 		location = Removr;
-		modificationTime = 316839928.982946;
+		modificationTime = 316891725.648439;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -3798,7 +3798,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 68";
 		rLen = 0;
-		rLoc = 1749;
+		rLoc = 1709;
 		rType = 0;
 		vrLen = 1203;
 		vrLoc = 727;
@@ -3808,7 +3808,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 103";
 		rLen = 0;
-		rLoc = 2432;
+		rLoc = 2392;
 		rType = 0;
 		vrLen = 994;
 		vrLoc = 1877;
@@ -3818,7 +3818,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 103";
 		rLen = 0;
-		rLoc = 2432;
+		rLoc = 2392;
 		rType = 0;
 		vrLen = 969;
 		vrLoc = 1877;
@@ -3865,7 +3865,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 65";
 		rLen = 0;
-		rLoc = 1487;
+		rLoc = 1467;
 		rType = 0;
 		vrLen = 476;
 		vrLoc = 1487;
@@ -3875,7 +3875,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 67";
 		rLen = 0;
-		rLoc = 1698;
+		rLoc = 1658;
 		rType = 0;
 		vrLen = 973;
 		vrLoc = 1137;
@@ -3885,7 +3885,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 67";
 		rLen = 0;
-		rLoc = 1698;
+		rLoc = 1658;
 		rType = 0;
 		vrLen = 945;
 		vrLoc = 1137;
@@ -3895,7 +3895,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 67";
 		rLen = 0;
-		rLoc = 1698;
+		rLoc = 1658;
 		rType = 0;
 		vrLen = 279;
 		vrLoc = 1751;
@@ -3905,7 +3905,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 67";
 		rLen = 0;
-		rLoc = 1696;
+		rLoc = 1656;
 		rType = 0;
 		vrLen = 973;
 		vrLoc = 1137;
@@ -3915,7 +3915,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 67";
 		rLen = 0;
-		rLoc = 1696;
+		rLoc = 1656;
 		rType = 0;
 		vrLen = 945;
 		vrLoc = 1137;
@@ -3925,7 +3925,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 67";
 		rLen = 0;
-		rLoc = 1696;
+		rLoc = 1656;
 		rType = 0;
 		vrLen = 486;
 		vrLoc = 1487;
@@ -3985,7 +3985,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 146";
 		rLen = 10;
-		rLoc = 4031;
+		rLoc = 3991;
 		rType = 0;
 		vrLen = 961;
 		vrLoc = 2881;
@@ -3995,7 +3995,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 148";
 		rLen = 0;
-		rLoc = 3685;
+		rLoc = 3645;
 		rType = 0;
 		vrLen = 875;
 		vrLoc = 3108;
@@ -4015,7 +4015,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 148";
 		rLen = 0;
-		rLoc = 3685;
+		rLoc = 3645;
 		rType = 0;
 		vrLen = 875;
 		vrLoc = 3108;
@@ -4025,7 +4025,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 103";
 		rLen = 0;
-		rLoc = 2432;
+		rLoc = 2392;
 		rType = 0;
 		vrLen = 958;
 		vrLoc = 1968;
@@ -4035,7 +4035,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 103";
 		rLen = 0;
-		rLoc = 2432;
+		rLoc = 2392;
 		rType = 0;
 		vrLen = 1103;
 		vrLoc = 2631;
@@ -4045,7 +4045,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 103";
 		rLen = 0;
-		rLoc = 2432;
+		rLoc = 2392;
 		rType = 0;
 		vrLen = 1179;
 		vrLoc = 2534;
@@ -4055,7 +4055,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 103";
 		rLen = 0;
-		rLoc = 2432;
+		rLoc = 2392;
 		rType = 0;
 		vrLen = 1179;
 		vrLoc = 2534;
@@ -4065,7 +4065,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 103";
 		rLen = 0;
-		rLoc = 2432;
+		rLoc = 2392;
 		rType = 0;
 		vrLen = 1161;
 		vrLoc = 2534;
@@ -4075,7 +4075,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 103";
 		rLen = 0;
-		rLoc = 2432;
+		rLoc = 2392;
 		rType = 0;
 		vrLen = 576;
 		vrLoc = 2534;
@@ -4085,7 +4085,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 103";
 		rLen = 0;
-		rLoc = 2432;
+		rLoc = 2392;
 		rType = 0;
 		vrLen = 1256;
 		vrLoc = 2189;
@@ -4147,7 +4147,7 @@
 		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
 		name = "MCLayer.m: 103";
 		rLen = 0;
-		rLoc = 2432;
+		rLoc = 2392;
 		rType = 0;
 		vrLen = 576;
 		vrLoc = 2534;
@@ -4535,8 +4535,229 @@
 		vrLen = 631;
 		vrLoc = 3023;
 	};
+	27DA8F4212E3619100FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 272D6C0811DD2B800064FAEC /* LevelMenuItem.m */;
+		name = "LevelMenuItem.m: 74";
+		rLen = 0;
+		rLoc = 2158;
+		rType = 0;
+		vrLen = 631;
+		vrLoc = 3023;
+	};
+	27DA8F4312E3619800FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 272D6C0811DD2B800064FAEC /* LevelMenuItem.m */;
+		name = "LevelMenuItem.m: 74";
+		rLen = 0;
+		rLoc = 2158;
+		rType = 0;
+		vrLen = 593;
+		vrLoc = 3023;
+	};
+	27DA8F4612E361DE00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 272D6C0811DD2B800064FAEC /* LevelMenuItem.m */;
+		name = "LevelMenuItem.m: 74";
+		rLen = 0;
+		rLoc = 2158;
+		rType = 0;
+		vrLen = 274;
+		vrLoc = 3023;
+	};
+	27DA8F4712E361DE00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		rLen = 0;
+		rLoc = 24;
+		rType = 1;
+	};
+	27DA8F4812E361DE00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 0;
+		rLoc = 422;
+		rType = 0;
+		vrLen = 325;
+		vrLoc = 278;
+	};
+	27DA8F4B12E3623F00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 272D6C0811DD2B800064FAEC /* LevelMenuItem.m */;
+		name = "LevelMenuItem.m: 74";
+		rLen = 0;
+		rLoc = 2158;
+		rType = 0;
+		vrLen = 631;
+		vrLoc = 3023;
+	};
+	27DA8F4C12E3623F00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 0;
+		rLoc = 455;
+		rType = 0;
+		vrLen = 908;
+		vrLoc = 0;
+	};
+	27DA8F4D12E3624800FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 0;
+		rLoc = 455;
+		rType = 0;
+		vrLen = 828;
+		vrLoc = 0;
+	};
+	27DA8F5012E3626A00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		rLen = 0;
+		rLoc = 64;
+		rType = 1;
+	};
+	27DA8F5112E3626A00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 65";
+		rLen = 0;
+		rLoc = 1479;
+		rType = 0;
+		vrLen = 669;
+		vrLoc = 1156;
+	};
+	27DA8F5412E3629F00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 27C24C7F11D63FDC006F5A47 /* AppSettings.m */;
+		name = "AppSettings.m: 72";
+		rLen = 0;
+		rLoc = 2438;
+		rType = 0;
+		vrLen = 1628;
+		vrLoc = 1497;
+	};
+	27DA8F5512E3629F00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+	};
+	27DA8F5612E3629F00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+		vrLen = 882;
+		vrLoc = 35;
+	};
+	27DA8F5712E362A700FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 35;
+	};
+	27DA8F5B12E370AD00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+		vrLen = 409;
+		vrLoc = 508;
+	};
+	27DA8F5C12E370B200FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+		vrLen = 950;
+		vrLoc = 278;
+	};
+	27DA8F5F12E3719200FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+		vrLen = 409;
+		vrLoc = 508;
+	};
+	27DA8F6212E3719D00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 278;
+	};
+	27DA8F6512E3724B00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+		vrLen = 409;
+		vrLoc = 508;
+	};
+	27DA8F6612E3724F00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+		vrLen = 950;
+		vrLoc = 278;
+	};
+	27DA8F6712E3726500FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 278;
+	};
+	27DA8F6912E376CC00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+		vrLen = 409;
+		vrLoc = 508;
+	};
+	27DA8F7412E376FC00FFAB90 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 279B6CD711B19E3200243BF7 /* MCLayer.m */;
+		name = "MCLayer.m: 25";
+		rLen = 18;
+		rLoc = 461;
+		rType = 0;
+		vrLen = 950;
+		vrLoc = 278;
+	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Release;
+		activeBuildConfigurationName = Distribution;
 		activeExecutable = 276D00FD11794F29002A396A /* Removr */;
 		activeSDKPreference = iphoneos4.2;
 		activeTarget = 276D00E111794F29002A396A /* Removr */;
@@ -5035,6 +5256,29 @@
 			27DA8F3B12E2B8D500FFAB90 /* PBXBookmark */ = 27DA8F3B12E2B8D500FFAB90 /* PBXBookmark */;
 			27DA8F3C12E2B8D500FFAB90 /* PBXTextBookmark */ = 27DA8F3C12E2B8D500FFAB90 /* PBXTextBookmark */;
 			27DA8F3D12E2B8D800FFAB90 /* PBXTextBookmark */ = 27DA8F3D12E2B8D800FFAB90 /* PBXTextBookmark */;
+			27DA8F4212E3619100FFAB90 /* PBXTextBookmark */ = 27DA8F4212E3619100FFAB90 /* PBXTextBookmark */;
+			27DA8F4312E3619800FFAB90 /* PBXTextBookmark */ = 27DA8F4312E3619800FFAB90 /* PBXTextBookmark */;
+			27DA8F4612E361DE00FFAB90 /* PBXTextBookmark */ = 27DA8F4612E361DE00FFAB90 /* PBXTextBookmark */;
+			27DA8F4712E361DE00FFAB90 /* PBXTextBookmark */ = 27DA8F4712E361DE00FFAB90 /* PBXTextBookmark */;
+			27DA8F4812E361DE00FFAB90 /* PBXTextBookmark */ = 27DA8F4812E361DE00FFAB90 /* PBXTextBookmark */;
+			27DA8F4B12E3623F00FFAB90 /* PBXTextBookmark */ = 27DA8F4B12E3623F00FFAB90 /* PBXTextBookmark */;
+			27DA8F4C12E3623F00FFAB90 /* PBXTextBookmark */ = 27DA8F4C12E3623F00FFAB90 /* PBXTextBookmark */;
+			27DA8F4D12E3624800FFAB90 /* PBXTextBookmark */ = 27DA8F4D12E3624800FFAB90 /* PBXTextBookmark */;
+			27DA8F5012E3626A00FFAB90 /* PBXTextBookmark */ = 27DA8F5012E3626A00FFAB90 /* PBXTextBookmark */;
+			27DA8F5112E3626A00FFAB90 /* PBXTextBookmark */ = 27DA8F5112E3626A00FFAB90 /* PBXTextBookmark */;
+			27DA8F5412E3629F00FFAB90 /* PBXTextBookmark */ = 27DA8F5412E3629F00FFAB90 /* PBXTextBookmark */;
+			27DA8F5512E3629F00FFAB90 /* PBXTextBookmark */ = 27DA8F5512E3629F00FFAB90 /* PBXTextBookmark */;
+			27DA8F5612E3629F00FFAB90 /* PBXTextBookmark */ = 27DA8F5612E3629F00FFAB90 /* PBXTextBookmark */;
+			27DA8F5712E362A700FFAB90 /* PBXTextBookmark */ = 27DA8F5712E362A700FFAB90 /* PBXTextBookmark */;
+			27DA8F5B12E370AD00FFAB90 /* PBXTextBookmark */ = 27DA8F5B12E370AD00FFAB90 /* PBXTextBookmark */;
+			27DA8F5C12E370B200FFAB90 /* PBXTextBookmark */ = 27DA8F5C12E370B200FFAB90 /* PBXTextBookmark */;
+			27DA8F5F12E3719200FFAB90 /* PBXTextBookmark */ = 27DA8F5F12E3719200FFAB90 /* PBXTextBookmark */;
+			27DA8F6212E3719D00FFAB90 /* PBXTextBookmark */ = 27DA8F6212E3719D00FFAB90 /* PBXTextBookmark */;
+			27DA8F6512E3724B00FFAB90 /* PBXTextBookmark */ = 27DA8F6512E3724B00FFAB90 /* PBXTextBookmark */;
+			27DA8F6612E3724F00FFAB90 /* PBXTextBookmark */ = 27DA8F6612E3724F00FFAB90 /* PBXTextBookmark */;
+			27DA8F6712E3726500FFAB90 /* PBXTextBookmark */ = 27DA8F6712E3726500FFAB90 /* PBXTextBookmark */;
+			27DA8F6912E376CC00FFAB90 /* PBXTextBookmark */ = 27DA8F6912E376CC00FFAB90 /* PBXTextBookmark */;
+			27DA8F7412E376FC00FFAB90 /* PBXTextBookmark */ = 27DA8F7412E376FC00FFAB90 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 27B7B0E4117525EB003A7035 /* Source Control */;
 		userBuildSettings = {

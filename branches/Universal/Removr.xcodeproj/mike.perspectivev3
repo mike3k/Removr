@@ -250,8 +250,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -299,13 +297,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>57</integer>
-									<integer>13</integer>
-									<integer>0</integer>
+									<integer>248</integer>
+									<integer>234</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 692}, {241, 775}}</string>
+							<string>{{0, 3560}, {241, 775}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -324,7 +321,7 @@
 							<real>219</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>24 41 1282 834 0 0 1440 878 </string>
+						<string>24 40 1282 834 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -340,7 +337,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>27E7E280117FB56F00806B1D</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>LevelMenuItem.m</string>
+								<string>MCLayer.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -348,11 +345,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>27E7E281117FB56F00806B1D</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>LevelMenuItem.m</string>
+										<string>MCLayer.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>27DA8F3D12E2B8D800FFAB90</string>
+										<string>27DA8F7412E376FC00FFAB90</string>
 										<key>history</key>
 										<array>
 											<string>272F2FC312DFBB57004AE70A</string>
@@ -387,13 +384,11 @@
 											<string>27DA8E3C12E2918E00FFAB90</string>
 											<string>27DA8E3E12E2918E00FFAB90</string>
 											<string>27DA8E4112E2918E00FFAB90</string>
-											<string>27DA8E4212E2918E00FFAB90</string>
 											<string>27DA8E6512E297A500FFAB90</string>
 											<string>27DA8E7B12E29B1800FFAB90</string>
 											<string>27DA8E7C12E29B1800FFAB90</string>
 											<string>27DA8E7D12E29B1800FFAB90</string>
 											<string>27DA8E8112E29C5A00FFAB90</string>
-											<string>27DA8EA212E2A24E00FFAB90</string>
 											<string>27DA8EA712E2A29500FFAB90</string>
 											<string>27DA8EB012E2A3E700FFAB90</string>
 											<string>27DA8EB112E2A3E700FFAB90</string>
@@ -407,7 +402,9 @@
 											<string>27DA8F3212E2B78200FFAB90</string>
 											<string>27DA8F3312E2B78200FFAB90</string>
 											<string>27DA8F3812E2B79300FFAB90</string>
-											<string>27DA8F3C12E2B8D500FFAB90</string>
+											<string>27DA8F4B12E3623F00FFAB90</string>
+											<string>27DA8F5412E3629F00FFAB90</string>
+											<string>27DA8F6912E376CC00FFAB90</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -423,7 +420,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1019, 554}}</string>
 								<key>RubberWindowFrame</key>
-								<string>24 41 1282 834 0 0 1440 878 </string>
+								<string>24 40 1282 834 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -523,7 +520,7 @@
 										<key>Frame</key>
 										<string>{{10, 27}, {1019, 207}}</string>
 										<key>RubberWindowFrame</key>
-										<string>24 41 1282 834 0 0 1440 878 </string>
+										<string>24 40 1282 834 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -728,7 +725,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>316848344.43607002</real>
+	<real>316897020.190615</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -750,7 +747,7 @@
 		<string>/Users/mike/Sources/mystuff/Removr/Removr.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>24 41 1282 834 0 0 1440 878 </string>
+	<string>24 40 1282 834 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
