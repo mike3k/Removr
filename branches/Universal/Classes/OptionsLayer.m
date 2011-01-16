@@ -15,13 +15,13 @@
 
     if ((self = [super init])) {
         aps = [AppSettings shared];
-        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile: self.bgFileName]] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self XDFile: self.bgFileName]] autorelease];
         bSound = [OnOffButton makeButtonWithTarget: self selector: @selector(toggleSound:)];
-        bAccel = [OnOffButton makeButtonWithTarget: self selector: @selector(toggleAccel:)];
+//        bAccel = [OnOffButton makeButtonWithTarget: self selector: @selector(toggleAccel:)];
         bNight = [OnOffButton makeButtonWithTarget: self selector: @selector(toggleNight:)];
 
         bSound.on = aps.sound;
-        bAccel.on = aps.accelerometer;
+//        bAccel.on = aps.accelerometer;
         bNight.on = aps.nightmode;
 
         NSString *spacer = [self scaledFile:@"spacer.png"];
@@ -32,9 +32,9 @@
                         [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"label-sound.png"]
                                                selectedImage:[self scaledFile: @"label-sound.png"]],
                         bSound,
-                        [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"label-accellerometer.png"]
-                                               selectedImage:[self scaledFile: @"label-accellerometer.png"]],
-                        bAccel,
+//                        [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"label-accellerometer.png"]
+//                                               selectedImage:[self scaledFile: @"label-accellerometer.png"]],
+//                        bAccel,
                         [CCMenuItemImage itemFromNormalImage:[self scaledFile:@"label-nightmode.png"]
                                                selectedImage:[self scaledFile:@"label-nightmode.png"]],
                         bNight,
@@ -48,7 +48,7 @@
 
         [menu alignItemsInColumns:  [NSNumber numberWithInt:1],
                                     [NSNumber numberWithInt:2],
-                                    [NSNumber numberWithInt:2],
+//                                    [NSNumber numberWithInt:2],
                                     [NSNumber numberWithInt:2],
                                     [NSNumber numberWithInt:1],
 //                                    [NSNumber numberWithInt:1],
@@ -86,7 +86,7 @@
 - (void)toggleAccel:(id)sender
 {
     //NSLog(@"toggle accelerometer: %@",sender);
-    aps.accelerometer = bAccel.on;
+//    aps.accelerometer = bAccel.on;
 }
 
 - (void)done

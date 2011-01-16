@@ -27,6 +27,8 @@
 
     CCDirector *director = [CCDirector sharedDirector];
 
+	[director setDeviceOrientation:kCCDeviceOrientationLandscapeLeft];
+
     [director setAnimationInterval:1.0/60];
 
     EAGLView *glView = [EAGLView viewWithFrame:[window bounds] 
@@ -53,6 +55,9 @@
     [GameManager shared];   // create and initialize the manager
 
     [window makeKeyAndVisible];
+    
+    NSLog(@"CC Retina Display Supported: %d",CC_IS_RETINA_DISPLAY_SUPPORTED);
+    NSLog(@"CC Content Scale Factor: %f",CC_CONTENT_SCALE_FACTOR());
 }
 
 /*

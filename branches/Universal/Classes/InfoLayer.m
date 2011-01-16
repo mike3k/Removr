@@ -16,7 +16,7 @@
     
     if ((self = [super init])) {
         CGSize wins = [[CCDirector sharedDirector] winSize];
-        self.background = [[[CCSprite alloc] initWithFile:[self altScaledFile: @"info-background.png"]] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self AltXDFile: @"info-background.png"]] autorelease];
         CCMenu *menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"back.png"]
                                                                      selectedImage:[self scaledFile: @"back-sel.png"]
                                                                             target:_delegate 

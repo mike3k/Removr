@@ -27,7 +27,7 @@ NSString *format_time(NSTimeInterval tm);
     
     NSInteger _totalPoints;
     
-    CGFloat _scale;
+//    CGFloat _scale;
 }
 
 @property (assign,nonatomic) BOOL accelerometer;
@@ -45,7 +45,7 @@ NSString *format_time(NSTimeInterval tm);
 @property (assign,nonatomic) NSInteger totalPoints;
 
 // just for convenience
-@property (assign,nonatomic) CGFloat scale;
+//@property (assign,nonatomic) CGFloat scale;
 
 + (AppSettings*)shared;
 

@@ -121,7 +121,7 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void)setAccellerometer
 {
-    self.isAccelerometerEnabled = aps.accelerometer;
+    self.isAccelerometerEnabled = YES;
     if (!self.isAccelerometerEnabled) {
          space->gravity = ccp(0, -200);
    }
@@ -130,7 +130,7 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
 
 - (void) setDefaultBackground
 {
-    self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:self.bgFileName]] autorelease];
+    self.background = [[[CCSprite alloc] initWithFile:[self XDFile:self.bgFileName]] autorelease];
 }
 
 -(id) init
@@ -665,7 +665,7 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     // make sure it doessn't get re-added
     if (nil == [self getChildByTag:kTagPauseBackground])
     {
-        CGSize wins = [[CCDirector sharedDirector] winSize];    
+        CGSize wins = [[CCDirector sharedDirector] winSizeInPixels];   
         CCSprite *dim = [[[CCSprite alloc] initWithFile:@"blackbg.png"] autorelease];
         dim.scaleX = wins.width;
         dim.scaleY = wins.height;
@@ -734,7 +734,7 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
             [self addPauseButton];
         }
         if (nil != theLevelInfo.background) {
-            self.background = [[[CCSprite alloc] initWithFile:[self altScaledFile: theLevelInfo.background]] autorelease];
+            self.background = [[[CCSprite alloc] initWithFile:[self AltXDFile: theLevelInfo.background]] autorelease];
             [self removeClouds];
         }
         else {

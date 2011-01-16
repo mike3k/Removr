@@ -10,6 +10,26 @@
 #import "GameManager.h"
 #import "AppSettings.h"
 
+@implementation CCNode (util)
+
+- (CGPoint) NormalizedAnchorPoint
+{
+    return CGPointMake(contentSize_.width * anchorPoint_.x, contentSize_.height * anchorPoint_.y);
+}
+
+@end
+
+
+CGFloat DeviceScale()
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        return 2.0;
+    }
+    else {
+        return 1.0;
+    }
+}
+
 BOOL isNightMode()
 {
     // only allow night mode if enabled in settings
@@ -28,6 +48,7 @@ BOOL isNightMode()
 @synthesize delegate = _delegate;
 @synthesize scale = _scale;
 @synthesize nightMode = _nightMode;
+@synthesize screen = _screen;
 
 static CCAction *_cloud1Action = nil;
 static CCAction *_cloud2Action = nil;
@@ -37,14 +58,19 @@ static CCFiniteTimeAction *_move2;
 - (id)init
 {
     if ((self = [super init])) {
-
         self.delegate = [GameManager shared];
-        self.scale = [[AppSettings shared] scale];
         self.nightMode = isNightMode();
+        self.scale = DeviceScale();
+        _screen.size = [[CCDirector sharedDirector] winSize];
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            _screen.origin.x = (_screen.size.width - 960)/2;
+            _screen.origin.y = (_screen.size.height - 640)/2;
+            _screen.size = CGSizeMake(960, 640);
+        }
+        else {
+            _screen.origin = CGPointMake(0, 0);
+        }
     }
-#ifndef NDEBUG
-    NSLog(@"MCLayer: [%@ init] - scale=%f",self,self.scale);
-#endif
     return self;
 }
 
@@ -72,7 +98,8 @@ static CCFiniteTimeAction *_move2;
     if (value != _background) {
         [self removeChild:_background cleanup:YES];
         _background = value;
-        CGPoint ap = _background.anchorPointInPixels;
+        //CGPoint ap = _background.anchorPointInPixels;
+        CGPoint ap = [_background NormalizedAnchorPoint];
         _background.position = ccp(ap.x,ap.y);
         [self addChild:_background];
     }
@@ -81,25 +108,49 @@ static CCFiniteTimeAction *_move2;
 - (NSString*)altScaledFile: (NSString*)name
 {
     NSString *_tmpName = _nightMode ? [NSString stringWithFormat:@"alt-%@",name] : name;
-/*
+/* */
     if (_scale > 1) {
         //return [name stringByAppendingString:@"@x2"];
-        return [_tmpName stringByReplacingOccurrencesOfString:@".png" withString:@"@x2.png"];
+        return [_tmpName stringByReplacingOccurrencesOfString:@".png" withString:@"-hd.png"];
     }
- */
+/* */
     return _tmpName;
 }
 
 - (NSString*)scaledFile: (NSString*)name
 {
-    /*
+    /* */
     if (_scale > 1) {
         //return [name stringByAppendingString:@"@x2"];
-        return [name stringByReplacingOccurrencesOfString:@".png" withString:@"@x2.png"];
+        return [name stringByReplacingOccurrencesOfString:@".png" withString:@"-hd.png"];
     }
-     */
+    /* */
     return name;
 }
+
+- (NSString*)AltXDFile: (NSString*)name
+{
+    NSString *_tmpName = _nightMode ? [NSString stringWithFormat:@"alt-%@",name] : name;
+/* */
+    if (_scale > 1) {
+        //return [name stringByAppendingString:@"@x2"];
+        return [_tmpName stringByReplacingOccurrencesOfString:@".png" withString:@"-xd.png"];
+    }
+/* */
+    return _tmpName;
+}
+
+- (NSString*)XDFile: (NSString*)name
+{
+    /* */
+    if (_scale > 1) {
+        //return [name stringByAppendingString:@"@x2"];
+        return [name stringByReplacingOccurrencesOfString:@".png" withString:@"-xd.png"];
+    }
+    /* */
+    return name;
+}
+
 
 - (NSString*)cloud1
 {

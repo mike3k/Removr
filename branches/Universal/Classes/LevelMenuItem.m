@@ -8,6 +8,7 @@
 
 #import "LevelMenuItem.h"
 #import "AppSettings.h"
+#import "MCLayer.h"
 
 @interface LevelMenuItem (private)
 
@@ -31,14 +32,15 @@ enum {
 - (void) makeLevelLabel
 {
     if (nil == _labelLevel) {
-        CGFloat _scale = [[AppSettings shared] scale];
+        _scale = DeviceScale();
         _labelLevel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Level %d", _level]
                                       fontName:@"Marker Felt" 
                                       fontSize:16*_scale];
         //_labelLevel.position = ccp(self.anchorPointInPixels.x,self.anchorPointInPixels.y+2);
         [_labelLevel setColor:ccc3(128, 0, 0)];
         //_labelLevel.position = ccp(0,12*_scale);
-        _labelLevel.position = ccp(self.anchorPointInPixels.x,self.anchorPointInPixels.y+(12*_scale));
+        CGPoint ap = [self NormalizedAnchorPoint];
+        _labelLevel.position = ccp(ap.x,ap.y+(12*_scale));
         [self addChild:_labelLevel z:1 tag:kTagLevelItem];
     }
     else {
@@ -49,14 +51,15 @@ enum {
 - (void) makeMovesLabel
 {
     if (nil == _labelMoves) {
-        CGFloat _scale = [[AppSettings shared] scale];
+        _scale = DeviceScale();
         _labelMoves = [CCLabelTTF labelWithString: [NSString stringWithFormat:@"(%d move%@)",_moves,(_moves>1?@"s":@"")]
                                       fontName:@"Helvetica" 
                                       fontSize:14*_scale];
         //_labelMoves.position = ccp(self.anchorPointInPixels.x,12*_scale);
         [_labelMoves setColor: ccc3(128, 0, 0)];
         //_labelMoves.position = ccp(0,0);
-        _labelMoves.position = ccp(self.anchorPointInPixels.x,self.anchorPointInPixels.y);
+        CGPoint ap = [self NormalizedAnchorPoint];
+        _labelMoves.position = ccp(ap.x,ap.y);
         [self addChild:_labelMoves z:1 tag:kTagMovesItem];
     }
     else {
@@ -67,7 +70,7 @@ enum {
 - (void) makeTimeLabel
 {
     if (nil == _labelTime) {
-        CGFloat _scale = [[AppSettings shared] scale];
+        _scale = DeviceScale();
         //[NSString stringWithFormat:@"(%.0f seconds)",_time]
         _labelTime = [CCLabelTTF labelWithString: format_time(_time)
                                      fontName:@"Helvetica" 
@@ -75,7 +78,8 @@ enum {
         //_labelTime.position = ccp(self.anchorPointInPixels.x,24*_scale);
         [_labelTime setColor: ccc3(128, 0, 0)];
         //_labelTime.position = ccp(0,-(12*_scale));
-        _labelTime.position = ccp(self.anchorPointInPixels.x,self.anchorPointInPixels.y-(12*_scale));
+        CGPoint ap = [self NormalizedAnchorPoint];
+        _labelTime.position = ccp(ap.x,ap.y-(12*_scale));
         [self addChild:_labelTime z:1 tag:kTagTimeLabel];
     }
     else {

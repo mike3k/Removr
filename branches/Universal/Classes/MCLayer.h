@@ -9,6 +9,14 @@
 #import "cocos2d.h"
 #import "chipmunk.h"
 
+@interface CCNode (util)
+
+- (CGPoint) NormalizedAnchorPoint;
+
+@end
+
+CGFloat DeviceScale();
+
 enum {
 	kTagAtlasSpriteSheet = 2,
     kTagPauseButton,
@@ -61,7 +69,8 @@ enum {
     CCSprite *_background;
     
     CGFloat _scale;
-    
+    CGRect _screen;
+
     CCSprite *_sun;
     CCSprite *_cloud1;
     CCSprite *_cloud2;
@@ -82,8 +91,11 @@ enum {
 - (void) stopClouds;
 
 - (NSString*)altScaledFile: (NSString*)name;
-
 - (NSString*)scaledFile: (NSString*)name;
+
+
+- (NSString*)AltXDFile: (NSString*)name;
+- (NSString*)XDFile: (NSString*)name;
 
 @property (retain,nonatomic) CCSprite *background;
 @property (assign,nonatomic) id <MCLayerDelegate> delegate;
@@ -94,6 +106,7 @@ enum {
 @property (readonly) NSString *cloud2;
 @property (readonly) NSString *sunFileName;
 @property (readonly) NSString *bgFileName;
+@property (assign,nonatomic) CGRect screen;
 
 @end
 

@@ -13,7 +13,8 @@
     NSInteger _level;
     NSTimeInterval _time;
     NSInteger _moves;
-    
+    CGFloat _scale;
+
     CCLabelTTF *_labelMoves;
     CCLabelTTF *_labelLevel;
     CCLabelTTF *_labelTime;

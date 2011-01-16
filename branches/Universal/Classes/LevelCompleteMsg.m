@@ -8,6 +8,7 @@
 
 #import "LevelCompleteMsg.h"
 #import "AppSettings.h"
+#import "MCLayer.h"
 
 @implementation LevelCompleteMsg
 
@@ -15,7 +16,7 @@
 {
     self = [super init];
     if (self) {
-        CGFloat _scale = [[AppSettings shared] scale];
+        _scale = DeviceScale();
 //        label = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat: @"Completed Level %d\nin %d moves%s",level,moves,bluemsg] 
         label = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat: @"Completed Level %d",level+1]
                                                                   fontName:@"Marker Felt" 
@@ -46,7 +47,7 @@
 {
     self = [super init];
     if (self) {
-        CGFloat _scale = [[AppSettings shared] scale];
+        _scale = DeviceScale();
         CCSprite *msg = [[CCSprite alloc] initWithFile:(_scale>1 ? @"Level-Complete@x2.png": @"Level-Complete.png")];
         [self addChild: msg];
         label = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat: @"%d",moves] fontName:@"Marker Felt" fontSize:36*_scale];

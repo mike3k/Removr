@@ -8,6 +8,7 @@
 
 #import "ShapeSprite.h"
 #import "AppSettings.h"
+#import "MCLayer.h"
 
 #define FACETX2 (FACET*2)
 #define FACETX3 (FACET*3)
@@ -114,7 +115,7 @@ static CGFloat _scale = 0;
         self.shape = nil;
         self.space = nil;
         if (0 == _scale) {
-            _scale = [[AppSettings shared] scale];
+            _scale = DeviceScale();
         }
     }
     return self;
@@ -207,7 +208,7 @@ static CGFloat _scale = 0;
 //    int stype;
 
     if (0 == _scale) {
-        _scale = [[AppSettings shared] scale];
+        _scale = DeviceScale();
     }
 
     SpriteInfo *sp = &sprites[kind-1];
@@ -227,7 +228,8 @@ static CGFloat _scale = 0;
 //    else if (stype == kHorizBarSprite) {
 //        y -= BAR_H / 2;
 //    }
-    ap = sprite.anchorPointInPixels;
+//    ap = sprite.anchorPointInPixels;
+    ap = [sprite NormalizedAnchorPoint];
     [sheet addChild: sprite];
     
     sprite.info = *sp;

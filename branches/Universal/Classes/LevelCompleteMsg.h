@@ -15,7 +15,8 @@
     float _time;
     int _level;
     int _blueRemoved;
-    
+    float _scale;
+
     CCLabelTTF *label;
     CCLabelTTF *label2;
     CCLabelTTF *label3;

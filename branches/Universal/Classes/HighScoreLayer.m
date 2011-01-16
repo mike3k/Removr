@@ -52,7 +52,7 @@
     if ((self = [super init])) {
         NSString *spacer = [self scaledFile:@"spacer.png"];
         _buttons = [[NSMutableArray alloc] init];
-        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile: self.bgFileName]] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self XDFile: self.bgFileName]] autorelease];
         CGSize wins = [[CCDirector sharedDirector] winSize];
         
         CCMenu *menu = [CCMenu menuWithItems: [CCMenuItemImage itemFromNormalImage:spacer selectedImage:spacer],nil];

@@ -25,7 +25,7 @@
     if ((self = [super init])) {
         NSString *tmp;
 
-        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:self.bgFileName]] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self XDFile:self.bgFileName]] autorelease];
         
         tmp = [self scaledFile:@"logo-menu.png"];
         
@@ -77,7 +77,7 @@
     BOOL tmpNightMode = isNightMode();
     if (tmpNightMode != self.nightMode) {
         self.nightMode = tmpNightMode;
-        self.background = [[[CCSprite alloc] initWithFile:[self scaledFile:self.bgFileName]] autorelease];
+        self.background = [[[CCSprite alloc] initWithFile:[self XDFile:self.bgFileName]] autorelease];
         [self removeClouds];
         [self addClouds];
     }
