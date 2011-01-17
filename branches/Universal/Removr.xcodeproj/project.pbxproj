@@ -334,6 +334,8 @@
 		27AE86F611AD6C3A002DACA5 /* InfoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE86F511AD6C3A002DACA5 /* InfoLayer.m */; };
 		27AE870A11AD9F0E002DACA5 /* logo-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AE870911AD9F0D002DACA5 /* logo-menu.png */; };
 		27AEE2F111C87F42008F9E86 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEE2F011C87F42008F9E86 /* pause.png */; };
+		27B9D5C212E4E884003D766C /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B9D5C012E4E884003D766C /* Default-Landscape.png */; };
+		27B9D5C312E4E884003D766C /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B9D5C112E4E884003D766C /* Default-Portrait.png */; };
 		27BDBD9811D12FD700D31B40 /* intro.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27BDBD9711D12FD600D31B40 /* intro.wav */; };
 		27BE01DB11E6A05000D7CC70 /* Shape-Atlas-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BE01D811E6A05000D7CC70 /* Shape-Atlas-hd.png */; };
 		27BE01DC11E6A05000D7CC70 /* visit-sel-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BE01D911E6A05000D7CC70 /* visit-sel-hd.png */; };
@@ -418,7 +420,6 @@
 		27DA8E9A12E29FD100FFAB90 /* Lvl2Background-xd.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DA8E9012E29FD100FFAB90 /* Lvl2Background-xd.png */; };
 		27DA8E9B12E29FD100FFAB90 /* Lvl3Background-xd.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DA8E9112E29FD100FFAB90 /* Lvl3Background-xd.png */; };
 		27DA8F1412E2B26300FFAB90 /* Removr-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DA8F1312E2B26300FFAB90 /* Removr-72.png */; };
-		27DA8F2412E2B62B00FFAB90 /* Default-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DA8F2312E2B62B00FFAB90 /* Default-iPad.png */; };
 		27DE3C3D12A1B9F600CF18F6 /* pew.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27DE3C3C12A1B9F600CF18F6 /* pew.wav */; };
 		27DE3C4212A1DA2500CF18F6 /* label-nightmode.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DE3C4012A1DA2500CF18F6 /* label-nightmode.png */; };
 		27DE3C4312A1DA2500CF18F6 /* label-nightmode-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DE3C4112A1DA2500CF18F6 /* label-nightmode-hd.png */; };
@@ -834,6 +835,8 @@
 		27AE86F511AD6C3A002DACA5 /* InfoLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoLayer.m; sourceTree = "<group>"; };
 		27AE870911AD9F0D002DACA5 /* logo-menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-menu.png"; sourceTree = "<group>"; };
 		27AEE2F011C87F42008F9E86 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		27B9D5C012E4E884003D766C /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
+		27B9D5C112E4E884003D766C /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		27BDBD9711D12FD600D31B40 /* intro.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = intro.wav; sourceTree = "<group>"; };
 		27BDBDA511D1387000D31B40 /* CDOpenALSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDOpenALSupport.m; path = libs/cocosdenshion/CDOpenALSupport.m; sourceTree = SOURCE_ROOT; };
 		27BE01D811E6A05000D7CC70 /* Shape-Atlas-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shape-Atlas-hd.png"; sourceTree = "<group>"; };
@@ -922,7 +925,6 @@
 		27DA8E9012E29FD100FFAB90 /* Lvl2Background-xd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lvl2Background-xd.png"; sourceTree = "<group>"; };
 		27DA8E9112E29FD100FFAB90 /* Lvl3Background-xd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lvl3Background-xd.png"; sourceTree = "<group>"; };
 		27DA8F1312E2B26300FFAB90 /* Removr-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Removr-72.png"; path = "Toffeenut/Icon/Removr-72.png"; sourceTree = SOURCE_ROOT; };
-		27DA8F2312E2B62B00FFAB90 /* Default-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iPad.png"; sourceTree = "<group>"; };
 		27DE3C3C12A1B9F600CF18F6 /* pew.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = pew.wav; path = Resources/pew.wav; sourceTree = SOURCE_ROOT; };
 		27DE3C4012A1DA2500CF18F6 /* label-nightmode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "label-nightmode.png"; path = "Resources/label-nightmode.png"; sourceTree = SOURCE_ROOT; };
 		27DE3C4112A1DA2500CF18F6 /* label-nightmode-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "label-nightmode-hd.png"; path = "Resources/label-nightmode-hd.png"; sourceTree = SOURCE_ROOT; };
@@ -1573,7 +1575,8 @@
 		50F4144210692EE7002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				27DA8F2312E2B62B00FFAB90 /* Default-iPad.png */,
+				27B9D5C012E4E884003D766C /* Default-Landscape.png */,
+				27B9D5C112E4E884003D766C /* Default-Portrait.png */,
 				27DA8F1312E2B26300FFAB90 /* Removr-72.png */,
 				27DA8E8812E29FD100FFAB90 /* alt-background-xd.png */,
 				27DA8E8912E29FD100FFAB90 /* alt-info-background-xd.png */,
@@ -2106,7 +2109,8 @@
 				27DA8E9A12E29FD100FFAB90 /* Lvl2Background-xd.png in Resources */,
 				27DA8E9B12E29FD100FFAB90 /* Lvl3Background-xd.png in Resources */,
 				27DA8F1412E2B26300FFAB90 /* Removr-72.png in Resources */,
-				27DA8F2412E2B62B00FFAB90 /* Default-iPad.png in Resources */,
+				27B9D5C212E4E884003D766C /* Default-Landscape.png in Resources */,
+				27B9D5C312E4E884003D766C /* Default-Portrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2301,9 +2305,10 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "COCOS2D_DEBUG=1";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2341,9 +2346,10 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2377,7 +2383,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED4275CA-DAA0-48BD-963F-448AB504DEDD";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
@@ -2398,9 +2404,10 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2437,9 +2444,12 @@
 					libs/Chipmunk/include/chipmunk,
 					libs,
 				);
+				INSTALL_PATH = "";
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "cocos2d libraries";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				ZERO_LINK = NO;
 			};
 			name = Distribution;
@@ -2458,7 +2468,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9D1CDCE6-FD49-41F7-A211-B374FEFBCE58";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Adhoc;
@@ -2480,9 +2490,10 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2519,9 +2530,12 @@
 					libs/Chipmunk/include/chipmunk,
 					libs,
 				);
+				INSTALL_PATH = "";
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "cocos2d libraries";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				ZERO_LINK = NO;
 			};
 			name = Adhoc;
@@ -2540,8 +2554,11 @@
 					libs/Chipmunk/include/chipmunk,
 					libs,
 				);
+				INSTALL_PATH = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "cocos2d libraries";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -2562,9 +2579,12 @@
 					libs/Chipmunk/include/chipmunk,
 					libs,
 				);
+				INSTALL_PATH = "";
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "cocos2d libraries";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -2597,7 +2617,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
