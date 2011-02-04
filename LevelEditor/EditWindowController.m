@@ -21,6 +21,10 @@
 @synthesize curLevel;
 @synthesize rowid;
 @synthesize par;
+@synthesize timeLimit;
+@synthesize achievement;
+@synthesize timeLimitAchievement;
+@synthesize moveAchievement;
 
 - (NSNumber*) dbopen { return [NSNumber numberWithBool:(nil != db)]; }
 
@@ -35,6 +39,10 @@
         self.rowid = -1;
         [self addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
         [self addObserver:self forKeyPath:@"par" options:NSKeyValueObservingOptionNew context:nil];
+        [self addObserver:self forKeyPath:@"timeLimit" options:NSKeyValueObservingOptionNew context:nil];
+        [self addObserver:self forKeyPath:@"achievement" options:NSKeyValueObservingOptionNew context:nil];
+        [self addObserver:self forKeyPath:@"timeLimitAchievement" options:NSKeyValueObservingOptionNew context:nil];
+        [self addObserver:self forKeyPath:@"moveAchievement" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -84,7 +92,7 @@
 - (IBAction) OpenDatabase: (id)sender
 {
     NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-    [openPanel setAllowedFileTypes:[NSArray arrayWithObject:@"sqlite3"]];
+    [openPanel setAllowedFileTypes:[NSArray arrayWithObjects:@"sqlite3", @"db", @"leveldb",nil]];
     if ([openPanel runModal] == NSFileHandlingPanelOKButton) {
         [self willChangeValueForKey:@"dbopen"];
         [self open_database: [[openPanel URL] path] create:NO];
@@ -138,8 +146,11 @@
     self.curLevel = -1;
     self.title = @"New Level";
     Level *level = [[Level alloc] init];
-    level.rowid = self.rowid;
-    level.name = self.title;
+    level.index = self.rowid;
+    level.title = self.title;
+    level.achievement = self.achievement;
+    level.timeLimit = self.timeLimit;
+    level.flags = ((timeLimitAchievement ? TimeLimitAchievement : 0) | (moveAchievement ? MoveNumberAchievement : 0));
     [levels addObject: level];
     [theTableView reloadData];
     [level release];
@@ -155,12 +166,16 @@
 {
     int result;
     NSData *data = [theLevelMap encode];
+    NSInteger flags = ((timeLimitAchievement ? TimeLimitAchievement : 0) | (moveAchievement ? MoveNumberAchievement : 0));
     if (rowid <= 0) {
         // insert
         result = sqlite3_reset(insert);
         result = sqlite3_bind_text(insert, 1, [title UTF8String], -1, SQLITE_STATIC);
         result = sqlite3_bind_blob(insert, 2, [data bytes], [data length], SQLITE_STATIC);
-        result = sqlite3_bind_int(insert, 2, par);
+        result = sqlite3_bind_int(insert, 3, par);
+        result = sqlite3_bind_double(insert, 4, timeLimit);
+        result = sqlite3_bind_text(insert, 5, [achievement UTF8String], -1, SQLITE_STATIC);
+        result = sqlite3_bind_int(insert, 6, flags);
         result = sqlite3_step(insert);
         self.rowid = sqlite3_last_insert_rowid(db);
         [self reloadTable];
@@ -173,7 +188,10 @@
         result = sqlite3_bind_text(update, 1, [title UTF8String], -1, SQLITE_STATIC);
         result = sqlite3_bind_blob(update, 2, [data bytes], [data length], SQLITE_STATIC);
         result = sqlite3_bind_int(update, 3, par);
-        result = sqlite3_bind_int(update, 4, rowid);
+        result = sqlite3_bind_double(update, 4, timeLimit);
+        result = sqlite3_bind_text(update, 5, [achievement UTF8String], -1, SQLITE_STATIC);
+        result = sqlite3_bind_int(update, 6, flags);
+        result = sqlite3_bind_int(update, 7, rowid);
         result = sqlite3_step(update);
         NSLog(@"saving level %d",rowid);
         [self reloadTable];
@@ -207,9 +225,14 @@
     theLevel = [levels objectAtIndex:newlevel];
     [theLevelMap load:theLevel.map];
     [theEditView setNeedsDisplay:YES];
-    self.rowid = theLevel.rowid;
-    self.title = theLevel.name;
+    self.rowid = theLevel.index;
+    self.title = theLevel.title;
     self.par = theLevel.par;
+    self.achievement = theLevel.achievement;
+    self.timeLimit = theLevel.timeLimit;
+    int flags = theLevel.flags;
+    self.timeLimitAchievement = ((flags & TimeLimitAchievement) != 0);
+    self.moveAchievement = ((flags & MoveNumberAchievement) != 0);
     self.curLevel = newlevel;
     theLevelMap.dirty = NO;
     [self didChangeValueForKey:@"levelSelected"];
@@ -218,7 +241,7 @@
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
     Level *theLevel = [levels objectAtIndex:rowIndex];
-    return theLevel.name;
+    return theLevel.title;
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
@@ -227,11 +250,12 @@
 }
 
 static char * delete_sql = "DELETE FROM levels WHERE rowid=?;";
-static char * select_sql = "SELECT rowid,name,map,par FROM levels WHERE name=?;";
-static char * update_sql = "UPDATE levels SET name=?, map=?, par=? WHERE rowid=?;";
-static char * insert_sql = "INSERT INTO levels (name,map,par) VALUES (?,?,?);";
-static char * create_sql = "CREATE TABLE levels (background text,map blob NOT NULL,name text,par integer DEFAULT 0);";
-static char * allrecords_sql = "SELECT rowid,name,map,par FROM levels;";
+//SELECT rowid,background,map,name,par,timeLimit,achievement FROM levels WHERE ROWID=?
+static char * select_sql = "SELECT rowid,name,map,par,timeLimit,achievement,flags FROM levels WHERE name=?;";
+static char * update_sql = "UPDATE levels SET name=?, map=?, par=?, timeLimit=?, achievement=?, flags=? WHERE rowid=?;";
+static char * insert_sql = "INSERT INTO levels (name,map,par,timeLimit,achievement,flags) VALUES (?,?,?,?,?,?);";
+static char * create_sql = "CREATE TABLE levels (background text,map blob NOT NULL,name text,par integer DEFAULT 0,idx integer PRIMARY KEY,tutorial boolean DEFAULT NO,timeLimit double DEFAULT 0,achievement text,flags integer DEFAULT 0);";
+static char * allrecords_sql = "SELECT rowid,name,map,par,timeLimit,achievement,flags FROM levels;";
 static char * vacuum_sql = "VACUUM;";
 
 - (BOOL) open_database: (NSString *)name create:(BOOL)create
@@ -317,17 +341,25 @@ static char * vacuum_sql = "VACUUM;";
     while (sqlite3_step(allrecords) == SQLITE_ROW) {
         Level *level = [[Level alloc] init];
         char *cstr = sqlite3_column_text(allrecords, 1);
-        level.rowid = sqlite3_column_int(allrecords, 0);
+        level.index = sqlite3_column_int(allrecords, 0);
         if (cstr && cstr[0]) {
-            level.name = [NSString stringWithCString:cstr encoding:NSUTF8StringEncoding];
+            level.title = [NSString stringWithCString:cstr encoding:NSUTF8StringEncoding];
         }
         else {
-            level.name = nil;
+            level.title = nil;
         }
         void *blob = sqlite3_column_blob(allrecords, 2);
         int blobsize = sqlite3_column_bytes(allrecords, 2);
         level.map = [NSData dataWithBytes:blob length:blobsize];
         level.par = sqlite3_column_int(allrecords, 3);
+        level.timeLimit = sqlite3_column_double(allrecords, 4);
+        cstr = sqlite3_column_text(allrecords, 5);
+        if (cstr && cstr[0]) {
+            level.achievement = [NSString stringWithCString:cstr encoding:NSUTF8StringEncoding];
+        }
+        else {
+            level.achievement = nil;
+        }
         [levels addObject: level];
         [level release];
     }

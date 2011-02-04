@@ -33,6 +33,13 @@
     NSInteger par;
     NSInteger curLevel;
     NSInteger rowid;
+    
+    double timeLimit;
+    
+    NSString *achievement;
+    
+    NSInteger timeLimitAchievement;
+    NSInteger moveAchievement;
 }
 
 @property (assign) NSWindow * window;
@@ -42,6 +49,11 @@
 @property (assign) NSInteger curLevel;
 @property (assign) NSInteger rowid;
 @property (assign) NSInteger par;
+@property (assign) double timeLimit;
+@property (retain,nonatomic) NSString * achievement;
+
+@property (assign,nonatomic) NSInteger timeLimitAchievement;
+@property (assign,nonatomic) NSInteger moveAchievement;
 
 @property (readonly) NSNumber* dbopen;
 @property (readonly) NSNumber* levelSelected;
