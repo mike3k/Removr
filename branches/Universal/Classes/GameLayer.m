@@ -639,6 +639,15 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     if (self.level <= 19) {
         [self reportAchievement:complete_20_levels percentComplete:(self.level + 1)*5];
     }
+    
+    if (theLevelInfo.achievement != nil) {
+        if ((theLevelInfo.flags & TimeLimitAchievement) && (elapsedtime < theLevelInfo.timeLimit)) {
+            [self reportAchievement:theLevelInfo.achievement percentComplete:100];
+        }
+        if ((theLevelInfo.flags & MoveNumberAchievement) && (moves < theLevelInfo.par)) {
+            [self reportAchievement:theLevelInfo.achievement percentComplete:100];
+        }
+    }
 
     if (self.level == INT16_MAX) {
         msg = [[LevelCompleteMsg alloc] initWithMoves:moves];

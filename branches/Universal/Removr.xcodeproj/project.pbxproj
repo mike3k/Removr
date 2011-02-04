@@ -70,7 +70,7 @@
 		273E11FF12726D0100740F8A /* alt-Lvl3Background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 273E11F712726D0100740F8A /* alt-Lvl3Background-hd.png */; };
 		2740F7ED11CC6495004FC184 /* Level.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 2740F7EB11CC6495004FC184 /* Level.xcdatamodel */; };
 		2740F87211CC7C9E004FC184 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 2740F87011CC7C9E004FC184 /* Level.m */; };
-		2740F8CA11CC8D49004FC184 /* levels.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 2740F8C811CC8D49004FC184 /* levels.sqlite3 */; };
+		2740F8CA11CC8D49004FC184 /* levels.db in Resources */ = {isa = PBXBuildFile; fileRef = 2740F8C811CC8D49004FC184 /* levels.db */; };
 		2740F8F811CD12E7004FC184 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2740F8F711CD12E7004FC184 /* libsqlite3.dylib */; };
 		2740F9B011CEEB37004FC184 /* Shape-Atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 2740F9AF11CEEB37004FC184 /* Shape-Atlas.png */; };
 		275CD7BE11F61C8100AD18F0 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 275CD7BD11F61C8100AD18F0 /* libFlurry.a */; };
@@ -559,7 +559,7 @@
 		2740F86711CC78F5004FC184 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2740F86F11CC7C9E004FC184 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		2740F87011CC7C9E004FC184 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
-		2740F8C811CC8D49004FC184 /* levels.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = levels.sqlite3; sourceTree = SOURCE_ROOT; };
+		2740F8C811CC8D49004FC184 /* levels.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = levels.db; sourceTree = SOURCE_ROOT; };
 		2740F8F711CD12E7004FC184 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2740F96411CD82F4004FC184 /* GameManager+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GameManager+Create.m"; sourceTree = "<group>"; };
 		2740F9AF11CEEB37004FC184 /* Shape-Atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shape-Atlas.png"; sourceTree = "<group>"; };
@@ -1700,7 +1700,7 @@
 				27C24C0A11D559D0006F5A47 /* title-options.png */,
 				27BDBD9711D12FD600D31B40 /* intro.wav */,
 				2740F9AF11CEEB37004FC184 /* Shape-Atlas.png */,
-				2740F8C811CC8D49004FC184 /* levels.sqlite3 */,
+				2740F8C811CC8D49004FC184 /* levels.db */,
 				27C018CA11CC0C9000526633 /* uhoh.png */,
 				27C0188711CABB2C00526633 /* blackbg.png */,
 				272BC25E11C9DBC700F9C1C8 /* pause-icon.png */,
@@ -1983,7 +1983,7 @@
 				272BC26B11C9DBC700F9C1C8 /* pause-resume.png in Resources */,
 				27C0188811CABB2C00526633 /* blackbg.png in Resources */,
 				27C018CC11CC0C9000526633 /* uhoh.png in Resources */,
-				2740F8CA11CC8D49004FC184 /* levels.sqlite3 in Resources */,
+				2740F8CA11CC8D49004FC184 /* levels.db in Resources */,
 				2740F9B011CEEB37004FC184 /* Shape-Atlas.png in Resources */,
 				27BDBD9811D12FD700D31B40 /* intro.wav in Resources */,
 				27C24C0B11D559D0006F5A47 /* off-sel.png in Resources */,

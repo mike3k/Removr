@@ -60,9 +60,10 @@
 
 - (void)clearScores;
 
-- (BOOL) copydb;
+//- (BOOL) copydb;
 - (BOOL) opendb;
-- (BOOL) checkForDbUdate;
+//- (BOOL) checkForDbUdate;
+- (BOOL)attach_user_databases;
 
 - (Level*)GetLevelFromURL: (NSURL*)url;
 - (Level*)GetLevelFromFile: (NSString*)path;

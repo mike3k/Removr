@@ -71,12 +71,15 @@ static GameManager *_sharedGameManager = nil;
     NSLog(@"initLevels");
 #endif
         [self opendb];
-        sqlite3_prepare_v2(db, "SELECT rowid,background,map,name,par FROM levels WHERE ROWID=?", -1, &query, NULL);
+        sqlite3_prepare_v2(db, "SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels WHERE ROWID=?", 
+                           -1, 
+                           &query, 
+                           NULL);
     }
 }
 
 #pragma mark database management
-
+/*
 static BOOL isNewer(NSString *file1, NSString *file2)
 {
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -131,7 +134,6 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (BOOL) checkForDbUdate
 {
-/*
  #ifdef ALLOW_DB_UPDATE
     if (dbmod) {
         NSString *timestamp_url = @"http://apps.mc-development.com/removr/timestamp";
@@ -205,16 +207,21 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         }
     }
 #endif
+    return NO;
+}
  */
+
+- (BOOL)attach_user_databases
+{
     return NO;
 }
 
 - (BOOL) opendb
 {
     if (nil == db) {
-        [self copydb];
-        sqlite3_open([self.dbpath UTF8String] , &db);
-        [self checkForDbUdate];
+        self.dbpath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"db"];
+        sqlite3_open([self.dbpath UTF8String], &db);
+        [self attach_user_databases];
     }
     return (nil != db);
 }
@@ -327,6 +334,8 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (Level*)GetLevel: (int)number
 {
+    int result;
+    
     if (number == INT16_MAX) {
         return [self GetRandomLevel];
     }
@@ -334,59 +343,24 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     if ((number == _curLevel) && (_theLevel != nil)) {
         return _theLevel;
     }
-    Level *lvl = nil;
-    int result;
     self.curLevel = number;
-    // request a record for the level
+    
+    // first time this gets called, the database will be opened
     [self initLevels];
-//#ifndef NDEBUG
-//    NSLog(@"Requesting level %d",number);
-//    NSLog(@"Query: %x",query);
-//#endif
+
+    // request a record for the level
     sqlite3_bind_int(query, 1, number+1);
-//#ifndef NDEBUG
-//    NSLog(@"bind returned %d",result);
-//#endif
+
     result=sqlite3_step(query);
     if (result == SQLITE_ROW) {
-        char *str;
-        void *blob;
-        int nbytes;
-
-        lvl = [[Level alloc] init];
-        lvl.index = sqlite3_column_int(query, 0);
-        
-        str = (char*)sqlite3_column_text(query, 1);
-        if ((nil != str) && str[0]) {
-            lvl.background = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
-        }
-        else {
-            lvl.background = nil;
-        }
-        
-        blob = (void*)sqlite3_column_blob(query,2);
-        nbytes = sqlite3_column_bytes(query,2);
-        if (blob && (nbytes > 0)) {
-            lvl.map = [NSData dataWithBytes:blob length:nbytes];
-        }
-        
-        str = (char*)sqlite3_column_text(query, 3);
-        if (nil != str) {
-            lvl.title = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
-        }
-        
-        lvl.par = sqlite3_column_int(query, 4);
-
-        self.theLevel = lvl;
+        self.theLevel = [Level levelFromQueryResult:query];
     }
     else {
-//#ifndef NDEBUG
-//        NSLog(@"SQL query returned: %d",result);
-//#endif
         self.theLevel = nil;
     }
     sqlite3_reset(query);
-    return [lvl autorelease];
+    
+    return _theLevel;
 }
 
 - (int)levelCount
