@@ -641,10 +641,11 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     }
     
     if (theLevelInfo.achievement != nil) {
-        if ((theLevelInfo.flags & TimeLimitAchievement) && (elapsedtime < theLevelInfo.timeLimit)) {
+        BOOL success = ( (blueRemoved == 0) || ((theLevelInfo.flags & NoBlueAchievement) == 0) );
+        if (success && (theLevelInfo.flags & TimeLimitAchievement) && (elapsedtime < theLevelInfo.timeLimit) ) {
             [self reportAchievement:theLevelInfo.achievement percentComplete:100];
         }
-        if ((theLevelInfo.flags & MoveNumberAchievement) && (moves < theLevelInfo.par)) {
+        if (success && (theLevelInfo.flags & MoveNumberAchievement) && (moves < theLevelInfo.par) ) {
             [self reportAchievement:theLevelInfo.achievement percentComplete:100];
         }
     }

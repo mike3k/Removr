@@ -319,7 +319,7 @@
 							<real>219</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>24 40 1282 834 0 0 1440 878 </string>
+						<string>60 123 1282 834 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -347,7 +347,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2761D3FB12FBB49A00FF5DB0</string>
+										<string>2761D40412FC7A3F00FF5DB0</string>
 										<key>history</key>
 										<array>
 											<string>2761D2FA12FB16FC00FF5DB0</string>
@@ -358,9 +358,7 @@
 											<string>2761D34512FB392C00FF5DB0</string>
 											<string>2761D39E12FB79E900FF5DB0</string>
 											<string>2761D3D112FBAF8A00FF5DB0</string>
-											<string>2761D3F012FBB38E00FF5DB0</string>
 											<string>2761D3F112FBB38E00FF5DB0</string>
-											<string>2761D3FA12FBB49A00FF5DB0</string>
 											<string>2761D3F912FBB48900FF5DB0</string>
 										</array>
 									</dict>
@@ -377,7 +375,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1019, 542}}</string>
 								<key>RubberWindowFrame</key>
-								<string>24 40 1282 834 0 0 1440 878 </string>
+								<string>60 123 1282 834 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -404,7 +402,7 @@
 										<key>Frame</key>
 										<string>{{10, 27}, {1019, 219}}</string>
 										<key>RubberWindowFrame</key>
-										<string>24 40 1282 834 0 0 1440 878 </string>
+										<string>60 123 1282 834 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -684,7 +682,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>318485658.211308</real>
+	<real>318536255.34543997</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -706,7 +704,7 @@
 		<string>/Users/mike/Sources/mystuff/Removr/Removr.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>24 40 1282 834 0 0 1440 878 </string>
+	<string>60 123 1282 834 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

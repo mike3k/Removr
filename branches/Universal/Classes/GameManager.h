@@ -12,7 +12,7 @@
 #import "Level.h"
 #import "AppSettings.h"
 
-#import "GameKitHelper.h"
+#import "GameKitHelper+Additions.h"
 
 #import <sqlite3.h>
 
@@ -21,7 +21,7 @@
 
 
 
-@interface GameManager : NSObject <MCLayerDelegate,GameKitHelperProtocol> {
+@interface GameManager : NSObject <MCLayerDelegate,GameKitHelperProtocol,GKAdditions> {
     AppSettings *aps;
     
     NSInteger _curLevel;
@@ -34,6 +34,7 @@
     sqlite3 * db;
     sqlite3_stmt * query;
 
+    NSMutableString *queryString;
 
     GameScene *_gs;
     MenuScene *_ms;
@@ -51,6 +52,8 @@
 @property (assign,nonatomic) NSInteger curLevel;
 @property (retain,nonatomic) NSString *dbpath;
 @property (readonly) NSMutableData *levelStatus;
+
+@property (retain,nonatomic) NSMutableString* queryString;
 
 + (GameManager*)shared;
 

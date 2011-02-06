@@ -22,8 +22,14 @@ static GameManager *_sharedGameManager = nil;
 
 @implementation GameManager
 
-@synthesize curLevel = _curLevel, theLevel = _theLevel, gs = _gs, ms = _ms, paused = _paused, dbpath = _dbpath;
+@synthesize curLevel = _curLevel;
+@synthesize theLevel = _theLevel;
+@synthesize gs = _gs;
+@synthesize ms = _ms;
+@synthesize paused = _paused;
+@synthesize dbpath = _dbpath;
 @synthesize levelStatus = _levelStatus;
+@synthesize queryString;
 
 #ifdef USE_CORE_DATA
 @synthesize managedObjectContext = _managedObjectContext;
@@ -71,7 +77,7 @@ static GameManager *_sharedGameManager = nil;
     NSLog(@"initLevels");
 #endif
         [self opendb];
-        sqlite3_prepare_v2(db, "SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels WHERE ROWID=?", 
+        sqlite3_prepare_v2(db, [queryString UTF8String], 
                            -1, 
                            &query, 
                            NULL);
@@ -221,7 +227,9 @@ static BOOL isNewer(NSString *file1, NSString *file2)
     if (nil == db) {
         self.dbpath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"db"];
         sqlite3_open([self.dbpath UTF8String], &db);
+        self.queryString = [NSMutableString stringWithString: @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels "];
         [self attach_user_databases];
+        [self.queryString appendString: @" WHERE ROWID=? order by idx"];
     }
     return (nil != db);
 }
@@ -582,14 +590,25 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 -(void) onAchievementReported:(GKAchievement*)achievement
 {
-	CCLOG(@"onAchievementReported: %@", achievement);
-    if (achievement.completed == YES) {
+	CCLOG(@"onAchievementReported: %@, Complete = %f", achievement,achievement.percentComplete);
+    if (achievement.percentComplete == 100.0) {
+        CCLOG(@"Completed achievement: %@",achievement.identifier);
+        GKAchievementDescription *desc = [[GameKitHelper sharedGameKitHelper] getAchievementDescription: achievement.identifier];
+        if (nil != desc) {
+            CCLOG(@"achievement name: %@ description: %@",desc.title,desc.achievedDescription);
+        }
     }
+}
+
+-(void) onAchievementDescriptionsLoaded:(NSDictionary*)achievementDescriptions
+{
+    CCLOG(@"onAchievementDescriptionsLoaded: %@",achievementDescriptions);
 }
 
 -(void) onAchievementsLoaded:(NSDictionary*)achievements
 {
 	CCLOG(@"onLocalPlayerAchievementsLoaded: %@", [achievements description]);
+    [[GameKitHelper sharedGameKitHelper] loadAchievementDescriptions];
 }
 
 -(void) onResetAchievements:(bool)success

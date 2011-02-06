@@ -58,6 +58,7 @@
 #define TimeLimitAchievement    0x0001
 #define MoveNumberAchievement   0x0002
 #define NoRetriesAchievement    0x0004
+#define NoBlueAchievement       0x0008
 
 @end
 

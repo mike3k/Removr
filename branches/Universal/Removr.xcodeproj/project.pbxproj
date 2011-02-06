@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		27085FAE1198A18C00674CA4 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 27085FAC1198A18C00674CA4 /* GameScene.m */; };
 		27085FB31198A1DE00674CA4 /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27085FB21198A1DE00674CA4 /* MenuLayer.m */; };
+		271885BD12FD1D7300AFDEA3 /* GameKitHelper+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 271885BC12FD1D7200AFDEA3 /* GameKitHelper+Additions.m */; };
 		272BC26511C9DBC700F9C1C8 /* pause-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 272BC25E11C9DBC700F9C1C8 /* pause-icon.png */; };
 		272BC26611C9DBC700F9C1C8 /* pause-quit-sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 272BC25F11C9DBC700F9C1C8 /* pause-quit-sel.png */; };
 		272BC26711C9DBC700F9C1C8 /* pause-quit.png in Resources */ = {isa = PBXBuildFile; fileRef = 272BC26011C9DBC700F9C1C8 /* pause-quit.png */; };
@@ -493,6 +494,8 @@
 		27085FAC1198A18C00674CA4 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		27085FB11198A1DE00674CA4 /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
 		27085FB21198A1DE00674CA4 /* MenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuLayer.m; sourceTree = "<group>"; };
+		271885BB12FD1D7200AFDEA3 /* GameKitHelper+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GameKitHelper+Additions.h"; path = "Classes/GameKitHelper+Additions.h"; sourceTree = "<group>"; };
+		271885BC12FD1D7200AFDEA3 /* GameKitHelper+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GameKitHelper+Additions.m"; path = "Classes/GameKitHelper+Additions.m"; sourceTree = "<group>"; };
 		272BC25E11C9DBC700F9C1C8 /* pause-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-icon.png"; path = "Toffeenut/Removr Files - Interface/extra/pause-icon.png"; sourceTree = SOURCE_ROOT; };
 		272BC25F11C9DBC700F9C1C8 /* pause-quit-sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-quit-sel.png"; path = "Toffeenut/Removr Files - Interface/extra/pause-quit-sel.png"; sourceTree = SOURCE_ROOT; };
 		272BC26011C9DBC700F9C1C8 /* pause-quit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-quit.png"; path = "Toffeenut/Removr Files - Interface/extra/pause-quit.png"; sourceTree = SOURCE_ROOT; };
@@ -1391,6 +1394,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				271885BB12FD1D7200AFDEA3 /* GameKitHelper+Additions.h */,
+				271885BC12FD1D7200AFDEA3 /* GameKitHelper+Additions.m */,
 				27C65D9E12A93FCC0099C251 /* GameKitHelper.h */,
 				27C65D9F12A93FCC0099C251 /* GameKitHelper.m */,
 				275CD7BA11F61C8100AD18F0 /* FlurryLib */,
@@ -2145,6 +2150,7 @@
 				272D6D9111DEA4F60064FAEC /* MCMenuItem.m in Sources */,
 				277BBC9A12165BC0009F6996 /* GameManager+RandomLevel.m in Sources */,
 				27C65DA012A93FCC0099C251 /* GameKitHelper.m in Sources */,
+				271885BD12FD1D7300AFDEA3 /* GameKitHelper+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
