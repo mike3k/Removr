@@ -15,6 +15,8 @@
 #import "HighscoreScene.h"
 #import "SimpleAudioEngine.h"
 
+#import "GKAchievementHandler.h"
+
 #undef ALLOW_DB_UPDATE
 #define DB_VERSION  1
 
@@ -229,7 +231,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         sqlite3_open([self.dbpath UTF8String], &db);
         self.queryString = [NSMutableString stringWithString: @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels "];
         [self attach_user_databases];
-        [self.queryString appendString: @" WHERE ROWID=? order by idx"];
+        [self.queryString appendString: @" WHERE ROWID=?"];
     }
     return (nil != db);
 }
@@ -595,7 +597,9 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         CCLOG(@"Completed achievement: %@",achievement.identifier);
         GKAchievementDescription *desc = [[GameKitHelper sharedGameKitHelper] getAchievementDescription: achievement.identifier];
         if (nil != desc) {
+            [[CCDirector sharedDirector] pause];
             CCLOG(@"achievement name: %@ description: %@",desc.title,desc.achievedDescription);
+            [[GKAchievementHandler defaultHandler] notifyAchievement:desc];
         }
     }
 }
