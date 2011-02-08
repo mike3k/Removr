@@ -19,8 +19,8 @@
     
     CGFloat _scale = DeviceScale();
     if (_scale > 1) {
-        onButton = [CCMenuItemImage itemFromNormalImage:@"on@x2.png" selectedImage:@"on-sel@x2.png"];
-        offButton = [CCMenuItemImage itemFromNormalImage:@"off@x2.png" selectedImage:@"off-sel@x2.png"];
+        onButton = [CCMenuItemImage itemFromNormalImage:@"on-hd.png" selectedImage:@"on-sel-hd.png"];
+        offButton = [CCMenuItemImage itemFromNormalImage:@"off-hd.png" selectedImage:@"off-sel-hd.png"];
     }
     else {
         onButton = [CCMenuItemImage itemFromNormalImage:@"on.png" selectedImage:@"on-sel.png"];

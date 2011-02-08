@@ -227,7 +227,11 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 - (BOOL) opendb
 {
     if (nil == db) {
+#ifdef LITE_VERSION
+        self.dbpath = [[NSBundle mainBundle] pathForResource:@"minilevels" ofType:@"db"];
+#else
         self.dbpath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"db"];
+#endif
         sqlite3_open([self.dbpath UTF8String], &db);
         self.queryString = [NSMutableString stringWithString: @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels "];
         [self attach_user_databases];
