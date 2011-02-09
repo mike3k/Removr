@@ -47,6 +47,7 @@ enum {
 - (void)pause: (id)sender;
 - (void)resume: (id)sender;
 - (void)visitweb: (id)sender;
+- (void)getMoreLevels:(id)sender;
 
 - (int)levelCount;
 - (NSInteger) scoreForLevel: (NSInteger)level;

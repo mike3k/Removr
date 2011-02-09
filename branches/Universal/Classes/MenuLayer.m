@@ -47,11 +47,17 @@
                                                        selectedImage:[self scaledFile: @"button-options-sel.png"]
                                                               target:_delegate 
                                                             selector:@selector(options:)];
-        
+#ifdef LITE_VERSION
+        CCMenuItemImage *more = [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"button-upgrade.png"]
+                                                       selectedImage:[self scaledFile: @"button-upgrade-sel.png"] 
+                                                              target:_delegate 
+                                                            selector:@selector(getMoreLevels:)];
+#else
         CCMenuItemImage *more = [CCMenuItemImage itemFromNormalImage:[self scaledFile: @"button-more.png"]
                                                        selectedImage:[self scaledFile: @"button-more-sel.png"] 
                                                               target:_delegate 
                                                             selector:@selector(info:)];
+#endif
         self.menu = [CCMenu menuWithItems: logo, play, score, opt, more, nil];
         [_menu alignItemsVertically];
         [self addChild:_menu z: zMenuLayer];
@@ -66,6 +72,15 @@
 //            gcMenu.position = ccp(22,22);
 //            [self addChild: gcMenu z: zMenuLayer];
 //        }
+#ifdef LITE_VERSION
+        CCMenu *infoMenu = [CCMenu menuWithItems:[CCMenuItemImage itemFromNormalImage:[self scaledFile:@"round-info-btn.png"]
+                                                                        selectedImage:[self scaledFile:@"round-info-btn-sel.png"]
+                                                                               target:_delegate
+                                                                             selector:@selector(info:)], nil];
+        CGSize wins = [[CCDirector sharedDirector] winSize];
+        infoMenu.position = ccp(wins.width - (28*self.scale), (28*self.scale));
+        [self addChild:infoMenu z:zMenuLayer];
+#endif
         
         [self addClouds];
     }
