@@ -12,9 +12,9 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Removr-57-springboard.png</string>
-		<string>Removr-114.png</string>
-		<string>Removr-72.png</string>
+		<string>removr-free.png</string>
+		<string>removr-free-114.png</string>
+		<string>removr-free-72.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.mcdevzone.removrFree</string>
@@ -43,6 +43,7 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UTExportedTypeDeclarations</key>
 	<array/>

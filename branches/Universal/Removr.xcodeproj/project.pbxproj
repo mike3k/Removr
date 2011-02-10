@@ -634,6 +634,9 @@
 		27D0B5E31300B8C4004B2B04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2740F8F711CD12E7004FC184 /* libsqlite3.dylib */; };
 		27D0B5E41300B8C4004B2B04 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 275CD7BD11F61C8100AD18F0 /* libFlurry.a */; };
 		27D0B5E51300B8C4004B2B04 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C65D9812A93E2F0099C251 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		27D84D9A1303602A0039D181 /* removr-free.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D84D991303602A0039D181 /* removr-free.png */; };
+		27D84D9C1303604B0039D181 /* removr-free-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D84D9B1303604B0039D181 /* removr-free-114.png */; };
+		27D84D9E130360620039D181 /* removr-free-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D84D9D130360620039D181 /* removr-free-72.png */; };
 		27DA8E9212E29FD100FFAB90 /* alt-background-xd.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DA8E8812E29FD100FFAB90 /* alt-background-xd.png */; };
 		27DA8E9312E29FD100FFAB90 /* alt-info-background-xd.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DA8E8912E29FD100FFAB90 /* alt-info-background-xd.png */; };
 		27DA8E9412E29FD100FFAB90 /* alt-Lvl1Background-xd.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DA8E8A12E29FD100FFAB90 /* alt-Lvl1Background-xd.png */; };
@@ -1173,6 +1176,9 @@
 		27C65D9E12A93FCC0099C251 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameKitHelper.h; path = Classes/GameKitHelper.h; sourceTree = "<group>"; };
 		27C65D9F12A93FCC0099C251 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameKitHelper.m; path = Classes/GameKitHelper.m; sourceTree = "<group>"; };
 		27D0B5EB1300B8C4004B2B04 /* Removr Free.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Removr Free.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27D84D991303602A0039D181 /* removr-free.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "removr-free.png"; sourceTree = "<group>"; };
+		27D84D9B1303604B0039D181 /* removr-free-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "removr-free-114.png"; sourceTree = "<group>"; };
+		27D84D9D130360620039D181 /* removr-free-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "removr-free-72.png"; sourceTree = "<group>"; };
 		27DA8E8812E29FD100FFAB90 /* alt-background-xd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alt-background-xd.png"; sourceTree = "<group>"; };
 		27DA8E8912E29FD100FFAB90 /* alt-info-background-xd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alt-info-background-xd.png"; sourceTree = "<group>"; };
 		27DA8E8A12E29FD100FFAB90 /* alt-Lvl1Background-xd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alt-Lvl1Background-xd.png"; sourceTree = "<group>"; };
@@ -1671,6 +1677,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				27D84D9D130360620039D181 /* removr-free-72.png */,
+				27D84D9B1303604B0039D181 /* removr-free-114.png */,
+				27D84D991303602A0039D181 /* removr-free.png */,
 				27385CA312AC995B00313129 /* achievements.h */,
 				276586EF129DD18C005BE421 /* explosion.plist */,
 				27658726129DD81F005BE421 /* explosion.png */,
@@ -2637,6 +2646,9 @@
 				27470EFB13033959001CC3D6 /* round-info-btn-sel-hd.png in Resources */,
 				27470EFE13033965001CC3D6 /* round-info-btn-sel.png in Resources */,
 				27470EFF13033968001CC3D6 /* round-info-btn.png in Resources */,
+				27D84D9A1303602A0039D181 /* removr-free.png in Resources */,
+				27D84D9C1303604B0039D181 /* removr-free-114.png in Resources */,
+				27D84D9E130360620039D181 /* removr-free-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
