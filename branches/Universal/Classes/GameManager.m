@@ -222,6 +222,12 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (BOOL)attach_user_databases
 {
+    
+#ifdef LITE_VERSION
+    self.queryString = @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels WHERE ROWID=?";
+    self.countQueryString = @"SELECT count(*) from levels";
+    return NO;
+#else
     int dbcount = 0, result;
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -256,6 +262,7 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         self.countQueryString = @"SELECT count(*) from LV";
         return YES;
     }
+#endif
 }
 
 - (BOOL) opendb

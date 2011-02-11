@@ -643,10 +643,18 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     if (theLevelInfo.achievement != nil) {
         BOOL success = ( (blueRemoved == 0) || ((theLevelInfo.flags & NoBlueAchievement) == 0) );
         if (success && (theLevelInfo.flags & TimeLimitAchievement) && (elapsedtime < theLevelInfo.timeLimit) ) {
+#ifdef LITE_VERSION
+            [self reportAchievement:[NSString stringWithFormat:@"f%@",theLevelInfo.achievement] percentComplete:100];
+#else
             [self reportAchievement:theLevelInfo.achievement percentComplete:100];
+#endif
         }
         if (success && (theLevelInfo.flags & MoveNumberAchievement) && (moves < theLevelInfo.par) ) {
+#ifdef LITE_VERSION
+            [self reportAchievement:[NSString stringWithFormat:@"f%@",theLevelInfo.achievement] percentComplete:100];
+#else
             [self reportAchievement:theLevelInfo.achievement percentComplete:100];
+#endif
         }
     }
 
@@ -717,7 +725,9 @@ static int explosion(cpArbiter *arb, struct cpSpace *space, void *data)
     if (level < 0) {
         level = _delegate.curLevel;
         if (level >= [_delegate levelCount]) {
+#ifndef LITE_VERSION
             [self reportAchievement:complete_all_levels percentComplete:100];
+#endif
             _delegate.curLevel = 0;
             level = 0;
         }
