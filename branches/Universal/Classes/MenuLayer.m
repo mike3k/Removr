@@ -80,6 +80,14 @@
         CGSize wins = [[CCDirector sharedDirector] winSize];
         infoMenu.position = ccp(wins.width - (28*self.scale), (28*self.scale));
         [self addChild:infoMenu z:zMenuLayer];
+        
+        if (![AppSettings shared].paidUpgrade) {
+            CCSprite *freeBanner = [[CCSprite alloc] initWithFile:[self scaledFile:@"free-banner.png"]];
+            freeBanner.position = ccp(0, wins.height);
+            freeBanner.anchorPoint = ccp(0, 1);
+            [self addChild:freeBanner z: zMenuLayer];
+            [freeBanner release];
+        }
 #endif
         
         [self addClouds];

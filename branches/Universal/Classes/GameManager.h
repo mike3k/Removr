@@ -34,7 +34,8 @@
     sqlite3 * db;
     sqlite3_stmt * query;
 
-    NSMutableString *queryString;
+    NSString *queryString;
+    NSString *countQueryString;
 
     GameScene *_gs;
     MenuScene *_ms;
@@ -53,7 +54,8 @@
 @property (retain,nonatomic) NSString *dbpath;
 @property (readonly) NSMutableData *levelStatus;
 
-@property (retain,nonatomic) NSMutableString* queryString;
+@property (copy,nonatomic) NSString* queryString;
+@property (nonatomic, copy) NSString *countQueryString;
 
 + (GameManager*)shared;
 

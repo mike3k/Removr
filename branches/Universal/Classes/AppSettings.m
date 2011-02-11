@@ -30,6 +30,10 @@ NSString *format_time(NSTimeInterval tm)
 //@synthesize scale = _scale;
 @synthesize totalPoints = _totalPoints;
 
+#ifdef LITE_VERSION
+@synthesize paidUpgrade = _paidUpgrade;
+#endif
+
 + (AppSettings*)shared {
     if (nil == theSettings) {
         theSettings = [[AppSettings alloc] init];
@@ -51,6 +55,9 @@ NSString *format_time(NSTimeInterval tm)
             self.totalPoints = 0;
             _levelStatus = nil;
             _levelTimes = nil;
+#ifdef LITE_VERSION
+            self.paidUpgrade = NO;
+#endif
         }
         else {
             self.sound = [def boolForKey: @"sound"];
@@ -62,6 +69,9 @@ NSString *format_time(NSTimeInterval tm)
             self.highestLevel = [def integerForKey:@"highestLevel"];
             self.last_check = [def objectForKey:@"lastUpdate"];
             self.totalPoints = [def integerForKey:@"totalPoints"];
+#ifdef LITE_VERSION
+            self.paidUpgrade = [def boolForKey:@"accel2"];
+#endif
         }
         if (nil == _levelStatus) {
             self.levelStatus = [NSMutableData dataWithLength:(100*sizeof(NSInteger*))];
@@ -95,6 +105,9 @@ NSString *format_time(NSTimeInterval tm)
     [def setObject:self.last_check forKey:@"lastUpdate"];
     [def setInteger:self.highestLevel forKey:@"highestLevel"];
     [def setInteger:self.totalPoints forKey:@"totalPoints"];
+#ifdef LITE_VERSION
+    [def setBool:self.paidUpgrade forKey:@"accel2"];
+#endif
     return YES;
 }
 

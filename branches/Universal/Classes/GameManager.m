@@ -32,6 +32,7 @@ static GameManager *_sharedGameManager = nil;
 @synthesize dbpath = _dbpath;
 @synthesize levelStatus = _levelStatus;
 @synthesize queryString;
+@synthesize countQueryString;
 
 #ifdef USE_CORE_DATA
 @synthesize managedObjectContext = _managedObjectContext;
@@ -221,7 +222,40 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 
 - (BOOL)attach_user_databases
 {
-    return NO;
+    int dbcount = 0, result;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSDirectoryEnumerator *docs = [fm enumeratorAtPath:documentsDirectory];
+    NSString *file;
+    while ((file = [docs nextObject])) {
+        if ([[file pathExtension] isEqualToString:@"leveldb"]) {
+            ++dbcount;
+            NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:file];
+            sqlite3_stmt *attach;
+            sqlite3_prepare_v2(db,[[NSString stringWithFormat:@"ATTACH DATABASE '%@' AS 'DB%i'",fullPath,dbcount] UTF8String], -1, &attach, NULL);
+            result=sqlite3_step(attach);
+            sqlite3_finalize(attach);
+        }
+    }
+    if (dbcount == 0) {
+        self.queryString = @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels WHERE ROWID=?";
+        self.countQueryString = @"SELECT count(*) from levels";
+        return NO;
+    }
+    else {
+        sqlite3_stmt *cview;
+        NSMutableString *createView = [NSMutableString stringWithString:@"CREATE TEMP VIEW LV AS SELECT rowid as x,* FROM levels"];
+        for (int i=1;i<=dbcount;++i) {
+            [createView appendFormat:@" UNION SELECT (rowid*%i) as x,* FROM DB%i.levels",100*i,i];
+        }
+        sqlite3_prepare_v2(db, [createView UTF8String], -1, &cview, NULL);
+        result=sqlite3_step(cview);
+        sqlite3_finalize(cview);
+        self.queryString = @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM LV WHERE ROWID=?";
+        self.countQueryString = @"SELECT count(*) from LV";
+        return YES;
+    }
 }
 
 - (BOOL) opendb
@@ -233,9 +267,9 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         self.dbpath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"db"];
 #endif
         sqlite3_open([self.dbpath UTF8String], &db);
-        self.queryString = [NSMutableString stringWithString: @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels "];
+//        self.queryString = [NSMutableString stringWithString: @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels "];
         [self attach_user_databases];
-        [self.queryString appendString: @" WHERE ROWID=?"];
+//        [self.queryString appendString: @" WHERE ROWID=?"];
     }
     return (nil != db);
 }
@@ -384,7 +418,8 @@ static BOOL isNewer(NSString *file1, NSString *file2)
         sqlite3_stmt *scount;
         [self initLevels];
         int result;
-        sqlite3_prepare_v2(db, "SELECT COUNT(*) FROM levels", -1, &scount, NULL);
+//        sqlite3_prepare_v2(db, "SELECT COUNT(*) FROM levels", -1, &scount, NULL);
+        sqlite3_prepare_v2(db,[countQueryString UTF8String], -1, &scount, NULL);
         result = sqlite3_step(scount);
         if (result == SQLITE_ROW) {
             _levelCount = sqlite3_column_int(scount, 0);

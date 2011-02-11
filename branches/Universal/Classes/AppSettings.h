@@ -18,7 +18,9 @@ NSString *format_time(NSTimeInterval tm);
     BOOL _accelerometer;
     BOOL _sound;
     BOOL _nightmode;
-
+#ifdef LITE_VERSION
+    BOOL _paidUpgrade;
+#endif
     NSInteger _lastLevel;
     NSInteger _highestLevel;
     
@@ -43,7 +45,9 @@ NSString *format_time(NSTimeInterval tm);
 @property (assign,nonatomic) NSInteger lastLevel;
 @property (assign,nonatomic) NSInteger highestLevel;
 @property (assign,nonatomic) NSInteger totalPoints;
-
+#ifdef LITE_VERSION
+@property (assign,nonatomic) BOOL paidUpgrade;
+#endif
 // just for convenience
 //@property (assign,nonatomic) CGFloat scale;
 
