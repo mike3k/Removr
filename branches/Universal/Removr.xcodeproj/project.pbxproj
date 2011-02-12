@@ -91,8 +91,6 @@
 		27470F6113044E13001CC3D6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 27470F6013044E13001CC3D6 /* Default.png */; };
 		274711C21305B962001CC3D6 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 274711C01305B962001CC3D6 /* Default-Landscape.png */; };
 		274711C31305B962001CC3D6 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 274711C11305B962001CC3D6 /* Default-Portrait.png */; };
-		275C4506130203F6007FB4AF /* GetMoreScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4505130203F6007FB4AF /* GetMoreScene.m */; };
-		275C450913020507007FB4AF /* GetMoreLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C450813020507007FB4AF /* GetMoreLayer.m */; };
 		275CD7BE11F61C8100AD18F0 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 275CD7BD11F61C8100AD18F0 /* libFlurry.a */; };
 		276586F0129DD18C005BE421 /* explosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 276586EF129DD18C005BE421 /* explosion.plist */; };
 		27658727129DD81F005BE421 /* explosion.png in Resources */ = {isa = PBXBuildFile; fileRef = 27658726129DD81F005BE421 /* explosion.png */; };
@@ -2728,8 +2726,6 @@
 				27D0B5D51300B8C4004B2B04 /* GameKitHelper+Additions.m in Sources */,
 				27D0B5D61300B8C4004B2B04 /* GKAchievementHandler.m in Sources */,
 				27D0B5D71300B8C4004B2B04 /* GKAchievementNotification.m in Sources */,
-				275C4506130203F6007FB4AF /* GetMoreScene.m in Sources */,
-				275C450913020507007FB4AF /* GetMoreLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -220,23 +220,23 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 }
  */
 
-- (BOOL)attach_user_databases
+//#if 0
+//#define SEARCH_DIRECTORY NSApplicationSupportDirectory
+//#else
+//#define SEARCH_DIRECTORY NSDocumentDirectory
+//#endif
+
+- (int) scan_directory: (int)dir
 {
-    
-#ifdef LITE_VERSION
-    self.queryString = @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels WHERE ROWID=?";
-    self.countQueryString = @"SELECT count(*) from levels";
-    return NO;
-#else
-    int dbcount = 0, result;
+    int result = 0;
     NSFileManager *fm = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(dir, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSDirectoryEnumerator *docs = [fm enumeratorAtPath:documentsDirectory];
     NSString *file;
     while ((file = [docs nextObject])) {
         if ([[file pathExtension] isEqualToString:@"leveldb"]) {
-            ++dbcount;
+            dbcount += 1;
             NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:file];
             sqlite3_stmt *attach;
             sqlite3_prepare_v2(db,[[NSString stringWithFormat:@"ATTACH DATABASE '%@' AS 'DB%i'",fullPath,dbcount] UTF8String], -1, &attach, NULL);
@@ -244,6 +244,38 @@ static BOOL isNewer(NSString *file1, NSString *file2)
             sqlite3_finalize(attach);
         }
     }
+    return result;
+}
+
+- (BOOL)attach_user_databases
+{
+    
+//#ifdef LITE_VERSION
+//    self.queryString = @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels WHERE ROWID=?";
+//    self.countQueryString = @"SELECT count(*) from levels";
+//    return NO;
+//#else
+//    int dbcount = 0;
+//    NSFileManager *fm = [NSFileManager defaultManager];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSDirectoryEnumerator *docs = [fm enumeratorAtPath:documentsDirectory];
+//    NSString *file;
+//    while ((file = [docs nextObject])) {
+//        if ([[file pathExtension] isEqualToString:@"leveldb"]) {
+//            ++dbcount;
+//            NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:file];
+//            sqlite3_stmt *attach;
+//            sqlite3_prepare_v2(db,[[NSString stringWithFormat:@"ATTACH DATABASE '%@' AS 'DB%i'",fullPath,dbcount] UTF8String], -1, &attach, NULL);
+//            result=sqlite3_step(attach);
+//            sqlite3_finalize(attach);
+//        }
+//    }
+    dbcount = 0;
+    [self scan_directory:NSApplicationSupportDirectory];
+#ifndef LITE_VERSION
+    [self scan_directory:NSDocumentDirectory];
+#endif
     if (dbcount == 0) {
         self.queryString = @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels WHERE ROWID=?";
         self.countQueryString = @"SELECT count(*) from levels";
@@ -256,13 +288,13 @@ static BOOL isNewer(NSString *file1, NSString *file2)
             [createView appendFormat:@" UNION SELECT (rowid*%i) as x,* FROM DB%i.levels",100*i,i];
         }
         sqlite3_prepare_v2(db, [createView UTF8String], -1, &cview, NULL);
-        result=sqlite3_step(cview);
+        sqlite3_step(cview);
         sqlite3_finalize(cview);
         self.queryString = @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM LV WHERE ROWID=?";
         self.countQueryString = @"SELECT count(*) from LV";
         return YES;
     }
-#endif
+//#endif
 }
 
 - (BOOL) opendb

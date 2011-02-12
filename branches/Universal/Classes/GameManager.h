@@ -44,6 +44,8 @@
     
     int _levelCount;
     
+    int dbcount;
+    
 }
 
 
