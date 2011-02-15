@@ -17,6 +17,11 @@
     IBOutlet NSView * backgroundView;
     IBOutlet EditView * theEditView;
     IBOutlet NSTableView * theTableView;
+
+    IBOutlet NSControl * deleteButton;
+    IBOutlet NSControl * exportButton;
+    IBOutlet NSControl * imageButton;
+
     LevelMap * theLevelMap;
 
     NSString * title;
