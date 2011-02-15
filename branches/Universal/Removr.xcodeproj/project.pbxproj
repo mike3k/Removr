@@ -2978,7 +2978,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mike Cohen";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3006,7 +3006,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Removr;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2749DE9A-9A90-49F2-970E-D414121D6E31";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wall";
@@ -3092,7 +3092,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Removr;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "039330F2-A07D-4171-9DE1-49B565D4C3E7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "721F1AA3-58C6-452E-8F56-4FCBE9B88F17";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wall";

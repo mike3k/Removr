@@ -93,11 +93,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GameManager.m"
-         timestampString = "319147370.629507"
+         timestampString = "319169453.641459"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "350"
-         endingLineNumber = "350">
+         startingLineNumber = "382"
+         endingLineNumber = "382">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -117,11 +117,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GameManager.m"
-         timestampString = "319147370.629507"
+         timestampString = "319169453.641459"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "376"
-         endingLineNumber = "376">
+         startingLineNumber = "408"
+         endingLineNumber = "408">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -177,11 +177,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GameManager.m"
-         timestampString = "319147370.629507"
+         timestampString = "319169453.641459"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "280"
-         endingLineNumber = "280">
+         startingLineNumber = "312"
+         endingLineNumber = "312">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -273,11 +273,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GameManager.m"
-         timestampString = "319147370.629507"
+         timestampString = "319169453.641459"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "404"
-         endingLineNumber = "404">
+         startingLineNumber = "436"
+         endingLineNumber = "436">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -350,18 +350,6 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "96"
          endingLineNumber = "96">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/GameLayer.m"
-         timestampString = "318485591.557745"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "618"
-         endingLineNumber = "618">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -489,23 +477,25 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GameManager.m"
-         timestampString = "319147370.629507"
+         timestampString = "319169453.641459"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "361"
-         endingLineNumber = "361">
+         startingLineNumber = "393"
+         endingLineNumber = "393">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/GameLayer.m"
-         timestampString = "318485598.187173"
+         filePath = "Classes/GameManager.m"
+         timestampString = "319221008.410321"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "643"
-         endingLineNumber = "643">
+         startingLineNumber = "231"
+         endingLineNumber = "231"
+         landmarkName = "-scan_directory:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
