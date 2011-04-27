@@ -2,7 +2,6 @@
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
  *
  * Copyright (c) 2010 Ricardo Quesada
- * Copyright (c) 2010 Neophit
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,64 +20,23 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
- *
- * TMX Tiled Map support:
- * http://www.mapeditor.org
- *
  */
 
-#import "CCTMXObjectGroup.h"
-#import "CCTMXXMLParser.h"
-#import "ccMacros.h"
-#import "Support/CGPointExtension.h"
+// Only compile this code on Mac. These files should not be included on your iOS project.
+// But in case they are included, it won't be compiled.
+#import <Availability.h>
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+
+#import <Cocoa/Cocoa.h>
 
 
-#pragma mark -
-#pragma mark TMXObjectGroup
-
-@implementation CCTMXObjectGroup
-
-@synthesize groupName = groupName_;
-@synthesize objects = objects_;
-@synthesize positionOffset = positionOffset_;
-@synthesize properties = properties_;
-
--(id) init
+@interface MacWindow : NSWindow
 {
-	if (( self=[super init] )) {
-		self.groupName = nil;
-		self.positionOffset = CGPointZero;
-		self.objects = [NSMutableArray arrayWithCapacity:10];
-		self.properties = [NSMutableDictionary dictionaryWithCapacity:5];
-	}
-	return self;
 }
-
--(void) dealloc
-{
-	CCLOGINFO( @"cocos2d: deallocing %@", self );
-		
-	[groupName_ release];
-	[objects_ release];
-	[properties_ release];
-	[super dealloc];
-}
-
--(NSMutableDictionary*) objectNamed:(NSString *)objectName
-{
-	for( id object in objects_ ) {
-		if( [[object valueForKey:@"name"] isEqual:objectName] )
-			return object;
-		}
-
-	// object not found
-	return nil;
-}
-
--(id) propertyNamed:(NSString *)propertyName 
-{
-	return [properties_ valueForKey:propertyName];
-}
+- (id) initWithFrame:(NSRect)frame fullscreen:(BOOL)fullscreen;
 
 @end
+
+
+#endif // __MAC_OS_X_VERSION_MAX_ALLOWED

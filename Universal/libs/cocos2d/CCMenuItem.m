@@ -1,7 +1,7 @@
 /*
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
  *
- * Copyright (c) 2008-2010 Ricardo Quesada
+ * Copyright (c) 2008-2011 Ricardo Quesada
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -163,6 +163,11 @@ enum {
 	return [[[self alloc] initWithLabel:label target:target selector:selector] autorelease];
 }
 
++(id) itemWithLabel:(CCNode<CCLabelProtocol,CCRGBAProtocol>*)label
+{
+	return [[[self alloc] initWithLabel:label target:nil selector:NULL] autorelease];
+}
+
 -(id) initWithLabel:(CCNode<CCLabelProtocol,CCRGBAProtocol>*)label target:(id)target selector:(SEL)selector
 {
 	if( (self=[super initWithTarget:target selector:selector]) ) {
@@ -226,8 +231,13 @@ enum {
 	// subclass to change the default action
 	if(isEnabled_) {	
 		[super selected];
-		[self stopActionByTag:kZoomActionTag];
-		originalScale_ = self.scale;
+
+		CCAction *action = [self getActionByTag:kZoomActionTag];
+		if( action )
+			[self stopAction:action];
+		else
+			originalScale_ = self.scale;
+
 		CCAction *zoomAction = [CCScaleTo actionWithDuration:0.1f scale:originalScale_ * 1.2f];
 		zoomAction.tag = kZoomActionTag;
 		[self runAction:zoomAction];

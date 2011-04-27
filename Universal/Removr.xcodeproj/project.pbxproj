@@ -87,7 +87,6 @@
 		27470EFD1303395F001CC3D6 /* round-info-btn-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 27470EF21302EDD1001CC3D6 /* round-info-btn-hd.png */; };
 		27470EFE13033965001CC3D6 /* round-info-btn-sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 27470EF41302EDD1001CC3D6 /* round-info-btn-sel.png */; };
 		27470EFF13033968001CC3D6 /* round-info-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 27470EF51302EDD1001CC3D6 /* round-info-btn.png */; };
-		27470F5E13044D4F001CC3D6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 27470F5C13044D0D001CC3D6 /* Default.png */; };
 		27470F6113044E13001CC3D6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 27470F6013044E13001CC3D6 /* Default.png */; };
 		274711C21305B962001CC3D6 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 274711C01305B962001CC3D6 /* Default-Landscape.png */; };
 		274711C31305B962001CC3D6 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 274711C11305B962001CC3D6 /* Default-Portrait.png */; };
@@ -267,8 +266,6 @@
 		27AD0DD5123C61FF00E290D5 /* CCSpriteFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD0CE4123C61FF00E290D5 /* CCSpriteFrame.m */; };
 		27AD0DD6123C61FF00E290D5 /* CCSpriteFrameCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 27AD0CE5123C61FF00E290D5 /* CCSpriteFrameCache.h */; };
 		27AD0DD7123C61FF00E290D5 /* CCSpriteFrameCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD0CE6123C61FF00E290D5 /* CCSpriteFrameCache.m */; };
-		27AD0DD8123C61FF00E290D5 /* CCSpriteSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 27AD0CE7123C61FF00E290D5 /* CCSpriteSheet.h */; };
-		27AD0DD9123C61FF00E290D5 /* CCSpriteSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD0CE8123C61FF00E290D5 /* CCSpriteSheet.m */; };
 		27AD0DDA123C61FF00E290D5 /* CCTexture2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 27AD0CE9123C61FF00E290D5 /* CCTexture2D.h */; };
 		27AD0DDB123C61FF00E290D5 /* CCTexture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD0CEA123C61FF00E290D5 /* CCTexture2D.m */; };
 		27AD0DDC123C61FF00E290D5 /* CCTextureAtlas.h in Headers */ = {isa = PBXBuildFile; fileRef = 27AD0CEB123C61FF00E290D5 /* CCTextureAtlas.h */; };
@@ -996,8 +993,6 @@
 		27AD0CE4123C61FF00E290D5 /* CCSpriteFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSpriteFrame.m; sourceTree = "<group>"; };
 		27AD0CE5123C61FF00E290D5 /* CCSpriteFrameCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSpriteFrameCache.h; sourceTree = "<group>"; };
 		27AD0CE6123C61FF00E290D5 /* CCSpriteFrameCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSpriteFrameCache.m; sourceTree = "<group>"; };
-		27AD0CE7123C61FF00E290D5 /* CCSpriteSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSpriteSheet.h; sourceTree = "<group>"; };
-		27AD0CE8123C61FF00E290D5 /* CCSpriteSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSpriteSheet.m; sourceTree = "<group>"; };
 		27AD0CE9123C61FF00E290D5 /* CCTexture2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTexture2D.h; sourceTree = "<group>"; };
 		27AD0CEA123C61FF00E290D5 /* CCTexture2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTexture2D.m; sourceTree = "<group>"; };
 		27AD0CEB123C61FF00E290D5 /* CCTextureAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTextureAtlas.h; sourceTree = "<group>"; };
@@ -1547,8 +1542,6 @@
 				27AD0CE4123C61FF00E290D5 /* CCSpriteFrame.m */,
 				27AD0CE5123C61FF00E290D5 /* CCSpriteFrameCache.h */,
 				27AD0CE6123C61FF00E290D5 /* CCSpriteFrameCache.m */,
-				27AD0CE7123C61FF00E290D5 /* CCSpriteSheet.h */,
-				27AD0CE8123C61FF00E290D5 /* CCSpriteSheet.m */,
 				27AD0CE9123C61FF00E290D5 /* CCTexture2D.h */,
 				27AD0CEA123C61FF00E290D5 /* CCTexture2D.m */,
 				27AD0CEB123C61FF00E290D5 /* CCTextureAtlas.h */,
@@ -2181,7 +2174,6 @@
 				27AD0DD2123C61FF00E290D5 /* CCSpriteBatchNode.h in Headers */,
 				27AD0DD4123C61FF00E290D5 /* CCSpriteFrame.h in Headers */,
 				27AD0DD6123C61FF00E290D5 /* CCSpriteFrameCache.h in Headers */,
-				27AD0DD8123C61FF00E290D5 /* CCSpriteSheet.h in Headers */,
 				27AD0DDA123C61FF00E290D5 /* CCTexture2D.h in Headers */,
 				27AD0DDC123C61FF00E290D5 /* CCTextureAtlas.h in Headers */,
 				27AD0DDE123C61FF00E290D5 /* CCTextureCache.h in Headers */,
@@ -2478,7 +2470,6 @@
 				27470EF91302EDD2001CC3D6 /* round-info-btn.png in Resources */,
 				27470EFC1303395B001CC3D6 /* round-info-btn-sel-hd.png in Resources */,
 				27470EFD1303395F001CC3D6 /* round-info-btn-hd.png in Resources */,
-				27470F5E13044D4F001CC3D6 /* Default.png in Resources */,
 				278FEF9A1304F28400EC4F50 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2819,7 +2810,6 @@
 				27AD0DD3123C61FF00E290D5 /* CCSpriteBatchNode.m in Sources */,
 				27AD0DD5123C61FF00E290D5 /* CCSpriteFrame.m in Sources */,
 				27AD0DD7123C61FF00E290D5 /* CCSpriteFrameCache.m in Sources */,
-				27AD0DD9123C61FF00E290D5 /* CCSpriteSheet.m in Sources */,
 				27AD0DDB123C61FF00E290D5 /* CCTexture2D.m in Sources */,
 				27AD0DDD123C61FF00E290D5 /* CCTextureAtlas.m in Sources */,
 				27AD0DDF123C61FF00E290D5 /* CCTextureCache.m in Sources */,
@@ -3031,6 +3021,7 @@
 					libs,
 				);
 				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "cocos2d libraries";
@@ -3117,6 +3108,7 @@
 					libs,
 				);
 				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "cocos2d libraries";
@@ -3312,6 +3304,7 @@
 					libs,
 				);
 				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				PRODUCT_NAME = "cocos2d libraries";
 				SDKROOT = iphoneos;
@@ -3337,6 +3330,7 @@
 					libs,
 				);
 				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "cocos2d libraries";

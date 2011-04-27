@@ -183,7 +183,7 @@ static CGFloat _scale = 0;
 	cpShape* shape;
     if (_isCircle) {
         shape = cpCircleShapeNew(body, (_info.width/2.0)*_scale, ccp(0,0));
-        shape->e = 0.80f; shape->u = 0.30;
+        shape->e = 0.80f; shape->u = 0.20;
     }
     else {
         shape = cpPolyShapeNew(body, num, verts, CGPointZero);
@@ -191,7 +191,7 @@ static CGFloat _scale = 0;
 //            shape->e = 0.55f; shape->u = 0.45f;
 //        }
 //        else {
-            shape->e = 0.5f; shape->u = 0.35f;
+            shape->e = 0.5f; shape->u = 0.30f;
 //        }
     }
 	shape->data = self;

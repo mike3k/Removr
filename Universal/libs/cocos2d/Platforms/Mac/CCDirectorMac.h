@@ -52,13 +52,14 @@ enum  {
 	BOOL			isFullScreen_;
 	int				resizeMode_;
 	CGPoint			winOffset_;
-	CGSize			originalWinSize_;
+    CGSize			originalWinSize_;
 	
-	MacGLView		*fullScreenGLView_;
 	NSWindow		*fullScreenWindow_;
-	
+    
 	// cache
-	MacGLView		*windowGLView_;
+	NSWindow		*windowGLView_;
+    NSView          *superViewGLView_;
+    NSRect          originalWinRect_; // Original size and position
 }
 
 // whether or not the view is in fullscreen mode
@@ -66,6 +67,8 @@ enum  {
 
 // resize mode: with or without scaling
 @property (nonatomic, readwrite) int resizeMode;
+
+@property (nonatomic, readwrite) CGSize originalWinSize;
 
 /** Sets the view in fullscreen or window mode */
 - (void) setFullScreen:(BOOL)fullscreen;
