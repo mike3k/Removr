@@ -80,10 +80,11 @@ static GameManager *_sharedGameManager = nil;
     NSLog(@"initLevels");
 #endif
         [self opendb];
-        sqlite3_prepare_v2(db, [queryString UTF8String], 
-                           -1, 
-                           &query, 
-                           NULL);
+        int err = sqlite3_prepare_v2(db, [queryString UTF8String], 
+                                      -1, 
+                                      &query, 
+                                      NULL);
+        NSLog(@"sqlite3_prepare returned %d",err);
     }
 }
 
@@ -305,8 +306,9 @@ static BOOL isNewer(NSString *file1, NSString *file2)
 #else
         self.dbpath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"db"];
 #endif
-        sqlite3_open([self.dbpath UTF8String], &db);
+        int err = sqlite3_open_v2([self.dbpath UTF8String], &db,SQLITE_OPEN_READONLY,NULL);
 //        self.queryString = [NSMutableString stringWithString: @"SELECT rowid,background,map,name,par,timeLimit,achievement,flags FROM levels "];
+        NSLog(@"sqlite3_open returned %d",err);
         [self attach_user_databases];
 //        [self.queryString appendString: @" WHERE ROWID=?"];
     }

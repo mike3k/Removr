@@ -36,13 +36,13 @@
 		273247DF11E7F84600D5F78D /* LevelMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelMap.m; sourceTree = "<group>"; };
 		2732482C11E9235300D5F78D /* EditWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditWindowController.h; sourceTree = "<group>"; };
 		2732482D11E9235300D5F78D /* EditWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditWindowController.m; sourceTree = "<group>"; };
-		2732486011E940CE00D5F78D /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level.h; path = ../Removr/Classes/Level.h; sourceTree = "<group>"; };
-		2732486111E940CE00D5F78D /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Level.m; path = ../Removr/Classes/Level.m; sourceTree = "<group>"; };
+		2732486011E940CE00D5F78D /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		2732486111E940CE00D5F78D /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
 		27324F2111EE579500D5F78D /* English */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = English; path = English.lproj/ICON2.icns; sourceTree = "<group>"; };
 		278B17EA11E109B8006B9FAC /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundView.h; sourceTree = "<group>"; };
 		278B17EB11E109B8006B9FAC /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
 		278B17F411E10C1D006B9FAC /* English */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = English; path = English.lproj/LevelTemplate.png; sourceTree = "<group>"; };
-		278B185C11E118F8006B9FAC /* SpriteDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteDefs.h; path = ../Removr/Classes/SpriteDefs.h; sourceTree = SOURCE_ROOT; };
+		278B185C11E118F8006B9FAC /* SpriteDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteDefs.h; sourceTree = "<group>"; };
 		278B18C811E16C4B006B9FAC /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -67,7 +67,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				278B185C11E118F8006B9FAC /* SpriteDefs.h */,
 				256AC3D80F4B6AC300CF3369 /* LevelEditorAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* LevelEditorAppDelegate.m */,
 				273247DE11E7F84600D5F78D /* LevelMap.h */,
@@ -78,8 +77,6 @@
 				278B17EB11E109B8006B9FAC /* BackgroundView.m */,
 				2732482C11E9235300D5F78D /* EditWindowController.h */,
 				2732482D11E9235300D5F78D /* EditWindowController.m */,
-				2732486011E940CE00D5F78D /* Level.h */,
-				2732486111E940CE00D5F78D /* Level.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -110,10 +107,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		272A3B0A136F6B9100F8718C /* Removr Common Code */ = {
+			isa = PBXGroup;
+			children = (
+				278B185C11E118F8006B9FAC /* SpriteDefs.h */,
+				2732486011E940CE00D5F78D /* Level.h */,
+				2732486111E940CE00D5F78D /* Level.m */,
+			);
+			name = "Removr Common Code";
+			path = ../Universal/Classes;
+			sourceTree = SOURCE_ROOT;
+		};
 		29B97314FDCFA39411CA2CEA /* LevelEditor */ = {
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
+				272A3B0A136F6B9100F8718C /* Removr Common Code */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,

@@ -61,7 +61,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "326"
-         endingLineNumber = "326">
+         endingLineNumber = "326"
+         landmarkName = "-showPauseMenu:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -93,11 +95,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GameManager.m"
-         timestampString = "319169453.641459"
+         timestampString = "329505406.740873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "382"
-         endingLineNumber = "382">
+         startingLineNumber = "384"
+         endingLineNumber = "384"
+         landmarkName = "-setTime:forLevel:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -117,11 +121,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GameManager.m"
-         timestampString = "319169453.641459"
+         timestampString = "329505406.740873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "408"
-         endingLineNumber = "408">
+         startingLineNumber = "410"
+         endingLineNumber = "410"
+         landmarkName = "@implementation GameManager"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -177,11 +183,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GameManager.m"
-         timestampString = "319169453.641459"
+         timestampString = "329421556.481546"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "312"
-         endingLineNumber = "312">
+         startingLineNumber = "94"
+         endingLineNumber = "94"
+         landmarkName = "@implementation GameManager"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -189,23 +197,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GameManager.m"
-         timestampString = "318485398.589591"
+         timestampString = "329421556.481546"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "93"
-         endingLineNumber = "93">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/GameManager.m"
-         timestampString = "318485398.59"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "138"
-         endingLineNumber = "138">
+         startingLineNumber = "139"
+         endingLineNumber = "139"
+         landmarkName = "@implementation GameManager"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -217,7 +215,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "577"
-         endingLineNumber = "577">
+         endingLineNumber = "577"
+         landmarkName = "@implementation GameLayer"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -229,7 +229,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "388"
-         endingLineNumber = "388">
+         endingLineNumber = "388"
+         landmarkName = "-removeSprite:force:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -253,7 +255,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "281"
-         endingLineNumber = "281">
+         endingLineNumber = "281"
+         landmarkName = "-play"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -265,19 +269,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "144"
-         endingLineNumber = "144">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/GameManager.m"
-         timestampString = "319169453.641459"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "436"
-         endingLineNumber = "436">
+         endingLineNumber = "144"
+         landmarkName = "-init"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -289,7 +283,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "737"
-         endingLineNumber = "737">
+         endingLineNumber = "737"
+         landmarkName = "-gotoLevel:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -301,7 +297,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "35"
-         endingLineNumber = "35">
+         endingLineNumber = "35"
+         landmarkName = "eachShape()"
+         landmarkType = "7">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -313,7 +311,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "505"
-         endingLineNumber = "505">
+         endingLineNumber = "505"
+         landmarkName = "-handleTouch:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -325,7 +325,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "470"
-         endingLineNumber = "470">
+         endingLineNumber = "470"
+         landmarkName = "-itemForTouch:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -337,7 +339,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "56"
-         endingLineNumber = "56">
+         endingLineNumber = "56"
+         landmarkName = "postStepExplode()"
+         landmarkType = "7">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -373,7 +377,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "453"
-         endingLineNumber = "453">
+         endingLineNumber = "453"
+         landmarkName = "-end"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -397,7 +403,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "247"
-         endingLineNumber = "247">
+         endingLineNumber = "247"
+         landmarkName = "-runWithMap:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -457,7 +465,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "685"
-         endingLineNumber = "685">
+         endingLineNumber = "685"
+         landmarkName = "-dimScreen"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -477,11 +487,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GameManager.m"
-         timestampString = "319169453.641459"
+         timestampString = "329505406.740873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "393"
-         endingLineNumber = "393">
+         startingLineNumber = "395"
+         endingLineNumber = "395"
+         landmarkName = "-setTime:forLevel:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -489,12 +501,68 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GameManager.m"
-         timestampString = "319221008.410321"
+         timestampString = "329421556.481546"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "231"
-         endingLineNumber = "231"
+         startingLineNumber = "232"
+         endingLineNumber = "232"
          landmarkName = "-scan_directory:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/GameLayer.m"
+         timestampString = "329418270.668446"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "725"
+         endingLineNumber = "725"
+         landmarkName = "-gotoLevel:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/GameManager.m"
+         timestampString = "329505406.740873"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "426"
+         endingLineNumber = "426"
+         landmarkName = "-GetLevel:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/GameManager.m"
+         timestampString = "329421556.481546"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "303"
+         endingLineNumber = "303"
+         landmarkName = "-opendb"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/GameManager.m"
+         timestampString = "329505587.854925"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
+         landmarkName = "-initLevels"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
