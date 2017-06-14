@@ -8,7 +8,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "0"
-         filePath = "/Users/mike/Sources/mystuff/Blocks/Classes/MainScreen.m"
+         filePath = "../../../../../Sources/mystuff/Blocks/Classes/MainScreen.m"
          timestampString = "318485398.581668"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
@@ -20,7 +20,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "0"
-         filePath = "/Users/mike/Sources/mystuff/Blocks/Classes/MainScreen.m"
+         filePath = "../../../../../Sources/mystuff/Blocks/Classes/MainScreen.m"
          timestampString = "318485398.582248"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
@@ -37,7 +37,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "141"
-         endingLineNumber = "141">
+         endingLineNumber = "141"
+         landmarkName = "-setAttributes:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -49,7 +51,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "207"
-         endingLineNumber = "207">
+         endingLineNumber = "207"
+         landmarkName = "+Sprite:x:y:withSheet:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -75,7 +79,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "161"
-         endingLineNumber = "161">
+         endingLineNumber = "161"
+         landmarkName = "-makeShapeForSprite"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

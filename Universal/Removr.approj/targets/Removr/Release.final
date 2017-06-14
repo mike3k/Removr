@@ -1,0 +1,1791 @@
+{
+    "xcode_project": "Removr.xcodeproj", 
+    "java_sources": [], 
+    "pchs": [
+        "./Blocks_Prefix.pch"
+    ], 
+    "assets": [
+        {
+            "asset": "Resources/background.png", 
+            "target": "background.png"
+        }, 
+        {
+            "asset": "Resources/Default.png", 
+            "target": "Default.png"
+        }, 
+        {
+            "asset": "Resources/button-highscores-sel.png", 
+            "target": "button-highscores-sel.png"
+        }, 
+        {
+            "asset": "Resources/fps_images.png", 
+            "target": "fps_images.png"
+        }, 
+        {
+            "asset": "Resources/button-highscores.png", 
+            "target": "button-highscores.png"
+        }, 
+        {
+            "asset": "Resources/button-more.png", 
+            "target": "button-more.png"
+        }, 
+        {
+            "asset": "Resources/button-more-sel.png", 
+            "target": "button-more-sel.png"
+        }, 
+        {
+            "asset": "Resources/button-options-sel.png", 
+            "target": "button-options-sel.png"
+        }, 
+        {
+            "asset": "Resources/button-options.png", 
+            "target": "button-options.png"
+        }, 
+        {
+            "asset": "Resources/button-play-sel.png", 
+            "target": "button-play-sel.png"
+        }, 
+        {
+            "asset": "Resources/button-play.png", 
+            "target": "button-play.png"
+        }, 
+        {
+            "asset": "Resources/logo-menu.png", 
+            "target": "logo-menu.png"
+        }, 
+        {
+            "asset": "Resources/back-sel.png", 
+            "target": "back-sel.png"
+        }, 
+        {
+            "asset": "Resources/back.png", 
+            "target": "back.png"
+        }, 
+        {
+            "asset": "Toffeenut/Icon/Removr-57-springboard.png", 
+            "target": "Removr-57-springboard.png"
+        }, 
+        {
+            "asset": "Toffeenut/Icon/Removr-114.png", 
+            "target": "Removr-114.png"
+        }, 
+        {
+            "asset": "Toffeenut/Icon/Removr-Spotlight-29.png", 
+            "target": "Removr-Spotlight-29.png"
+        }, 
+        {
+            "asset": "Resources/pause.png", 
+            "target": "pause.png"
+        }, 
+        {
+            "asset": "Toffeenut/Removr Files - Interface/extra/pause-icon.png", 
+            "target": "pause-icon.png"
+        }, 
+        {
+            "asset": "Toffeenut/Removr Files - Interface/extra/pause-quit-sel.png", 
+            "target": "pause-quit-sel.png"
+        }, 
+        {
+            "asset": "Toffeenut/Removr Files - Interface/extra/pause-quit.png", 
+            "target": "pause-quit.png"
+        }, 
+        {
+            "asset": "Toffeenut/Removr Files - Interface/extra/pause-restart-sel.png", 
+            "target": "pause-restart-sel.png"
+        }, 
+        {
+            "asset": "Toffeenut/Removr Files - Interface/extra/pause-restart.png", 
+            "target": "pause-restart.png"
+        }, 
+        {
+            "asset": "Toffeenut/Removr Files - Interface/extra/pause-resume-sel.png", 
+            "target": "pause-resume-sel.png"
+        }, 
+        {
+            "asset": "Toffeenut/Removr Files - Interface/extra/pause-resume.png", 
+            "target": "pause-resume.png"
+        }, 
+        {
+            "asset": "Resources/blackbg.png", 
+            "target": "blackbg.png"
+        }, 
+        {
+            "asset": "Resources/uhoh.png", 
+            "target": "uhoh.png"
+        }, 
+        {
+            "asset": "levels.db", 
+            "target": "levels.db"
+        }, 
+        {
+            "asset": "Resources/Shape-Atlas.png", 
+            "target": "Shape-Atlas.png"
+        }, 
+        {
+            "asset": "Resources/intro.wav", 
+            "target": "intro.wav"
+        }, 
+        {
+            "asset": "Resources/off-sel.png", 
+            "target": "off-sel.png"
+        }, 
+        {
+            "asset": "Resources/on-sel.png", 
+            "target": "on-sel.png"
+        }, 
+        {
+            "asset": "Resources/off.png", 
+            "target": "off.png"
+        }, 
+        {
+            "asset": "Resources/on.png", 
+            "target": "on.png"
+        }, 
+        {
+            "asset": "Resources/title-options.png", 
+            "target": "title-options.png"
+        }, 
+        {
+            "asset": "Resources/label-colorblind.png", 
+            "target": "label-colorblind.png"
+        }, 
+        {
+            "asset": "Resources/label-reset.png", 
+            "target": "label-reset.png"
+        }, 
+        {
+            "asset": "Resources/label-accellerometer.png", 
+            "target": "label-accellerometer.png"
+        }, 
+        {
+            "asset": "Resources/label-sound.png", 
+            "target": "label-sound.png"
+        }, 
+        {
+            "asset": "Resources/Level-Complete.png", 
+            "target": "Level-Complete.png"
+        }, 
+        {
+            "asset": "Resources/Score-Images.png", 
+            "target": "Score-Images.png"
+        }, 
+        {
+            "asset": "Resources/Lvl1Background.png", 
+            "target": "Lvl1Background.png"
+        }, 
+        {
+            "asset": "Resources/Lvl2Background.png", 
+            "target": "Lvl2Background.png"
+        }, 
+        {
+            "asset": "Resources/Lvl3Background.png", 
+            "target": "Lvl3Background.png"
+        }, 
+        {
+            "asset": "Resources/info-background.png", 
+            "target": "info-background.png"
+        }, 
+        {
+            "asset": "Resources/visit-sel.png", 
+            "target": "visit-sel.png"
+        }, 
+        {
+            "asset": "Resources/visit.png", 
+            "target": "visit.png"
+        }, 
+        {
+            "asset": "Resources/spacer.png", 
+            "target": "spacer.png"
+        }, 
+        {
+            "asset": "Resources/levelbutton.png", 
+            "target": "levelbutton.png"
+        }, 
+        {
+            "asset": "Resources/levelbutton-sel.png", 
+            "target": "levelbutton-sel.png"
+        }, 
+        {
+            "asset": "Resources/button-next.png", 
+            "target": "button-next.png"
+        }, 
+        {
+            "asset": "Resources/button-prev.png", 
+            "target": "button-prev.png"
+        }, 
+        {
+            "asset": "Resources/button-prev-sel.png", 
+            "target": "button-prev-sel.png"
+        }, 
+        {
+            "asset": "Resources/button-next-sel.png", 
+            "target": "button-next-sel.png"
+        }, 
+        {
+            "asset": "Resources/applause.wav", 
+            "target": "applause.wav"
+        }, 
+        {
+            "asset": "Resources/fart.wav", 
+            "target": "fart.wav"
+        }, 
+        {
+            "asset": "Resources/remove.wav", 
+            "target": "remove.wav"
+        }, 
+        {
+            "asset": "Resources/Shape-Atlas-hd.png", 
+            "target": "Shape-Atlas-hd.png"
+        }, 
+        {
+            "asset": "Resources/visit-sel-hd.png", 
+            "target": "visit-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/visit-hd.png", 
+            "target": "visit-hd.png"
+        }, 
+        {
+            "asset": "Resources/background-hd.png", 
+            "target": "background-hd.png"
+        }, 
+        {
+            "asset": "Resources/info-background-hd.png", 
+            "target": "info-background-hd.png"
+        }, 
+        {
+            "asset": "Resources/Lvl1Background-hd.png", 
+            "target": "Lvl1Background-hd.png"
+        }, 
+        {
+            "asset": "Resources/Lvl2Background-hd.png", 
+            "target": "Lvl2Background-hd.png"
+        }, 
+        {
+            "asset": "Resources/Lvl3Background-hd.png", 
+            "target": "Lvl3Background-hd.png"
+        }, 
+        {
+            "asset": "Resources/back-sel-hd.png", 
+            "target": "back-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/back-hd.png", 
+            "target": "back-hd.png"
+        }, 
+        {
+            "asset": "Resources/levelbutton-sel-hd.png", 
+            "target": "levelbutton-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/levelbutton-hd.png", 
+            "target": "levelbutton-hd.png"
+        }, 
+        {
+            "asset": "Resources/logo-menu-hd.png", 
+            "target": "logo-menu-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-highscores-sel-hd.png", 
+            "target": "button-highscores-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-highscores-hd.png", 
+            "target": "button-highscores-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-more-sel-hd.png", 
+            "target": "button-more-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-more-hd.png", 
+            "target": "button-more-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-next-sel-hd.png", 
+            "target": "button-next-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-options-sel-hd.png", 
+            "target": "button-options-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-options-hd.png", 
+            "target": "button-options-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-next-hd.png", 
+            "target": "button-next-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-play-sel-hd.png", 
+            "target": "button-play-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-prev-hd.png", 
+            "target": "button-prev-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-prev-sel-hd.png", 
+            "target": "button-prev-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-play-hd.png", 
+            "target": "button-play-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-restart-sel-hd.png", 
+            "target": "button-restart-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-restart-hd.png", 
+            "target": "button-restart-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-resume-hd.png", 
+            "target": "button-resume-hd.png"
+        }, 
+        {
+            "asset": "Resources/button-resume-sel-hd.png", 
+            "target": "button-resume-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/uhoh-hd.png", 
+            "target": "uhoh-hd.png"
+        }, 
+        {
+            "asset": "Resources/pause-icon-hd.png", 
+            "target": "pause-icon-hd.png"
+        }, 
+        {
+            "asset": "Resources/title-options-hd.png", 
+            "target": "title-options-hd.png"
+        }, 
+        {
+            "asset": "Resources/pause-restart-sel-hd.png", 
+            "target": "pause-restart-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/pause-restart-hd.png", 
+            "target": "pause-restart-hd.png"
+        }, 
+        {
+            "asset": "Resources/pause-resume-sel-hd.png", 
+            "target": "pause-resume-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/pause-resume-hd.png", 
+            "target": "pause-resume-hd.png"
+        }, 
+        {
+            "asset": "Resources/off-sel-hd.png", 
+            "target": "off-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/off-hd.png", 
+            "target": "off-hd.png"
+        }, 
+        {
+            "asset": "Resources/on-sel-hd.png", 
+            "target": "on-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/on-hd.png", 
+            "target": "on-hd.png"
+        }, 
+        {
+            "asset": "Resources/label-accellerometer-hd.png", 
+            "target": "label-accellerometer-hd.png"
+        }, 
+        {
+            "asset": "Resources/label-sound-hd.png", 
+            "target": "label-sound-hd.png"
+        }, 
+        {
+            "asset": "Resources/pause-quit-sel-hd.png", 
+            "target": "pause-quit-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/pause-quit-hd.png", 
+            "target": "pause-quit-hd.png"
+        }, 
+        {
+            "asset": "Resources/Level-Complete-hd.png", 
+            "target": "Level-Complete-hd.png"
+        }, 
+        {
+            "asset": "Resources/spacer-hd.png", 
+            "target": "spacer-hd.png"
+        }, 
+        {
+            "asset": "Resources/cloud-1.png", 
+            "target": "cloud-1.png"
+        }, 
+        {
+            "asset": "Resources/cloud-1-hd.png", 
+            "target": "cloud-1-hd.png"
+        }, 
+        {
+            "asset": "Resources/cloud-2.png", 
+            "target": "cloud-2.png"
+        }, 
+        {
+            "asset": "Resources/cloud-2-hd.png", 
+            "target": "cloud-2-hd.png"
+        }, 
+        {
+            "asset": "Resources/sun-menu.png", 
+            "target": "sun-menu.png"
+        }, 
+        {
+            "asset": "Resources/sun-menu-hd.png", 
+            "target": "sun-menu-hd.png"
+        }, 
+        {
+            "asset": "Resources/alt-background.png", 
+            "target": "alt-background.png"
+        }, 
+        {
+            "asset": "Resources/alt-background-hd.png", 
+            "target": "alt-background-hd.png"
+        }, 
+        {
+            "asset": "Resources/alt-cloud-1.png", 
+            "target": "alt-cloud-1.png"
+        }, 
+        {
+            "asset": "Resources/alt-cloud-1-hd.png", 
+            "target": "alt-cloud-1-hd.png"
+        }, 
+        {
+            "asset": "Resources/alt-cloud-2.png", 
+            "target": "alt-cloud-2.png"
+        }, 
+        {
+            "asset": "Resources/alt-cloud-2-hd.png", 
+            "target": "alt-cloud-2-hd.png"
+        }, 
+        {
+            "asset": "Resources/alt-sun-menu.png", 
+            "target": "alt-sun-menu.png"
+        }, 
+        {
+            "asset": "Resources/alt-sun-menu-hd.png", 
+            "target": "alt-sun-menu-hd.png"
+        }, 
+        {
+            "asset": "Resources/alt-pause-icon.png", 
+            "target": "alt-pause-icon.png"
+        }, 
+        {
+            "asset": "Resources/alt-pause-icon-hd.png", 
+            "target": "alt-pause-icon-hd.png"
+        }, 
+        {
+            "asset": "Resources/alt-info-background.png", 
+            "target": "alt-info-background.png"
+        }, 
+        {
+            "asset": "Resources/alt-info-background-hd.png", 
+            "target": "alt-info-background-hd.png"
+        }, 
+        {
+            "asset": "Resources/alt-Lvl1Background.png", 
+            "target": "alt-Lvl1Background.png"
+        }, 
+        {
+            "asset": "Resources/alt-Lvl1Background-hd.png", 
+            "target": "alt-Lvl1Background-hd.png"
+        }, 
+        {
+            "asset": "Resources/alt-Lvl2Background.png", 
+            "target": "alt-Lvl2Background.png"
+        }, 
+        {
+            "asset": "Resources/alt-Lvl2Background-hd.png", 
+            "target": "alt-Lvl2Background-hd.png"
+        }, 
+        {
+            "asset": "Resources/alt-Lvl3Background.png", 
+            "target": "alt-Lvl3Background.png"
+        }, 
+        {
+            "asset": "Resources/alt-Lvl3Background-hd.png", 
+            "target": "alt-Lvl3Background-hd.png"
+        }, 
+        {
+            "asset": "explosion.plist", 
+            "target": "explosion.plist"
+        }, 
+        {
+            "asset": "explosion.png", 
+            "target": "explosion.png"
+        }, 
+        {
+            "asset": "Resources/pew.wav", 
+            "target": "pew.wav"
+        }, 
+        {
+            "asset": "Resources/label-nightmode.png", 
+            "target": "label-nightmode.png"
+        }, 
+        {
+            "asset": "Resources/label-nightmode-hd.png", 
+            "target": "label-nightmode-hd.png"
+        }, 
+        {
+            "asset": "Resources/ios_game_center_icon.png", 
+            "target": "ios_game_center_icon.png"
+        }, 
+        {
+            "asset": "Resources/ios_game_center_icon-hd.png", 
+            "target": "ios_game_center_icon-hd.png"
+        }, 
+        {
+            "asset": "Resources/best-scores-selected.png", 
+            "target": "best-scores-selected.png"
+        }, 
+        {
+            "asset": "Resources/best-scores-selected-hd.png", 
+            "target": "best-scores-selected-hd.png"
+        }, 
+        {
+            "asset": "Resources/best-scores.png", 
+            "target": "best-scores.png"
+        }, 
+        {
+            "asset": "Resources/best-scores-hd.png", 
+            "target": "best-scores-hd.png"
+        }, 
+        {
+            "asset": "Resources/leaderboard-selected.png", 
+            "target": "leaderboard-selected.png"
+        }, 
+        {
+            "asset": "Resources/leaderboard-selected-hd.png", 
+            "target": "leaderboard-selected-hd.png"
+        }, 
+        {
+            "asset": "Resources/leaderboard.png", 
+            "target": "leaderboard.png"
+        }, 
+        {
+            "asset": "Resources/leaderboard-hd.png", 
+            "target": "leaderboard-hd.png"
+        }, 
+        {
+            "asset": "Resources/alt-background-xd.png", 
+            "target": "alt-background-xd.png"
+        }, 
+        {
+            "asset": "Resources/alt-info-background-xd.png", 
+            "target": "alt-info-background-xd.png"
+        }, 
+        {
+            "asset": "Resources/alt-Lvl1Background-xd.png", 
+            "target": "alt-Lvl1Background-xd.png"
+        }, 
+        {
+            "asset": "Resources/alt-Lvl2Background-xd.png", 
+            "target": "alt-Lvl2Background-xd.png"
+        }, 
+        {
+            "asset": "Resources/alt-Lvl3Background-xd.png", 
+            "target": "alt-Lvl3Background-xd.png"
+        }, 
+        {
+            "asset": "Resources/background-xd.png", 
+            "target": "background-xd.png"
+        }, 
+        {
+            "asset": "Resources/info-background-xd.png", 
+            "target": "info-background-xd.png"
+        }, 
+        {
+            "asset": "Resources/Lvl2Background-xd.png", 
+            "target": "Lvl2Background-xd.png"
+        }, 
+        {
+            "asset": "Resources/Lvl1Background-xd.png", 
+            "target": "Lvl1Background-xd.png"
+        }, 
+        {
+            "asset": "Resources/Lvl3Background-xd.png", 
+            "target": "Lvl3Background-xd.png"
+        }, 
+        {
+            "asset": "Toffeenut/Icon/Removr-72.png", 
+            "target": "Removr-72.png"
+        }, 
+        {
+            "asset": "Resources/Default-Landscape.png", 
+            "target": "Default-Landscape.png"
+        }, 
+        {
+            "asset": "Resources/Default-Portrait.png", 
+            "target": "Default-Portrait.png"
+        }, 
+        {
+            "asset": "GKAchievementNotification/images/gk-icon.png", 
+            "target": "gk-icon.png"
+        }, 
+        {
+            "asset": "GKAchievementNotification/images/gk-icon@2x.png", 
+            "target": "gk-icon@2x.png"
+        }, 
+        {
+            "asset": "GKAchievementNotification/images/gk-notification.png", 
+            "target": "gk-notification.png"
+        }, 
+        {
+            "asset": "GKAchievementNotification/images/gk-notification@2x.png", 
+            "target": "gk-notification@2x.png"
+        }, 
+        {
+            "asset": "Resources/round-info-btn-sel.png", 
+            "target": "round-info-btn-sel.png"
+        }, 
+        {
+            "asset": "Resources/round-info-btn.png", 
+            "target": "round-info-btn.png"
+        }, 
+        {
+            "asset": "Resources/round-info-btn-sel-hd.png", 
+            "target": "round-info-btn-sel-hd.png"
+        }, 
+        {
+            "asset": "Resources/round-info-btn-hd.png", 
+            "target": "round-info-btn-hd.png"
+        }, 
+        {
+            "asset": "Resources/Icon.png", 
+            "target": "Icon.png"
+        }
+    ], 
+    "link_flags": [], 
+    "config": {
+        "FEATURES": [
+            "opengles2", 
+            "landscape"
+        ], 
+        "APPLICATION_IDENTIFIER": "com.mcdevzone.removr", 
+        "APPLICATION_NAME": "Removr", 
+        "LONG_VERSION": "1.3.3", 
+        "TEMPLATE_VALUES": {
+            "PRODUCT_NAME": "Removr", 
+            "EXECUTABLE_NAME": "Removr"
+        }, 
+        "APPLICATION_FULL_NAME": "Removr"
+    }, 
+    "header_paths": [
+        {
+            "header_path": "Removr.hmap", 
+            "type": "I", 
+            "hmap": {
+                "GetMoreScene.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "GetMoreScene.h", 
+                    "key": "GetMoreScene.h"
+                }, 
+                "CCTextureCache.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTextureCache.h", 
+                    "key": "CCTextureCache.h"
+                }, 
+                "Blocks_Prefix.pch": {
+                    "prefix": "./", 
+                    "suffix": "Blocks_Prefix.pch", 
+                    "key": "Blocks_Prefix.pch"
+                }, 
+                "GKAchievementHandler.h": {
+                    "prefix": "GKAchievementNotification/", 
+                    "suffix": "GKAchievementHandler.h", 
+                    "key": "GKAchievementHandler.h"
+                }, 
+                "CCTMXTiledMap.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTMXTiledMap.h", 
+                    "key": "CCTMXTiledMap.h"
+                }, 
+                "CCTouchDelegateProtocol.h": {
+                    "prefix": "libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "CCTouchDelegateProtocol.h", 
+                    "key": "CCTouchDelegateProtocol.h"
+                }, 
+                "CDAudioManager.h": {
+                    "prefix": "libs/CocosDenshion/", 
+                    "suffix": "CDAudioManager.h", 
+                    "key": "CDAudioManager.h"
+                }, 
+                "CocosDenshion.h": {
+                    "prefix": "libs/CocosDenshion/", 
+                    "suffix": "CocosDenshion.h", 
+                    "key": "CocosDenshion.h"
+                }, 
+                "cpPolyShape.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "cpPolyShape.h", 
+                    "key": "cpPolyShape.h"
+                }, 
+                "CCActionPageTurn3D.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCActionPageTurn3D.h", 
+                    "key": "CCActionPageTurn3D.h"
+                }, 
+                "CCAtlasNode.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCAtlasNode.h", 
+                    "key": "CCAtlasNode.h"
+                }, 
+                "CCLayer.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCLayer.h", 
+                    "key": "CCLayer.h"
+                }, 
+                "cpSimpleMotor.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "cpSimpleMotor.h", 
+                    "key": "cpSimpleMotor.h"
+                }, 
+                "cpVect.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "cpVect.h", 
+                    "key": "cpVect.h"
+                }, 
+                "ccConfig.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "ccConfig.h", 
+                    "key": "ccConfig.h"
+                }, 
+                "CCAnimationCache.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCAnimationCache.h", 
+                    "key": "CCAnimationCache.h"
+                }, 
+                "cocos2d.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "cocos2d.h", 
+                    "key": "cocos2d.h"
+                }, 
+                "HighScoreLayer.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "HighScoreLayer.h", 
+                    "key": "HighScoreLayer.h"
+                }, 
+                "CCGrid.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCGrid.h", 
+                    "key": "CCGrid.h"
+                }, 
+                "uthash.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "uthash.h", 
+                    "key": "uthash.h"
+                }, 
+                "ccTypes.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "ccTypes.h", 
+                    "key": "ccTypes.h"
+                }, 
+                "SpriteDefs.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "SpriteDefs.h", 
+                    "key": "SpriteDefs.h"
+                }, 
+                "LevelCompleteMsg.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "LevelCompleteMsg.h", 
+                    "key": "LevelCompleteMsg.h"
+                }, 
+                "CCTransition.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTransition.h", 
+                    "key": "CCTransition.h"
+                }, 
+                "NSDictionary_JSONExtensions.h": {
+                    "prefix": "libs/TouchJSON/Extensions/", 
+                    "suffix": "NSDictionary_JSONExtensions.h", 
+                    "key": "NSDictionary_JSONExtensions.h"
+                }, 
+                "CCSpriteFrameCache.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCSpriteFrameCache.h", 
+                    "key": "CCSpriteFrameCache.h"
+                }, 
+                "MacGLView.h": {
+                    "prefix": "libs/cocos2d/Platforms/Mac/", 
+                    "suffix": "MacGLView.h", 
+                    "key": "MacGLView.h"
+                }, 
+                "CCGrabber.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCGrabber.h", 
+                    "key": "CCGrabber.h"
+                }, 
+                "GameKitHelper.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "GameKitHelper.h", 
+                    "key": "GameKitHelper.h"
+                }, 
+                "OnOffButton.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "OnOffButton.h", 
+                    "key": "OnOffButton.h"
+                }, 
+                "CCProtocols.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCProtocols.h", 
+                    "key": "CCProtocols.h"
+                }, 
+                "Level.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "Level.h", 
+                    "key": "Level.h"
+                }, 
+                "CCLabelTTF.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCLabelTTF.h", 
+                    "key": "CCLabelTTF.h"
+                }, 
+                "CCArray.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "CCArray.h", 
+                    "key": "CCArray.h"
+                }, 
+                "CDataScanner_Extensions.h": {
+                    "prefix": "libs/TouchJSON/Extensions/", 
+                    "suffix": "CDataScanner_Extensions.h", 
+                    "key": "CDataScanner_Extensions.h"
+                }, 
+                "ccCArray.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "ccCArray.h", 
+                    "key": "ccCArray.h"
+                }, 
+                "CCMenu.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCMenu.h", 
+                    "key": "CCMenu.h"
+                }, 
+                "ES1Renderer.h": {
+                    "prefix": "libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "ES1Renderer.h", 
+                    "key": "ES1Renderer.h"
+                }, 
+                "CCActionTween.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCActionTween.h", 
+                    "key": "CCActionTween.h"
+                }, 
+                "MenuScene.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "MenuScene.h", 
+                    "key": "MenuScene.h"
+                }, 
+                "CCTouchHandler.h": {
+                    "prefix": "libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "CCTouchHandler.h", 
+                    "key": "CCTouchHandler.h"
+                }, 
+                "chipmunk.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "chipmunk.h", 
+                    "key": "chipmunk.h"
+                }, 
+                "cpRotaryLimitJoint.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "cpRotaryLimitJoint.h", 
+                    "key": "cpRotaryLimitJoint.h"
+                }, 
+                "chipmunk_ffi.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "chipmunk_ffi.h", 
+                    "key": "chipmunk_ffi.h"
+                }, 
+                "CCEventDispatcher.h": {
+                    "prefix": "libs/cocos2d/Platforms/Mac/", 
+                    "suffix": "CCEventDispatcher.h", 
+                    "key": "CCEventDispatcher.h"
+                }, 
+                "cpShape.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "cpShape.h", 
+                    "key": "cpShape.h"
+                }, 
+                "CCActionProgressTimer.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCActionProgressTimer.h", 
+                    "key": "CCActionProgressTimer.h"
+                }, 
+                "cpGearJoint.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "cpGearJoint.h", 
+                    "key": "cpGearJoint.h"
+                }, 
+                "CDOpenALSupport.h": {
+                    "prefix": "libs/CocosDenshion/", 
+                    "suffix": "CDOpenALSupport.h", 
+                    "key": "CDOpenALSupport.h"
+                }, 
+                "cpBB.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "cpBB.h", 
+                    "key": "cpBB.h"
+                }, 
+                "GameViewController.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "GameViewController.h", 
+                    "key": "GameViewController.h"
+                }, 
+                "ZAttributedString.h": {
+                    "prefix": "libs/FontLabel/", 
+                    "suffix": "ZAttributedString.h", 
+                    "key": "ZAttributedString.h"
+                }, 
+                "TransformUtils.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "TransformUtils.h", 
+                    "key": "TransformUtils.h"
+                }, 
+                "CCSprite.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCSprite.h", 
+                    "key": "CCSprite.h"
+                }, 
+                "ESRenderer.h": {
+                    "prefix": "libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "ESRenderer.h", 
+                    "key": "ESRenderer.h"
+                }, 
+                "CCParallaxNode.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCParallaxNode.h", 
+                    "key": "CCParallaxNode.h"
+                }, 
+                "FlurryAdDelegate.h": {
+                    "prefix": "FlurryLib/", 
+                    "suffix": "FlurryAdDelegate.h", 
+                    "key": "FlurryAdDelegate.h"
+                }, 
+                "CCActionInterval.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCActionInterval.h", 
+                    "key": "CCActionInterval.h"
+                }, 
+                "MCLayer.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "MCLayer.h", 
+                    "key": "MCLayer.h"
+                }, 
+                "CCParticleSystemPoint.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCParticleSystemPoint.h", 
+                    "key": "CCParticleSystemPoint.h"
+                }, 
+                "CCConfiguration.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCConfiguration.h", 
+                    "key": "CCConfiguration.h"
+                }, 
+                "CCRenderTexture.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCRenderTexture.h", 
+                    "key": "CCRenderTexture.h"
+                }, 
+                "CCDirectorMac.h": {
+                    "prefix": "libs/cocos2d/Platforms/Mac/", 
+                    "suffix": "CCDirectorMac.h", 
+                    "key": "CCDirectorMac.h"
+                }, 
+                "CCActionGrid3D.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCActionGrid3D.h", 
+                    "key": "CCActionGrid3D.h"
+                }, 
+                "TGAlib.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "TGAlib.h", 
+                    "key": "TGAlib.h"
+                }, 
+                "utlist.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "utlist.h", 
+                    "key": "utlist.h"
+                }, 
+                "CCTouchDispatcher.h": {
+                    "prefix": "libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "CCTouchDispatcher.h", 
+                    "key": "CCTouchDispatcher.h"
+                }, 
+                "CJSONSerializer.h": {
+                    "prefix": "libs/TouchJSON/JSON/", 
+                    "suffix": "CJSONSerializer.h", 
+                    "key": "CJSONSerializer.h"
+                }, 
+                "CCScene.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCScene.h", 
+                    "key": "CCScene.h"
+                }, 
+                "cpSlideJoint.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "cpSlideJoint.h", 
+                    "key": "cpSlideJoint.h"
+                }, 
+                "InfoLayer.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "InfoLayer.h", 
+                    "key": "InfoLayer.h"
+                }, 
+                "cpPivotJoint.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "cpPivotJoint.h", 
+                    "key": "cpPivotJoint.h"
+                }, 
+                "CCActionTiledGrid.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCActionTiledGrid.h", 
+                    "key": "CCActionTiledGrid.h"
+                }, 
+                "CJSONScanner.h": {
+                    "prefix": "libs/TouchJSON/JSON/", 
+                    "suffix": "CJSONScanner.h", 
+                    "key": "CJSONScanner.h"
+                }, 
+                "OpenGL_Internal.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "OpenGL_Internal.h", 
+                    "key": "OpenGL_Internal.h"
+                }, 
+                "OptionsLayer.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "OptionsLayer.h", 
+                    "key": "OptionsLayer.h"
+                }, 
+                "CCParticleSystem.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCParticleSystem.h", 
+                    "key": "CCParticleSystem.h"
+                }, 
+                "SimpleAudioEngine.h": {
+                    "prefix": "libs/CocosDenshion/", 
+                    "suffix": "SimpleAudioEngine.h", 
+                    "key": "SimpleAudioEngine.h"
+                }, 
+                "ZFont.h": {
+                    "prefix": "libs/FontLabel/", 
+                    "suffix": "ZFont.h", 
+                    "key": "ZFont.h"
+                }, 
+                "NSScanner_Extensions.h": {
+                    "prefix": "libs/TouchJSON/Extensions/", 
+                    "suffix": "NSScanner_Extensions.h", 
+                    "key": "NSScanner_Extensions.h"
+                }, 
+                "CCRibbon.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCRibbon.h", 
+                    "key": "CCRibbon.h"
+                }, 
+                "CGPointExtension.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "CGPointExtension.h", 
+                    "key": "CGPointExtension.h"
+                }, 
+                "CCTextureAtlas.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTextureAtlas.h", 
+                    "key": "CCTextureAtlas.h"
+                }, 
+                "cocoslive.h": {
+                    "prefix": "libs/cocoslive/", 
+                    "suffix": "cocoslive.h", 
+                    "key": "cocoslive.h"
+                }, 
+                "chipmunk_types.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "chipmunk_types.h", 
+                    "key": "chipmunk_types.h"
+                }, 
+                "ShapeSprite.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "ShapeSprite.h", 
+                    "key": "ShapeSprite.h"
+                }, 
+                "cpBody.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "cpBody.h", 
+                    "key": "cpBody.h"
+                }, 
+                "CCAnimation.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCAnimation.h", 
+                    "key": "CCAnimation.h"
+                }, 
+                "FontLabelStringDrawing.h": {
+                    "prefix": "libs/FontLabel/", 
+                    "suffix": "FontLabelStringDrawing.h", 
+                    "key": "FontLabelStringDrawing.h"
+                }, 
+                "CCCompatibility.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCCompatibility.h", 
+                    "key": "CCCompatibility.h"
+                }, 
+                "ZAttributedStringPrivate.h": {
+                    "prefix": "libs/FontLabel/", 
+                    "suffix": "ZAttributedStringPrivate.h", 
+                    "key": "ZAttributedStringPrivate.h"
+                }, 
+                "ZipUtils.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "ZipUtils.h", 
+                    "key": "ZipUtils.h"
+                }, 
+                "CCLabelBMFont.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCLabelBMFont.h", 
+                    "key": "CCLabelBMFont.h"
+                }, 
+                "CCActionEase.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCActionEase.h", 
+                    "key": "CCActionEase.h"
+                }, 
+                "CCProfiling.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "CCProfiling.h", 
+                    "key": "CCProfiling.h"
+                }, 
+                "GetMoreLayer.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "GetMoreLayer.h", 
+                    "key": "GetMoreLayer.h"
+                }, 
+                "CCGL.h": {
+                    "prefix": "libs/cocos2d/Platforms/", 
+                    "suffix": "CCGL.h", 
+                    "key": "CCGL.h"
+                }, 
+                "GameManager.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "GameManager.h", 
+                    "key": "GameManager.h"
+                }, 
+                "cpGrooveJoint.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "cpGrooveJoint.h", 
+                    "key": "cpGrooveJoint.h"
+                }, 
+                "BlocksAppDelegate.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "BlocksAppDelegate.h", 
+                    "key": "BlocksAppDelegate.h"
+                }, 
+                "CCFileUtils.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "CCFileUtils.h", 
+                    "key": "CCFileUtils.h"
+                }, 
+                "CCActionManager.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCActionManager.h", 
+                    "key": "CCActionManager.h"
+                }, 
+                "CCMotionStreak.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCMotionStreak.h", 
+                    "key": "CCMotionStreak.h"
+                }, 
+                "cpDampedSpring.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "cpDampedSpring.h", 
+                    "key": "cpDampedSpring.h"
+                }, 
+                "CCDirectorIOS.h": {
+                    "prefix": "libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "CCDirectorIOS.h", 
+                    "key": "CCDirectorIOS.h"
+                }, 
+                "AppSettings.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "AppSettings.h", 
+                    "key": "AppSettings.h"
+                }, 
+                "CLScoreServerRequest.h": {
+                    "prefix": "libs/cocoslive/", 
+                    "suffix": "CLScoreServerRequest.h", 
+                    "key": "CLScoreServerRequest.h"
+                }, 
+                "GameScene.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "GameScene.h", 
+                    "key": "GameScene.h"
+                }, 
+                "CCAction.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCAction.h", 
+                    "key": "CCAction.h"
+                }, 
+                "CCSpriteBatchNode.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCSpriteBatchNode.h", 
+                    "key": "CCSpriteBatchNode.h"
+                }, 
+                "FlurryAPI.h": {
+                    "prefix": "FlurryLib/", 
+                    "suffix": "FlurryAPI.h", 
+                    "key": "FlurryAPI.h"
+                }, 
+                "achievements.h": {
+                    "prefix": "./", 
+                    "suffix": "achievements.h", 
+                    "key": "achievements.h"
+                }, 
+                "CCTMXObjectGroup.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTMXObjectGroup.h", 
+                    "key": "CCTMXObjectGroup.h"
+                }, 
+                "CCTMXXMLParser.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTMXXMLParser.h", 
+                    "key": "CCTMXXMLParser.h"
+                }, 
+                "CCTransitionRadial.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTransitionRadial.h", 
+                    "key": "CCTransitionRadial.h"
+                }, 
+                "cpSpace.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "cpSpace.h", 
+                    "key": "cpSpace.h"
+                }, 
+                "CCActionCamera.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCActionCamera.h", 
+                    "key": "CCActionCamera.h"
+                }, 
+                "MainScreen.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "MainScreen.h", 
+                    "key": "MainScreen.h"
+                }, 
+                "CDConfig.h": {
+                    "prefix": "libs/CocosDenshion/", 
+                    "suffix": "CDConfig.h", 
+                    "key": "CDConfig.h"
+                }, 
+                "cpConstraint.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "cpConstraint.h", 
+                    "key": "cpConstraint.h"
+                }, 
+                "CCDrawingPrimitives.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCDrawingPrimitives.h", 
+                    "key": "CCDrawingPrimitives.h"
+                }, 
+                "prime.h": {
+                    "prefix": "libs/Chipmunk/src/", 
+                    "suffix": "prime.h", 
+                    "key": "prime.h"
+                }, 
+                "InfoScene.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "InfoScene.h", 
+                    "key": "InfoScene.h"
+                }, 
+                "CJSONDeserializer.h": {
+                    "prefix": "libs/TouchJSON/JSON/", 
+                    "suffix": "CJSONDeserializer.h", 
+                    "key": "CJSONDeserializer.h"
+                }, 
+                "CCNS.h": {
+                    "prefix": "libs/cocos2d/Platforms/", 
+                    "suffix": "CCNS.h", 
+                    "key": "CCNS.h"
+                }, 
+                "cpSpaceHash.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "cpSpaceHash.h", 
+                    "key": "cpSpaceHash.h"
+                }, 
+                "CCTileMapAtlas.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTileMapAtlas.h", 
+                    "key": "CCTileMapAtlas.h"
+                }, 
+                "HighscoreScene.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "HighscoreScene.h", 
+                    "key": "HighscoreScene.h"
+                }, 
+                "CCTMXLayer.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTMXLayer.h", 
+                    "key": "CCTMXLayer.h"
+                }, 
+                "MenuLayer.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "MenuLayer.h", 
+                    "key": "MenuLayer.h"
+                }, 
+                "CCActionInstant.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCActionInstant.h", 
+                    "key": "CCActionInstant.h"
+                }, 
+                "CCSpriteFrame.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCSpriteFrame.h", 
+                    "key": "CCSpriteFrame.h"
+                }, 
+                "CCScheduler.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCScheduler.h", 
+                    "key": "CCScheduler.h"
+                }, 
+                "NSCharacterSet_Extensions.h": {
+                    "prefix": "libs/TouchJSON/Extensions/", 
+                    "suffix": "NSCharacterSet_Extensions.h", 
+                    "key": "NSCharacterSet_Extensions.h"
+                }, 
+                "GKAchievementNotification.h": {
+                    "prefix": "GKAchievementNotification/", 
+                    "suffix": "GKAchievementNotification.h", 
+                    "key": "GKAchievementNotification.h"
+                }, 
+                "CCBlockSupport.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCBlockSupport.h", 
+                    "key": "CCBlockSupport.h"
+                }, 
+                "glu.h": {
+                    "prefix": "libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "glu.h", 
+                    "key": "glu.h"
+                }, 
+                "FontLabel.h": {
+                    "prefix": "libs/FontLabel/", 
+                    "suffix": "FontLabel.h", 
+                    "key": "FontLabel.h"
+                }, 
+                "CDataScanner.h": {
+                    "prefix": "libs/TouchJSON/", 
+                    "suffix": "CDataScanner.h", 
+                    "key": "CDataScanner.h"
+                }, 
+                "cpHashSet.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "cpHashSet.h", 
+                    "key": "cpHashSet.h"
+                }, 
+                "CCTransitionPageTurn.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTransitionPageTurn.h", 
+                    "key": "CCTransitionPageTurn.h"
+                }, 
+                "util.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "util.h", 
+                    "key": "util.h"
+                }, 
+                "base64.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "base64.h", 
+                    "key": "base64.h"
+                }, 
+                "cpArbiter.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "cpArbiter.h", 
+                    "key": "cpArbiter.h"
+                }, 
+                "EAGLView.h": {
+                    "prefix": "libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "EAGLView.h", 
+                    "key": "EAGLView.h"
+                }, 
+                "FontManager.h": {
+                    "prefix": "libs/FontLabel/", 
+                    "suffix": "FontManager.h", 
+                    "key": "FontManager.h"
+                }, 
+                "MCMenuItem.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "MCMenuItem.h", 
+                    "key": "MCMenuItem.h"
+                }, 
+                "chipmunk_unsafe.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "chipmunk_unsafe.h", 
+                    "key": "chipmunk_unsafe.h"
+                }, 
+                "CCParticleSystemQuad.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCParticleSystemQuad.h", 
+                    "key": "CCParticleSystemQuad.h"
+                }, 
+                "cpDampedRotarySpring.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "cpDampedRotarySpring.h", 
+                    "key": "cpDampedRotarySpring.h"
+                }, 
+                "ccMacros.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "ccMacros.h", 
+                    "key": "ccMacros.h"
+                }, 
+                "CCLabelAtlas.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCLabelAtlas.h", 
+                    "key": "CCLabelAtlas.h"
+                }, 
+                "LevelMenuItem.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "LevelMenuItem.h", 
+                    "key": "LevelMenuItem.h"
+                }, 
+                "cpPinJoint.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "cpPinJoint.h", 
+                    "key": "cpPinJoint.h"
+                }, 
+                "cpCollision.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "cpCollision.h", 
+                    "key": "cpCollision.h"
+                }, 
+                "CCParticleExamples.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCParticleExamples.h", 
+                    "key": "CCParticleExamples.h"
+                }, 
+                "CCTexture2D.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTexture2D.h", 
+                    "key": "CCTexture2D.h"
+                }, 
+                "GameLayer.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "GameLayer.h", 
+                    "key": "GameLayer.h"
+                }, 
+                "OptionScene.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "OptionScene.h", 
+                    "key": "OptionScene.h"
+                }, 
+                "CLScoreServerPost.h": {
+                    "prefix": "libs/cocoslive/", 
+                    "suffix": "CLScoreServerPost.h", 
+                    "key": "CLScoreServerPost.h"
+                }, 
+                "cpArray.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/", 
+                    "suffix": "cpArray.h", 
+                    "key": "cpArray.h"
+                }, 
+                "cpRatchetJoint.h": {
+                    "prefix": "libs/Chipmunk/include/chipmunk/constraints/", 
+                    "suffix": "cpRatchetJoint.h", 
+                    "key": "cpRatchetJoint.h"
+                }, 
+                "GameKitHelper+Additions.h": {
+                    "prefix": "Classes/", 
+                    "suffix": "GameKitHelper+Additions.h", 
+                    "key": "GameKitHelper+Additions.h"
+                }, 
+                "CCProgressTimer.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCProgressTimer.h", 
+                    "key": "CCProgressTimer.h"
+                }, 
+                "CCNode.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCNode.h", 
+                    "key": "CCNode.h"
+                }, 
+                "CCTexturePVR.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCTexturePVR.h", 
+                    "key": "CCTexturePVR.h"
+                }, 
+                "ccUtils.h": {
+                    "prefix": "libs/cocos2d/Support/", 
+                    "suffix": "ccUtils.h", 
+                    "key": "ccUtils.h"
+                }, 
+                "CCActionGrid.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCActionGrid.h", 
+                    "key": "CCActionGrid.h"
+                }, 
+                "CCDirector.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCDirector.h", 
+                    "key": "CCDirector.h"
+                }, 
+                "CCMenuItem.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCMenuItem.h", 
+                    "key": "CCMenuItem.h"
+                }, 
+                "CCCamera.h": {
+                    "prefix": "libs/cocos2d/", 
+                    "suffix": "CCCamera.h", 
+                    "key": "CCCamera.h"
+                }
+            }
+        }, 
+        {
+            "header_path": "libs", 
+            "type": "I"
+        }
+    ], 
+    "modules": [], 
+    "sources": [
+        {
+            "source": "Classes/AppSettings.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/BlocksAppDelegate.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/GameKitHelper+Additions.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/GameKitHelper.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/GameLayer.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/GameManager+RandomLevel.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/GameManager.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/GameScene.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/HighScoreLayer.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/HighscoreScene.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/InfoLayer.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/InfoScene.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/Level.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/LevelCompleteMsg.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/LevelMenuItem.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/MCLayer.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/MCMenuItem.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/MenuLayer.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/MenuScene.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/OnOffButton.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/OptionScene.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/OptionsLayer.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Classes/ShapeSprite.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "GKAchievementNotification/GKAchievementHandler.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "GKAchievementNotification/GKAchievementNotification.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "main.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }
+    ], 
+    "version": "1", 
+    "flags": [
+        "-DNS_BLOCKS_AVAILABLE=0", 
+        "-fwritable-strings", 
+        "-funroll-loops", 
+        "-fasm-blocks", 
+        {
+            "flag": "-std=c99", 
+            "not_type": "c++"
+        }, 
+        "-fno-asm", 
+        "-fpascal-strings", 
+        "-Wno-deprecated-declarations", 
+        "-Wreturn-type", 
+        "-Wswitch", 
+        "-Wparentheses", 
+        "-Wformat", 
+        "-Wunused-value", 
+        "-Wunused-variable", 
+        {
+            "flag": "-Winvalid-offsetof", 
+            "type": "c++"
+        }, 
+        {
+            "flag": "-Wprotocol", 
+            "type": "objc"
+        }
+    ], 
+    "infoplists": [
+        "./Resources/Info-copy.plist"
+    ], 
+    "deps": [
+        "UIKit", 
+        "AVFoundation", 
+        "AudioToolbox", 
+        "CoreGraphics", 
+        "OpenAL", 
+        "OpenGLES", 
+        "QuartzCore", 
+        "CoreGraphics", 
+        "Foundation", 
+        "OpenGLES", 
+        "QuartzCore", 
+        "UIKit", 
+        "AudioToolbox", 
+        "OpenAL", 
+        "AVFoundation"
+    ], 
+    "libs": [], 
+    "java_sourcepaths": [], 
+    "java_res_dirs": [], 
+    "type": "app", 
+    "java_libs": [], 
+    "defines": {
+        "NS_BLOCKS_AVAILABLE": 0, 
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 30100, 
+        "CD_DEBUG": 0, 
+        "NDEBUG": 1
+    }
+}

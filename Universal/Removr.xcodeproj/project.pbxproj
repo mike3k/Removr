@@ -2881,7 +2881,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "COCOS2D_DEBUG=1";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -2922,7 +2922,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -2980,7 +2980,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3067,7 +3067,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-copy.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3133,7 +3133,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "COCOS2D_DEBUG=1";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-free.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3177,7 +3177,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-free.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3220,7 +3220,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-free.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3263,7 +3263,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = libs;
 				INFOPLIST_FILE = "Resources/Info-free.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
